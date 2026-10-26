@@ -34,6 +34,7 @@
   --color-forest-deep: var(--forest-deep);
   --color-rust: var(--rust);
   --color-burgundy: var(--burgundy);
+  --color-crimson: var(--crimson);
   --color-gold: var(--gold);
   --color-stone: var(--stone);
   --color-ivory: var(--ivory);
@@ -48,6 +49,7 @@
   --forest-deep: oklch(0.24 0.035 165);
   --rust: oklch(0.56 0.15 45);
   --burgundy: oklch(0.36 0.11 18);
+  --crimson: #8C2332;
   --gold: oklch(0.72 0.08 80);
   --stone: oklch(0.88 0.018 75);
 
