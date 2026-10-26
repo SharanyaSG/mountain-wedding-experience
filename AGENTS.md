@@ -8,3 +8,6 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep this homepage frontend-only; no persistence or services are needed for its visual prototype.
+- Store confirmed hotel facts and the planned story collection in the browser-safe wedding-content module, so presentation and small factual tests share one source.
