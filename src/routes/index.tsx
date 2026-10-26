@@ -5,6 +5,7 @@ import drive from "@/assets/explore-drive.jpg";
 import outdoor from "@/assets/explore-outdoor.jpg";
 import eat from "@/assets/explore-eat.jpg";
 import { Reveal, PhotoPlaceholder } from "@/components/site/Reveal";
+import { hotels, plannedStories } from "@/components/site/wedding-content";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -126,18 +127,19 @@ function Hero() {
       />
       <div className="bg-hero-veil absolute inset-0" />
       <div className="relative mx-auto flex h-full max-w-[1400px] flex-col justify-between px-5 pb-10 pt-28 md:px-10 md:pb-14">
-        <p className="eyebrow hero-rise text-ivory/85" style={{ animationDelay: "200ms" }}>
-          Gowda <span className="text-gold">×</span> Malhotra
-        </p>
+        <span aria-hidden="true" />
         <div>
+          <p className="hero-rise mb-6 flex items-center gap-4 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-ivory md:text-sm" style={{ animationDelay: "250ms" }}>
+            <span className="h-px w-10 bg-gold" />Save the Date<span className="h-px w-10 bg-gold" />
+          </p>
           <h1 className="display hero-rise max-w-5xl text-[15vw] sm:text-7xl md:text-8xl lg:text-[9.5rem]" style={{ animationDelay: "400ms" }}>
             Meet us in<br /><em className="font-light">the mountains.</em>
           </h1>
           <div className="hero-rise mt-10 grid gap-8 border-t border-ivory/30 pt-6 md:grid-cols-[1fr_auto] md:items-end" style={{ animationDelay: "800ms" }}>
-            <div className="grid grid-cols-2 gap-4 sm:flex sm:gap-12">
-              <p className="font-serif text-2xl italic md:text-3xl">Sharanya &amp; Sahil</p>
-              <p className="eyebrow self-center text-ivory/85">October 8, 2027</p>
-              <p className="eyebrow col-span-2 self-center text-ivory/85">Loon Mountain · New Hampshire</p>
+            <div className="space-y-2">
+              <p className="font-serif text-3xl italic md:text-5xl">Sharanya &amp; Sahil</p>
+              <p className="text-lg font-medium md:text-2xl">Friday, October 8, 2027</p>
+              <p className="text-base text-ivory/90 md:text-xl">Loon Mountain · New Hampshire</p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
               <a href="#plans" className="eyebrow bg-ivory px-7 py-4 text-center text-charcoal transition-colors hover:bg-gold">
@@ -181,7 +183,7 @@ function SaveTheDate() {
           <Reveal delay={120}>
             <blockquote className="display mt-8 text-4xl md:text-5xl lg:text-6xl">
               Somewhere between the mountains and all the adventures,{" "}
-              <em className="text-forest">we found our way here.</em>
+              <em className="text-crimson">we found our way here.</em>
             </blockquote>
           </Reveal>
           <Reveal delay={240} className="mt-12 space-y-2 border-l border-gold pl-6">
@@ -251,8 +253,8 @@ function Notice({ onClose }: { onClose: () => void }) {
 
 /* ---------------- WEEKEND ---------------- */
 const days = [
-  { dow: "Thursday", date: "October 7, 2027", n: "07", title: "Welcome gathering", place: "RiverWalk Resort at Loon Mountain" },
-  { dow: "Friday", date: "October 8, 2027", n: "08", title: "Wedding ceremony & reception", place: "Loon Mountain, New Hampshire" },
+  { dow: "Thursday", date: "October 7, 2027", n: "07", title: "Welcome Gathering", place: "RiverWalk Resort at Loon Mountain" },
+  { dow: "Friday", date: "October 8, 2027", n: "08", title: "Wedding Ceremony & Reception", place: "Loon Mountain, New Hampshire" },
 ];
 function Weekend() {
   return (
@@ -261,7 +263,7 @@ function Weekend() {
         <div className="md:col-span-4">
           <Reveal><Kicker n="03" label="The wedding weekend" /></Reveal>
           <Reveal delay={100}>
-            <h2 className="display mt-8 text-5xl md:text-6xl">Two days, <em className="text-burgundy">one mountain.</em></h2>
+            <h2 className="display mt-8 text-5xl md:text-6xl">Two days, <em className="text-forest">one mountain.</em></h2>
           </Reveal>
           <Reveal delay={200}>
             <p className="mt-6 max-w-xs text-sm leading-relaxed text-muted-foreground">Times and details will be shared with your invitation.</p>
@@ -285,10 +287,21 @@ function Weekend() {
 }
 
 /* ---------------- STAY ---------------- */
-const others = [
-  { n: "02", name: "Hampton Inn Lincoln White Mountains", note: "Convenient nearby alternative" },
-  { n: "03", name: "Holiday Inn Express & Suites Lincoln East – White Mountains", note: "Additional accommodation option" },
-];
+function HotelNotes({ reasons, notes }: { reasons: readonly string[]; notes: readonly string[] }) {
+  return (
+    <div className="grid gap-8 sm:grid-cols-2">
+      {[["Why Stay Here", reasons], ["Things to Know", notes]].map(([title, items]) => (
+        <div key={title as string}>
+          <p className="eyebrow opacity-70">{title as string}</p>
+          <ul className="mt-4 space-y-2 text-sm leading-relaxed">
+            {(items as readonly string[]).map((x) => <li key={x}>— {x}</li>)}
+          </ul>
+        </div>
+      ))}
+    </div>
+  );
+}
+const [preferred, ...others] = hotels;
 function Stay() {
   return (
     <section id="stay" className="scroll-mt-16 bg-card">
@@ -308,17 +321,17 @@ function Stay() {
         </div>
 
         <Reveal className="mt-16 grid bg-forest text-ivory md:grid-cols-2">
-          <div className="relative min-h-[280px] overflow-hidden">
-            <img src={outdoor} alt="River and autumn forest near Loon Mountain" loading="lazy" width={896} height={1152} className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.6s] hover:scale-105" />
-          </div>
+          <PhotoPlaceholder label="RiverWalk Resort hotel photograph" className="min-h-[320px] text-charcoal" />
           <div className="flex flex-col justify-between gap-10 p-8 md:p-14">
             <div>
-              <p className="eyebrow text-gold">01 · Preferred wedding-weekend hotel</p>
+              <p className="eyebrow text-gold">01 · {preferred.label}</p>
               <h3 className="display mt-6 text-4xl md:text-6xl">RiverWalk Resort <em>at Loon Mountain</em></h3>
-              <p className="mt-6 max-w-sm text-sm leading-relaxed text-ivory/75">Home to our welcome gathering. Booking details will be shared here once confirmed.</p>
+              <p className="mt-4 font-serif text-2xl italic">{preferred.tagline}</p>
+              <p className="mt-5 max-w-md text-sm leading-relaxed text-ivory/80">{preferred.introduction}</p>
             </div>
+            <HotelNotes reasons={preferred.reasons} notes={preferred.notes} />
             <span className="eyebrow inline-block w-fit border border-ivory/40 px-6 py-4 text-ivory/70" aria-disabled="true">
-              Booking details coming soon
+              Rates, code &amp; booking link pending
             </span>
           </div>
         </Reveal>
@@ -327,13 +340,29 @@ function Stay() {
           {others.map((h, i) => (
             <Reveal key={h.n} delay={i * 120} className="flex flex-col justify-between gap-8 border-b border-border p-8 md:border-r md:p-12 md:last:border-r-0">
               <div>
-                <p className="eyebrow text-muted-foreground">{h.n} · {h.note}</p>
+                <PhotoPlaceholder label={`${h.name.split(" ")[0]} hotel photograph`} className="mb-8 aspect-[16/9] w-full" />
+                <p className="eyebrow text-muted-foreground">{h.n} · {h.label}</p>
                 <h3 className="display mt-4 text-3xl md:text-4xl">{h.name}</h3>
+                {h.tagline && <p className="mt-3 font-serif text-xl italic text-forest">{h.tagline}</p>}
               </div>
-              <span className="eyebrow text-muted-foreground">Details to follow</span>
+              <HotelNotes reasons={h.reasons} notes={h.notes} />
+              <span className="eyebrow text-muted-foreground">Booking details pending</span>
             </Reveal>
           ))}
         </div>
+        <Reveal className="mt-14">
+          <p className="eyebrow text-muted-foreground">At a glance</p>
+          <div className="mt-5 grid gap-px bg-border md:grid-cols-3">
+            {hotels.map((h) => (
+              <dl key={h.id} className="bg-card p-6 text-sm">
+                <dt className="font-serif text-xl">{h.n} · {h.name.split(" at ")[0].split(" Lincoln")[0]}</dt>
+                <dd className="mt-4 grid grid-cols-[7rem_1fr] gap-2"><span className="text-muted-foreground">Thursday</span>{h.thursday}</dd>
+                <dd className="mt-2 grid grid-cols-[7rem_1fr] gap-2"><span className="text-muted-foreground">Breakfast</span>{h.breakfastIncluded ? "Included" : "Not included"}</dd>
+                <dd className="mt-2 grid grid-cols-[7rem_1fr] gap-2"><span className="text-muted-foreground">Room block</span>{h.roomBlock === "planned" ? "Planned" : "None"}</dd>
+              </dl>
+            ))}
+          </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -341,16 +370,16 @@ function Stay() {
 
 /* ---------------- STORIES ---------------- */
 const stories = [
-  { k: "Halloween 2023", t: "The First Time We Met", ex: "It started, as these things do, in costume.", tone: "bg-burgundy text-ivory", h: "md:mt-0" },
-  { k: "The Bow", t: "Sharanya's Favorite Sahil Story", ex: "She'll tell this one better than we can write it.", tone: "bg-stone text-charcoal", h: "md:mt-24" },
-  { k: "Shravya", t: "Sahil's Favorite Sharanya Story", ex: "He insists this is the definitive one.", tone: "bg-forest text-ivory", h: "md:mt-12" },
+  { ...plannedStories[0], ex: "The full story is coming soon.", tone: "bg-burgundy text-ivory", h: "md:mt-0" },
+  { ...plannedStories[1], ex: "The full story is coming soon.", tone: "bg-stone text-charcoal", h: "md:mt-24" },
+  { ...plannedStories[2], ex: "The full story is coming soon.", tone: "bg-forest text-ivory", h: "md:mt-12" },
 ];
 function Stories() {
   return (
     <section className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-40">
       <Reveal><Kicker n="05" label="Our stories" /></Reveal>
       <Reveal delay={100}>
-        <h2 className="display mt-8 max-w-3xl text-5xl md:text-7xl">The stories that <em className="text-rust">got us here</em></h2>
+        <h2 className="display mt-8 max-w-3xl text-5xl md:text-7xl">The stories that <em className="text-crimson">got us here</em></h2>
       </Reveal>
       <div className="mt-16 grid gap-6 md:grid-cols-3">
         {stories.map((s, i) => (
@@ -363,12 +392,18 @@ function Stories() {
               <div>
                 <p className="display text-5xl md:text-6xl">{s.k}</p>
                 <h3 className="eyebrow mt-6 opacity-80">{s.t}</h3>
-                <p className="mt-4 font-serif text-xl italic opacity-90">"{s.ex}"</p>
+                <p className="mt-4 font-serif text-xl italic opacity-90">{s.ex}</p>
               </div>
             </article>
           </Reveal>
         ))}
       </div>
+      <Reveal className="mt-16 text-center">
+        <button disabled aria-describedby="stories-soon" className="eyebrow cursor-not-allowed border border-forest px-8 py-5 text-forest opacity-70">
+          Explore All {plannedStories.length === 9 ? "Nine" : plannedStories.length} Stories →
+        </button>
+        <p id="stories-soon" className="mt-3 text-sm text-muted-foreground">The full stories page is coming soon.</p>
+      </Reveal>
     </section>
   );
 }
