@@ -6,6 +6,7 @@ import outdoor from "@/assets/explore-outdoor.jpg";
 import eat from "@/assets/explore-eat.jpg";
 import { Reveal, PhotoPlaceholder } from "@/components/site/Reveal";
 import { hotels, plannedStories } from "@/components/site/wedding-content";
+import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -290,11 +291,11 @@ function Weekend() {
 function HotelNotes({ reasons, notes }: { reasons: readonly string[]; notes: readonly string[] }) {
   return (
     <div className="grid gap-8 sm:grid-cols-2">
-      {[["Why Stay Here", reasons], ["Things to Know", notes]].map(([title, items]) => (
-        <div key={title as string}>
-          <p className="eyebrow opacity-70">{title as string}</p>
+      {[{ title: "Why Stay Here", items: reasons }, { title: "Things to Know", items: notes }].map(({ title, items }) => (
+        <div key={title}>
+          <p className="eyebrow opacity-70">{title}</p>
           <ul className="mt-4 space-y-2 text-sm leading-relaxed">
-            {(items as readonly string[]).map((x) => <li key={x}>— {x}</li>)}
+            {items.map((x) => <li key={x}>— {x}</li>)}
           </ul>
         </div>
       ))}
@@ -355,7 +356,7 @@ function Stay() {
           <div className="mt-5 grid gap-px bg-border md:grid-cols-3">
             {hotels.map((h) => (
               <dl key={h.id} className="bg-card p-6 text-sm">
-                <dt className="font-serif text-xl">{h.n} · {h.name.split(" at ")[0].split(" Lincoln")[0]}</dt>
+                <dt className="font-serif text-xl">{h.n} · {h.name.split(" at ")[0]?.split(" Lincoln")[0]}</dt>
                 <dd className="mt-4 grid grid-cols-[7rem_1fr] gap-2"><span className="text-muted-foreground">Thursday</span>{h.thursday}</dd>
                 <dd className="mt-2 grid grid-cols-[7rem_1fr] gap-2"><span className="text-muted-foreground">Breakfast</span>{h.breakfastIncluded ? "Included" : "Not included"}</dd>
                 <dd className="mt-2 grid grid-cols-[7rem_1fr] gap-2"><span className="text-muted-foreground">Room block</span>{h.roomBlock === "planned" ? "Planned" : "None"}</dd>
@@ -399,9 +400,9 @@ function Stories() {
         ))}
       </div>
       <Reveal className="mt-16 text-center">
-        <button disabled aria-describedby="stories-soon" className="eyebrow cursor-not-allowed border border-forest px-8 py-5 text-forest opacity-70">
-          Explore All {plannedStories.length === 9 ? "Nine" : plannedStories.length} Stories →
-        </button>
+        <Button variant="outline" disabled aria-describedby="stories-soon" className="eyebrow h-auto max-w-full whitespace-normal border-forest bg-transparent px-6 py-5 text-forest tracking-[0.15em] disabled:opacity-70">
+          Explore All Nine Stories →
+        </Button>
         <p id="stories-soon" className="mt-3 text-sm text-muted-foreground">The full stories page is coming soon.</p>
       </Reveal>
     </section>
