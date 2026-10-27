@@ -7,6 +7,7 @@ import eat from "@/assets/explore-eat.jpg";
 import riverwalkPhoto from "@/assets/hotel-riverwalk.jpg.asset.json";
 import hamptonPhoto from "@/assets/hotel-hampton-inn.jpg.asset.json";
 import holidayInnPhoto from "@/assets/hotel-holiday-inn-express.jpg.asset.json";
+import overlook from "@/assets/sharanya-sahil-overlook.jpg.asset.json";
 import { Reveal, PhotoPlaceholder } from "@/components/site/Reveal";
 import { hotels, plannedStories } from "@/components/site/wedding-content";
 import { Button } from "@/components/ui/button";
@@ -177,9 +178,13 @@ function SaveTheDate() {
     <section className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-40">
       <div className="grid gap-12 md:grid-cols-12 md:gap-10">
         <Reveal className="md:col-span-7">
-          <PhotoPlaceholder
-            label="Sharanya & Sahil on the overlook"
-            className="aspect-[4/5] w-full md:aspect-[5/6]"
+          <img
+            src={overlook.url}
+            alt="Sharanya and Sahil seated together on a rocky mountain overlook, seen from behind, looking out across a forested valley"
+            width={1080}
+            height={1920}
+            loading="lazy"
+            className="aspect-[4/5] w-full object-cover object-bottom md:aspect-[5/6]"
           />
         </Reveal>
         <div className="flex flex-col justify-end md:col-span-5 md:pb-10">
