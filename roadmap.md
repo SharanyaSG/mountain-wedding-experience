@@ -1,6 +1,6 @@
 # Homepage refinements
-- [ ] Add the separate 30-second illustrated intro, first-visit entry, skip/replay and reduced-motion entry.
-- [ ] Verify the full animated sequence and unchanged homepage on desktop/mobile.
+- [x] Add the separate 30-second illustrated intro, first-visit entry, skip/replay and reduced-motion entry.
+- [x] Verify the full animated sequence and unchanged homepage on desktop/mobile.
 - [x] Refine announcement readability and requested accents/capitalization.
 - [x] Present confirmed hotel details, placeholders, and mobile-readable comparison.
 - [x] Remove invented story excerpts and add disabled nine-story preview action.

@@ -73,7 +73,7 @@ export function Landscape({ time, playing }: { time: number; playing: boolean })
   const ski = progress(time, 23, 27);
   const characterOpacity = playing ? (time < 3 ? 0 : time < 12.5 ? Math.min(1, (time - 3) * 2) : time < 14 ? 1 - progress(time, 12.5, 14) : time >= 23 ? 1 - progress(time, 27, 28) : 0) : 0;
   const camera = playing ? 1.035 - .035 * smooth(progress(time, 10, 16)) : 1;
-  return <svg className="intro-landscape" viewBox="0 0 1000 800" preserveAspectRatio="xMidYMid slice" role="img" aria-label={winter > .5 ? "Illustrated snowy mountains and two silhouettes skiing" : "Illustrated autumn mountains and a couple hiking to a fictional overlook"}>
+  return <svg className="intro-landscape" viewBox="0 0 1000 800" preserveAspectRatio="xMidYMax slice" role="img" aria-label={winter > .5 ? "Illustrated snowy mountains and two silhouettes skiing" : "Illustrated autumn mountains and a couple hiking to a fictional overlook"}>
     <defs>
       <linearGradient id="intro-sunset" x2="0" y2="1"><stop className="intro-sky-top" /><stop offset=".52" className="intro-sky-mid" /><stop offset="1" className="intro-sky-low" /></linearGradient>
       <linearGradient id="intro-winter-sky" x2="0" y2="1"><stop className="intro-cold-top" /><stop offset="1" className="intro-cold-low" /></linearGradient>

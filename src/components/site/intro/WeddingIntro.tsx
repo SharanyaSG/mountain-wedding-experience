@@ -67,11 +67,12 @@ export function WeddingIntro({ children }: { children: ReactNode }) {
   const announcementOpacity = smooth(progress(time, 14, 15.5)) * (1 - smooth(progress(time, 19, 20)));
   const endingOpacity = smooth(progress(time, 27, 28)) * (1 - smooth(progress(time, 29.3, 30)));
   return <>
+    {playing && time >= 29 && <div inert aria-hidden="true">{children}</div>}
     {mode === "home" && <>
       {children}
       <Button ref={replayRef} variant="ghost" className="intro-replay" onClick={() => { setTime(0); setMode("welcome"); }}><RotateCcw aria-hidden="true" /> Replay Intro</Button>
     </>}
-    {mode !== "home" && <section className="wedding-intro" role="dialog" aria-modal="true" aria-label="Gowda × Malhotra illustrated introduction" onKeyDown={event => {
+    {mode !== "home" && <section className="wedding-intro" style={{ opacity: playing ? 1 - smooth(progress(time, 29.3, 30)) : 1 }} role="dialog" aria-modal="true" aria-label="Gowda × Malhotra illustrated introduction" onKeyDown={event => {
       if (event.key === "Escape") finish();
       if (event.key === "Tab") {
         if (playing) { event.preventDefault(); skipRef.current?.focus(); }
