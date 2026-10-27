@@ -11,7 +11,6 @@ import overlook from "@/assets/sharanya-sahil-overlook.jpg.asset.json";
 import { Reveal, PhotoPlaceholder } from "@/components/site/Reveal";
 import { hotels, plannedStories } from "@/components/site/wedding-content";
 import { Button } from "@/components/ui/button";
-import { WeddingIntro } from "@/components/site/intro/WeddingIntro";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -32,7 +31,7 @@ const futureNav = ["Our Stories", "Gallery", "Wedding Weekend", "Travel & Stay",
 function Index() {
   const [notice, setNotice] = useState(false);
   return (
-    <WeddingIntro>
+    <>
       <Nav onPlans={() => setNotice(true)} />
       <main>
         <Hero />
@@ -47,7 +46,7 @@ function Index() {
       </main>
       <Footer />
       {notice && <Notice onClose={() => setNotice(false)} />}
-    </WeddingIntro>
+    </>
   );
 }
 
