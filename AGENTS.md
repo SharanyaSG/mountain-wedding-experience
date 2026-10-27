@@ -9,5 +9,6 @@
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
 
-- Keep this homepage frontend-only; no persistence or services are needed for its visual prototype.
+- Keep this homepage frontend-only; only the intro's watched/skipped preference may persist locally, with no services or guest data.
 - Store confirmed hotel facts and the planned story collection in the browser-safe wedding-content module, so presentation and small factual tests share one source.
+- Isolate the illustrated opening in site/intro with its own scoped styling and timeline; wrap the original homepage without editing its sections, so replay and film changes cannot alter the approved page.
