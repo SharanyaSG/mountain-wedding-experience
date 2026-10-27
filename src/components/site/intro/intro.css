@@ -1,0 +1,87 @@
+.wedding-intro {
+  --intro-peach: oklch(.88 .061 48);
+  --intro-blush: oklch(.79 .045 11);
+  --intro-lavender: oklch(.73 .038 305);
+  --intro-sunlight: oklch(.97 .068 85);
+  --intro-blue-far: oklch(.64 .037 265);
+  --intro-blue-mid: oklch(.53 .045 257);
+  --intro-blue-near: oklch(.41 .042 248);
+  --intro-earth: oklch(.42 .034 78);
+  --intro-cold: oklch(.78 .04 240);
+  --intro-snow: oklch(.96 .018 240);
+  --intro-rust: oklch(.59 .105 41);
+  --intro-orange: oklch(.68 .113 52);
+  --intro-gold: oklch(.78 .106 82);
+  --intro-shadow: 0 1px 20px color-mix(in oklab, var(--ivory) 55%, transparent);
+  position: fixed; inset: 0; z-index: 100; isolation: isolate;
+  background: var(--intro-peach); color: var(--charcoal);
+  overflow: hidden; height: 100dvh;
+  animation: intro-enter .7s ease both;
+}
+.intro-landscape { position: absolute; inset: 0; width: 100%; height: 100%; }
+.intro-sky-top { stop-color: var(--intro-lavender); }
+.intro-sky-mid { stop-color: var(--intro-blush); }
+.intro-sky-low { stop-color: var(--intro-peach); }
+.intro-cold-top { stop-color: var(--intro-cold); }
+.intro-cold-low { stop-color: var(--intro-snow); }
+.intro-sun { stop-color: var(--intro-sunlight); }
+.intro-sun-fill { fill: var(--intro-sunlight); }
+.intro-clouds, .intro-mist-color { fill: var(--intro-sunlight); stop-color: var(--intro-snow); }
+.intro-ridge-far { fill: var(--intro-blue-far); }
+.intro-ridge-mid { fill: var(--intro-blue-mid); }
+.intro-ridge-near { fill: var(--intro-blue-near); }
+.intro-foothill { fill: var(--forest); }
+.intro-ground { fill: var(--intro-earth); }
+.intro-snow, .intro-snowflakes, .intro-powder { fill: var(--intro-snow); }
+.intro-trunk { fill: none; stroke: var(--charcoal); stroke-width: 3; stroke-linecap: round; }
+.intro-leaf-0 { fill: var(--intro-rust); }
+.intro-leaf-1 { fill: var(--intro-orange); }
+.intro-leaf-2 { fill: var(--intro-gold); }
+.intro-leaf-3 { fill: var(--forest); }
+.intro-foliage { opacity: .86; }
+.intro-evergreen { fill: var(--forest-deep); }
+.intro-tree-snow { fill: var(--intro-snow); }
+.intro-trail { fill: none; stroke: var(--stone); stroke-width: 19; opacity: .5; }
+.intro-rocks { fill: var(--stone); opacity: .45; }
+.intro-arbor { fill: none; stroke: var(--intro-earth); stroke-width: 7; stroke-linecap: round; }
+.intro-arbor-brace { fill: none; stroke: var(--intro-earth); stroke-width: 3; }
+.intro-person { fill: var(--charcoal); }
+.intro-limbs { fill: none; stroke: var(--charcoal); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.intro-skis { fill: none; stroke: var(--charcoal); stroke-width: 2.5; stroke-linecap: round; }
+.intro-poles { fill: none; stroke: var(--charcoal); stroke-width: 1.2; }
+.intro-ski-track { fill: none; stroke: var(--intro-blue-far); stroke-width: 1; opacity: .35; }
+.intro-texture { fill: var(--ivory); opacity: .11; pointer-events: none; mix-blend-mode: multiply; }
+.intro-clouds.is-moving { animation: intro-cloud-drift 30s linear both; }
+.intro-welcome, .intro-announcement, .intro-ending { position: absolute; left: 0; right: 0; text-align: center; padding: 0 24px; }
+.intro-welcome { top: 12%; display: flex; align-items: center; flex-direction: column; }
+.intro-brand { font-family: var(--font-serif); font-size: 24px; font-weight: 500; letter-spacing: 0; margin: 0 0 18px; }
+.intro-welcome h1 { font-family: var(--font-serif); font-size: 62px; line-height: .98; font-weight: 400; max-width: 540px; margin: 0 0 32px; letter-spacing: 0; }
+.intro-welcome h1 em { display: block; }
+.intro-actions { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.intro-begin { height: 48px; border-radius: 2px; font-size: 11px; letter-spacing: 0; }
+.intro-skip { color: var(--charcoal); height: 40px; font-size: 12px; background: color-mix(in oklab, var(--ivory) 60%, transparent); border-radius: 2px; }
+.intro-playback-skip { position: absolute; right: max(24px, env(safe-area-inset-right)); top: max(24px, env(safe-area-inset-top)); }
+.intro-announcement { top: 14%; text-shadow: var(--intro-shadow); }
+.intro-announcement .intro-label { font-size: 12px; margin: 0 0 15px; letter-spacing: 0; font-weight: 500; }
+.intro-announcement h2 { font-family: var(--font-serif); font-size: 76px; font-weight: 400; line-height: 1; margin: 0 0 22px; letter-spacing: 0; }
+.intro-announcement p { font-size: 15px; margin: 8px 0; }
+.intro-announcement p:last-child { font-size: 13px; }
+.intro-ending { top: 29%; font-family: var(--font-serif); font-size: 60px; font-style: italic; line-height: 1; text-shadow: var(--intro-shadow); }
+.intro-progress { position: absolute; bottom: 0; left: 0; height: 2px; background: var(--forest); opacity: .55; }
+.intro-replay { position: fixed; right: 18px; bottom: max(18px, env(safe-area-inset-bottom)); z-index: 45; color: var(--foreground); background: var(--background); border: 1px solid var(--border); font-size: 11px; height: 34px; border-radius: 2px; }
+.intro-reduced-note { font-size: 11px; color: var(--charcoal); margin-top: 12px; }
+@keyframes intro-enter { from { opacity: 0; } to { opacity: 1; } }
+@keyframes intro-cloud-drift { to { transform: translateX(25px); } }
+@media (min-aspect-ratio: 17/10) { .intro-welcome { top: 8%; } .intro-welcome h1 { font-size: 52px; } .intro-announcement { top: 8%; } .intro-announcement h2 { font-size: 64px; } }
+@media (max-width: 600px) {
+  .intro-welcome { top: 12%; }
+  .intro-brand { font-size: 21px; margin-bottom: 22px; }
+  .intro-welcome h1 { font-size: 46px; max-width: 340px; margin-bottom: 28px; }
+  .intro-announcement { top: 18%; padding: 0 14px; }
+  .intro-announcement h2 { font-size: 48px; margin-bottom: 20px; }
+  .intro-announcement p { font-size: 13px; }
+  .intro-announcement p:last-child { font-size: 12px; }
+  .intro-ending { font-size: 46px; top: 30%; }
+  .intro-playback-skip { top: max(15px, env(safe-area-inset-top)); right: 15px; }
+}
+@media (prefers-reduced-motion: reduce) { .wedding-intro, .intro-clouds.is-moving { animation: none; } }
