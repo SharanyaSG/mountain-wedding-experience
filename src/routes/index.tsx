@@ -308,7 +308,9 @@ function HotelNotes({ reasons, notes }: { reasons: readonly string[]; notes: rea
 const [preferred, ...others] = hotels;
 
 // Authentic guest-supplied photographs, one per hotel. Never AI-generated.
-const hotelPhotos: Record<string, { url: string; alt: string; width: number; height: number }> = {
+type HotelId = (typeof hotels)[number]["id"];
+type HotelPhoto = { url: string; alt: string; width: number; height: number };
+const hotelPhotos: { [K in HotelId]: HotelPhoto } = {
   riverwalk: {
     url: riverwalkPhoto.url,
     alt: "RiverWalk Resort at Loon Mountain, a multi-wing resort with red roofs set beneath a forested mountain",
