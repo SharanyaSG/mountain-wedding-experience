@@ -4,6 +4,9 @@ import hero from "@/assets/hero-mountains.jpg";
 import drive from "@/assets/explore-drive.jpg";
 import outdoor from "@/assets/explore-outdoor.jpg";
 import eat from "@/assets/explore-eat.jpg";
+import riverwalkPhoto from "@/assets/hotel-riverwalk.jpg.asset.json";
+import hamptonPhoto from "@/assets/hotel-hampton-inn.jpg.asset.json";
+import holidayInnPhoto from "@/assets/hotel-holiday-inn-express.jpg.asset.json";
 import { Reveal, PhotoPlaceholder } from "@/components/site/Reveal";
 import { hotels, plannedStories } from "@/components/site/wedding-content";
 import { Button } from "@/components/ui/button";
@@ -303,6 +306,29 @@ function HotelNotes({ reasons, notes }: { reasons: readonly string[]; notes: rea
   );
 }
 const [preferred, ...others] = hotels;
+
+// Authentic guest-supplied photographs, one per hotel. Never AI-generated.
+const hotelPhotos: Record<string, { url: string; alt: string; width: number; height: number }> = {
+  riverwalk: {
+    url: riverwalkPhoto.url,
+    alt: "RiverWalk Resort at Loon Mountain, a multi-wing resort with red roofs set beneath a forested mountain",
+    width: 1000,
+    height: 720,
+  },
+  hampton: {
+    url: hamptonPhoto.url,
+    alt: "Hampton Inn Lincoln White Mountains exterior with its entrance canopy and monument sign",
+    width: 575,
+    height: 375,
+  },
+  "holiday-inn": {
+    url: holidayInnPhoto.url,
+    alt: "Holiday Inn Express & Suites Lincoln East – White Mountains exterior with its drive-up canopy",
+    width: 768,
+    height: 432,
+  },
+};
+
 function Stay() {
   return (
     <section id="stay" className="scroll-mt-16 bg-card">
@@ -322,7 +348,14 @@ function Stay() {
         </div>
 
         <Reveal className="mt-16 grid bg-forest text-ivory md:grid-cols-2">
-          <PhotoPlaceholder label="RiverWalk Resort hotel photograph" className="min-h-[320px] text-charcoal" />
+          <img
+            src={hotelPhotos[preferred.id].url}
+            alt={hotelPhotos[preferred.id].alt}
+            width={hotelPhotos[preferred.id].width}
+            height={hotelPhotos[preferred.id].height}
+            loading="lazy"
+            className="min-h-[320px] h-full w-full object-cover"
+          />
           <div className="flex flex-col justify-between gap-10 p-8 md:p-14">
             <div>
               <p className="eyebrow text-gold">01 · {preferred.label}</p>
@@ -341,7 +374,14 @@ function Stay() {
           {others.map((h, i) => (
             <Reveal key={h.n} delay={i * 120} className="flex flex-col justify-between gap-8 border-b border-border p-8 md:border-r md:p-12 md:last:border-r-0">
               <div>
-                <PhotoPlaceholder label={`${h.name.split(" ")[0]} hotel photograph`} className="mb-8 aspect-[16/9] w-full" />
+                <img
+                  src={hotelPhotos[h.id].url}
+                  alt={hotelPhotos[h.id].alt}
+                  width={hotelPhotos[h.id].width}
+                  height={hotelPhotos[h.id].height}
+                  loading="lazy"
+                  className="mb-8 aspect-[16/9] w-full object-cover"
+                />
                 <p className="eyebrow text-muted-foreground">{h.n} · {h.label}</p>
                 <h3 className="display mt-4 text-3xl md:text-4xl">{h.name}</h3>
                 {h.tagline && <p className="mt-3 font-serif text-xl italic text-forest">{h.tagline}</p>}
