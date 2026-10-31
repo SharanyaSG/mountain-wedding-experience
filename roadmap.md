@@ -7,4 +7,5 @@
 - [x] Remove invented story excerpts and add disabled nine-story preview action.
 - [x] Verify desktop/mobile and existing interactions.
 - [x] Place the three authentic hotel photographs in Travel & Stay (CDN assets, verified desktop + mobile).
+- [x] Integrate the finished save-the-date film (GM_Wedding_SOD.mp4) with its minimalist invitation thumbnail as the poster: click-to-play with sound, native pause/volume controls, discreet replay; verified desktop + mobile.
 - [ ] Replace hero photo when authentic attachment is supplied (blocked: sunset upload still not received).
