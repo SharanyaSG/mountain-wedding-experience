@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Play, RotateCcw } from "lucide-react";
 import hero from "@/assets/hero-mountains.jpg";
 import drive from "@/assets/explore-drive.jpg";
 import outdoor from "@/assets/explore-outdoor.jpg";
@@ -9,6 +10,8 @@ import hamptonPhoto from "@/assets/hotel-hampton-inn.jpg.asset.json";
 import holidayInnPhoto from "@/assets/hotel-holiday-inn-express.jpg.asset.json";
 import overlook from "@/assets/sharanya-sahil-overlook.jpg.asset.json";
 import { Reveal, PhotoPlaceholder } from "@/components/site/Reveal";
+import filmPoster from "@/assets/wedding-film-poster.png.asset.json";
+import filmVideo from "@/assets/wedding-film.mp4.asset.json";
 import { hotels, plannedStories } from "@/components/site/wedding-content";
 import { Button } from "@/components/ui/button";
 
@@ -36,6 +39,7 @@ function Index() {
       <main>
         <Hero />
         <SaveTheDate />
+        <Film />
         <Plans onPlans={() => setNotice(true)} />
         <Weekend />
         <Stay />
