@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { hotels, plannedStories } from "@/components/site/wedding-content";
+import { hotels, plannedStories, stories } from "@/components/site/wedding-content";
 
 const riverwalk = hotels[0];
 const hampton = hotels[1];
@@ -49,4 +49,23 @@ describe("wedding content", () => {
     expect(JSON.stringify(hotels)).not.toMatch(/\$\d|per night|discount code|% off|book by|deadline|rooms left/i);
   });
   it("plans nine stories", () => expect(plannedStories).toHaveLength(9));
+
+  it("gives the gallery eight stories in the supplied order, with exact titles and subtitles", () => {
+    expect(stories.map((s) => [s.n, s.title, s.subtitle])).toEqual([
+      ["01", "Halloween 2023", "The First Time We Met"],
+      ["02", "The Bow", "Sharanya’s Favorite Sahil Story"],
+      ["03", "Shravya", "Sahil’s Favorite Sharanya Story"],
+      ["04", "New York", "The First Big Trip"],
+      ["05", "The Free Mattress", "He Meant Well…."],
+      ["06", "Our Homes Away From Home", "Cornwalls & Silhouette"],
+      ["07", "The Puppy Proposal", "A Ring Pop, A Misunderstanding, & A Very Confused Mother"],
+      ["08", "The One Where He Behaved!", "Blessings from The Gowdas & The Malhotras"],
+    ]);
+  });
+
+  it("invents no story text and no photographs before the couple supplies them", () => {
+    expect(stories.every((s) => s.body === "")).toBe(true);
+    expect(stories.every((s) => s.photo === null)).toBe(true);
+    expect(JSON.stringify(stories)).not.toMatch(/[♥❤💕]/);
+  });
 });
