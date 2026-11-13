@@ -79,7 +79,7 @@ function Nav({ onPlans }: { onPlans: () => void }) {
           ))}
           <button
             onClick={onPlans}
-            className={`eyebrow border px-5 py-3 transition-colors ${
+            className={`btn-label border px-6 py-3.5 transition-colors ${
               light ? "border-cinnamon bg-card text-foreground hover:border-rust hover:bg-rust hover:text-card" : "border-forest bg-forest text-ivory hover:border-rust hover:bg-rust"
             }`}
           >
@@ -106,7 +106,7 @@ function Nav({ onPlans }: { onPlans: () => void }) {
           ))}
           <button
             onClick={() => { setOpen(false); onPlans(); }}
-            className="eyebrow mt-8 w-full bg-forest py-5 text-ivory"
+            className="btn-label mt-8 w-full bg-forest py-5 text-ivory"
           >
             Tell Us Your Plans
           </button>
@@ -121,7 +121,7 @@ function Hero() {
   return (
     <section id="top" className="relative overflow-hidden bg-card pt-24 md:pt-32">
       <div className="relative z-10 mx-auto max-w-[1100px] px-5 text-center md:px-10">
-        <p className="hero-rise eyebrow flex items-center justify-center gap-4 font-semibold text-rust" style={{ animationDelay: "150ms" }}>
+        <p className="hero-rise eyebrow flex items-center justify-center gap-4 font-semibold text-[#922F3C]" style={{ animationDelay: "150ms" }}>
           <span className="h-px w-8 bg-rust/70" />Save the Date<span className="h-px w-8 bg-rust/70" />
         </p>
         <h1 className="hero-rise mt-6 font-script text-[17vw] leading-[1.05] text-foreground sm:text-8xl md:text-[8.5rem]" style={{ animationDelay: "300ms" }}>
@@ -139,8 +139,8 @@ function Hero() {
         <HeroIllustration />
       </div>
       <div className="hero-rise flex flex-col items-center justify-center gap-3 px-5 pb-16 sm:flex-row md:pb-20" style={{ animationDelay: "1100ms" }}>
-        <a href="#plans" className="eyebrow bg-forest px-7 py-4 text-center text-ivory transition-colors hover:bg-rust">Tell Us Your Plans</a>
-        <a href="#stay" className="eyebrow border border-cinnamon bg-card px-7 py-4 text-center text-foreground transition-colors hover:border-rust hover:bg-rust hover:text-card">Plan Your Stay</a>
+        <a href="#plans" className="btn-label bg-forest px-7 py-4 text-center text-ivory transition-colors hover:bg-rust">Tell Us Your Plans</a>
+        <a href="#stay" className="btn-label border border-cinnamon bg-card px-7 py-4 text-center text-foreground transition-colors hover:border-rust hover:bg-rust hover:text-card">Plan Your Stay</a>
       </div>
     </section>
   );
@@ -208,7 +208,7 @@ function Plans({ onPlans }: { onPlans: () => void }) {
           </p>
         </Reveal>
         <Reveal delay={300}>
-          <button onClick={onPlans} className="eyebrow mt-12 bg-forest px-10 py-5 text-ivory transition-colors hover:bg-rust">
+          <button onClick={onPlans} className="btn-label mt-12 bg-forest px-10 py-5 text-ivory transition-colors hover:bg-rust">
             Tell Us Your Plans
           </button>
         </Reveal>
@@ -237,7 +237,7 @@ function Notice({ onClose }: { onClose: () => void }) {
         <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
           Personalized responses will open here soon. Each invitation is personal, and we'll share a link when it's ready.
         </p>
-        <button autoFocus onClick={onClose} className="eyebrow mt-8 w-full bg-forest py-4 text-ivory hover:bg-forest-deep">
+        <button autoFocus onClick={onClose} className="btn-label mt-8 w-full bg-forest py-4 text-ivory hover:bg-rust">
           Sounds good
         </button>
       </div>
@@ -346,7 +346,7 @@ function Stay() {
             <div className="border border-border bg-muted p-6 md:p-8">
               <p className="eyebrow text-gold">{preferred.bookingHeading}</p>
               <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">{preferred.bookingNote}</p>
-              <span className="eyebrow mt-6 inline-block w-fit border border-forest/40 px-6 py-4 text-forest" aria-disabled="true">
+              <span className="btn-label mt-6 inline-block w-fit border border-forest/40 px-6 py-4 text-forest" aria-disabled="true">
                 Booking link &amp; discount code to follow
               </span>
             </div>
