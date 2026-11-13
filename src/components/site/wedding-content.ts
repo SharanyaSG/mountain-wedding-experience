@@ -25,7 +25,7 @@ export type Story = {
   n: string;
   title: string;
   subtitle: string;
-  /** Complete story text, exactly as supplied. Empty until the couple provides it. */
+  /** Complete story text, exactly as supplied by the couple. */
   body: string;
   photo: { url: string; alt: string; width: number; height: number } | null;
 };
