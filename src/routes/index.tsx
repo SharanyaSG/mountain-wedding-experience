@@ -131,11 +131,11 @@ function Hero() {
           <p className="text-base md:text-xl">October 7 – 9, 2027</p>
           <p className="text-xs text-muted-foreground md:text-sm">Loon Mountain, New Hampshire</p>
         </div>
-        <p className="hero-rise mt-5 font-hand text-5xl text-crimson md:text-6xl" style={{ animationDelay: "700ms" }}>
+        <p className="hero-rise relative z-10 mt-5 font-hand text-5xl text-crimson md:text-6xl" style={{ animationDelay: "700ms" }}>
           Meet us in the mountains.
         </p>
       </div>
-      <div className="hero-rise mx-auto mt-2 max-w-[1700px] md:-mt-16" style={{ animationDelay: "900ms" }}>
+      <div className="hero-rise relative z-0 mx-auto -mt-6 max-w-[1700px] md:-mt-[8vw]" style={{ animationDelay: "900ms" }}>
         <HeroIllustration />
       </div>
       <div className="hero-rise flex flex-col items-center justify-center gap-3 px-5 pb-16 sm:flex-row md:pb-20" style={{ animationDelay: "1100ms" }}>
