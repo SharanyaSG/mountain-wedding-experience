@@ -9,4 +9,5 @@
 - [x] Place the three authentic hotel photographs in Travel & Stay (CDN assets, verified desktop + mobile).
 - [x] Integrate the finished save-the-date film (GM_Wedding_SOD.mp4) with its minimalist invitation thumbnail as the poster: click-to-play with sound, native pause/volume controls, discreet replay; verified desktop + mobile.
 - [ ] Save-the-date film temporarily removed from the homepage at the user's request (13 Nov 2026): section deleted from src/routes/index.tsx, assets kept untouched in src/assets for later re-integration; how to present the film is still to be decided.
+- [x] Accommodations refined: RiverWalk is the recommended stay (reserved room block, booking area ready for the link/code), Hampton Inn a small alternative card, Holiday Inn Express removed from the page (photo asset kept stored).
 - [ ] Replace hero photo when authentic attachment is supplied (blocked: sunset upload still not received).

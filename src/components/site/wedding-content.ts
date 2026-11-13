@@ -1,25 +1,22 @@
 export const hotels = [
   {
     id: "riverwalk", n: "01", name: "RiverWalk Resort at Loon Mountain",
-    label: "Our Preferred Stay", tagline: "The heart of our wedding weekend.",
-    introduction: "Our Thursday welcome gathering takes place at RiverWalk, making it the most convenient place to stay close to the celebrations.",
-    reasons: ["Thursday welcome gathering on-site.", "Convenient gathering point for wedding guests.", "Resort amenities and dining options.", "Wedding room block planned."],
-    notes: ["Breakfast is not included.", "Room-block rates, codes, and booking details are pending confirmation."],
-    thursday: "Welcome gathering on-site", breakfastIncluded: false, roomBlock: "planned",
+    label: "Our Recommended Stay", tagline: "Stay close to the celebrations.",
+    introduction: "We’ve reserved a discounted wedding room block at RiverWalk Resort, and we’d love for you to stay here with us! With our Thursday celebrations taking place on-site and convenient access to our wedding-day shuttle, it’s the easiest way to enjoy the festivities.",
+    urgency: "Our wedding falls during New Hampshire’s peak foliage season and Columbus Day weekend, when accommodations are in high demand. We strongly recommend booking early to take advantage of our special group rates.",
+    reasons: ["Exclusive wedding room-block rates", "Thursday celebrations on-site", "Convenient access to the wedding-day shuttle", "Stay close to family and friends"],
+    bookingHeading: "Our Wedding Room Block",
+    bookingNote: "Special group rates have been secured for our guests. Booking details will be shared soon.",
+    thursday: "Welcome gathering on-site", breakfastIncluded: false, roomBlock: "reserved",
   },
   {
     id: "hampton", n: "02", name: "Hampton Inn Lincoln White Mountains",
-    label: "Our Second Pick", tagline: "Close to the celebrations, with breakfast included.",
-    reasons: ["Very close to RiverWalk.", "Breakfast included.", "Wedding room block planned."],
-    notes: ["Thursday events take place at RiverWalk.", "Room-block details are pending confirmation."],
-    thursday: "Very close to RiverWalk", breakfastIncluded: true, roomBlock: "planned",
-  },
-  {
-    id: "holiday-inn", n: "03", name: "Holiday Inn Express & Suites Lincoln East – White Mountains",
-    label: "Additional Accommodation Option", tagline: "",
-    reasons: ["Breakfast included.", "Additional lodging option in Lincoln."],
-    notes: ["No wedding room block.", "Farther from RiverWalk.", "Guests should arrange transportation for Thursday events."],
-    thursday: "Farther away; arrange transportation", breakfastIncluded: true, roomBlock: "none",
+    label: "Alternative Accommodation", tagline: "",
+    introduction: "Prefer another option? Hampton Inn is located nearby. Please note that we do not have a wedding room block here, and rates and availability will be subject to holiday-weekend demand.",
+    urgency: "", reasons: [],
+    bookingHeading: "",
+    bookingNote: "Reserve directly with the hotel.",
+    thursday: "Very close to RiverWalk", breakfastIncluded: true, roomBlock: "none",
   },
 ] as const;
 

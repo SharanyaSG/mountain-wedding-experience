@@ -6,7 +6,6 @@ import outdoor from "@/assets/explore-outdoor.jpg";
 import eat from "@/assets/explore-eat.jpg";
 import riverwalkPhoto from "@/assets/hotel-riverwalk.jpg.asset.json";
 import hamptonPhoto from "@/assets/hotel-hampton-inn.jpg.asset.json";
-import holidayInnPhoto from "@/assets/hotel-holiday-inn-express.jpg.asset.json";
 import overlook from "@/assets/sharanya-sahil-overlook.jpg.asset.json";
 import { Reveal, PhotoPlaceholder } from "@/components/site/Reveal";
 import { hotels, plannedStories } from "@/components/site/wedding-content";
@@ -296,21 +295,8 @@ function Weekend() {
 }
 
 /* ---------------- STAY ---------------- */
-function HotelNotes({ reasons, notes }: { reasons: readonly string[]; notes: readonly string[] }) {
-  return (
-    <div className="grid gap-8 sm:grid-cols-2">
-      {[{ title: "Why Stay Here", items: reasons }, { title: "Things to Know", items: notes }].map(({ title, items }) => (
-        <div key={title}>
-          <p className="eyebrow opacity-70">{title}</p>
-          <ul className="mt-4 space-y-2 text-sm leading-relaxed">
-            {items.map((x) => <li key={x}>— {x}</li>)}
-          </ul>
-        </div>
-      ))}
-    </div>
-  );
-}
-const [preferred, ...others] = hotels;
+const preferred = hotels[0];
+const alternative = hotels[1];
 
 // Authentic guest-supplied photographs, one per hotel. Never AI-generated.
 type HotelId = (typeof hotels)[number]["id"];
@@ -327,12 +313,6 @@ const hotelPhotos: { [K in HotelId]: HotelPhoto } = {
     alt: "Hampton Inn Lincoln White Mountains exterior with its entrance canopy and monument sign",
     width: 575,
     height: 375,
-  },
-  "holiday-inn": {
-    url: holidayInnPhoto.url,
-    alt: "Holiday Inn Express & Suites Lincoln East – White Mountains exterior with its drive-up canopy",
-    width: 768,
-    height: 432,
   },
 };
 
@@ -365,48 +345,56 @@ function Stay() {
           />
           <div className="flex flex-col justify-between gap-10 p-8 md:p-14">
             <div>
-              <p className="eyebrow text-gold">01 · {preferred.label}</p>
+              <p className="eyebrow text-gold">{preferred.n} · {preferred.label}</p>
               <h3 className="display mt-6 text-4xl md:text-6xl">RiverWalk Resort <em>at Loon Mountain</em></h3>
               <p className="mt-4 font-serif text-2xl italic">{preferred.tagline}</p>
               <p className="mt-5 max-w-md text-sm leading-relaxed text-ivory/80">{preferred.introduction}</p>
+              <p className="mt-7 max-w-md border-l border-gold/60 pl-5 text-sm leading-relaxed text-ivory/90">{preferred.urgency}</p>
             </div>
-            <HotelNotes reasons={preferred.reasons} notes={preferred.notes} />
-            <span className="eyebrow inline-block w-fit border border-ivory/40 px-6 py-4 text-ivory/70" aria-disabled="true">
-              Rates, code &amp; booking link pending
-            </span>
+            <div>
+              <p className="eyebrow opacity-70">Why Stay Here</p>
+              <ul className="mt-4 grid gap-2 text-sm leading-relaxed sm:grid-cols-2">
+                {preferred.reasons.map((x) => <li key={x}>— {x}</li>)}
+              </ul>
+            </div>
+            <div className="border border-ivory/25 bg-ivory/[0.06] p-6 md:p-8">
+              <p className="eyebrow text-gold">{preferred.bookingHeading}</p>
+              <p className="mt-4 max-w-md text-sm leading-relaxed text-ivory/85">{preferred.bookingNote}</p>
+              <span className="eyebrow mt-6 inline-block w-fit border border-ivory/40 px-6 py-4 text-ivory/70" aria-disabled="true">
+                Booking link &amp; discount code to follow
+              </span>
+            </div>
           </div>
         </Reveal>
 
-        <div className="mt-px grid md:grid-cols-2">
-          {others.map((h, i) => (
-            <Reveal key={h.n} delay={i * 120} className="flex flex-col justify-between gap-8 border-b border-border p-8 md:border-r md:p-12 md:last:border-r-0">
-              <div>
-                <img
-                  src={hotelPhotos[h.id].url}
-                  alt={hotelPhotos[h.id].alt}
-                  width={hotelPhotos[h.id].width}
-                  height={hotelPhotos[h.id].height}
-                  loading="lazy"
-                  className="mb-8 aspect-[16/9] w-full object-cover"
-                />
-                <p className="eyebrow text-muted-foreground">{h.n} · {h.label}</p>
-                <h3 className="display mt-4 text-3xl md:text-4xl">{h.name}</h3>
-                {h.tagline && <p className="mt-3 font-serif text-xl italic text-forest">{h.tagline}</p>}
-              </div>
-              <HotelNotes reasons={h.reasons} notes={h.notes} />
-              <span className="eyebrow text-muted-foreground">Booking details pending</span>
-            </Reveal>
-          ))}
-        </div>
+        <Reveal delay={120} className="mt-8">
+          <article className="grid gap-8 border border-border p-8 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:items-center md:gap-12 md:p-12">
+            <img
+              src={hotelPhotos[alternative.id].url}
+              alt={hotelPhotos[alternative.id].alt}
+              width={hotelPhotos[alternative.id].width}
+              height={hotelPhotos[alternative.id].height}
+              loading="lazy"
+              className="aspect-[16/9] w-full object-cover"
+            />
+            <div>
+              <p className="eyebrow text-muted-foreground">{alternative.n} · {alternative.label}</p>
+              <h3 className="display mt-4 text-3xl md:text-4xl">{alternative.name}</h3>
+              <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">{alternative.introduction}</p>
+              <p className="eyebrow mt-6 text-muted-foreground">{alternative.bookingNote}</p>
+            </div>
+          </article>
+        </Reveal>
+
         <Reveal className="mt-14">
           <p className="eyebrow text-muted-foreground">At a glance</p>
-          <div className="mt-5 grid gap-px bg-border md:grid-cols-3">
+          <div className="mt-5 grid gap-px bg-border md:grid-cols-2">
             {hotels.map((h) => (
               <dl key={h.id} className="bg-card p-6 text-sm">
                 <dt className="font-serif text-xl">{h.n} · {h.name.split(" at ")[0]?.split(" Lincoln")[0]}</dt>
                 <dd className="mt-4 grid grid-cols-[7rem_1fr] gap-2"><span className="text-muted-foreground">Thursday</span>{h.thursday}</dd>
                 <dd className="mt-2 grid grid-cols-[7rem_1fr] gap-2"><span className="text-muted-foreground">Breakfast</span>{h.breakfastIncluded ? "Included" : "Not included"}</dd>
-                <dd className="mt-2 grid grid-cols-[7rem_1fr] gap-2"><span className="text-muted-foreground">Room block</span>{h.roomBlock === "planned" ? "Planned" : "None"}</dd>
+                <dd className="mt-2 grid grid-cols-[7rem_1fr] gap-2"><span className="text-muted-foreground">Room block</span>{h.roomBlock === "reserved" ? "Reserved for our wedding" : "No wedding room block"}</dd>
               </dl>
             ))}
           </div>
