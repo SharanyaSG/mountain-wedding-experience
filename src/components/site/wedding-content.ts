@@ -20,6 +20,27 @@ export const hotels = [
   },
 ] as const;
 
+export type Story = {
+  id: string;
+  n: string;
+  title: string;
+  subtitle: string;
+  /** Complete story text, exactly as supplied. Empty until the couple provides it. */
+  body: string;
+  photo: { url: string; alt: string; width: number; height: number } | null;
+};
+
+export const stories: Story[] = [
+  { id: "halloween-2023", n: "01", title: "Halloween 2023", subtitle: "The First Time We Met", body: "", photo: null },
+  { id: "the-bow", n: "02", title: "The Bow", subtitle: "Sharanya’s Favorite Sahil Story", body: "", photo: null },
+  { id: "shravya", n: "03", title: "Shravya", subtitle: "Sahil’s Favorite Sharanya Story", body: "", photo: null },
+  { id: "new-york", n: "04", title: "New York", subtitle: "The First Big Trip", body: "", photo: null },
+  { id: "the-free-mattress", n: "05", title: "The Free Mattress", subtitle: "He Meant Well….", body: "", photo: null },
+  { id: "our-homes-away-from-home", n: "06", title: "Our Homes Away From Home", subtitle: "Cornwalls & Silhouette", body: "", photo: null },
+  { id: "the-puppy-proposal", n: "07", title: "The Puppy Proposal", subtitle: "A Ring Pop, A Misunderstanding, & A Very Confused Mother", body: "", photo: null },
+  { id: "the-one-where-he-behaved", n: "08", title: "The One Where He Behaved!", subtitle: "Blessings from The Gowdas & The Malhotras", body: "", photo: null },
+];
+
 export const plannedStories = [
   { k: "Halloween 2023", t: "The First Time We Met" },
   { k: "The Bow", t: "Sharanya’s Favorite Sahil Story" },

@@ -8,8 +8,8 @@ import riverwalkPhoto from "@/assets/hotel-riverwalk.jpg.asset.json";
 import hamptonPhoto from "@/assets/hotel-hampton-inn.jpg.asset.json";
 import overlook from "@/assets/sharanya-sahil-overlook.jpg.asset.json";
 import { Reveal, PhotoPlaceholder } from "@/components/site/Reveal";
-import { hotels, plannedStories } from "@/components/site/wedding-content";
-import { Button } from "@/components/ui/button";
+import { StoryCard } from "@/components/site/StoryCard";
+import { hotels, stories } from "@/components/site/wedding-content";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -405,11 +405,6 @@ function Stay() {
 }
 
 /* ---------------- STORIES ---------------- */
-const stories = [
-  { ...plannedStories[0], ex: "The full story is coming soon.", tone: "bg-burgundy text-ivory", h: "md:mt-0" },
-  { ...plannedStories[1], ex: "The full story is coming soon.", tone: "bg-stone text-charcoal", h: "md:mt-24" },
-  { ...plannedStories[2], ex: "The full story is coming soon.", tone: "bg-forest text-ivory", h: "md:mt-12" },
-];
 function Stories() {
   return (
     <section className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-40">
@@ -417,29 +412,18 @@ function Stories() {
       <Reveal delay={100}>
         <h2 className="display mt-8 max-w-3xl text-5xl md:text-7xl">The stories that <em className="text-crimson">got us here</em></h2>
       </Reveal>
-      <div className="mt-16 grid gap-6 md:grid-cols-3">
+      <Reveal delay={200}>
+        <p className="mt-6 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">
+          Hover over a card to read the story behind it. On a phone, tap the card to turn it over.
+        </p>
+      </Reveal>
+      <div className="mt-16 grid gap-6 md:grid-cols-2 md:gap-8">
         {stories.map((s, i) => (
-          <Reveal key={s.k} delay={i * 140} className={s.h}>
-            <article className={`group flex aspect-[3/4] flex-col justify-between p-8 transition-transform duration-700 hover:-translate-y-2 ${s.tone}`}>
-              <div className="flex justify-between">
-                <span className="eyebrow opacity-70">Chapter {i + 1}</span>
-                <span className="eyebrow opacity-70">Full story soon</span>
-              </div>
-              <div>
-                <p className="display text-5xl md:text-6xl">{s.k}</p>
-                <h3 className="eyebrow mt-6 opacity-80">{s.t}</h3>
-                <p className="mt-4 font-serif text-xl italic opacity-90">{s.ex}</p>
-              </div>
-            </article>
+          <Reveal key={s.id} delay={(i % 2) * 120}>
+            <StoryCard story={s} />
           </Reveal>
         ))}
       </div>
-      <Reveal className="mt-16 text-center">
-        <Button variant="outline" disabled aria-describedby="stories-soon" className="eyebrow h-auto max-w-full whitespace-normal border-forest bg-transparent px-6 py-5 text-forest tracking-[0.15em] disabled:opacity-70">
-          Explore All Nine Stories →
-        </Button>
-        <p id="stories-soon" className="mt-3 text-sm text-muted-foreground">The full stories page is coming soon.</p>
-      </Reveal>
     </section>
   );
 }
