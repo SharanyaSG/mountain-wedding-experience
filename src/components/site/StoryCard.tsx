@@ -33,7 +33,7 @@ export function StoryCard({ story }: { story: Story }) {
     >
       <div className={cn("story-card", flipped && "is-flipped")}>
         {/* ---------------- PHOTOGRAPH SIDE ---------------- */}
-        <div className="story-face" inert={flipped}>
+        <div className="story-face" inert={flipped} aria-hidden={flipped}>
           {story.photo ? (
             <img
               src={story.photo.url}
@@ -60,6 +60,7 @@ export function StoryCard({ story }: { story: Story }) {
           <button
             ref={frontRef}
             type="button"
+            tabIndex={flipped ? -1 : 0}
             onClick={() => {
               setFlipped(true);
               setFocusTo("back");
@@ -73,6 +74,7 @@ export function StoryCard({ story }: { story: Story }) {
         <div
           className="story-face story-back"
           inert={!flipped}
+          aria-hidden={!flipped}
           onClick={() => {
             setFlipped(false);
             setFocusTo("front");
@@ -108,6 +110,7 @@ export function StoryCard({ story }: { story: Story }) {
               <button
                 ref={backRef}
                 type="button"
+                tabIndex={flipped ? 0 : -1}
                 onClick={(e) => {
                   e.stopPropagation();
                   setReading(true);
@@ -116,7 +119,18 @@ export function StoryCard({ story }: { story: Story }) {
               >
                 Read Full Story
               </button>
-              <span className="eyebrow text-muted-foreground">Tap photo</span>
+              <button
+                type="button"
+                tabIndex={flipped ? 0 : -1}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setFlipped(false);
+                  setFocusTo("front");
+                }}
+                className="eyebrow text-muted-foreground underline-offset-4 transition-colors hover:text-forest hover:underline"
+              >
+                Back to photograph
+              </button>
             </div>
           </div>
         </div>
