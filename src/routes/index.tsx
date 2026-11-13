@@ -71,16 +71,16 @@ function Nav({ onPlans }: { onPlans: () => void }) {
           G <span className="text-gold">×</span> M
         </a>
         <nav aria-label="Primary" className="hidden items-center gap-8 lg:flex">
-          <a href="#top" className="eyebrow border-b border-current pb-1">Home</a>
+          <a href="#top" className="eyebrow border-b-2 border-rust pb-1 text-foreground">Home</a>
           {futureNav.map((n) => (
-            <span key={n} className="eyebrow cursor-default opacity-50" title="Coming soon" aria-disabled="true">
+            <span key={n} className="eyebrow cursor-default text-foreground transition-colors hover:text-rust" title="Coming soon" aria-disabled="true">
               {n}
             </span>
           ))}
           <button
             onClick={onPlans}
             className={`eyebrow border px-5 py-3 transition-colors ${
-              light ? "border-forest/50 text-forest hover:border-rust hover:text-rust" : "border-forest bg-forest text-ivory hover:bg-rust"
+              light ? "border-cinnamon bg-card text-foreground hover:border-rust hover:bg-rust hover:text-card" : "border-forest bg-forest text-ivory hover:border-rust hover:bg-rust"
             }`}
           >
             Tell Us Your Plans
@@ -121,14 +121,14 @@ function Hero() {
   return (
     <section id="top" className="relative overflow-hidden bg-card pt-24 md:pt-32">
       <div className="relative z-10 mx-auto max-w-[1100px] px-5 text-center md:px-10">
-        <p className="hero-rise eyebrow flex items-center justify-center gap-4 text-cinnamon" style={{ animationDelay: "150ms" }}>
-          <span className="h-px w-8 bg-cinnamon/60" />Save the Date<span className="h-px w-8 bg-cinnamon/60" />
+        <p className="hero-rise eyebrow flex items-center justify-center gap-4 font-semibold text-rust" style={{ animationDelay: "150ms" }}>
+          <span className="h-px w-8 bg-rust/70" />Save the Date<span className="h-px w-8 bg-rust/70" />
         </p>
         <h1 className="hero-rise mt-6 font-script text-[17vw] leading-[1.05] text-foreground sm:text-8xl md:text-[8.5rem]" style={{ animationDelay: "300ms" }}>
           Sharanya &amp; Sahil
         </h1>
         <div className="hero-rise mt-4 space-y-2 font-display uppercase tracking-[0.22em]" style={{ animationDelay: "500ms" }}>
-          <p className="text-base md:text-xl">October 7 – 9, 2027</p>
+          <p className="text-base font-medium text-foreground md:text-xl">October 7 – 9, 2027</p>
           <p className="text-xs text-muted-foreground md:text-sm">Loon Mountain, New Hampshire</p>
         </div>
         <p className="hero-rise relative z-10 mt-5 font-hand text-5xl text-[#922F3C] md:text-6xl" style={{ animationDelay: "700ms" }}>
@@ -140,7 +140,7 @@ function Hero() {
       </div>
       <div className="hero-rise flex flex-col items-center justify-center gap-3 px-5 pb-16 sm:flex-row md:pb-20" style={{ animationDelay: "1100ms" }}>
         <a href="#plans" className="eyebrow bg-forest px-7 py-4 text-center text-ivory transition-colors hover:bg-rust">Tell Us Your Plans</a>
-        <a href="#stay" className="eyebrow border border-forest/50 px-7 py-4 text-center text-forest transition-colors hover:border-rust hover:text-rust">Plan Your Stay</a>
+        <a href="#stay" className="eyebrow border border-cinnamon bg-card px-7 py-4 text-center text-foreground transition-colors hover:border-rust hover:bg-rust hover:text-card">Plan Your Stay</a>
       </div>
     </section>
   );
