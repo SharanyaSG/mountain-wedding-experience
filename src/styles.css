@@ -49,14 +49,14 @@
   --radius: 2px;
   --ivory: #FAF8F4;
   --charcoal: #352820; /* deep espresso */
-  --sage: #8A9A7B;
-  --cinnamon: #A66A4C;
-  --forest: #66765A; /* deepened sage, legible on ivory */
-  --forest-deep: #56644B;
-  --rust: #BF653C; /* burnt orange */
-  --burgundy: #963F46;
-  --crimson: #963F46;
-  --gold: #A66A4C; /* cinnamon */
+  --sage: #789568;
+  --cinnamon: #A45A3F;
+  --forest: #56704A; /* deepened sage, legible on ivory */
+  --forest-deep: #46603B;
+  --rust: #C65A2E; /* burnt orange */
+  --burgundy: #A33A43;
+  --crimson: #A33A43;
+  --gold: #A45A3F; /* cinnamon */
   --stone: #EFE9E0;
 
   --background: var(--ivory);
@@ -70,7 +70,7 @@
   --secondary: var(--stone);
   --secondary-foreground: var(--charcoal);
   --muted: #F3EFE8;
-  --muted-foreground: #6E5E52;
+  --muted-foreground: #594337;
   --accent: var(--rust);
   --accent-foreground: var(--ivory);
   --destructive: oklch(0.577 0.245 27.325);
