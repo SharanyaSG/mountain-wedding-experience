@@ -115,7 +115,7 @@ export function StoryCard({ story }: { story: Story }) {
                   e.stopPropagation();
                   setReading(true);
                 }}
-                className="eyebrow bg-forest px-6 py-3 text-ivory transition-colors hover:bg-forest-deep"
+                className="btn-label bg-forest px-6 py-3 text-ivory transition-colors hover:bg-rust"
               >
                 Read Full Story
               </button>
@@ -233,7 +233,7 @@ function StoryReader({ story, onClose }: { story: Story; onClose: () => void }) 
         <button
           type="button"
           onClick={onClose}
-          className="eyebrow mt-8 w-full bg-forest py-4 text-ivory transition-colors hover:bg-forest-deep sm:mt-10 sm:w-auto sm:px-10"
+          className="btn-label mt-8 w-full bg-forest py-4 text-ivory transition-colors hover:bg-rust sm:mt-10 sm:w-auto sm:px-10"
         >
           Close
         </button>
