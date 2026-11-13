@@ -5,9 +5,11 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-serif: "Cormorant", "Times New Roman", serif;
-  --font-display: "Bodoni Moda", "Cormorant", serif;
-  --font-sans: "Manrope", system-ui, sans-serif;
+  --font-serif: "Libre Baskerville", Georgia, serif;
+  --font-display: "Cinzel", "Times New Roman", serif;
+  --font-sans: "Libre Baskerville", Georgia, serif;
+  --font-script: "Great Vibes", cursive;
+  --font-hand: "Allison", cursive;
   --radius-sm: calc(var(--radius) - 2px);
   --radius-md: var(--radius);
   --radius-lg: var(--radius);
@@ -37,25 +39,29 @@
   --color-crimson: var(--crimson);
   --color-gold: var(--gold);
   --color-stone: var(--stone);
+  --color-sage: var(--sage);
+  --color-cinnamon: var(--cinnamon);
   --color-ivory: var(--ivory);
   --color-charcoal: var(--charcoal);
 }
 
 :root {
   --radius: 2px;
-  --ivory: oklch(0.975 0.012 85);
-  --charcoal: oklch(0.22 0.008 60);
-  --forest: oklch(0.34 0.05 160);
-  --forest-deep: oklch(0.24 0.035 165);
-  --rust: oklch(0.56 0.15 45);
-  --burgundy: oklch(0.36 0.11 18);
-  --crimson: #8C2332;
-  --gold: oklch(0.72 0.08 80);
-  --stone: oklch(0.88 0.018 75);
+  --ivory: #FAF8F4;
+  --charcoal: #352820; /* deep espresso */
+  --sage: #8A9A7B;
+  --cinnamon: #A66A4C;
+  --forest: #66765A; /* deepened sage, legible on ivory */
+  --forest-deep: #56644B;
+  --rust: #BF653C; /* burnt orange */
+  --burgundy: #963F46;
+  --crimson: #963F46;
+  --gold: #A66A4C; /* cinnamon */
+  --stone: #EFE9E0;
 
   --background: var(--ivory);
   --foreground: var(--charcoal);
-  --card: oklch(0.955 0.015 82);
+  --card: #FFFFFF;
   --card-foreground: var(--charcoal);
   --popover: var(--ivory);
   --popover-foreground: var(--charcoal);
@@ -63,14 +69,14 @@
   --primary-foreground: var(--ivory);
   --secondary: var(--stone);
   --secondary-foreground: var(--charcoal);
-  --muted: oklch(0.93 0.015 80);
-  --muted-foreground: oklch(0.48 0.012 60);
+  --muted: #F3EFE8;
+  --muted-foreground: #6E5E52;
   --accent: var(--rust);
   --accent-foreground: var(--ivory);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: var(--ivory);
-  --border: oklch(0.85 0.02 75);
-  --input: oklch(0.85 0.02 75);
+  --border: #E4DACD;
+  --input: #E4DACD;
   --ring: var(--gold);
 
   --gradient-hero: linear-gradient(180deg, oklch(0.18 0.02 160 / 0.55) 0%, oklch(0.18 0.02 160 / 0.05) 35%, oklch(0.15 0.02 40 / 0.2) 65%, oklch(0.14 0.02 40 / 0.78) 100%);
@@ -92,20 +98,22 @@
 }
 
 @utility eyebrow {
-  font-family: var(--font-sans);
-  font-size: 0.68rem;
-  letter-spacing: 0.32em;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
   font-weight: 500;
 }
 
 @utility display {
-  font-family: var(--font-serif);
+  font-family: var(--font-display);
   font-weight: 400;
-  line-height: 0.95;
-  letter-spacing: -0.02em;
+  line-height: 1.12;
+  letter-spacing: 0.02em;
 }
 
+@utility font-script { font-family: var(--font-script); font-weight: 400; }
+@utility font-hand { font-family: var(--font-hand); font-weight: 400; }
 @utility bg-hero-veil { background: var(--gradient-hero); }
 @utility bg-image-veil { background: var(--gradient-image); }
 
@@ -170,4 +178,68 @@
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .reveal { opacity: 1; transform: none; }
+}
+
+/* ---------------- HERO WATERCOLOR MOTION ---------------- */
+.art-sprite {
+  position: absolute;
+  display: block;
+  background-repeat: no-repeat;
+  -webkit-mask-image: radial-gradient(closest-side, #000 62%, transparent 100%);
+  mask-image: radial-gradient(closest-side, #000 62%, transparent 100%);
+  will-change: transform;
+}
+.art-foliage { animation: art-rustle 7s ease-in-out infinite; }
+.art-hair { animation: art-hair 6s ease-in-out infinite; }
+.art-gondola { animation: art-sway 6.5s ease-in-out infinite; }
+@keyframes art-rustle {
+  0%, 100% { transform: rotate(0deg) skewX(0deg); }
+  35% { transform: rotate(0.9deg) skewX(0.6deg); }
+  70% { transform: rotate(-0.5deg) skewX(-0.3deg); }
+}
+@keyframes art-hair {
+  0%, 100% { transform: skewX(0deg) scaleX(1); }
+  45% { transform: skewX(1.4deg) scaleX(1.01); }
+  75% { transform: skewX(0.4deg) scaleX(1.004); }
+}
+@keyframes art-sway {
+  0%, 100% { transform: rotate(-0.8deg); }
+  50% { transform: rotate(0.8deg); }
+}
+.art-leaf {
+  position: absolute;
+  width: 1.1%;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+.art-leaf-a { left: 15%; top: 64%; fill: var(--rust); animation: art-fall-a 19s ease-in-out infinite 3s; }
+.art-leaf-b { left: 87%; top: 64%; fill: var(--crimson); width: 0.9%; animation: art-fall-b 23s ease-in-out infinite 11s; }
+@keyframes art-fall-a {
+  0% { opacity: 0; transform: translate(0, 0) rotate(0deg); }
+  4% { opacity: 0.8; }
+  20% { transform: translate(1.2vw, 5vw) rotate(70deg); }
+  34% { opacity: 0.75; }
+  40% { opacity: 0; transform: translate(-0.4vw, 10vw) rotate(150deg); }
+  100% { opacity: 0; transform: translate(-0.4vw, 10vw) rotate(150deg); }
+}
+@keyframes art-fall-b {
+  0% { opacity: 0; transform: translate(0, 0) rotate(0deg); }
+  4% { opacity: 0.75; }
+  20% { transform: translate(-1.4vw, 4vw) rotate(-60deg); }
+  32% { opacity: 0.7; }
+  38% { opacity: 0; transform: translate(-0.6vw, 8vw) rotate(-140deg); }
+  100% { opacity: 0; transform: translate(-0.6vw, 8vw) rotate(-140deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-art-motion { display: none; }
+}
+
+/* Romantic accents inside formal Cinzel headings */
+.display em {
+  font-family: var(--font-script);
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  font-size: 1.15em;
 }

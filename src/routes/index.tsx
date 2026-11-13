@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import hero from "@/assets/hero-mountains.jpg";
 import drive from "@/assets/explore-drive.jpg";
 import outdoor from "@/assets/explore-outdoor.jpg";
 import eat from "@/assets/explore-eat.jpg";
@@ -8,6 +7,7 @@ import riverwalkPhoto from "@/assets/hotel-riverwalk.jpg.asset.json";
 import hamptonPhoto from "@/assets/hotel-hampton-inn.jpg.asset.json";
 import overlook from "@/assets/sharanya-sahil-overlook.jpg.asset.json";
 import { Reveal, PhotoPlaceholder } from "@/components/site/Reveal";
+import { HeroIllustration } from "@/components/site/HeroIllustration";
 import { StoryCard } from "@/components/site/StoryCard";
 import { hotels, stories } from "@/components/site/wedding-content";
 
@@ -15,9 +15,9 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Gowda × Malhotra · Meet us in the mountains" },
-      { name: "description", content: "Sharanya & Sahil · October 8, 2027 · Loon Mountain, New Hampshire." },
+      { name: "description", content: "Sharanya & Sahil · October 7–9, 2027 · Loon Mountain, New Hampshire." },
       { property: "og:title", content: "Gowda × Malhotra · Meet us in the mountains" },
-      { property: "og:description", content: "Sharanya & Sahil · October 8, 2027 · Loon Mountain, New Hampshire." },
+      { property: "og:description", content: "Sharanya & Sahil · October 7–9, 2027 · Loon Mountain, New Hampshire." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -63,7 +63,7 @@ function Nav({ onPlans }: { onPlans: () => void }) {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-40 transition-colors duration-500 ${
-        light ? "text-ivory" : "border-b border-border bg-background/90 text-foreground backdrop-blur-md"
+        light ? "text-foreground" : "border-b border-border bg-background/90 text-foreground backdrop-blur-md"
       }`}
     >
       <div className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-5 md:h-20 md:px-10">
@@ -80,7 +80,7 @@ function Nav({ onPlans }: { onPlans: () => void }) {
           <button
             onClick={onPlans}
             className={`eyebrow border px-5 py-3 transition-colors ${
-              light ? "border-ivory/60 hover:bg-ivory hover:text-charcoal" : "border-forest bg-forest text-ivory hover:bg-forest-deep"
+              light ? "border-forest/50 text-forest hover:border-rust hover:text-rust" : "border-forest bg-forest text-ivory hover:bg-rust"
             }`}
           >
             Tell Us Your Plans
@@ -119,42 +119,28 @@ function Nav({ onPlans }: { onPlans: () => void }) {
 /* ---------------- HERO ---------------- */
 function Hero() {
   return (
-    <section id="top" className="relative h-[100svh] min-h-[600px] overflow-hidden bg-forest-deep text-ivory">
-      {/* Future: replace <img> with a muted, looping <video> using the same classes */}
-      <img
-        src={hero}
-        alt="Autumn ridgelines of the White Mountains beneath drifting clouds"
-        width={1920}
-        height={1088}
-        fetchPriority="high"
-        className="hero-drift absolute inset-0 h-full w-full object-cover object-[60%_center]"
-      />
-      <div className="bg-hero-veil absolute inset-0" />
-      <div className="relative mx-auto flex h-full max-w-[1400px] flex-col justify-between px-5 pb-10 pt-28 md:px-10 md:pb-14">
-        <span aria-hidden="true" />
-        <div>
-          <p className="hero-rise mb-6 flex items-center gap-4 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-ivory md:text-sm" style={{ animationDelay: "250ms" }}>
-            <span className="h-px w-10 bg-gold" />Save the Date<span className="h-px w-10 bg-gold" />
-          </p>
-          <h1 className="display hero-rise max-w-5xl text-[15vw] sm:text-7xl md:text-8xl lg:text-[9.5rem]" style={{ animationDelay: "400ms" }}>
-            Meet us in<br /><em className="font-light">the mountains.</em>
-          </h1>
-          <div className="hero-rise mt-10 grid gap-8 border-t border-ivory/30 pt-6 md:grid-cols-[1fr_auto] md:items-end" style={{ animationDelay: "800ms" }}>
-            <div className="space-y-2">
-              <p className="font-serif text-3xl italic md:text-5xl">Sharanya &amp; Sahil</p>
-              <p className="text-lg font-medium md:text-2xl">Friday, October 8, 2027</p>
-              <p className="text-base text-ivory/90 md:text-xl">Loon Mountain · New Hampshire</p>
-            </div>
-            <div className="flex flex-col gap-3 sm:flex-row">
-              <a href="#plans" className="eyebrow bg-ivory px-7 py-4 text-center text-charcoal transition-colors hover:bg-gold">
-                Tell Us Your Plans
-              </a>
-              <a href="#stay" className="eyebrow border border-ivory/60 px-7 py-4 text-center transition-colors hover:bg-ivory/10">
-                Plan Your Stay
-              </a>
-            </div>
-          </div>
+    <section id="top" className="relative overflow-hidden bg-card pt-24 md:pt-32">
+      <div className="mx-auto max-w-[1100px] px-5 text-center md:px-10">
+        <p className="hero-rise eyebrow flex items-center justify-center gap-4 text-cinnamon" style={{ animationDelay: "150ms" }}>
+          <span className="h-px w-8 bg-cinnamon/60" />Save the Date<span className="h-px w-8 bg-cinnamon/60" />
+        </p>
+        <h1 className="hero-rise mt-6 font-script text-[17vw] leading-[1.05] text-foreground sm:text-8xl md:text-[8.5rem]" style={{ animationDelay: "300ms" }}>
+          Sharanya &amp; Sahil
+        </h1>
+        <div className="hero-rise mt-4 space-y-2 font-display uppercase tracking-[0.22em]" style={{ animationDelay: "500ms" }}>
+          <p className="text-base md:text-xl">October 7 – 9, 2027</p>
+          <p className="text-xs text-muted-foreground md:text-sm">Loon Mountain, New Hampshire</p>
         </div>
+        <p className="hero-rise mt-5 font-hand text-5xl text-crimson md:text-6xl" style={{ animationDelay: "700ms" }}>
+          Meet us in the mountains.
+        </p>
+      </div>
+      <div className="hero-rise mx-auto mt-2 max-w-[1700px] md:-mt-16" style={{ animationDelay: "900ms" }}>
+        <HeroIllustration />
+      </div>
+      <div className="hero-rise flex flex-col items-center justify-center gap-3 px-5 pb-16 sm:flex-row md:pb-20" style={{ animationDelay: "1100ms" }}>
+        <a href="#plans" className="eyebrow bg-forest px-7 py-4 text-center text-ivory transition-colors hover:bg-rust">Tell Us Your Plans</a>
+        <a href="#stay" className="eyebrow border border-forest/50 px-7 py-4 text-center text-forest transition-colors hover:border-rust hover:text-rust">Plan Your Stay</a>
       </div>
     </section>
   );
@@ -195,7 +181,7 @@ function SaveTheDate() {
             </blockquote>
           </Reveal>
           <Reveal delay={240} className="mt-12 space-y-2 border-l border-gold pl-6">
-            <p className="font-serif text-2xl italic">Sharanya &amp; Sahil</p>
+            <p className="font-script text-4xl">Sharanya &amp; Sahil</p>
             <p className="eyebrow text-muted-foreground">October 8, 2027</p>
             <p className="eyebrow text-muted-foreground">Loon Mountain, New Hampshire</p>
           </Reveal>
@@ -208,21 +194,21 @@ function SaveTheDate() {
 /* ---------------- PLANS ---------------- */
 function Plans({ onPlans }: { onPlans: () => void }) {
   return (
-    <section id="plans" className="scroll-mt-16 bg-forest-deep text-ivory">
+    <section id="plans" className="scroll-mt-16 border-y border-border bg-muted text-foreground">
       <div className="mx-auto max-w-[1100px] px-5 py-24 text-center md:py-36">
-        <Reveal><p className="eyebrow text-gold">02 · Early word</p></Reveal>
+        <Reveal><p className="eyebrow text-cinnamon">02 · Early word</p></Reveal>
         <Reveal delay={100}>
           <h2 className="display mx-auto mt-8 max-w-4xl text-5xl md:text-7xl lg:text-8xl">
             Will we see you <em>in the mountains?</em>
           </h2>
         </Reveal>
         <Reveal delay={200}>
-          <p className="mx-auto mt-8 max-w-xl text-base leading-relaxed text-ivory/75 md:text-lg">
+          <p className="mx-auto mt-8 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
             We're gathering an early sense of who's planning to join us. Formal invitations and final RSVP details will follow.
           </p>
         </Reveal>
         <Reveal delay={300}>
-          <button onClick={onPlans} className="eyebrow mt-12 bg-ivory px-10 py-5 text-charcoal transition-colors hover:bg-gold">
+          <button onClick={onPlans} className="eyebrow mt-12 bg-forest px-10 py-5 text-ivory transition-colors hover:bg-rust">
             Tell Us Your Plans
           </button>
         </Reveal>
@@ -334,7 +320,7 @@ function Stay() {
           </Reveal>
         </div>
 
-        <Reveal className="mt-16 grid bg-forest text-ivory md:grid-cols-2">
+        <Reveal className="mt-16 grid border border-border bg-card text-foreground md:grid-cols-2">
           <img
             src={hotelPhotos[preferred.id].url}
             alt={hotelPhotos[preferred.id].alt}
@@ -348,19 +334,19 @@ function Stay() {
               <p className="eyebrow text-gold">{preferred.n} · {preferred.label}</p>
               <h3 className="display mt-6 text-4xl md:text-6xl">RiverWalk Resort <em>at Loon Mountain</em></h3>
               <p className="mt-4 font-serif text-2xl italic">{preferred.tagline}</p>
-              <p className="mt-5 max-w-md text-sm leading-relaxed text-ivory/80">{preferred.introduction}</p>
-              <p className="mt-7 max-w-md border-l border-gold/60 pl-5 text-sm leading-relaxed text-ivory/90">{preferred.urgency}</p>
+              <p className="mt-5 max-w-md text-sm leading-relaxed text-muted-foreground">{preferred.introduction}</p>
+              <p className="mt-7 max-w-md border-l border-gold/60 pl-5 text-sm leading-relaxed text-foreground">{preferred.urgency}</p>
             </div>
             <div>
-              <p className="eyebrow opacity-70">Why Stay Here</p>
+              <p className="eyebrow text-forest">Why Stay Here</p>
               <ul className="mt-4 grid gap-2 text-sm leading-relaxed sm:grid-cols-2">
                 {preferred.reasons.map((x) => <li key={x}>— {x}</li>)}
               </ul>
             </div>
-            <div className="border border-ivory/25 bg-ivory/[0.06] p-6 md:p-8">
+            <div className="border border-border bg-muted p-6 md:p-8">
               <p className="eyebrow text-gold">{preferred.bookingHeading}</p>
-              <p className="mt-4 max-w-md text-sm leading-relaxed text-ivory/85">{preferred.bookingNote}</p>
-              <span className="eyebrow mt-6 inline-block w-fit border border-ivory/40 px-6 py-4 text-ivory/70" aria-disabled="true">
+              <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">{preferred.bookingNote}</p>
+              <span className="eyebrow mt-6 inline-block w-fit border border-forest/40 px-6 py-4 text-forest" aria-disabled="true">
                 Booking link &amp; discount code to follow
               </span>
             </div>
@@ -535,25 +521,25 @@ function Faq() {
 /* ---------------- FOOTER ---------------- */
 function Footer() {
   return (
-    <footer className="bg-charcoal text-ivory">
+    <footer className="border-t border-border bg-background text-foreground">
       <div className="mx-auto max-w-[1400px] px-5 pb-10 pt-24 md:px-10">
-        <p className="display text-[14vw] leading-none md:text-[9rem]">
+        <p className="display text-[11vw] leading-none md:text-[6.5rem]">
           Gowda <span className="text-gold">×</span> Malhotra
         </p>
-        <div className="mt-16 grid gap-10 border-t border-ivory/20 pt-10 md:grid-cols-3">
+        <div className="mt-16 grid gap-10 border-t border-border pt-10 md:grid-cols-3">
           <div className="space-y-2">
-            <p className="eyebrow text-ivory/60">October 8, 2027</p>
-            <p className="eyebrow text-ivory/60">Loon Mountain, New Hampshire</p>
+            <p className="eyebrow text-muted-foreground">October 8, 2027</p>
+            <p className="eyebrow text-muted-foreground">Loon Mountain, New Hampshire</p>
           </div>
           <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-3">
             <a href="#top" className="eyebrow hover:text-gold">Home</a>
             <a href="#plans" className="eyebrow hover:text-gold">Tell Us Your Plans</a>
             <a href="#stay" className="eyebrow hover:text-gold">Plan Your Stay</a>
-            {futureNav.map((n) => <span key={n} className="eyebrow text-ivory/35">{n}</span>)}
+            {futureNav.map((n) => <span key={n} className="eyebrow text-muted-foreground/60">{n}</span>)}
           </nav>
-          <p className="eyebrow text-ivory/60 md:text-right">Contact details · coming soon</p>
+          <p className="eyebrow text-muted-foreground md:text-right">Contact details · coming soon</p>
         </div>
-        <p className="mt-16 font-serif text-lg italic text-ivory/40">See you at the top.</p>
+        <p className="mt-16 font-hand text-4xl text-cinnamon">See you at the top.</p>
       </div>
     </footer>
   );
