@@ -247,54 +247,6 @@ function Notice({ onClose }: { onClose: () => void }) {
 }
 
 /* ---------------- WEEKEND ---------------- */
-type AgendaEvent = {
-  title: string;
-  place: string;
-  /** Understated italic qualifier, e.g. "By Invitation Only". */
-  note?: string;
-  /** Sage-green line for events open to every guest. */
-  open?: string;
-  /** Small explanatory line beneath a qualifier. */
-  detail?: string;
-};
-
-const days: { n: string; dow: string; date: string; events: AgendaEvent[] }[] = [
-  {
-    n: "07",
-    dow: "Thursday",
-    date: "October 7, 2027",
-    events: [
-      {
-        title: "Rehearsal Dinner",
-        place: "RiverWalk Resort · Tuscan Terrace",
-        note: "By Invitation Only",
-        detail: "An intimate gathering for our immediate families and those involved in the wedding ceremony.",
-      },
-      {
-        title: "Welcome Party",
-        place: "Seven Birches Winery · RiverWalk Resort",
-        open: "All Wedding Guests Welcome!",
-      },
-    ],
-  },
-  {
-    n: "08",
-    dow: "Friday",
-    date: "October 8, 2027",
-    events: [
-      { title: "The Vows", place: "Loon Mountain · Summit Amphitheater" },
-      { title: "Cocktail Hour", place: "Loon Mountain · Octagon Lodge" },
-      { title: "Wedding Reception", place: "Loon Mountain · Octagon Lodge" },
-    ],
-  },
-  {
-    n: "09",
-    dow: "Saturday",
-    date: "October 9, 2027",
-    events: [{ title: "Farewell Brunch", place: "Location to be announced" }],
-  },
-];
-
 function Weekend() {
   return (
     <section className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-40">
@@ -310,7 +262,7 @@ function Weekend() {
           </Reveal>
         </div>
         <ol className="md:col-span-8">
-          {days.map((d, i) => (
+          {agenda.map((d, i) => (
             <Reveal as="li" key={d.n} delay={i * 150} className="group grid grid-cols-[auto_1fr] gap-6 border-t border-foreground/20 py-10 md:gap-12 md:py-14">
               <span className="display text-7xl text-gold transition-colors duration-700 group-hover:text-rust md:text-9xl">{d.n}</span>
               <div>
