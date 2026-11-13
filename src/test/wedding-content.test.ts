@@ -68,24 +68,28 @@ describe("wedding content", () => {
     expect(JSON.stringify(stories)).not.toContain("Story text to come");
     expect(JSON.stringify(stories)).not.toMatch(/[♥❤💕]/);
 
-    const byId = Object.fromEntries(stories.map((s) => [s.id, s]));
+    const byId = (id: string) => {
+      const s = stories.find((x) => x.id === id);
+      if (!s) throw new Error("missing story: " + id);
+      return s;
+    };
     const paras = (s: (typeof stories)[number]) =>
       s.body.split(/\n{2,}/).map((p) => p.trim()).filter(Boolean).length;
 
-    expect(byId["halloween-2023"].body).toMatch(/^On Halloween 2023, Sharanya and her friends went to Witches Woods/);
-    expect(byId["halloween-2023"].body).toContain("“Never, ever, ever will I  date him. Not even if he were the last man on earth, and not even if procreation depended on it!”");
-    expect(byId["halloween-2023"].body.trimEnd()).toMatch(/Three years later, here they are …$/);
+    expect(byId("halloween-2023").body).toMatch(/^On Halloween 2023, Sharanya and her friends went to Witches Woods/);
+    expect(byId("halloween-2023").body).toContain("“Never, ever, ever will I  date him. Not even if he were the last man on earth, and not even if procreation depended on it!”");
+    expect(byId("halloween-2023").body.trimEnd()).toMatch(/Three years later, here they are …$/);
 
-    expect(byId["the-bow"].body).toContain("“I’ll always give you what you want.”");
-    expect(byId["shravya"].body).toContain("“Oh yes, that girl… Shravya, right?”");
-    expect(byId["new-york"].body).toContain("It was their first trip together, and it turned out to be full of unexpected adventures, small mishaps, and a lot of laughter.");
-    expect(byId["the-free-mattress"].body.trimEnd()).toMatch(/just on a normal bed frame\.$/);
-    expect(byId["our-homes-away-from-home"].body).toContain("we told Sarah and Miz that one day, whenever we got married, we wanted them behind the bar.");
-    expect(byId["the-puppy-proposal"].body).toContain("asked, “Will you be my puppy?”");
-    expect(byId["the-puppy-proposal"].body.trimEnd()).toMatch(/…which led to the next step - asking for blessings the slightly more formal way\.$/);
-    expect(byId["the-one-where-he-behaved"].body).toContain("gave their blessing with warmth and happiness.");
+    expect(byId("the-bow").body).toContain("“I’ll always give you what you want.”");
+    expect(byId("shravya").body).toContain("“Oh yes, that girl… Shravya, right?”");
+    expect(byId("new-york").body).toContain("It was their first trip together, and it turned out to be full of unexpected adventures, small mishaps, and a lot of laughter.");
+    expect(byId("the-free-mattress").body.trimEnd()).toMatch(/just on a normal bed frame\.$/);
+    expect(byId("our-homes-away-from-home").body).toContain("we told Sarah and Miz that one day, whenever we got married, we wanted them behind the bar.");
+    expect(byId("the-puppy-proposal").body).toContain("asked, “Will you be my puppy?”");
+    expect(byId("the-puppy-proposal").body.trimEnd()).toMatch(/…which led to the next step - asking for blessings the slightly more formal way\.$/);
+    expect(byId("the-one-where-he-behaved").body).toContain("gave their blessing with warmth and happiness.");
 
     expect(stories.map(paras)).toEqual([5, 6, 6, 6, 5, 6, 8, 6]);
-    expect(byId["the-puppy-proposal"].body).toContain("You’re so close.”\nEventually, after many circles");
+    expect(byId("the-puppy-proposal").body).toContain("You’re so close.”\nEventually, after many circles");
   });
 });
