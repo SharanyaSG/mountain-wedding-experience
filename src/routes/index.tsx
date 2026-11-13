@@ -131,7 +131,7 @@ function Hero() {
           <p className="text-base md:text-xl">October 7 – 9, 2027</p>
           <p className="text-xs text-muted-foreground md:text-sm">Loon Mountain, New Hampshire</p>
         </div>
-        <p className="hero-rise relative z-10 mt-5 font-hand text-5xl text-crimson md:text-6xl" style={{ animationDelay: "700ms" }}>
+        <p className="hero-rise relative z-10 mt-5 font-hand text-5xl text-[#922F3C] md:text-6xl" style={{ animationDelay: "700ms" }}>
           Meet us in the mountains.
         </p>
       </div>
