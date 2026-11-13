@@ -9,7 +9,7 @@ import overlook from "@/assets/sharanya-sahil-overlook.jpg.asset.json";
 import { Reveal, PhotoPlaceholder } from "@/components/site/Reveal";
 import { HeroIllustration } from "@/components/site/HeroIllustration";
 import { StoryCard } from "@/components/site/StoryCard";
-import { hotels, stories } from "@/components/site/wedding-content";
+import { agenda, hotels, stories } from "@/components/site/wedding-content";
 
 export const Route = createFileRoute("/")({
   head: () => ({
