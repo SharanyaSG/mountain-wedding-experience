@@ -120,7 +120,7 @@ function Nav({ onPlans }: { onPlans: () => void }) {
 function Hero() {
   return (
     <section id="top" className="relative overflow-hidden bg-card pt-24 md:pt-32">
-      <div className="mx-auto max-w-[1100px] px-5 text-center md:px-10">
+      <div className="relative z-10 mx-auto max-w-[1100px] px-5 text-center md:px-10">
         <p className="hero-rise eyebrow flex items-center justify-center gap-4 text-cinnamon" style={{ animationDelay: "150ms" }}>
           <span className="h-px w-8 bg-cinnamon/60" />Save the Date<span className="h-px w-8 bg-cinnamon/60" />
         </p>
