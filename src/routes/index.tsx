@@ -8,8 +8,8 @@ import riverwalkPhoto from "@/assets/hotel-riverwalk.jpg.asset.json";
 import hamptonPhoto from "@/assets/hotel-hampton-inn.jpg.asset.json";
 import overlook from "@/assets/sharanya-sahil-overlook.jpg.asset.json";
 import { Reveal, PhotoPlaceholder } from "@/components/site/Reveal";
-import { hotels, plannedStories } from "@/components/site/wedding-content";
-import { Button } from "@/components/ui/button";
+import { StoryCard } from "@/components/site/StoryCard";
+import { hotels, stories } from "@/components/site/wedding-content";
 
 export const Route = createFileRoute("/")({
   head: () => ({
