@@ -9,7 +9,7 @@ import overlook from "@/assets/sharanya-sahil-overlook.jpg.asset.json";
 import { Reveal, PhotoPlaceholder } from "@/components/site/Reveal";
 import { HeroIllustration } from "@/components/site/HeroIllustration";
 import { StoryCard } from "@/components/site/StoryCard";
-import { hotels, stories } from "@/components/site/wedding-content";
+import { agenda, hotels, stories } from "@/components/site/wedding-content";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -247,31 +247,37 @@ function Notice({ onClose }: { onClose: () => void }) {
 }
 
 /* ---------------- WEEKEND ---------------- */
-const days = [
-  { dow: "Thursday", date: "October 7, 2027", n: "07", title: "Welcome Gathering", place: "RiverWalk Resort at Loon Mountain" },
-  { dow: "Friday", date: "October 8, 2027", n: "08", title: "Wedding Ceremony & Reception", place: "Loon Mountain, New Hampshire" },
-];
 function Weekend() {
   return (
     <section className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-40">
       <div className="grid gap-10 md:grid-cols-12">
         <div className="md:col-span-4">
-          <Reveal><Kicker n="03" label="The wedding weekend" /></Reveal>
+          <Reveal><Kicker n="03" label="At a glance" /></Reveal>
           <Reveal delay={100}>
-            <h2 className="display mt-8 text-5xl md:text-6xl">Two days, <em className="text-forest">one mountain.</em></h2>
+            <h2 className="display mt-8 text-5xl md:text-6xl">The Festivities</h2>
+            <p className="display mt-4 text-3xl md:text-4xl">Three days, <em className="text-forest">one mountain.</em></p>
           </Reveal>
           <Reveal delay={200}>
             <p className="mt-6 max-w-xs text-sm leading-relaxed text-muted-foreground">Times and details will be shared with your invitation.</p>
           </Reveal>
         </div>
         <ol className="md:col-span-8">
-          {days.map((d, i) => (
+          {agenda.map((d, i) => (
             <Reveal as="li" key={d.n} delay={i * 150} className="group grid grid-cols-[auto_1fr] gap-6 border-t border-foreground/20 py-10 md:gap-12 md:py-14">
               <span className="display text-7xl text-gold transition-colors duration-700 group-hover:text-rust md:text-9xl">{d.n}</span>
-              <div className="self-center">
+              <div>
                 <p className="eyebrow text-muted-foreground">{d.dow} · {d.date}</p>
-                <h3 className="display mt-3 text-3xl md:text-5xl">{d.title}</h3>
-                <p className="mt-3 font-serif text-xl italic text-forest">{d.place}</p>
+                <ul className="mt-7">
+                  {d.events.map((e, j) => (
+                    <li key={e.title} className={j > 0 ? "mt-7 border-t border-border pt-7" : ""}>
+                      <h3 className="display text-3xl md:text-4xl">{e.title}</h3>
+                      <p className="mt-2 font-serif text-xl italic text-forest">{e.place}</p>
+                      {e.note && <p className="mt-2 font-serif text-sm italic text-muted-foreground">{e.note}</p>}
+                      {e.detail && <p className="mt-2 max-w-md text-sm leading-relaxed text-muted-foreground">{e.detail}</p>}
+                      {e.open && <p className="mt-2 font-serif text-sm italic text-sage">{e.open}</p>}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </Reveal>
           ))}
