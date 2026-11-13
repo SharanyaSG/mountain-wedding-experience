@@ -13,6 +13,7 @@ describe("story cards", () => {
     expect(screen.queryByRole("button", { name: "Read Full Story" })).toBeNull();
     flipTo();
     expect(screen.getByRole("button", { name: "Read Full Story" })).toBeVisible();
+    expect(screen.getByText(/On Halloween 2023, Sharanya and her friends went to Witches Woods/)).toBeVisible();
   });
 
   it("returns to the photograph when the visitor turns the card back", () => {
