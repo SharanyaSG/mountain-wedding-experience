@@ -134,6 +134,38 @@
   to { opacity: 1; transform: none; filter: none; }
 }
 
+/* ---------------- STORY CARDS ---------------- */
+.story-scene {
+  perspective: 1600px;
+}
+.story-card {
+  position: relative;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.72s var(--ease-editorial);
+}
+.story-card.is-flipped {
+  transform: rotateY(180deg);
+}
+.story-face {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  background: var(--stone);
+  box-shadow: 0 24px 50px -40px oklch(0.22 0.008 60 / 0.7);
+}
+.story-back {
+  transform: rotateY(180deg);
+  background: var(--ivory);
+  border: 1px solid oklch(0.22 0.008 60 / 0.1);
+}
+.story-body {
+  scrollbar-width: thin;
+  scrollbar-color: oklch(0.72 0.08 80 / 0.6) transparent;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
