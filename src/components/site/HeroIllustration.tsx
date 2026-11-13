@@ -46,7 +46,7 @@ const hair: Layer[] = [
 
 // Cable path through the cabin hanger points, lower station → summit station.
 const CABLE = "M975 726 L1015 697 L1152 597 L1274 490 L1314 452 L1322 445";
-const TRIP = 64; // seconds per ascent
+const TRIP = 42.7; // seconds per ascent (about 50% faster than the original 64s)
 const CABINS = 4;
 
 function Piece({ l }: { l: Layer }) {
