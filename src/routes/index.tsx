@@ -70,16 +70,16 @@ function Nav({ onPlans }: { onPlans: () => void }) {
         <a href="#top" className="font-serif text-lg tracking-[0.18em]">
           G <span className="text-gold">×</span> M
         </a>
-        <nav aria-label="Primary" className="hidden items-center gap-8 lg:flex">
-          <a href="#top" className="eyebrow border-b-2 border-rust pb-1 text-foreground">Home</a>
+        <nav aria-label="Primary" className="hidden items-center gap-5 lg:flex xl:gap-8">
+          <a href="#top" className="font-display text-[13px] font-medium uppercase tracking-[0.14em] xl:text-[14px] xl:tracking-[0.18em] border-b-2 border-rust pb-1 text-foreground">Home</a>
           {futureNav.map((n) => (
-            <span key={n} className="eyebrow cursor-default text-foreground transition-colors hover:text-rust" title="Coming soon" aria-disabled="true">
+            <span key={n} className="font-display text-[13px] font-medium uppercase tracking-[0.14em] xl:text-[14px] xl:tracking-[0.18em] cursor-default border-b-2 border-transparent pb-1 text-foreground transition-colors hover:text-rust" title="Coming soon" aria-disabled="true">
               {n}
             </span>
           ))}
           <button
             onClick={onPlans}
-            className={`btn-label border px-6 py-3.5 transition-colors ${
+            className={`btn-label ml-1 border px-4 py-2.5 !text-[15px] xl:ml-2 xl:px-5 xl:!text-[16px] transition-colors ${
               light ? "border-cinnamon bg-card text-foreground hover:border-rust hover:bg-rust hover:text-card" : "border-forest bg-forest text-ivory hover:border-rust hover:bg-rust"
             }`}
           >
