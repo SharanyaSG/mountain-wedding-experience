@@ -6,7 +6,6 @@ import outdoor from "@/assets/explore-outdoor.jpg";
 import eat from "@/assets/explore-eat.jpg";
 import riverwalkPhoto from "@/assets/hotel-riverwalk.jpg.asset.json";
 import hamptonPhoto from "@/assets/hotel-hampton-inn.jpg.asset.json";
-import holidayInnPhoto from "@/assets/hotel-holiday-inn-express.jpg.asset.json";
 import overlook from "@/assets/sharanya-sahil-overlook.jpg.asset.json";
 import { Reveal, PhotoPlaceholder } from "@/components/site/Reveal";
 import { hotels, plannedStories } from "@/components/site/wedding-content";
@@ -296,21 +295,8 @@ function Weekend() {
 }
 
 /* ---------------- STAY ---------------- */
-function HotelNotes({ reasons, notes }: { reasons: readonly string[]; notes: readonly string[] }) {
-  return (
-    <div className="grid gap-8 sm:grid-cols-2">
-      {[{ title: "Why Stay Here", items: reasons }, { title: "Things to Know", items: notes }].map(({ title, items }) => (
-        <div key={title}>
-          <p className="eyebrow opacity-70">{title}</p>
-          <ul className="mt-4 space-y-2 text-sm leading-relaxed">
-            {items.map((x) => <li key={x}>— {x}</li>)}
-          </ul>
-        </div>
-      ))}
-    </div>
-  );
-}
-const [preferred, ...others] = hotels;
+const preferred = hotels[0];
+const alternative = hotels[1];
 
 // Authentic guest-supplied photographs, one per hotel. Never AI-generated.
 type HotelId = (typeof hotels)[number]["id"];
@@ -327,12 +313,6 @@ const hotelPhotos: { [K in HotelId]: HotelPhoto } = {
     alt: "Hampton Inn Lincoln White Mountains exterior with its entrance canopy and monument sign",
     width: 575,
     height: 375,
-  },
-  "holiday-inn": {
-    url: holidayInnPhoto.url,
-    alt: "Holiday Inn Express & Suites Lincoln East – White Mountains exterior with its drive-up canopy",
-    width: 768,
-    height: 432,
   },
 };
 
