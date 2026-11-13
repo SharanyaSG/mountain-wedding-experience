@@ -94,7 +94,7 @@ export function StoryCard({ story }: { story: Story }) {
                     .map((p) => p.trim())
                     .filter(Boolean)
                     .map((p, i) => (
-                      <p key={i}>{p}</p>
+                      <Paragraph key={i} text={p} />
                     ))}
                 </div>
               ) : (
@@ -138,6 +138,20 @@ export function StoryCard({ story }: { story: Story }) {
 
       {reading && <StoryReader story={story} onClose={() => setReading(false)} />}
     </div>
+  );
+}
+
+/** Renders one paragraph, keeping the author's own line breaks inside it. */
+function Paragraph({ text }: { text: string }) {
+  return (
+    <p>
+      {text.split("\n").map((line, i) => (
+        <span key={i}>
+          {i > 0 && <br />}
+          {line}
+        </span>
+      ))}
+    </p>
   );
 }
 
