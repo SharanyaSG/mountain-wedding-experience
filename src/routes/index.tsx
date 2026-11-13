@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
-import { Play, RotateCcw } from "lucide-react";
+import { useEffect, useState } from "react";
 import hero from "@/assets/hero-mountains.jpg";
 import drive from "@/assets/explore-drive.jpg";
 import outdoor from "@/assets/explore-outdoor.jpg";
@@ -10,8 +9,6 @@ import hamptonPhoto from "@/assets/hotel-hampton-inn.jpg.asset.json";
 import holidayInnPhoto from "@/assets/hotel-holiday-inn-express.jpg.asset.json";
 import overlook from "@/assets/sharanya-sahil-overlook.jpg.asset.json";
 import { Reveal, PhotoPlaceholder } from "@/components/site/Reveal";
-import filmPoster from "@/assets/wedding-film-poster.png.asset.json";
-import filmVideo from "@/assets/wedding-film.mp4.asset.json";
 import { hotels, plannedStories } from "@/components/site/wedding-content";
 import { Button } from "@/components/ui/button";
 
@@ -39,7 +36,6 @@ function Index() {
       <main>
         <Hero />
         <SaveTheDate />
-        <Film />
         <Plans onPlans={() => setNotice(true)} />
         <Weekend />
         <Stay />
@@ -205,102 +201,6 @@ function SaveTheDate() {
             <p className="eyebrow text-muted-foreground">Loon Mountain, New Hampshire</p>
           </Reveal>
         </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------- FILM ---------------- */
-function Film() {
-  const [playing, setPlaying] = useState(false);
-  const [ended, setEnded] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  function start() {
-    setPlaying(true);
-    setEnded(false);
-  }
-
-  useEffect(() => {
-    if (!playing) return;
-    const video = videoRef.current;
-    if (!video) return;
-    video.play().catch(() => {
-      // If the browser blocks playback, the visitor can press play in the controls.
-    });
-  }, [playing]);
-
-  function watchAgain() {
-    const video = videoRef.current;
-    if (!video) return;
-    setEnded(false);
-    video.currentTime = 0;
-    video.play().catch(() => { /* The visitor can press play in the controls. */ });
-  }
-
-  return (
-    <section aria-label="Save-the-date film" className="mx-auto max-w-[1400px] px-5 pb-24 md:px-10 md:pb-40">
-      <div className="mx-auto max-w-3xl">
-        <Reveal className="text-center">
-          <p className="eyebrow flex items-center justify-center gap-4 text-muted-foreground">
-            <span className="h-px w-10 bg-border" />
-            The film
-            <span className="h-px w-10 bg-border" />
-          </p>
-          <h2 className="display mt-8 text-4xl md:text-6xl">
-            Watch our <em>save the date.</em>
-          </h2>
-        </Reveal>
-        <Reveal delay={120}>
-          <div className="group relative mt-12 aspect-[1672/941] overflow-hidden bg-stone">
-            {playing ? (
-              <video
-                ref={videoRef}
-                className="h-full w-full object-cover"
-                src={filmVideo.url}
-                poster={filmPoster.url}
-                controls
-                playsInline
-                preload="none"
-                onEnded={() => setEnded(true)}
-              />
-            ) : (
-              <>
-                <img
-                  src={filmPoster.url}
-                  alt="Minimalist invitation reading Sharanya & Sahil, October 7–8, 2027, Loon Mountain, New Hampshire — Meet us in the mountains"
-                  width={1672}
-                  height={941}
-                  loading="lazy"
-                  className="h-full w-full object-cover"
-                />
-                <button
-                  type="button"
-                  onClick={start}
-                  aria-label="Play our save-the-date film"
-                  className="absolute inset-0 flex items-center justify-center"
-                >
-                  <span className="flex h-16 w-16 items-center justify-center rounded-full border border-charcoal/20 bg-ivory/60 text-charcoal backdrop-blur-sm transition-all duration-300 group-hover:scale-105 group-hover:bg-ivory/85 md:h-[72px] md:w-[72px]">
-                    <Play className="ml-1 h-5 w-5 fill-current md:h-6 md:w-6" aria-hidden="true" />
-                  </span>
-                </button>
-              </>
-            )}
-            {playing && ended && (
-              <button
-                type="button"
-                onClick={watchAgain}
-                className="eyebrow absolute bottom-5 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full border border-ivory/40 bg-charcoal/45 px-5 py-2.5 text-ivory backdrop-blur-sm transition-colors hover:bg-charcoal/65"
-              >
-                <RotateCcw className="h-3.5 w-3.5" aria-hidden="true" />
-                Watch again
-              </button>
-            )}
-          </div>
-        </Reveal>
-        <Reveal delay={200}>
-          <p className="eyebrow mt-6 text-center text-muted-foreground">Sound on · One minute</p>
-        </Reveal>
       </div>
     </section>
   );
