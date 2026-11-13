@@ -176,8 +176,9 @@ function SaveTheDate() {
           <Reveal><Kicker n="01" label="Save the date" /></Reveal>
           <Reveal delay={120}>
             <blockquote className="display mt-8 text-4xl md:text-5xl lg:text-6xl">
-              Somewhere between the mountains and all the adventures,{" "}
-              <em className="text-crimson">we found our way here.</em>
+              Between winding trails and snowy slopes,
+              <br />
+              <em className="text-crimson">we took the scenic route to forever.</em>
             </blockquote>
           </Reveal>
           <Reveal delay={240} className="mt-12 space-y-2 border-l border-gold pl-6">
