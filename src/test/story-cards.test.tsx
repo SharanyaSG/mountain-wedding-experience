@@ -3,7 +3,8 @@ import { describe, expect, it } from "vitest";
 import { StoryCard } from "@/components/site/StoryCard";
 import { stories } from "@/components/site/wedding-content";
 
-const story = stories[0];
+const story = stories.find((s) => s.id === "halloween-2023");
+if (!story) throw new Error("Halloween 2023 is missing from the story collection");
 const flipTo = () => fireEvent.click(screen.getByRole("button", { name: "Read the story: Halloween 2023" }));
 
 describe("story cards", () => {
