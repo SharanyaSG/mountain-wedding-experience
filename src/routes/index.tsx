@@ -124,13 +124,13 @@ function Hero() {
         <h1 className="hero-rise font-script text-[17vw] leading-[1.05] text-foreground sm:text-8xl md:text-[8.5rem]" style={{ animationDelay: "300ms" }}>
           Sharanya &amp; Sahil
         </h1>
-        <div className="hero-rise mt-[26px] font-display uppercase tracking-[0.22em] md:mt-9" style={{ animationDelay: "500ms" }}>
-          <p className="text-lg/[26px] font-medium text-foreground md:text-[22px]/[28px]">October 7 – 9, 2027</p>
-          <p className="mt-[2px] text-sm/[18px] text-muted-foreground md:mt-[3px] md:text-base/[20px]">
+        <div className="hero-details hero-rise mt-[26px] font-display uppercase tracking-[0.22em] md:mt-9" style={{ animationDelay: "500ms" }}>
+          <p className="hero-date text-lg/[26px] font-medium text-foreground md:text-[22px]/[28px]">October 7 – 9, 2027</p>
+          <p className="hero-location mt-[2px] text-sm/[18px] text-muted-foreground md:mt-[3px] md:text-base/[20px]">
             Loon Mountain,<br className="hidden max-[380px]:inline" /> New Hampshire
           </p>
         </div>
-        <p className="hero-rise relative z-10 mt-[16px] font-hand text-[3.125rem]/[50px] text-[#922F3C] md:mt-6 md:text-[4rem]/[64px]" style={{ animationDelay: "700ms" }}>
+        <p className="hero-tagline hero-rise relative z-10 mt-[16px] font-hand text-[3.125rem]/[50px] text-[#922F3C] md:mt-6 md:text-[4rem]/[64px]" style={{ animationDelay: "700ms" }}>
           Meet us in the mountains.
         </p>
       </div>

@@ -1,4 +1,5 @@
 # Homepage refinements
+- [ ] Restore earlier mobile hero proportions, preserve tablet styling, enlarge desktop details/spacing, and verify device boundaries independently.
 - [x] Add the separate 30-second illustrated intro, first-visit entry, skip/replay and reduced-motion entry.
 - [x] Disable the animated intro (creative direction changing); homepage opens directly again. Intro code parked in site/intro for future finished-film integration.
 - [x] Verify the full animated sequence and unchanged homepage on desktop/mobile.

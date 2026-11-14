@@ -142,6 +142,22 @@
   to { opacity: 1; transform: none; filter: none; }
 }
 
+/* Hero overrides deliberately exclude the existing 768–1023px tablet range.
+   Unlayered, scoped selectors override only these hero utilities. */
+@media (width < 768px) {
+  #top .hero-details { margin-top: 16px; }
+  #top .hero-date { font-size: 16px; line-height: 24px; }
+  #top .hero-location { margin-top: 8px; font-size: 12px; line-height: 16px; }
+  #top .hero-tagline { margin-top: 20px; font-size: 48px; line-height: 48px; }
+}
+
+@media (width >= 1024px) {
+  #top .hero-details { margin-top: 60px; }
+  #top .hero-date { font-size: 25px; line-height: 32px; }
+  #top .hero-location { margin-top: 7px; font-size: 19px; line-height: 24px; }
+  #top .hero-tagline { margin-top: 44px; font-size: 68px; line-height: 68px; }
+}
+
 /* ---------------- STORY CARDS ---------------- */
 .story-scene {
   perspective: 1600px;
