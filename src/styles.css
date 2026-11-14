@@ -156,6 +156,7 @@
 }
 
 @media (width >= 1024px) {
+  #home { padding-top: calc(7rem + 28px); }
   #home .hero-details { margin-top: 60px; }
   #home .hero-date { font-size: 25px; line-height: 32px; }
   #home .hero-location { margin-top: 7px; font-size: 19px; line-height: 24px; }
