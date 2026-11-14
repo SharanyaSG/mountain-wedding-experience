@@ -35,7 +35,7 @@ export function SiteNavigation() {
           <Link to="/" hash="top" onClick={() => setOpen(false)} className="shrink-0 font-serif text-lg tracking-[0.18em]">G <span className="text-gold">×</span> M</Link>
           <nav aria-label="Primary" className="hidden items-center gap-5 min-[1536px]:flex">
             {items.map((item) => (
-              <Link key={item.label} to={item.to} hash={"hash" in item ? item.hash : undefined} onClick={() => setOpen(false)} aria-current={active(item) ? "page" : undefined} className={`whitespace-nowrap border-b-2 pb-1 font-display text-[14px] font-medium text-foreground transition-colors hover:text-rust ${active(item) ? "border-rust" : "border-transparent"}`}>
+              <Link key={item.label} to={item.to} hash={"hash" in item ? item.hash : ""} onClick={() => setOpen(false)} aria-current={active(item) ? "page" : undefined} className={`whitespace-nowrap border-b-2 pb-1 font-display text-[14px] font-medium text-foreground transition-colors hover:text-rust ${active(item) ? "border-rust" : "border-transparent"}`}>
                 {item.label === "FAQs" ? "FAQs" : item.label.toUpperCase()}
               </Link>
             ))}
@@ -46,7 +46,7 @@ export function SiteNavigation() {
         {open && (
           <nav id="mobile-menu" aria-label="Mobile" className="max-h-[calc(100dvh-4rem)] overflow-y-auto bg-background px-6 pb-10 pt-4 md:max-h-[calc(100dvh-5rem)] min-[1536px]:hidden">
             {items.map((item) => (
-              <Link key={item.label} to={item.to} hash={"hash" in item ? item.hash : undefined} onClick={() => setOpen(false)} aria-current={active(item) ? "page" : undefined} className="block border-t border-border py-3 font-display text-xl font-medium text-foreground transition-colors hover:text-rust md:text-3xl">
+              <Link key={item.label} to={item.to} hash={"hash" in item ? item.hash : ""} onClick={() => setOpen(false)} aria-current={active(item) ? "page" : undefined} className="block border-t border-border py-3 font-display text-xl font-medium text-foreground transition-colors hover:text-rust md:text-3xl">
                 {item.label === "FAQs" ? "FAQs" : item.label.toUpperCase()}
               </Link>
             ))}
