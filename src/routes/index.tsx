@@ -1,14 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
-import drive from "@/assets/explore-drive.jpg";
-import outdoor from "@/assets/explore-outdoor.jpg";
-import eat from "@/assets/explore-eat.jpg";
-import riverwalkPhoto from "@/assets/hotel-riverwalk.jpg.asset.json";
-import hamptonPhoto from "@/assets/hotel-hampton-inn.jpg.asset.json";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import overlook from "@/assets/sharanya-sahil-overlook.jpg.asset.json";
 import { Reveal, PhotoPlaceholder } from "@/components/site/Reveal";
 import { HeroIllustration } from "@/components/site/HeroIllustration";
 import { StoryCard } from "@/components/site/StoryCard";
-import { agenda, hotels, stories } from "@/components/site/wedding-content";
+import { agenda, stories } from "@/components/site/wedding-content";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -24,7 +19,7 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const futureNav = ["Our Stories", "Gallery", "Wedding Weekend", "Travel & Stay", "FAQ"];
+const futureNav = ["Our Stories", "Gallery", "Wedding Weekend", "FAQ"];
 
 function Index() {
   return (
@@ -33,10 +28,8 @@ function Index() {
         <Hero />
         <SaveTheDate />
         <Weekend />
-        <Stay />
         <Stories />
         <Gallery />
-        <Explore />
         <Faq />
       </main>
       <Footer />
@@ -67,7 +60,7 @@ function Hero() {
       </div>
       <div className="hero-rise flex flex-col items-center justify-center gap-3 px-5 pb-16 sm:flex-row md:pb-20" style={{ animationDelay: "1100ms" }}>
         <a href="#plans" className="btn-label bg-forest px-7 py-4 text-center text-ivory transition-colors hover:bg-rust">Tell Us Your Plans</a>
-        <a href="#stay" className="btn-label border border-cinnamon bg-card px-7 py-4 text-center text-foreground transition-colors hover:border-rust hover:bg-rust hover:text-card">Plan Your Stay</a>
+        <Link to="/plan-your-trip" className="btn-label border border-cinnamon bg-card px-7 py-4 text-center text-foreground transition-colors hover:border-rust hover:bg-rust hover:text-card">Plan Your Trip</Link>
       </div>
     </section>
   );
@@ -405,7 +398,7 @@ function Footer() {
           <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-3">
             <a href="#top" className="eyebrow hover:text-gold">Home</a>
             <a href="#plans" className="eyebrow hover:text-gold">Tell Us Your Plans</a>
-            <a href="#stay" className="eyebrow hover:text-gold">Plan Your Stay</a>
+            <Link to="/plan-your-trip" className="eyebrow hover:text-gold">Plan Your Trip</Link>
             {futureNav.map((n) => <span key={n} className="eyebrow text-muted-foreground/60">{n}</span>)}
           </nav>
           <p className="eyebrow text-muted-foreground md:text-right">Contact details · coming soon</p>
