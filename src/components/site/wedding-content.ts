@@ -6,6 +6,8 @@ export const hotels = [
     season: "October is peak foliage season and Columbus Day weekend, making this one of the busiest times of the year in the White Mountains.",
     availability: "Our room block is available on a first-come, first-served basis. Once the reserved rooms are filled, additional rooms and group rates cannot be guaranteed.",
     encouragement: "We strongly encourage booking as soon as reservations open.",
+    bookingRecommendation: "Our room block is available on a first-come, first-served basis, so we strongly encourage booking as soon as reservations open.",
+    availabilityNote: "Once the reserved rooms are filled, additional rooms and group rates cannot be guaranteed.",
     bookingHeading: "Our Wedding Room Block",
     bookingNote: "Special group rates have been secured for our guests.",
     bookingStatus: "Booking details will be shared soon. Stay tuned!",

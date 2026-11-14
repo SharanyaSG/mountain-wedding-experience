@@ -4,11 +4,11 @@ import { hotels, travelGuide } from "@/components/site/wedding-content";
 
 const riverwalk = hotels[0];
 
-function SectionHeading({ title, accent, align = "left" }: { title: string; accent: string; align?: "left" | "center" }) {
+function SectionHeading({ title, accent, align = "left", crimson = false }: { title: string; accent: string; align?: "left" | "center"; crimson?: boolean }) {
   return (
     <div className={align === "center" ? "text-center" : ""}>
       <h2 className="display text-4xl uppercase leading-tight text-foreground sm:text-5xl md:text-6xl">{title}</h2>
-      <p className="mt-4 font-script text-4xl leading-tight text-rust md:text-5xl">{accent}</p>
+      <p className={`mt-4 font-script text-4xl leading-tight md:text-5xl ${crimson ? "text-romantic-crimson" : "text-rust"}`}>{accent}</p>
     </div>
   );
 }
@@ -48,7 +48,7 @@ function Stay() {
     <section id="stay" className="scroll-mt-20 border-t border-border">
       <div className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-36">
         <Reveal>
-          <SectionHeading title="Stay Close to the Celebrations" accent="Our recommended mountain stay." />
+          <SectionHeading title="Our Recommended Mountain Stay" accent="Stay close to the celebrations." crimson />
         </Reveal>
         <div className="mt-14 grid gap-12 md:grid-cols-12 md:gap-14">
           <Reveal className="md:col-span-7">
@@ -63,16 +63,15 @@ function Stay() {
           </Reveal>
           <div className="md:col-span-5">
             <Reveal delay={120}>
-              <h3 className="display text-3xl uppercase leading-tight md:text-4xl">{riverwalk.name}</h3>
+              <h3 className="text-3xl leading-tight text-foreground md:text-4xl"><span className="font-display font-bold uppercase">RiverWalk Resort</span>{" "}<span className="font-script font-normal">at Loon Mountain</span></h3>
               <div className="mt-7 space-y-5 text-sm leading-7 text-muted-foreground">
                 <p>{riverwalk.introduction}</p>
                 <p>{riverwalk.season}</p>
-                <p>{riverwalk.availability}</p>
-                <p className="font-bold text-foreground">{riverwalk.encouragement}</p>
+                <p className="text-foreground"><span className="font-bold">{riverwalk.bookingRecommendation}</span><br /><span className="font-normal italic">{riverwalk.availabilityNote}</span></p>
               </div>
             </Reveal>
             <Reveal delay={200} className="mt-9 border-l-2 border-rust bg-muted px-6 py-7">
-              <h4 className="eyebrow text-rust">{riverwalk.bookingHeading}</h4>
+              <h4 className="eyebrow text-[13px] font-bold text-rust">{riverwalk.bookingHeading}</h4>
               <p className="mt-4 text-sm leading-7 text-foreground">{riverwalk.bookingNote}</p>
               <p className="mt-2 font-serif text-sm italic leading-7 text-muted-foreground">{riverwalk.bookingStatus}</p>
             </Reveal>
