@@ -119,12 +119,9 @@ function Nav({ onPlans }: { onPlans: () => void }) {
 /* ---------------- HERO ---------------- */
 function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden bg-card pt-24 md:pt-32">
+    <section id="top" className="relative overflow-hidden bg-card pt-20 md:pt-24">
       <div className="relative z-10 mx-auto max-w-[1100px] px-5 text-center md:px-10">
-        <p className="hero-rise eyebrow flex items-center justify-center gap-4 font-semibold text-[#922F3C]" style={{ animationDelay: "150ms" }}>
-          <span className="h-px w-8 bg-rust/70" />Save the Date<span className="h-px w-8 bg-rust/70" />
-        </p>
-        <h1 className="hero-rise mt-6 font-script text-[17vw] leading-[1.05] text-foreground sm:text-8xl md:text-[8.5rem]" style={{ animationDelay: "300ms" }}>
+        <h1 className="hero-rise font-script text-[17vw] leading-[1.05] text-foreground sm:text-8xl md:text-[8.5rem]" style={{ animationDelay: "300ms" }}>
           Sharanya &amp; Sahil
         </h1>
         <div className="hero-rise mt-4 space-y-2 font-display uppercase tracking-[0.22em]" style={{ animationDelay: "500ms" }}>
