@@ -117,7 +117,7 @@ function Weekend() {
 
           <Reveal delay={100}>
             <h2 className="display text-5xl md:text-6xl">The Festivities</h2>
-            <p className="display text-3xl text-sage md:text-4xl">Three days, <em className="text-romantic-crimson">one mountain.</em></p>
+            <p className="display text-3xl text-itinerary-forest md:text-4xl">Three days, <em className="text-romantic-crimson">one mountain.</em></p>
           </Reveal>
           <Reveal delay={200}>
             <p className="mt-6 max-w-xs text-sm font-bold leading-relaxed text-muted-foreground">Times and details will be shared with your invitation.</p>
