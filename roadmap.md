@@ -1,5 +1,5 @@
 # Homepage refinements
-- [ ] Consolidate the whole site into one ordered scrolling page with anchor-only navigation, legacy-route redirects, and desktop/tablet/mobile verification.
+- [x] Consolidate the whole site into one ordered scrolling page with anchor-only navigation, legacy-route redirects, and desktop/tablet/mobile verification.
 - [x] Build the complete Plan Your Trip destination guide, consolidate RiverWalk onto it, remove the homepage Travel & Stay and Explore sections and navigation entry, and verify desktop/tablet/mobile.
 - [ ] Supply three authentic Plan Your Trip photographs — White Mountains autumn panorama, scenic New Hampshire road, and Loon Mountain gondolas (blocked: no authentic photographs supplied yet).
 - [x] Refine itinerary text colors and invitation qualifier, remove the two event explanations, add one FAQ footer link, and verify desktop/tablet/mobile.
