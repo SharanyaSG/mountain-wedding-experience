@@ -23,17 +23,15 @@ describe("wedding weekend agenda", () => {
     const dinner = thursday.events[0];
     expect(dinner?.place).toBe("RiverWalk Resort · Tuscan Terrace");
     expect(dinner?.note).toBe("By Invitation Only");
-    expect(dinner?.detail).toBe(
-      "An intimate gathering for our immediate families and those involved in the wedding ceremony.",
-    );
+    expect(dinner?.detail).toBeUndefined();
     expect(dinner?.open).toBeUndefined();
   });
 
-  it("opens the welcome party to every wedding guest with no invitation restriction", () => {
+  it("lists the welcome party without extra qualifiers or explanations", () => {
     const party = byDate("October 7, 2027").events[1];
     expect(party?.title).toBe("Welcome Party");
     expect(party?.place).toBe("Seven Birches Winery · RiverWalk Resort");
-    expect(party?.open).toBe("All Wedding Guests Welcome!");
+    expect(party?.open).toBeUndefined();
     expect(party?.note).toBeUndefined();
     expect(party?.detail).toBeUndefined();
   });

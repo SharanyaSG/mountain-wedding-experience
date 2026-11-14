@@ -1,4 +1,5 @@
 # Homepage refinements
+- [ ] Refine itinerary text colors and invitation qualifier, remove the two event explanations, add one FAQ footer link, and verify desktop/tablet/mobile.
 - [x] Reorder navigation, link existing sections, add empty Plan Your Trip and A Message From Us pages, and verify desktop/mobile navigation and plans CTA at 375/834/1127/1535/1536/1573px.
 - [x] Restore earlier mobile hero proportions, preserve tablet styling, enlarge desktop details/spacing, and verify device boundaries independently (375/640/767px mobile, 768/834/1023px tablet, 1024/1440px desktop).
 - [x] Add the separate 30-second illustrated intro, first-visit entry, skip/replay and reduced-motion entry.
