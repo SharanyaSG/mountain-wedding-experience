@@ -10,33 +10,53 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AMessageFromUsRouteImport } from './routes/a-message-from-us'
+import { Route as PlanYourTripRouteImport } from './routes/plan-your-trip'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AMessageFromUsRoute = AMessageFromUsRouteImport.update({
+  id: '/a-message-from-us',
+  path: '/a-message-from-us',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlanYourTripRoute = PlanYourTripRouteImport.update({
+  id: '/plan-your-trip',
+  path: '/plan-your-trip',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/a-message-from-us': typeof AMessageFromUsRoute
+  '/plan-your-trip': typeof PlanYourTripRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/a-message-from-us': typeof AMessageFromUsRoute
+  '/plan-your-trip': typeof PlanYourTripRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/a-message-from-us': typeof AMessageFromUsRoute
+  '/plan-your-trip': typeof PlanYourTripRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/a-message-from-us' | '/plan-your-trip'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/a-message-from-us' | '/plan-your-trip'
+  id: '__root__' | '/' | '/a-message-from-us' | '/plan-your-trip'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AMessageFromUsRoute: typeof AMessageFromUsRoute
+  PlanYourTripRoute: typeof PlanYourTripRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +68,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/a-message-from-us': {
+      id: '/a-message-from-us'
+      path: '/a-message-from-us'
+      fullPath: '/a-message-from-us'
+      preLoaderRoute: typeof AMessageFromUsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/plan-your-trip': {
+      id: '/plan-your-trip'
+      path: '/plan-your-trip'
+      fullPath: '/plan-your-trip'
+      preLoaderRoute: typeof PlanYourTripRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AMessageFromUsRoute: AMessageFromUsRoute,
+  PlanYourTripRoute: PlanYourTripRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
