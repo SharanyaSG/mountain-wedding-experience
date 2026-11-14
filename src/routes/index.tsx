@@ -73,17 +73,6 @@ function Hero() {
   );
 }
 
-/* ---------------- SECTION HEAD ---------------- */
-function Kicker({ n, label }: { n: string; label: string }) {
-  return (
-    <p className="eyebrow flex items-center gap-4 text-muted-foreground">
-      <span className="text-rust">{n}</span>
-      <span className="h-px w-10 bg-border" />
-      {label}
-    </p>
-  );
-}
-
 /* ---------------- SAVE THE DATE ---------------- */
 function SaveTheDate() {
   return (
@@ -100,9 +89,9 @@ function SaveTheDate() {
           />
         </Reveal>
         <div className="flex flex-col justify-end md:col-span-5 md:pb-10">
-          <Reveal><Kicker n="01" label="Save the date" /></Reveal>
+
           <Reveal delay={120}>
-            <blockquote className="display mt-8 text-4xl md:text-5xl lg:text-6xl">
+            <blockquote className="display text-4xl md:text-5xl lg:text-6xl">
               Between winding trails and snowy slopes,
               <br />
               <em className="text-crimson">we took the scenic route to forever.</em>
@@ -125,10 +114,10 @@ function Weekend() {
     <section id="itinerary" className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-40">
       <div className="grid gap-10 md:grid-cols-12">
         <div className="md:col-span-4">
-          <Reveal><Kicker n="03" label="At a glance" /></Reveal>
+
           <Reveal delay={100}>
-            <h2 className="display mt-8 text-5xl md:text-6xl">The Festivities</h2>
-            <p className="display mt-4 text-3xl md:text-4xl">Three days, <em className="text-forest">one mountain.</em></p>
+            <h2 className="display text-5xl md:text-6xl">The Festivities</h2>
+            <p className="display text-3xl md:text-4xl">Three days, <em className="text-forest">one mountain.</em></p>
           </Reveal>
           <Reveal delay={200}>
             <p className="mt-6 max-w-xs text-sm leading-relaxed text-muted-foreground">Times and details will be shared with your invitation.</p>
@@ -188,9 +177,9 @@ function Stay() {
       <div className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-36">
         <div className="grid gap-8 md:grid-cols-12 md:items-end">
           <div className="md:col-span-7">
-            <Reveal><Kicker n="04" label="Plan your stay" /></Reveal>
+
             <Reveal delay={100}>
-              <h2 className="display mt-8 text-5xl md:text-7xl">Stay close. <em className="text-forest">The mountains are calling.</em></h2>
+              <h2 className="display text-5xl md:text-7xl">Stay close. <em className="text-forest">The mountains are calling.</em></h2>
             </Reveal>
           </div>
           <Reveal delay={200} className="md:col-span-4 md:col-start-9">
@@ -211,8 +200,7 @@ function Stay() {
           />
           <div className="flex flex-col justify-between gap-10 p-8 md:p-14">
             <div>
-              <p className="eyebrow text-gold">{preferred.n} · {preferred.label}</p>
-              <h3 className="display mt-6 text-4xl md:text-6xl">RiverWalk Resort <em>at Loon Mountain</em></h3>
+              <h3 className="display text-4xl md:text-6xl">RiverWalk Resort <em>at Loon Mountain</em></h3>
               <p className="mt-4 font-serif text-2xl italic">{preferred.tagline}</p>
               <p className="mt-5 max-w-md text-sm leading-relaxed text-muted-foreground">{preferred.introduction}</p>
               <p className="mt-7 max-w-md border-l border-gold/60 pl-5 text-sm leading-relaxed text-foreground">{preferred.urgency}</p>
@@ -244,8 +232,7 @@ function Stay() {
               className="aspect-[16/9] w-full object-cover"
             />
             <div>
-              <p className="eyebrow text-muted-foreground">{alternative.n} · {alternative.label}</p>
-              <h3 className="display mt-4 text-3xl md:text-4xl">{alternative.name}</h3>
+              <h3 className="display text-3xl md:text-4xl">{alternative.name}</h3>
               <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">{alternative.introduction}</p>
               <p className="eyebrow mt-6 text-muted-foreground">{alternative.bookingNote}</p>
             </div>
@@ -257,7 +244,7 @@ function Stay() {
           <div className="mt-5 grid gap-px bg-border md:grid-cols-2">
             {hotels.map((h) => (
               <dl key={h.id} className="bg-card p-6 text-sm">
-                <dt className="font-serif text-xl">{h.n} · {h.name.split(" at ")[0]?.split(" Lincoln")[0]}</dt>
+                <dt className="font-serif text-xl">{h.name.split(" at ")[0]?.split(" Lincoln")[0]}</dt>
                 <dd className="mt-4 grid grid-cols-[7rem_1fr] gap-2"><span className="text-muted-foreground">Thursday</span>{h.thursday}</dd>
                 <dd className="mt-2 grid grid-cols-[7rem_1fr] gap-2"><span className="text-muted-foreground">Breakfast</span>{h.breakfastIncluded ? "Included" : "Not included"}</dd>
                 <dd className="mt-2 grid grid-cols-[7rem_1fr] gap-2"><span className="text-muted-foreground">Room block</span>{h.roomBlock === "reserved" ? "Reserved for our wedding" : "No wedding room block"}</dd>
@@ -274,9 +261,9 @@ function Stay() {
 function Stories() {
   return (
     <section id="stories" className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-40">
-      <Reveal><Kicker n="05" label="Our stories" /></Reveal>
+
       <Reveal delay={100}>
-        <h2 className="display mt-8 max-w-3xl text-5xl md:text-7xl">The stories that <em className="text-crimson">got us here</em></h2>
+        <h2 className="display max-w-3xl text-5xl md:text-7xl">The stories that <em className="text-crimson">got us here</em></h2>
       </Reveal>
       <Reveal delay={200}>
         <p className="mt-6 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">
@@ -310,8 +297,8 @@ function Gallery() {
       <div className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-36">
         <div className="grid gap-6 md:grid-cols-2 md:items-end">
           <div>
-            <Reveal><Kicker n="06" label="Gallery" /></Reveal>
-            <Reveal delay={100}><h2 className="display mt-8 text-5xl md:text-7xl">Us, through <em>the years</em></h2></Reveal>
+
+            <Reveal delay={100}><h2 className="display text-5xl md:text-7xl">Us, through <em>the years</em></h2></Reveal>
           </div>
           <Reveal delay={200}>
             <p className="font-serif text-2xl italic text-muted-foreground md:text-right">
@@ -342,8 +329,8 @@ function Explore() {
     <section className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-40">
       <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
         <div>
-          <Reveal><Kicker n="07" label="Explore" /></Reveal>
-          <Reveal delay={100}><h2 className="display mt-8 text-5xl md:text-7xl">The White Mountains</h2></Reveal>
+
+          <Reveal delay={100}><h2 className="display text-5xl md:text-7xl">The White Mountains</h2></Reveal>
         </div>
         <Reveal delay={200}><p className="eyebrow text-muted-foreground">Our recommendations, coming soon</p></Reveal>
       </div>
@@ -354,8 +341,7 @@ function Explore() {
               <img src={e.img} alt={e.alt} loading="lazy" width={896} height={1152} className="h-full w-full object-cover transition-transform duration-[1.6s] ease-out group-hover:scale-105" />
               <div className="bg-image-veil absolute inset-0" />
               <figcaption className="absolute inset-x-0 bottom-0 p-6 text-ivory">
-                <span className="eyebrow opacity-70">0{i + 1}</span>
-                <p className="display mt-2 text-4xl">{e.t}</p>
+                <p className="display text-4xl">{e.t}</p>
               </figcaption>
             </figure>
           </Reveal>
@@ -377,8 +363,8 @@ function Faq() {
     <section id="faqs" className="border-t border-border">
       <div className="mx-auto grid max-w-[1400px] gap-12 px-5 py-24 md:grid-cols-12 md:px-10 md:py-36">
         <div className="md:col-span-4">
-          <Reveal><Kicker n="08" label="FAQ" /></Reveal>
-          <Reveal delay={100}><h2 className="display mt-8 text-5xl md:text-6xl">A few <em className="text-forest">early answers</em></h2></Reveal>
+
+          <Reveal delay={100}><h2 className="display text-5xl md:text-6xl">A few <em className="text-forest">early answers</em></h2></Reveal>
         </div>
         <div className="md:col-span-7 md:col-start-6">
           {faqs.map((f, i) => (
