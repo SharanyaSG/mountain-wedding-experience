@@ -39,9 +39,6 @@ function Introduction() {
         <p>We’re bringing our favorite people together in one of our favorite places, and we hope you’ll make an adventure of it!</p>
         <p>Whether you’re joining us from down the road, across the country, or halfway around the world, <span className="lg:font-bold lg:text-itinerary-forest">we’ve put together everything you need to plan your trip and make the most of your time in the White Mountains.</span></p>
       </Reveal>
-      <Reveal delay={220} className="mt-14 md:mt-20">
-        <PhotoPlaceholder label="White Mountains in peak autumn foliage" className="aspect-[4/3] w-full sm:aspect-[16/8] md:aspect-[16/7]" />
-      </Reveal>
     </section>
   );
 }
