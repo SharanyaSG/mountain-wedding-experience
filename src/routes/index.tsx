@@ -1,14 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
-import drive from "@/assets/explore-drive.jpg";
-import outdoor from "@/assets/explore-outdoor.jpg";
-import eat from "@/assets/explore-eat.jpg";
-import riverwalkPhoto from "@/assets/hotel-riverwalk.jpg.asset.json";
-import hamptonPhoto from "@/assets/hotel-hampton-inn.jpg.asset.json";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import overlook from "@/assets/sharanya-sahil-overlook.jpg.asset.json";
 import { Reveal, PhotoPlaceholder } from "@/components/site/Reveal";
 import { HeroIllustration } from "@/components/site/HeroIllustration";
 import { StoryCard } from "@/components/site/StoryCard";
-import { agenda, hotels, stories } from "@/components/site/wedding-content";
+import { agenda, stories } from "@/components/site/wedding-content";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -24,7 +19,7 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const futureNav = ["Our Stories", "Gallery", "Wedding Weekend", "Travel & Stay", "FAQ"];
+const futureNav = ["Our Stories", "Gallery", "Wedding Weekend", "FAQ"];
 
 function Index() {
   return (
@@ -33,10 +28,8 @@ function Index() {
         <Hero />
         <SaveTheDate />
         <Weekend />
-        <Stay />
         <Stories />
         <Gallery />
-        <Explore />
         <Faq />
       </main>
       <Footer />
@@ -67,7 +60,7 @@ function Hero() {
       </div>
       <div className="hero-rise flex flex-col items-center justify-center gap-3 px-5 pb-16 sm:flex-row md:pb-20" style={{ animationDelay: "1100ms" }}>
         <a href="#plans" className="btn-label bg-forest px-7 py-4 text-center text-ivory transition-colors hover:bg-rust">Tell Us Your Plans</a>
-        <a href="#stay" className="btn-label border border-cinnamon bg-card px-7 py-4 text-center text-foreground transition-colors hover:border-rust hover:bg-rust hover:text-card">Plan Your Stay</a>
+        <Link to="/plan-your-trip" className="btn-label border border-cinnamon bg-card px-7 py-4 text-center text-foreground transition-colors hover:border-rust hover:bg-rust hover:text-card">Plan Your Trip</Link>
       </div>
     </section>
   );
@@ -154,114 +147,6 @@ function Weekend() {
   );
 }
 
-/* ---------------- STAY ---------------- */
-const preferred = hotels[0];
-const alternative = hotels[1];
-
-// Authentic guest-supplied photographs, one per hotel. Never AI-generated.
-type HotelId = (typeof hotels)[number]["id"];
-type HotelPhoto = { url: string; alt: string; width: number; height: number };
-const hotelPhotos: { [K in HotelId]: HotelPhoto } = {
-  riverwalk: {
-    url: riverwalkPhoto.url,
-    alt: "RiverWalk Resort at Loon Mountain, a multi-wing resort with red roofs set beneath a forested mountain",
-    width: 1000,
-    height: 720,
-  },
-  hampton: {
-    url: hamptonPhoto.url,
-    alt: "Hampton Inn Lincoln White Mountains exterior with its entrance canopy and monument sign",
-    width: 575,
-    height: 375,
-  },
-};
-
-function Stay() {
-  return (
-    <section id="stay" className="scroll-mt-16 bg-card">
-      <div className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-36">
-        <div className="grid gap-8 md:grid-cols-12 md:items-end">
-          <div className="md:col-span-7">
-
-            <Reveal delay={100}>
-              <h2 className="display text-5xl md:text-7xl">Stay close. <em className="text-forest">The mountains are calling.</em></h2>
-            </Reveal>
-          </div>
-          <Reveal delay={200} className="md:col-span-4 md:col-start-9">
-            <p className="text-sm leading-relaxed text-muted-foreground md:text-base">
-              October is peak foliage season in the White Mountains and one of the busiest times of year. We'd gently encourage arranging accommodation early.
-            </p>
-          </Reveal>
-        </div>
-
-        <Reveal className="mt-16 grid border border-border bg-card text-foreground md:grid-cols-2">
-          <img
-            src={hotelPhotos[preferred.id].url}
-            alt={hotelPhotos[preferred.id].alt}
-            width={hotelPhotos[preferred.id].width}
-            height={hotelPhotos[preferred.id].height}
-            loading="lazy"
-            className="min-h-[320px] h-full w-full object-cover"
-          />
-          <div className="flex flex-col justify-between gap-10 p-8 md:p-14">
-            <div>
-              <h3 className="display text-4xl md:text-6xl">RiverWalk Resort <em>at Loon Mountain</em></h3>
-              <p className="mt-4 font-serif text-2xl italic">{preferred.tagline}</p>
-              <p className="mt-5 max-w-md text-sm leading-relaxed text-muted-foreground">{preferred.introduction}</p>
-              <p className="mt-7 max-w-md border-l border-gold/60 pl-5 text-sm leading-relaxed text-foreground">{preferred.urgency}</p>
-            </div>
-            <div>
-              <p className="eyebrow text-forest">Why Stay Here</p>
-              <ul className="mt-4 grid gap-2 text-sm leading-relaxed sm:grid-cols-2">
-                {preferred.reasons.map((x) => <li key={x}>— {x}</li>)}
-              </ul>
-            </div>
-            <div className="border border-border bg-muted p-6 md:p-8">
-              <p className="eyebrow text-gold">{preferred.bookingHeading}</p>
-              <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">{preferred.bookingNote}</p>
-              <span className="btn-label mt-6 inline-block w-fit border border-forest/40 px-6 py-4 text-forest" aria-disabled="true">
-                Booking link &amp; discount code to follow
-              </span>
-            </div>
-          </div>
-        </Reveal>
-
-        <Reveal delay={120} className="mt-8">
-          <article className="grid gap-8 border border-border p-8 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:items-center md:gap-12 md:p-12">
-            <img
-              src={hotelPhotos[alternative.id].url}
-              alt={hotelPhotos[alternative.id].alt}
-              width={hotelPhotos[alternative.id].width}
-              height={hotelPhotos[alternative.id].height}
-              loading="lazy"
-              className="aspect-[16/9] w-full object-cover"
-            />
-            <div>
-              <h3 className="display text-3xl md:text-4xl">{alternative.name}</h3>
-              <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">{alternative.introduction}</p>
-              <p className="eyebrow mt-6 text-muted-foreground">{alternative.bookingNote}</p>
-            </div>
-          </article>
-        </Reveal>
-
-        <Reveal className="mt-14">
-          <p className="eyebrow text-muted-foreground">At a glance</p>
-          <div className="mt-5 grid gap-px bg-border md:grid-cols-2">
-            {hotels.map((h) => (
-              <dl key={h.id} className="bg-card p-6 text-sm">
-                <dt className="font-serif text-xl">{h.name.split(" at ")[0]?.split(" Lincoln")[0]}</dt>
-                <dd className="mt-4 grid grid-cols-[7rem_1fr] gap-2"><span className="text-muted-foreground">Thursday</span>{h.thursday}</dd>
-                <dd className="mt-2 grid grid-cols-[7rem_1fr] gap-2"><span className="text-muted-foreground">Breakfast</span>{h.breakfastIncluded ? "Included" : "Not included"}</dd>
-                <dd className="mt-2 grid grid-cols-[7rem_1fr] gap-2"><span className="text-muted-foreground">Room block</span>{h.roomBlock === "reserved" ? "Reserved for our wedding" : "No wedding room block"}</dd>
-              </dl>
-            ))}
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
 /* ---------------- STORIES ---------------- */
 function Stories() {
   return (
@@ -323,39 +208,6 @@ function Gallery() {
   );
 }
 
-/* ---------------- EXPLORE ---------------- */
-const explore = [
-  { t: "Scenic Drives", img: drive, alt: "A winding road through autumn foliage" },
-  { t: "Outdoor Adventures", img: outdoor, alt: "A rocky trail beside a mountain river" },
-  { t: "Eat & Explore", img: eat, alt: "A New England main street at dusk" },
-];
-function Explore() {
-  return (
-    <section className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-40">
-      <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-        <div>
-
-          <Reveal delay={100}><h2 className="display text-5xl md:text-7xl">The White Mountains</h2></Reveal>
-        </div>
-        <Reveal delay={200}><p className="eyebrow text-muted-foreground">Our recommendations, coming soon</p></Reveal>
-      </div>
-      <div className="-mx-5 mt-14 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 md:mx-0 md:grid md:grid-cols-3 md:overflow-visible md:px-0">
-        {explore.map((e, i) => (
-          <Reveal key={e.t} delay={i * 140} className="w-[78%] shrink-0 snap-start md:w-auto">
-            <figure className="group relative aspect-[3/4] overflow-hidden">
-              <img src={e.img} alt={e.alt} loading="lazy" width={896} height={1152} className="h-full w-full object-cover transition-transform duration-[1.6s] ease-out group-hover:scale-105" />
-              <div className="bg-image-veil absolute inset-0" />
-              <figcaption className="absolute inset-x-0 bottom-0 p-6 text-ivory">
-                <p className="display text-4xl">{e.t}</p>
-              </figcaption>
-            </figure>
-          </Reveal>
-        ))}
-      </div>
-    </section>
-  );
-}
-
 /* ---------------- FAQ ---------------- */
 const faqs = [
   { q: "When should we book accommodation?", a: "As early as you comfortably can. October is peak foliage season in the White Mountains, and rooms in the area fill quickly. Hotel details will be shared here as they're confirmed." },
@@ -405,7 +257,7 @@ function Footer() {
           <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-3">
             <a href="#top" className="eyebrow hover:text-gold">Home</a>
             <a href="#plans" className="eyebrow hover:text-gold">Tell Us Your Plans</a>
-            <a href="#stay" className="eyebrow hover:text-gold">Plan Your Stay</a>
+            <Link to="/plan-your-trip" className="eyebrow hover:text-gold">Plan Your Trip</Link>
             {futureNav.map((n) => <span key={n} className="eyebrow text-muted-foreground/60">{n}</span>)}
           </nav>
           <p className="eyebrow text-muted-foreground md:text-right">Contact details · coming soon</p>

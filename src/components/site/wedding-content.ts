@@ -1,24 +1,48 @@
 export const hotels = [
   {
-    id: "riverwalk", n: "01", name: "RiverWalk Resort at Loon Mountain",
-    label: "Our Recommended Stay", tagline: "Stay close to the celebrations.",
-    introduction: "We’ve reserved a discounted wedding room block at RiverWalk Resort, and we’d love for you to stay here with us! With our Thursday celebrations taking place on-site and convenient access to our wedding-day shuttle, it’s the easiest way to enjoy the festivities.",
-    urgency: "Our wedding falls during New Hampshire’s peak foliage season and Columbus Day weekend, when accommodations are in high demand. We strongly recommend booking early to take advantage of our special group rates.",
-    reasons: ["Exclusive wedding room-block rates", "Thursday celebrations on-site", "Convenient access to the wedding-day shuttle", "Stay close to family and friends"],
+    id: "riverwalk",
+    name: "RiverWalk Resort at Loon Mountain",
+    introduction: "We’ve reserved a special wedding room block at RiverWalk Resort, where our Thursday celebrations will take place and where you’ll be close to family, friends, and the wedding-day shuttle.",
+    season: "October is peak foliage season and Columbus Day weekend, making this one of the busiest times of the year in the White Mountains.",
+    availability: "Our room block is available on a first-come, first-served basis. Once the reserved rooms are filled, additional rooms and group rates cannot be guaranteed.",
+    encouragement: "We strongly encourage booking as soon as reservations open.",
     bookingHeading: "Our Wedding Room Block",
-    bookingNote: "Special group rates have been secured for our guests. Booking details will be shared soon.",
-    thursday: "Welcome gathering on-site", breakfastIncluded: false, roomBlock: "reserved",
-  },
-  {
-    id: "hampton", n: "02", name: "Hampton Inn Lincoln White Mountains",
-    label: "Alternative Accommodation", tagline: "",
-    introduction: "Prefer another option? Hampton Inn is located nearby. Please note that we do not have a wedding room block here, and rates and availability will be subject to holiday-weekend demand.",
-    urgency: "", reasons: [],
-    bookingHeading: "",
-    bookingNote: "Reserve directly with the hotel.",
-    thursday: "Very close to RiverWalk", breakfastIncluded: true, roomBlock: "none",
+    bookingNote: "Special group rates have been secured for our guests.",
+    bookingStatus: "Booking details will be shared soon. Stay tuned!",
   },
 ] as const;
+
+export const travelGuide = {
+  international: {
+    name: "Boston Logan International Airport",
+    code: "BOS",
+    driveTime: "Approximately 2–2.5 hours by car to Lincoln, New Hampshire.",
+    description: "Boston Logan is generally the most convenient major international gateway for guests traveling from overseas.",
+    recommendation: "We recommend arranging a rental car in advance for the drive to Lincoln.",
+  },
+  domestic: [
+    { name: "Boston Logan International Airport", code: "BOS", driveTime: "Approximately 2–2.5 hours by car." },
+    { name: "Manchester-Boston Regional Airport", code: "MHT", driveTime: "Approximately 1.25–1.5 hours by car." },
+  ],
+  airportComparison: "Manchester is closer to Lincoln, while Boston typically offers a wider range of flight options.",
+  rentalCompanies: [
+    { name: "Enterprise Rent-A-Car", url: "https://www.enterprise.com/en/home.html" },
+    { name: "Hertz", url: "https://www.hertz.com/us/en/home" },
+    { name: "Avis", url: "https://www.avis.com/en/home" },
+    { name: "Budget", url: "https://www.budget.com/en/home" },
+    { name: "National Car Rental", url: "https://www.nationalcar.com/en/home" },
+  ],
+  scenicDrives: ["Kancamagus Highway", "Franconia Notch", "Additional scenic recommendations"],
+  outdoorAdventures: ["Hiking trails", "Scenic overlooks", "Waterfalls", "Gondola rides", "Other local attractions"],
+  eatAndExplore: ["Restaurants", "Breakfast & brunch spots", "Cafés", "Breweries", "Local attractions", "Hidden gems"],
+  gondola: {
+    date: "October 8",
+    audience: "our wedding guests",
+    offer: "On October 8, we’re treating our wedding guests to complimentary gondola rides at Loon Mountain!",
+    accessDetails: "Exact gondola access details and operating hours will be shared closer to the wedding.",
+  },
+  independentArrangements: "Flights, accommodations, transportation, and any additional activities or excursions can be arranged independently.",
+} as const;
 
 export type Story = {
   id: string;

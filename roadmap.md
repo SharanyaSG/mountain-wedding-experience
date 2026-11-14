@@ -1,4 +1,6 @@
 # Homepage refinements
+- [x] Build the complete Plan Your Trip destination guide, consolidate RiverWalk onto it, remove the homepage Travel & Stay and Explore sections and navigation entry, and verify desktop/tablet/mobile.
+- [ ] Supply three authentic Plan Your Trip photographs — White Mountains autumn panorama, scenic New Hampshire road, and Loon Mountain gondolas (blocked: no authentic photographs supplied yet).
 - [x] Refine itinerary text colors and invitation qualifier, remove the two event explanations, add one FAQ footer link, and verify desktop/tablet/mobile.
 - [x] Reorder navigation, link existing sections, add empty Plan Your Trip and A Message From Us pages, and verify desktop/mobile navigation and plans CTA at 375/834/1127/1535/1536/1573px.
 - [x] Restore earlier mobile hero proportions, preserve tablet styling, enlarge desktop details/spacing, and verify device boundaries independently (375/640/767px mobile, 768/834/1023px tablet, 1024/1440px desktop).

@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 const items = [
   { label: "Home", to: "/", hash: "top" },
   { label: "Wedding Itinerary", to: "/", hash: "itinerary" },
-  { label: "Travel & Stay", to: "/", hash: "stay" },
   { label: "Plan Your Trip", to: "/plan-your-trip" },
   { label: "Our Stories", to: "/", hash: "stories" },
   { label: "Gallery", to: "/", hash: "gallery" },
