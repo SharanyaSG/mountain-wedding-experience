@@ -3,6 +3,9 @@ import overlook from "@/assets/sharanya-sahil-overlook.jpg.asset.json";
 import { Reveal, PhotoPlaceholder } from "@/components/site/Reveal";
 import { HeroIllustration } from "@/components/site/HeroIllustration";
 import { StoryCard } from "@/components/site/StoryCard";
+import { TravelGuide } from "@/components/site/TravelGuide";
+import { MessageFromUs } from "@/components/site/MessageFromUs";
+import { PlansMessage } from "@/components/site/SiteNavigation";
 import { agenda, stories } from "@/components/site/wedding-content";
 
 export const Route = createFileRoute("/")({
@@ -28,9 +31,12 @@ function Index() {
         <Hero />
         <SaveTheDate />
         <Weekend />
+        <TravelGuide />
         <Stories />
         <Gallery />
         <Faq />
+        <MessageFromUs />
+        <Plans />
       </main>
       <Footer />
     </>
@@ -40,7 +46,8 @@ function Index() {
 /* ---------------- HERO ---------------- */
 function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden bg-card pt-24 md:pt-28">
+    <section id="home" className="relative overflow-hidden bg-card pt-24 md:pt-28">
+      <span id="top" aria-hidden="true" className="absolute inset-x-0 top-0" />
       <div className="relative z-10 mx-auto max-w-[1100px] px-3 text-center md:px-10">
         <h1 className="hero-rise font-script text-[17vw] leading-[1.05] text-foreground sm:text-8xl md:text-[8.5rem]" style={{ animationDelay: "300ms" }}>
           Sharanya &amp; Sahil
@@ -59,8 +66,8 @@ function Hero() {
         <HeroIllustration />
       </div>
       <div className="hero-rise flex flex-col items-center justify-center gap-3 px-5 pb-16 sm:flex-row md:pb-20" style={{ animationDelay: "1100ms" }}>
-        <a href="#plans" className="btn-label bg-forest px-7 py-4 text-center text-ivory transition-colors hover:bg-rust">Tell Us Your Plans</a>
-        <Link to="/plan-your-trip" className="btn-label border border-cinnamon bg-card px-7 py-4 text-center text-foreground transition-colors hover:border-rust hover:bg-rust hover:text-card">Plan Your Trip</Link>
+        <Link to="/" hash="tell-us-your-plans" className="btn-label bg-forest px-7 py-4 text-center text-ivory transition-colors hover:bg-rust">Tell Us Your Plans</Link>
+        <Link to="/" hash="plan-your-trip" className="btn-label border border-cinnamon bg-card px-7 py-4 text-center text-foreground transition-colors hover:border-rust hover:bg-rust hover:text-card">Plan Your Trip</Link>
       </div>
     </section>
   );
@@ -104,7 +111,8 @@ function SaveTheDate() {
 /* ---------------- WEEKEND ---------------- */
 function Weekend() {
   return (
-    <section id="itinerary" className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-40">
+    <section id="wedding-itinerary" className="mx-auto max-w-[1400px] scroll-mt-24 px-5 py-24 md:scroll-mt-28 md:px-10 md:py-40">
+      <span id="itinerary" aria-hidden="true" />
       <div className="grid gap-10 md:grid-cols-12">
         <div className="md:col-span-4">
 
@@ -150,7 +158,8 @@ function Weekend() {
 /* ---------------- STORIES ---------------- */
 function Stories() {
   return (
-    <section id="stories" className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-40">
+    <section id="our-stories" className="mx-auto max-w-[1400px] scroll-mt-24 px-5 py-24 md:scroll-mt-28 md:px-10 md:py-40">
+      <span id="stories" aria-hidden="true" />
 
       <Reveal delay={100}>
         <h2 className="display max-w-3xl text-5xl md:text-7xl">The stories that <em className="text-crimson">got us here</em></h2>
@@ -183,7 +192,7 @@ const tiles = [
 ];
 function Gallery() {
   return (
-    <section id="gallery" className="bg-card">
+    <section id="gallery" className="scroll-mt-24 bg-card md:scroll-mt-28">
       <div className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-36">
         <div className="grid gap-6 md:grid-cols-2 md:items-end">
           <div>
@@ -217,7 +226,7 @@ const faqs = [
 ];
 function Faq() {
   return (
-    <section id="faqs" className="border-t border-border">
+    <section id="faqs" className="scroll-mt-24 border-t border-border md:scroll-mt-28">
       <div className="mx-auto grid max-w-[1400px] gap-12 px-5 py-24 md:grid-cols-12 md:px-10 md:py-36">
         <div className="md:col-span-4">
 
@@ -241,6 +250,15 @@ function Faq() {
   );
 }
 
+/* ---------------- TELL US YOUR PLANS ---------------- */
+function Plans() {
+  return (
+    <section id="tell-us-your-plans" aria-labelledby="plans-message-title" className="scroll-mt-24 border-t border-border bg-card px-5 py-24 md:scroll-mt-28 md:px-10 md:py-36">
+      <PlansMessage />
+    </section>
+  );
+}
+
 /* ---------------- FOOTER ---------------- */
 function Footer() {
   return (
@@ -255,9 +273,9 @@ function Footer() {
             <p className="eyebrow text-muted-foreground">Loon Mountain, New Hampshire</p>
           </div>
           <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-3">
-            <a href="#top" className="eyebrow hover:text-gold">Home</a>
-            <a href="#plans" className="eyebrow hover:text-gold">Tell Us Your Plans</a>
-            <Link to="/plan-your-trip" className="eyebrow hover:text-gold">Plan Your Trip</Link>
+            <Link to="/" hash="home" className="eyebrow hover:text-gold">Home</Link>
+            <Link to="/" hash="tell-us-your-plans" className="eyebrow hover:text-gold">Tell Us Your Plans</Link>
+            <Link to="/" hash="plan-your-trip" className="eyebrow hover:text-gold">Plan Your Trip</Link>
             {futureNav.map((n) => <span key={n} className="eyebrow text-muted-foreground/60">{n}</span>)}
           </nav>
           <p className="eyebrow text-muted-foreground md:text-right">Contact details · coming soon</p>
