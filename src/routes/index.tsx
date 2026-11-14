@@ -250,6 +250,15 @@ function Faq() {
   );
 }
 
+/* ---------------- TELL US YOUR PLANS ---------------- */
+function Plans() {
+  return (
+    <section id="tell-us-your-plans" aria-labelledby="plans-message-title" className="scroll-mt-24 border-t border-border bg-card px-5 py-24 md:scroll-mt-28 md:px-10 md:py-36">
+      <PlansMessage />
+    </section>
+  );
+}
+
 /* ---------------- FOOTER ---------------- */
 function Footer() {
   return (
@@ -264,9 +273,9 @@ function Footer() {
             <p className="eyebrow text-muted-foreground">Loon Mountain, New Hampshire</p>
           </div>
           <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-3">
-            <a href="#top" className="eyebrow hover:text-gold">Home</a>
-            <a href="#plans" className="eyebrow hover:text-gold">Tell Us Your Plans</a>
-            <Link to="/plan-your-trip" className="eyebrow hover:text-gold">Plan Your Trip</Link>
+            <Link to="/" hash="home" className="eyebrow hover:text-gold">Home</Link>
+            <Link to="/" hash="tell-us-your-plans" className="eyebrow hover:text-gold">Tell Us Your Plans</Link>
+            <Link to="/" hash="plan-your-trip" className="eyebrow hover:text-gold">Plan Your Trip</Link>
             {futureNav.map((n) => <span key={n} className="eyebrow text-muted-foreground/60">{n}</span>)}
           </nav>
           <p className="eyebrow text-muted-foreground md:text-right">Contact details · coming soon</p>
