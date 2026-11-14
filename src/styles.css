@@ -38,6 +38,7 @@
   --color-burgundy: var(--burgundy);
   --color-crimson: var(--crimson);
   --color-romantic-crimson: var(--romantic-crimson);
+  --color-itinerary-forest: var(--itinerary-forest);
   --color-gold: var(--gold);
   --color-stone: var(--stone);
   --color-sage: var(--sage);
@@ -58,6 +59,7 @@
   --burgundy: #A33A43;
   --crimson: #A33A43;
   --romantic-crimson: #922F3C;
+  --itinerary-forest: #355C3A;
   --gold: #A45A3F; /* cinnamon */
   --stone: #EFE9E0;
 
