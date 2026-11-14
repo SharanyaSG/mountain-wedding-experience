@@ -130,7 +130,7 @@ function Hero() {
             Loon Mountain,<br className="hidden max-[380px]:inline" /> New Hampshire
           </p>
         </div>
-        <p className="hero-rise relative z-10 mt-[18px] font-hand text-[3.25rem] text-[#922F3C] md:mt-6 md:text-[4rem]" style={{ animationDelay: "700ms" }}>
+        <p className="hero-rise relative z-10 mt-[16px] font-hand text-[3.25rem]/[52px] text-[#922F3C] md:mt-6 md:text-[4rem]/[64px]" style={{ animationDelay: "700ms" }}>
           Meet us in the mountains.
         </p>
       </div>
