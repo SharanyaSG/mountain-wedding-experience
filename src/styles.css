@@ -37,6 +37,7 @@
   --color-rust: var(--rust);
   --color-burgundy: var(--burgundy);
   --color-crimson: var(--crimson);
+  --color-romantic-crimson: var(--romantic-crimson);
   --color-gold: var(--gold);
   --color-stone: var(--stone);
   --color-sage: var(--sage);
@@ -56,6 +57,7 @@
   --rust: #C65A2E; /* burnt orange */
   --burgundy: #A33A43;
   --crimson: #A33A43;
+  --romantic-crimson: #922F3C;
   --gold: #A45A3F; /* cinnamon */
   --stone: #EFE9E0;
 
