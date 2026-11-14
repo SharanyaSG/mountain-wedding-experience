@@ -30,14 +30,14 @@ function Introduction() {
   return (
     <section id="plan-your-trip" className="mx-auto max-w-[1400px] scroll-mt-20 px-5 pb-24 pt-36 md:scroll-mt-24 md:px-10 md:pb-36 md:pt-48">
       <Reveal className="mx-auto max-w-4xl text-center">
-        <p className="eyebrow text-cinnamon">Lincoln, New Hampshire · October 7–9, 2027</p>
+        <p className="eyebrow text-cinnamon lg:font-bold">Lincoln, New Hampshire · October 7–9, 2027</p>
         <h2 className="display mt-8 text-4xl uppercase leading-tight sm:text-5xl md:text-7xl">A Little Mountain Magic</h2>
         <p className="mt-5 font-script text-5xl leading-tight text-romantic-crimson md:text-6xl">Your New Hampshire adventure awaits.</p>
       </Reveal>
       <Reveal delay={120} className="mx-auto mt-12 max-w-3xl space-y-6 text-center text-[15px] leading-8 text-muted-foreground md:text-base">
         <p>There’s something magical about New Hampshire in October. The mountains turn brilliant shades of red, orange, and gold, the air gets a little crisper, and every winding road seems to lead to another breathtaking view.</p>
         <p>We’re bringing our favorite people together in one of our favorite places, and we hope you’ll make an adventure of it!</p>
-        <p>Whether you’re joining us from down the road, across the country, or halfway around the world, we’ve put together everything you need to plan your trip and make the most of your time in the White Mountains.</p>
+        <p>Whether you’re joining us from down the road, across the country, or halfway around the world, <span className="lg:font-bold lg:text-itinerary-forest">we’ve put together everything you need to plan your trip and make the most of your time in the White Mountains.</span></p>
       </Reveal>
       <Reveal delay={220} className="mt-14 md:mt-20">
         <PhotoPlaceholder label="White Mountains in peak autumn foliage" className="aspect-[4/3] w-full sm:aspect-[16/8] md:aspect-[16/7]" />
