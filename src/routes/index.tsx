@@ -35,7 +35,6 @@ function Index() {
       <main>
         <Hero />
         <SaveTheDate />
-        <Plans onPlans={() => setNotice(true)} />
         <Weekend />
         <Stay />
         <Stories />
@@ -186,32 +185,6 @@ function SaveTheDate() {
             <p className="eyebrow text-muted-foreground">Loon Mountain, New Hampshire</p>
           </Reveal>
         </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------- PLANS ---------------- */
-function Plans({ onPlans }: { onPlans: () => void }) {
-  return (
-    <section id="plans" className="scroll-mt-16 border-y border-border bg-muted text-foreground">
-      <div className="mx-auto max-w-[1100px] px-5 py-24 text-center md:py-36">
-        <Reveal><p className="eyebrow text-cinnamon">02 · Early word</p></Reveal>
-        <Reveal delay={100}>
-          <h2 className="display mx-auto mt-8 max-w-4xl text-5xl md:text-7xl lg:text-8xl">
-            Will we see you <em>in the mountains?</em>
-          </h2>
-        </Reveal>
-        <Reveal delay={200}>
-          <p className="mx-auto mt-8 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
-            We're gathering an early sense of who's planning to join us. Formal invitations and final RSVP details will follow.
-          </p>
-        </Reveal>
-        <Reveal delay={300}>
-          <button onClick={onPlans} className="btn-label mt-12 bg-forest px-10 py-5 text-ivory transition-colors hover:bg-rust">
-            Tell Us Your Plans
-          </button>
-        </Reveal>
       </div>
     </section>
   );
