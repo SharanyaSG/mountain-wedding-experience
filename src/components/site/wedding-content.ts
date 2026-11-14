@@ -38,8 +38,10 @@ export const travelGuide = {
   gondola: {
     date: "October 8",
     audience: "our wedding guests",
+    offer: "On October 8, we’re treating our wedding guests to complimentary gondola rides at Loon Mountain!",
     accessDetails: "Exact gondola access details and operating hours will be shared closer to the wedding.",
   },
+  independentArrangements: "Flights, accommodations, transportation, and any additional activities or excursions can be arranged independently.",
 } as const;
 
 export type Story = {

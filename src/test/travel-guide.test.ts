@@ -41,7 +41,12 @@ describe("Plan Your Trip travel facts", () => {
   it("limits the complimentary gift to wedding guests on October 8", () => {
     expect(travelGuide.gondola.date).toBe("October 8");
     expect(travelGuide.gondola.audience).toBe("our wedding guests");
+    expect(travelGuide.gondola.offer).toBe("On October 8, we’re treating our wedding guests to complimentary gondola rides at Loon Mountain!");
     expect(travelGuide.gondola.accessDetails).toBe("Exact gondola access details and operating hours will be shared closer to the wedding.");
     expect(JSON.stringify(travelGuide.gondola)).not.toMatch(/24\/?7|24-hour|unlimited/i);
+  });
+
+  it("states that guests arrange their own travel and additional activities", () => {
+    expect(travelGuide.independentArrangements).toBe("Flights, accommodations, transportation, and any additional activities or excursions can be arranged independently.");
   });
 });

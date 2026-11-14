@@ -228,7 +228,7 @@ function Adventure() {
 
 function GondolaGift() {
   return (
-    <section id="gondola" className="border-y border-border bg-background">
+    <section id="gondola" className="border-y border-border bg-card">
       <div className="mx-auto grid max-w-[1400px] items-center gap-12 px-5 py-24 md:grid-cols-12 md:px-10 md:py-36">
         <Reveal className="md:col-span-7">
           <PhotoPlaceholder label="Loon Mountain gondolas in autumn" className="aspect-[4/3] w-full md:aspect-[16/11]" />
@@ -236,7 +236,7 @@ function GondolaGift() {
         <Reveal delay={120} className="md:col-span-5">
           <p className="font-script text-5xl leading-tight text-romantic-crimson">A little something from us</p>
           <h2 className="display mt-6 text-4xl uppercase leading-tight md:text-5xl">The Mountain Views Are on Us!</h2>
-          <p className="mt-8 text-[15px] leading-8 text-muted-foreground">On {travelGuide.gondola.date}, we’re treating our wedding guests to complimentary gondola rides at Loon Mountain!</p>
+          <p className="mt-8 text-[15px] leading-8 text-muted-foreground">{travelGuide.gondola.offer}</p>
           <p className="mt-5 text-[15px] leading-8 text-muted-foreground">Enjoy the journey to the summit, take in the spectacular autumn views, and celebrate with us above the mountains.</p>
           <p className="mt-7 border-l border-rust pl-5 font-serif text-sm italic leading-7 text-foreground">{travelGuide.gondola.accessDetails}</p>
         </Reveal>
@@ -255,7 +255,7 @@ function Planning() {
       <Reveal delay={120} className="mx-auto mt-12 max-w-3xl space-y-6 text-[15px] leading-8 text-muted-foreground md:text-base">
         <p>Planning to arrive early or stay a little longer?</p>
         <p>We love that you’re making a trip out of our wedding! The White Mountains have so much to offer, and we encourage you to explore at your own pace.</p>
-        <p>Flights, accommodations, transportation, and any additional activities or excursions can be arranged independently.</p>
+        <p>{travelGuide.independentArrangements}</p>
         <p>Since October is an especially popular time to visit, we recommend making reservations well in advance.</p>
       </Reveal>
       <Reveal delay={200} className="mx-auto mt-12 max-w-3xl border-t border-border pt-10 text-sm leading-7 text-muted-foreground">
