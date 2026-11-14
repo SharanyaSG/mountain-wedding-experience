@@ -120,7 +120,7 @@ function Nav({ onPlans }: { onPlans: () => void }) {
 function Hero() {
   return (
     <section id="top" className="relative overflow-hidden bg-card pt-24 md:pt-28">
-      <div className="relative z-10 mx-auto max-w-[1100px] px-4 text-center md:px-10">
+      <div className="relative z-10 mx-auto max-w-[1100px] px-3 text-center md:px-10">
         <h1 className="hero-rise font-script text-[17vw] leading-[1.05] text-foreground sm:text-8xl md:text-[8.5rem]" style={{ animationDelay: "300ms" }}>
           Sharanya &amp; Sahil
         </h1>
