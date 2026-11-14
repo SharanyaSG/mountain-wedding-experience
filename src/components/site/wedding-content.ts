@@ -156,12 +156,10 @@ export const agenda: { n: string; dow: string; date: string; events: AgendaEvent
         title: "Rehearsal Dinner",
         place: "RiverWalk Resort · Tuscan Terrace",
         note: "By Invitation Only",
-        detail: "An intimate gathering for our immediate families and those involved in the wedding ceremony.",
       },
       {
         title: "Welcome Party",
         place: "Seven Birches Winery · RiverWalk Resort",
-        open: "All Wedding Guests Welcome!",
       },
     ],
   },
