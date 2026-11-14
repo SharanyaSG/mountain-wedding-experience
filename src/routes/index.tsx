@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
 import drive from "@/assets/explore-drive.jpg";
 import outdoor from "@/assets/explore-outdoor.jpg";
 import eat from "@/assets/explore-eat.jpg";
@@ -28,10 +27,8 @@ export const Route = createFileRoute("/")({
 const futureNav = ["Our Stories", "Gallery", "Wedding Weekend", "Travel & Stay", "FAQ"];
 
 function Index() {
-  const [notice, setNotice] = useState(false);
   return (
     <>
-      <Nav onPlans={() => setNotice(true)} />
       <main>
         <Hero />
         <SaveTheDate />
@@ -43,75 +40,7 @@ function Index() {
         <Faq />
       </main>
       <Footer />
-      {notice && <Notice onClose={() => setNotice(false)} />}
     </>
-  );
-}
-
-/* ---------------- NAV ---------------- */
-function Nav({ onPlans }: { onPlans: () => void }) {
-  const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
-  useEffect(() => {
-    const f = () => setScrolled(window.scrollY > window.innerHeight * 0.7);
-    f();
-    window.addEventListener("scroll", f, { passive: true });
-    return () => window.removeEventListener("scroll", f);
-  }, []);
-  const light = !scrolled && !open;
-  return (
-    <header
-      className={`fixed inset-x-0 top-0 z-40 transition-colors duration-500 ${
-        light ? "text-foreground" : "border-b border-border bg-background/90 text-foreground backdrop-blur-md"
-      }`}
-    >
-      <div className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-5 md:h-20 md:px-10">
-        <a href="#top" className="font-serif text-lg tracking-[0.18em]">
-          G <span className="text-gold">×</span> M
-        </a>
-        <nav aria-label="Primary" className="hidden items-center gap-5 lg:flex xl:gap-8">
-          <a href="#top" className="font-display text-[13px] font-medium uppercase tracking-[0.14em] xl:text-[14px] xl:tracking-[0.18em] border-b-2 border-rust pb-1 text-foreground">Home</a>
-          {futureNav.map((n) => (
-            <span key={n} className="font-display text-[13px] font-medium uppercase tracking-[0.14em] xl:text-[14px] xl:tracking-[0.18em] cursor-default border-b-2 border-transparent pb-1 text-foreground transition-colors hover:text-rust" title="Coming soon" aria-disabled="true">
-              {n}
-            </span>
-          ))}
-          <button
-            onClick={onPlans}
-            className={`btn-label ml-1 border px-4 py-2.5 !text-[15px] xl:ml-2 xl:px-5 xl:!text-[16px] transition-colors ${
-              light ? "border-cinnamon bg-card text-foreground hover:border-rust hover:bg-rust hover:text-card" : "border-forest bg-forest text-ivory hover:border-rust hover:bg-rust"
-            }`}
-          >
-            Tell Us Your Plans
-          </button>
-        </nav>
-        <button
-          className="eyebrow lg:hidden"
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-          onClick={() => setOpen((o) => !o)}
-        >
-          {open ? "Close" : "Menu"}
-        </button>
-      </div>
-      {open && (
-        <div id="mobile-menu" className="h-[calc(100dvh-4rem)] bg-background px-6 pb-10 pt-8 lg:hidden">
-          <a href="#top" onClick={() => setOpen(false)} className="display block py-3 text-5xl">Home</a>
-          {futureNav.map((n) => (
-            <div key={n} className="flex items-baseline justify-between border-t border-border py-3">
-              <span className="display text-3xl text-muted-foreground">{n}</span>
-              <span className="eyebrow text-muted-foreground">Soon</span>
-            </div>
-          ))}
-          <button
-            onClick={() => { setOpen(false); onPlans(); }}
-            className="btn-label mt-8 w-full bg-forest py-5 text-ivory"
-          >
-            Tell Us Your Plans
-          </button>
-        </div>
-      )}
-    </header>
   );
 }
 
@@ -190,38 +119,10 @@ function SaveTheDate() {
   );
 }
 
-function Notice({ onClose }: { onClose: () => void }) {
-  useEffect(() => {
-    const k = (e: KeyboardEvent) => e.key === "Escape" && onClose();
-    window.addEventListener("keydown", k);
-    return () => window.removeEventListener("keydown", k);
-  }, [onClose]);
-  return (
-    <div
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="notice-title"
-      className="fixed inset-0 z-50 flex items-end justify-center bg-charcoal/60 p-4 backdrop-blur-sm animate-in fade-in sm:items-center"
-      onClick={onClose}
-    >
-      <div className="w-full max-w-md bg-background p-8 text-center md:p-12" onClick={(e) => e.stopPropagation()}>
-        <p className="eyebrow text-rust">Almost there</p>
-        <h3 id="notice-title" className="display mt-4 text-4xl">Hold that thought.</h3>
-        <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-          Personalized responses will open here soon. Each invitation is personal, and we'll share a link when it's ready.
-        </p>
-        <button autoFocus onClick={onClose} className="btn-label mt-8 w-full bg-forest py-4 text-ivory hover:bg-rust">
-          Sounds good
-        </button>
-      </div>
-    </div>
-  );
-}
-
 /* ---------------- WEEKEND ---------------- */
 function Weekend() {
   return (
-    <section className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-40">
+    <section id="itinerary" className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-40">
       <div className="grid gap-10 md:grid-cols-12">
         <div className="md:col-span-4">
           <Reveal><Kicker n="03" label="At a glance" /></Reveal>
@@ -372,7 +273,7 @@ function Stay() {
 /* ---------------- STORIES ---------------- */
 function Stories() {
   return (
-    <section className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-40">
+    <section id="stories" className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-40">
       <Reveal><Kicker n="05" label="Our stories" /></Reveal>
       <Reveal delay={100}>
         <h2 className="display mt-8 max-w-3xl text-5xl md:text-7xl">The stories that <em className="text-crimson">got us here</em></h2>
@@ -405,7 +306,7 @@ const tiles = [
 ];
 function Gallery() {
   return (
-    <section className="bg-card">
+    <section id="gallery" className="bg-card">
       <div className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-36">
         <div className="grid gap-6 md:grid-cols-2 md:items-end">
           <div>
@@ -473,7 +374,7 @@ const faqs = [
 ];
 function Faq() {
   return (
-    <section className="border-t border-border">
+    <section id="faqs" className="border-t border-border">
       <div className="mx-auto grid max-w-[1400px] gap-12 px-5 py-24 md:grid-cols-12 md:px-10 md:py-36">
         <div className="md:col-span-4">
           <Reveal><Kicker n="08" label="FAQ" /></Reveal>
