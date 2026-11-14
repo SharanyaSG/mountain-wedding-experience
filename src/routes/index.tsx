@@ -139,7 +139,7 @@ function Weekend() {
                     <li key={e.title} className={j > 0 ? "mt-7 border-t border-border pt-7" : ""}>
                       <h3 className="display text-3xl md:text-4xl">{e.title}</h3>
                       <p className="mt-2 font-serif text-xl italic text-forest">{e.place}</p>
-                      {e.note && <p className="mt-2 font-serif text-sm font-normal italic text-romantic-crimson">{e.note}</p>}
+                      {e.note && <p className="mt-2 font-serif text-sm font-bold italic text-romantic-crimson">{e.note}</p>}
                       {e.detail && <p className="mt-2 max-w-md text-sm leading-relaxed text-muted-foreground">{e.detail}</p>}
                       {e.open && <p className="mt-2 font-serif text-sm italic text-rust">{e.open}</p>}
                     </li>
