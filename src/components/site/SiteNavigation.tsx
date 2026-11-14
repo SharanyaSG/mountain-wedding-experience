@@ -2,7 +2,7 @@ import { Link, useLocation } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 
-const items = [
+export const navigationItems = [
   { label: "Home", hash: "home" },
   { label: "Wedding Itinerary", hash: "wedding-itinerary" },
   { label: "Plan Your Trip", hash: "plan-your-trip" },
@@ -11,6 +11,8 @@ const items = [
   { label: "FAQs", hash: "faqs" },
   { label: "A Message From Us", hash: "message-from-us" },
 ] as const;
+
+export const plansHash = "tell-us-your-plans";
 
 export function SiteNavigation() {
   const [scrolled, setScrolled] = useState(false);
@@ -23,6 +25,7 @@ export function SiteNavigation() {
     return () => window.removeEventListener("scroll", update);
   }, []);
   useEffect(() => { setOpen(false); }, [location.href]);
+  const items = navigationItems;
   const active = (hash: string) => location.pathname === "/" && (location.hash || "home") === hash;
   return (
     <header className={`fixed inset-x-0 top-0 z-40 text-foreground transition-colors duration-500 ${scrolled || open || location.pathname !== "/" ? "border-b border-border bg-background/90 backdrop-blur-md" : ""}`}>
@@ -34,7 +37,7 @@ export function SiteNavigation() {
               {item.label === "FAQs" ? "FAQs" : item.label.toUpperCase()}
             </Link>
           ))}
-          <Link to="/" hash="tell-us-your-plans" onClick={() => setOpen(false)} aria-current={active("tell-us-your-plans") ? "location" : undefined} className="btn-label h-auto whitespace-nowrap rounded-none border border-forest bg-forest px-3 py-2.5 !text-[11px] text-card shadow-none transition-colors hover:border-rust hover:bg-rust xl:px-4 xl:!text-[12px] min-[1440px]:px-5 min-[1440px]:py-3 min-[1440px]:!text-[16px]">Tell Us Your Plans</Link>
+          <Link to="/" hash={plansHash} onClick={() => setOpen(false)} aria-current={active("tell-us-your-plans") ? "location" : undefined} className="btn-label h-auto whitespace-nowrap rounded-none border border-forest bg-forest px-3 py-2.5 !text-[11px] text-card shadow-none transition-colors hover:border-rust hover:bg-rust xl:px-4 xl:!text-[12px] min-[1440px]:px-5 min-[1440px]:py-3 min-[1440px]:!text-[16px]">Tell Us Your Plans</Link>
         </nav>
         <Button variant="ghost" onClick={() => setOpen((value) => !value)} aria-expanded={open} aria-controls="mobile-menu" className="eyebrow h-auto rounded-none p-2 text-foreground hover:bg-transparent hover:text-rust lg:hidden">{open ? "Close" : "Menu"}</Button>
       </div>
@@ -45,7 +48,7 @@ export function SiteNavigation() {
               {item.label === "FAQs" ? "FAQs" : item.label.toUpperCase()}
             </Link>
           ))}
-          <Link to="/" hash="tell-us-your-plans" onClick={() => setOpen(false)} aria-current={active("tell-us-your-plans") ? "location" : undefined} className="btn-label mt-6 block h-auto w-full rounded-none bg-forest py-5 text-center text-card shadow-none transition-colors hover:bg-rust">Tell Us Your Plans</Link>
+          <Link to="/" hash={plansHash} onClick={() => setOpen(false)} aria-current={active("tell-us-your-plans") ? "location" : undefined} className="btn-label mt-6 block h-auto w-full rounded-none bg-forest py-5 text-center text-card shadow-none transition-colors hover:bg-rust">Tell Us Your Plans</Link>
         </nav>
       )}
     </header>
