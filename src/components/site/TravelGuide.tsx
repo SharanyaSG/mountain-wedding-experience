@@ -158,14 +158,14 @@ function Adventure() {
   const guide = travelGuide.newHampshireGuide;
   return (
     <section id="adventure" className="section-divider">
-      <div className="section-shell text-center">
+      <div className="section-shell text-left">
         <Reveal>
-          <SectionHeading label="Exploring Lincoln, New Hampshire" title="Make an Adventure of It" accent="There’s more to explore." align="center" crimson />
+          <SectionHeading label="Exploring Lincoln, New Hampshire" title="Make an Adventure of It" accent="There’s more to explore." crimson />
         </Reveal>
-        <Reveal delay={100} className="section-content mx-auto max-w-[680px] font-serif text-[15px] leading-8 text-foreground md:text-base md:leading-9">
+        <Reveal delay={100} className="section-content font-serif text-[15px] leading-8 text-foreground md:text-base md:leading-9">
           <p>{guide.intro}</p>
         </Reveal>
-        <Reveal delay={180} className="section-content flex justify-center">
+        <Reveal delay={180} className="section-content flex justify-start">
           {guide.url ? (
             <a
               href={guide.url}
@@ -187,6 +187,7 @@ function Adventure() {
             </button>
           )}
         </Reveal>
+        <FaqCallout className="section-content w-full min-[1200px]:max-w-[95%]" category="The Wedding Experience" hash="experience" additionalCategory={{ label: "Explore the Mountains", hash: "explore" }} />
       </div>
     </section>
   );
