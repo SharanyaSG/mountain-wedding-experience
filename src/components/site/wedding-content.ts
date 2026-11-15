@@ -47,7 +47,7 @@ export const travelGuide = {
   ],
   newHampshireGuide: {
     intro: "We hope you’ll make an adventure of your time in the White Mountains! From scenic drives and mountain trails to family-run eateries and some of our favorite local spots, there’s so much to discover. We’ve put together a little New Hampshire guide to help you explore and make the most of your visit.",
-    label: "Explore Our New Hampshire Guide",
+    label: "Explore Our Lincoln, New Hampshire Guide",
     /** Set to the Canva PDF URL once it exists; the button then opens it in a new tab. */
     url: null as string | null,
   },
