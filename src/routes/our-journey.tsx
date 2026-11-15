@@ -5,4 +5,4 @@ export const Route = createFileRoute("/our-journey")({
  head: () => ({ meta: [{ title: "Our Journey · Gowda × Malhotra" }, { name: "description", content: "Sharanya and Sahil’s stories and personal photograph collections." }, { property: "og:title", content: "Our Journey · Gowda × Malhotra" }, { property: "og:description", content: "Sharanya and Sahil’s stories and personal photograph collections." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] }),
  component: Page,
 });
-function Page() { return <main className="content-page"><Stories /><PicturesOfUs /></main>; }
+function Page() { return <main className="content-page"><PicturesOfUs /><Stories /></main>; }
