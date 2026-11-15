@@ -1,6 +1,7 @@
 import bowPhoto from "@/assets/the-bow.png.asset.json";
 import freeMattressPhoto from "@/assets/free-mattress.webp.asset.json";
 import halloweenPhoto from "@/assets/halloween-2023.png.asset.json";
+import puppyProposalPhoto from "@/assets/the-puppy-proposal.jpg.asset.json";
 import newYorkPhoto from "@/assets/new-york.webp.asset.json";
 import shravyaPhoto from "@/assets/shravya.webp.asset.json";
 
@@ -185,7 +186,12 @@ Sahil then ran downstairs, grabbed a ring pop, flowers, and a heart-shaped box o
 
 And to no one’s surprise Sharanya said, “WOOF!”
 
-…which led to the next step - asking for blessings the slightly more formal way.`, photo: null },
+…which led to the next step - asking for blessings the slightly more formal way.`, photo: {
+    url: puppyProposalPhoto.url,
+    alt: "A hand wearing the oversized red ring pop used for the puppy proposal",
+    width: 1080,
+    height: 1920,
+  } },
   { id: "the-one-where-he-behaved", n: "08", title: "The One Where He Behaved!", subtitle: "Blessings from The Gowdas & The Malhotras", body: `Right after the puppy proposal, Sahil and Sharanya called her parents.
 
 This time, Sahil behaved.

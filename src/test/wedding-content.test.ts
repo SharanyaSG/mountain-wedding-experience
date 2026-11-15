@@ -50,8 +50,11 @@ describe("wedding content", () => {
     const freeMattress = stories.find((s) => s.id === "the-free-mattress");
     expect(freeMattress?.photo).toMatchObject({ width: 1440, height: 1920 });
     expect(freeMattress?.photo?.url).toMatch(/^\/__l5e\/assets-v1\/[\w-]+\/free-mattress\.webp$/);
+    const puppy = stories.find((s) => s.id === "the-puppy-proposal");
+    expect(puppy?.photo).toMatchObject({ width: 1080, height: 1920 });
+    expect(puppy?.photo?.url).toMatch(/^\/__l5e\/assets-v1\/[\w-]+\/the-puppy-proposal\.jpg$/);
     expect(stories.filter((s) => s.photo === null).map((s) => s.n)).toEqual([
-      "06", "07", "08", "09", "10", "11",
+      "06", "08", "09", "10", "11",
     ]);
   });
 
