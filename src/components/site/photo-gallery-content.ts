@@ -20,6 +20,16 @@ import photo007 from "@/assets/before-forever-007.jpg.asset.json";
 import photo008 from "@/assets/before-forever-008.jpg.asset.json";
 import photo009 from "@/assets/before-forever-009.jpg.asset.json";
 import photo010 from "@/assets/before-forever-010.jpg.asset.json";
+import photo011 from "@/assets/before-forever-011.jpg.asset.json";
+import photo012 from "@/assets/before-forever-012.jpg.asset.json";
+import photo013 from "@/assets/before-forever-013.jpg.asset.json";
+import photo014 from "@/assets/before-forever-014.jpg.asset.json";
+import photo015 from "@/assets/before-forever-015.jpg.asset.json";
+import photo016 from "@/assets/before-forever-016.jpg.asset.json";
+import photo017 from "@/assets/before-forever-017.jpg.asset.json";
+import photo018 from "@/assets/before-forever-018.jpg.asset.json";
+import photo019 from "@/assets/before-forever-019.jpg.asset.json";
+import photo020 from "@/assets/before-forever-020.jpg.asset.json";
 
 export type GalleryPhoto = {
   id: string;
@@ -68,6 +78,16 @@ export const photoCollections: PhotoCollection[] = [
       { id: "before-forever-008", src: photo008.url, width: 1440, height: 1920, alt: "Sharanya and Sahil standing together under red lighting" },
       { id: "before-forever-009", src: photo009.url, width: 1440, height: 1920, alt: "Sharanya and Sahil smiling together in front of wall artwork" },
       { id: "before-forever-010", src: photo010.url, width: 1440, height: 1920, alt: "Sharanya and Sahil taking an outdoor selfie beside trees" },
+      { id: "before-forever-011", src: photo011.url, width: 1440, height: 1920, alt: "Sharanya and Sahil smiling together indoors beside a window" },
+      { id: "before-forever-012", src: photo012.url, width: 1440, height: 1920, alt: "Sharanya and Sahil embracing in front of a fireplace" },
+      { id: "before-forever-013", src: photo013.url, width: 1440, height: 1920, alt: "Sharanya and Sahil posing together in front of a red event backdrop" },
+      { id: "before-forever-014", src: photo014.url, width: 1920, height: 1440, alt: "Sharanya and Sahil taking a selfie with a friend indoors" },
+      { id: "before-forever-015", src: photo015.url, width: 1920, height: 1440, alt: "Sharanya and Sahil with a friend in graduation caps and gowns" },
+      { id: "before-forever-016", src: photo016.url, width: 1440, height: 1920, alt: "Sharanya and Sahil standing with friends indoors" },
+      { id: "before-forever-017", src: photo017.url, width: 1920, height: 1440, alt: "Sharanya and Sahil taking a group selfie with friends at a table" },
+      { id: "before-forever-018", src: photo018.url, width: 1920, height: 1440, alt: "Sharanya and Sahil standing together beside a railing at night" },
+      { id: "before-forever-019", src: photo019.url, width: 1284, height: 939, alt: "Sharanya and Sahil smiling in a group selfie with friends" },
+      { id: "before-forever-020", src: photo020.url, width: 1545, height: 1024, alt: "Sharanya and Sahil gathered with friends for a group photograph indoors" },
     ],
   },
   {
