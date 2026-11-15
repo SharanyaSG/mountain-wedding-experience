@@ -34,6 +34,15 @@ describe("wedding content", () => {
     );
   });
 
+  it("shows the supplied Halloween photograph and leaves every other card front a placeholder", () => {
+    const halloween = stories.find((s) => s.id === "halloween-2023");
+    expect(halloween?.photo).toMatchObject({ width: 1600, height: 1200 });
+    expect(halloween?.photo?.url).toMatch(/^\/__l5e\/assets-v1\/[\w-]+\/halloween-2023\.png$/);
+    expect(stories.filter((s) => s.photo === null).map((s) => s.n)).toEqual([
+      "02", "03", "04", "05", "06", "07", "08", "09", "10", "11",
+    ]);
+  });
+
   it("shows the supplied board game preview on the card back, word for word", () => {
     const s = stories.find((x) => x.id === "the-great-board-game-merger");
     expect(s?.preview).toBe(

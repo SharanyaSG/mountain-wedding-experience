@@ -1,3 +1,5 @@
+import halloweenPhoto from "@/assets/halloween-2023.png.asset.json";
+
 export const hotels = [
   {
     id: "riverwalk",
@@ -85,7 +87,12 @@ In response they said - “You know how little boys pull girls’ pigtails in ki
 
 Sharanya’s reply was immediate and certain - “Never, ever, ever will I  date him. Not even if he were the last man on earth, and not even if procreation depended on it!”
 
-Three years later, here they are …`, photo: null },
+Three years later, here they are …`, photo: {
+      url: halloweenPhoto.url,
+      alt: "Friends grouped in front of the Witches Woods haunted hayride sign on Halloween night",
+      width: 1600,
+      height: 1200,
+    } },
   { id: "the-bow", n: "02", title: "The Bow", subtitle: "Sharanya’s Favorite Sahil Story", body: `Early in spring 2024, after the Health Sector Management MBA 50th anniversary bash and a friend’s after party, Sahil was walking Sharanya home. They were both thoroughly, unapologetically drunk, with their walls down and the world feeling a little softer than usual. The streets still had leftover holiday decorations, and on one tree hung an old wreath with a beautiful bow.
 
 Sharanya pointed it out and said, very casually, “I like that bow.”
