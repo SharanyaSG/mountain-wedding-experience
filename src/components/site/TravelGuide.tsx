@@ -6,11 +6,14 @@ import { FaqCallout } from "./FaqCallout";
 
 const riverwalk = hotels[0];
 
-function SectionHeading({ title, accent, align = "left", crimson = false }: { title: string; accent: string; align?: "left" | "center"; crimson?: boolean }) {
+function SectionHeading({ title, accent, label, align = "left", crimson = false }: { title: string; accent: string; label?: string; align?: "left" | "center"; crimson?: boolean }) {
   return (
     <div className={align === "center" ? "text-center" : ""}>
+      {label && <p className="eyebrow font-bold text-left text-rust">{label}</p>}
+      <div className={label ? "mt-6" : ""}>
       <h2 className="display text-4xl uppercase leading-tight text-foreground sm:text-5xl md:text-6xl">{title}</h2>
       <p className={`mt-4 font-script text-4xl leading-tight md:text-5xl ${crimson ? "text-romantic-crimson" : "text-rust"}`}>{accent}</p>
+      </div>
     </div>
   );
 }
@@ -61,7 +64,7 @@ function Stay() {
     <section id="stay" className="section-divider scroll-mt-20">
       <div className="section-shell">
         <Reveal>
-          <SectionHeading title="Our Recommended Mountain Stay" accent="Stay close to the celebrations." crimson />
+          <SectionHeading label="Staying in Lincoln, New Hampshire" title="Our Recommended Mountain Stay" accent="Stay close to the celebrations." crimson />
         </Reveal>
         <div className="section-content grid gap-12 md:grid-cols-12 md:gap-14">
           <Reveal className="md:col-span-7">
@@ -100,7 +103,7 @@ function GettingHere() {
     <section id="getting-here" className="section-divider">
       <div className="section-shell">
         <Reveal>
-          <SectionHeading title="The Journey to the Mountains" accent="Getting here is part of the adventure." crimson />
+          <SectionHeading label="Flying to New England" title="The Journey to the Mountains" accent="Getting here is part of the adventure." crimson />
         </Reveal>
 
         <Reveal className="section-content">
@@ -130,10 +133,7 @@ function GettingHere() {
 
         <Reveal className="section-content border-t border-border pt-8">
           <div id="driving-to-lincoln" className="w-full">
-            <h3 className="eyebrow font-bold text-rust">Driving to Lincoln</h3>
-            <div className="mt-6">
-              <SectionHeading title="Making your way to the mountains?" accent="Lincoln makes for a beautiful mountain road trip!" crimson />
-            </div>
+            <SectionHeading label="Driving to Lincoln, New Hampshire" title="Making your way to the mountains?" accent="Lincoln makes for a beautiful mountain road trip!" crimson />
             <p className="mt-6 font-serif text-sm leading-7 text-foreground">{travelGuide.driving.introduction}</p>
 
             <p className="mt-8 font-serif text-base font-bold leading-8 text-itinerary-forest lg:text-lg">{travelGuide.driving.recommendation}</p>
@@ -160,7 +160,7 @@ function Adventure() {
     <section id="adventure" className="section-divider">
       <div className="section-shell text-center">
         <Reveal>
-          <SectionHeading title="Make an Adventure of It" accent="There’s more to explore." align="center" crimson />
+          <SectionHeading label="Exploring Lincoln, New Hampshire" title="Make an Adventure of It" accent="There’s more to explore." align="center" crimson />
         </Reveal>
         <Reveal delay={100} className="section-content mx-auto max-w-[680px] font-serif text-[15px] leading-8 text-foreground md:text-base md:leading-9">
           <p>{guide.intro}</p>

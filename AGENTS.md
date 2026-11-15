@@ -18,3 +18,4 @@
 - Keep itinerary layout changes in WeddingItinerary and itinerary-scoped CSS, with shared spacing tokens and the unchanged agenda source, so other pages and event facts remain unaffected.
 - FAQ deep links use existing category IDs as URL fragments; select and scroll the existing question panel without opening individual answers, so direct URLs and history share the same content.
 - Reuse FaqCallout for travel-guide FAQ boxes so hotel and airport callouts share the same typography, padding and category-link behavior.
+- Render travel section labels through SectionHeading using the existing driving eyebrow classes and gap, so labels stay consistent without changing heading alignment or typography.
