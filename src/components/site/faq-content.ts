@@ -52,9 +52,9 @@ export const faqCategories: FaqCategory[] = [
         "Your formal invitation will specify the celebrations you’re invited to attend.",
       ]},
       { q: "Will there be any Indian wedding ceremonies?", a: [
-        "We’re still exploring whether we’ll have any additional celebrations.",
-        "For now, the events listed in our [[Wedding Itinerary|wedding-itinerary]] are the celebrations we’re planning in New Hampshire.",
-        "If we decide to organize anything additional, we’ll share those details separately.",
+        "No, we won’t be having any traditional Indian wedding ceremonies.",
+        "While we both come from Indian backgrounds and deeply appreciate our cultures and traditions, we’ve chosen to celebrate in a way that feels most authentic to us as a couple. Our mountain wedding reflects our personalities, our shared love for the outdoors, and the kind of celebration we’ve always envisioned.",
+        "We’re excited to bring everyone together for a celebration that feels uniquely us!",
       ]},
       { q: "Why did you choose Loon Mountain?", a: [
         "Because we’re mountain people!",
