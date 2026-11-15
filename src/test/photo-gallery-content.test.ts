@@ -64,12 +64,32 @@ describe("Pictures of Us collections", () => {
     ]);
   });
 
-  it("leaves the other three galleries empty and the cover unfinalized", () => {
-    expect(photoCollections.slice(1).map(({ photos }) => photos)).toEqual([[], [], []]);
+  it("keeps Before Forever's cover unfinalized and leaves We Said Yes and Life Lately empty", () => {
+    expect(photoCollections.slice(2).map(({ photos }) => photos)).toEqual([[], []]);
     const collection = photoCollections[0];
     if (!collection) throw new Error("Before Forever is missing");
     expect(collection.coverPhotoId).toBeNull();
     expect(collectionCover(collection)?.id).toBe("before-forever-001");
+  });
+
+  it("adds the ten Proposals originals in upload order with their original proportions", () => {
+    const collection = photoCollections[1];
+    if (!collection) throw new Error("The Proposals is missing");
+    expect(collection.photos).toHaveLength(10);
+    expect(collection.photos.map(({ id, width, height }) => [id, width, height])).toEqual([
+      ["the-proposals-001", 1080, 1920],
+      ["the-proposals-002", 1280, 1920],
+      ["the-proposals-003", 1280, 1920],
+      ["the-proposals-004", 1280, 1920],
+      ["the-proposals-005", 1280, 1920],
+      ["the-proposals-006", 1280, 1920],
+      ["the-proposals-007", 1280, 1920],
+      ["the-proposals-008", 1280, 1920],
+      ["the-proposals-009", 1280, 1920],
+      ["the-proposals-010", 1280, 1920],
+    ]);
+    expect(new Set(collection.photos.map(({ src }) => src)).size).toBe(10);
+    expect(collection.coverPhotoId).toBeNull();
   });
 
   it("uses an independently selected cover without reordering the collection", () => {

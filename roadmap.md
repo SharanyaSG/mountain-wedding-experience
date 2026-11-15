@@ -29,4 +29,5 @@
 - [x] Append the second ten original Before Forever photographs after the first batch, preserving earlier photographs and the temporary cover; verify all twenty photographs and navigation.
 - [x] Append the third ten original Before Forever photographs after the existing twenty, retaining upload order, original files and the temporary cover; verify all thirty photographs and navigation.
 - [x] Append the single photograph received in the next message after the existing thirty; verify all thirty-one photos on desktop/mobile, original bytes, navigation and unchanged cover (only one of the stated ten files arrived).
-- [ ] Supply remaining Pictures of Us photographs, preferred ordering, and final covers (waiting for the couple's next uploads and selections, including the nine files missing from the latest stated batch; Before Forever currently contains thirty-one photographs).
+- [ ] Add and verify the first ten original Proposals photographs in upload order, checking duplicates and preserving other collections and the existing gallery design.
+- [ ] Supply remaining Pictures of Us photographs, preferred ordering, and final covers (waiting for the couple's next uploads and selections; Before Forever contains thirty-one photographs and The Proposals is still being uploaded).

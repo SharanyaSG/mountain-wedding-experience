@@ -41,6 +41,16 @@ import photo028 from "@/assets/before-forever-028.jpg.asset.json";
 import photo029 from "@/assets/before-forever-029.jpg.asset.json";
 import photo030 from "@/assets/before-forever-030.jpg.asset.json";
 import photo031 from "@/assets/before-forever-031.jpg.asset.json";
+import proposal001 from "@/assets/the-proposals-001.jpg.asset.json";
+import proposal002 from "@/assets/the-proposals-002.jpg.asset.json";
+import proposal003 from "@/assets/the-proposals-003.jpg.asset.json";
+import proposal004 from "@/assets/the-proposals-004.jpg.asset.json";
+import proposal005 from "@/assets/the-proposals-005.jpg.asset.json";
+import proposal006 from "@/assets/the-proposals-006.jpg.asset.json";
+import proposal007 from "@/assets/the-proposals-007.jpg.asset.json";
+import proposal008 from "@/assets/the-proposals-008.jpg.asset.json";
+import proposal009 from "@/assets/the-proposals-009.jpg.asset.json";
+import proposal010 from "@/assets/the-proposals-010.jpg.asset.json";
 
 export type GalleryPhoto = {
   id: string;
@@ -118,7 +128,19 @@ export const photoCollections: PhotoCollection[] = [
     title: "The Proposals",
     description: "The two times we proposed to each other.",
     coverPhotoId: null,
-    photos: [],
+    // Append subsequent batches in upload order; no final cover has been selected.
+    photos: [
+      { id: "the-proposals-001", src: proposal001.url, width: 1080, height: 1920, alt: "Sharanya and Sahil showing their rings together" },
+      { id: "the-proposals-002", src: proposal002.url, width: 1280, height: 1920, alt: "Sahil kneeling to propose to Sharanya beside the snowy waterfront" },
+      { id: "the-proposals-003", src: proposal003.url, width: 1280, height: 1920, alt: "Black-and-white photograph of Sahil kissing Sharanya on the forehead" },
+      { id: "the-proposals-004", src: proposal004.url, width: 1280, height: 1920, alt: "Sharanya touching Sahil's cheek as they smile together" },
+      { id: "the-proposals-005", src: proposal005.url, width: 1280, height: 1920, alt: "Sharanya kneeling to propose to Sahil beside the snowy waterfront" },
+      { id: "the-proposals-006", src: proposal006.url, width: 1280, height: 1920, alt: "Black-and-white photograph of Sahil embracing Sharanya as she laughs" },
+      { id: "the-proposals-007", src: proposal007.url, width: 1280, height: 1920, alt: "Sharanya smiling with a bouquet as Sahil kneels in front of her" },
+      { id: "the-proposals-008", src: proposal008.url, width: 1280, height: 1920, alt: "Close-up of Sharanya's ring as Sahil holds her hand" },
+      { id: "the-proposals-009", src: proposal009.url, width: 1280, height: 1920, alt: "Sharanya and Sahil standing together in front of a yellow Ferris wheel" },
+      { id: "the-proposals-010", src: proposal010.url, width: 1280, height: 1920, alt: "Sharanya smiling and showing her ring while holding a bouquet" },
+    ],
   },
   {
     id: "we-said-yes",
