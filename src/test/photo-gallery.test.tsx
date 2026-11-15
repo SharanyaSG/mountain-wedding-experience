@@ -5,8 +5,12 @@ import { PhotoCategoryCard, PhotoGallery } from "@/components/site/PicturesOfUs"
 import { photoCollections, type PhotoCollection } from "@/components/site/photo-gallery-content";
 
 const pixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+const proposalBase = photoCollections[1];
+if (!proposalBase) throw new Error("The Proposals is missing");
+const beforeForever = photoCollections[0];
+if (!beforeForever) throw new Error("Before Forever is missing");
 const collection: PhotoCollection = {
-  ...photoCollections[1],
+  ...proposalBase,
   photos: [
     { id: "one", src: pixel, thumbnail: pixel, width: 800, height: 1000, alt: "Neutral portrait placeholder", caption: "First caption" },
     { id: "two", src: pixel, thumbnail: pixel, width: 1000, height: 800, alt: "Neutral landscape placeholder" },
@@ -69,7 +73,7 @@ describe("Pictures of Us interactions", () => {
   });
 
   it("offers an elegant empty state when no photographs have been supplied", () => {
-    render(<PhotoGallery {...{ ...renderGalleryProps(), collection: photoCollections[0] }} />);
+    render(<PhotoGallery {...{ ...renderGalleryProps(), collection: beforeForever }} />);
     expect(screen.getByRole("status")).toHaveTextContent("Photographs to come");
     expect(screen.getByRole("status")).toHaveTextContent("No photographs have been added to this collection yet.");
   });

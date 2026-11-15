@@ -16,8 +16,10 @@ describe("Pictures of Us collections", () => {
   });
 
   it("uses an independently selected cover without reordering the collection", () => {
+    const base = photoCollections[0];
+    if (!base) throw new Error("Before Forever is missing");
     const collection: PhotoCollection = {
-      ...photoCollections[0],
+      ...base,
       coverPhotoId: "second",
       photos: [
         { id: "first", src: "/first.webp", width: 800, height: 1000, alt: "First" },

@@ -363,8 +363,8 @@ export function PhotoGallery({
       ) ?? [],
     ).filter((element) => !element.hasAttribute("inert"));
     if (!focusable.length) return;
-    const first = focusable[0];
-    const last = focusable[focusable.length - 1];
+    const first = focusable[0]!;
+    const last = focusable[focusable.length - 1]!;
     if (event.shiftKey && document.activeElement === first) {
       event.preventDefault();
       last.focus();
@@ -546,7 +546,9 @@ const PhotoViewer = function PhotoViewer({
   const distanceBetweenPointers = () => {
     const points = Array.from(pointers.current.values());
     if (points.length < 2) return 0;
-    return Math.hypot(points[0].x - points[1].x, points[0].y - points[1].y);
+    const first = points[0]!;
+    const second = points[1]!;
+    return Math.hypot(first.x - second.x, first.y - second.y);
   };
 
   const onPointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
