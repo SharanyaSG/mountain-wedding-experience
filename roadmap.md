@@ -35,3 +35,4 @@
 - [x] Add and verify the first ten We Said Yes original photographs in upload order, checking duplicates and preserving all other galleries, covers and website design; all ten opened on desktop/tablet/phone, navigation verified and stored originals match uploaded bytes.
 - [x] Append and verify seven more original We Said Yes photos after the first ten, checking duplicates and preserving the temporary cover and other collections; all seventeen opened on desktop/tablet/phone, navigation works, and original bytes are unchanged with no exact duplicates.
 - [x] Add and verify the first ten Life Lately originals in upload order, preserving every other collection and cover; all ten opened on desktop/tablet/phone, navigation works, and stored files match original bytes with no exact duplicates.
+- [ ] Append and verify the second ten Life Lately originals, retaining the first ten, current temporary cover, upload order and all other collections.
