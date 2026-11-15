@@ -210,7 +210,11 @@
   transform-origin: center bottom;
 }
 @media (width >= 768px) and (width < 1200px) {
-  .announcement-photo { aspect-ratio: 1; }
+  .announcement-photo {
+    aspect-ratio: 1;
+    width: min(100%, 640px);
+    justify-self: center;
+  }
 }
 @media (width >= 1200px) {
   .announcement-photo { aspect-ratio: 1; }
