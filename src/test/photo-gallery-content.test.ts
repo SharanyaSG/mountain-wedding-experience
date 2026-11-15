@@ -12,7 +12,7 @@ describe("Pictures of Us collections", () => {
   });
 
   it("keeps the first ten Before Forever uploads in their supplied order and original dimensions", () => {
-    expect(photoCollections[0]?.photos.map(({ id, width, height }) => [id, width, height])).toEqual([
+    expect(photoCollections[0]?.photos.slice(0, 10).map(({ id, width, height }) => [id, width, height])).toEqual([
       ["before-forever-001", 1080, 1920],
       ["before-forever-002", 2000, 1500],
       ["before-forever-003", 1440, 1920],
@@ -23,6 +23,22 @@ describe("Pictures of Us collections", () => {
       ["before-forever-008", 1440, 1920],
       ["before-forever-009", 1440, 1920],
       ["before-forever-010", 1440, 1920],
+    ]);
+  });
+
+  it("appends the second ten uploads after the first batch with original dimensions", () => {
+    expect(photoCollections[0]?.photos).toHaveLength(20);
+    expect(photoCollections[0]?.photos.slice(10).map(({ id, width, height }) => [id, width, height])).toEqual([
+      ["before-forever-011", 1440, 1920],
+      ["before-forever-012", 1440, 1920],
+      ["before-forever-013", 1440, 1920],
+      ["before-forever-014", 1920, 1440],
+      ["before-forever-015", 1920, 1440],
+      ["before-forever-016", 1440, 1920],
+      ["before-forever-017", 1920, 1440],
+      ["before-forever-018", 1920, 1440],
+      ["before-forever-019", 1284, 939],
+      ["before-forever-020", 1545, 1024],
     ]);
   });
 
