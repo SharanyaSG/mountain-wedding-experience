@@ -20,3 +20,4 @@
 - Reuse FaqCallout for travel-guide FAQ boxes so hotel and airport callouts share the same typography, padding and category-link behavior.
 - Render travel section labels through SectionHeading using the existing driving eyebrow classes and gap, so labels stay consistent without changing heading alignment or typography.
 - Keep story-card wording in wedding-content: a story's optional preview field holds the couple's own card-back text, and the card back scrolls instead of clipping, so supplied previews appear verbatim without redesigning the cards.
+- Keep story-card actions in one shared, padded nowrap flex row with container-relative compact labels, so every card fits its actual width without overlap or changing the grid.
