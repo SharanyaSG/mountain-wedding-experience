@@ -34,7 +34,6 @@ export function TravelGuide() {
       <GettingHere />
       <Adventure />
       <GondolaGift />
-      <Planning />
     </div>
   );
 }

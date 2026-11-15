@@ -58,8 +58,4 @@ describe("Plan Your Trip travel facts", () => {
     expect(travelGuide.gondola.accessDetails).toBe("More details to follow!");
     expect(JSON.stringify(travelGuide.gondola)).not.toMatch(/24\/?7|24-hour|unlimited/i);
   });
-
-  it("states that guests arrange their own travel and additional activities", () => {
-    expect(travelGuide.independentArrangements).toBe("Flights, accommodations, transportation, and any additional activities or excursions can be arranged independently.");
-  });
 });
