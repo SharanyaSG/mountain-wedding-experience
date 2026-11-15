@@ -55,28 +55,3 @@ export function SiteNavigation() {
   );
 }
 
-export function PlansMessage() {
-  return (
-    <div className="mx-auto max-w-md text-center">
-      <p className="eyebrow text-rust">Almost there</p>
-      <h2 id="plans-message-title" className="display mt-4 text-4xl">Hold that thought.</h2>
-      <p className="mt-4 text-sm leading-relaxed text-muted-foreground">Personalized responses will open here soon. Each invitation is personal, and we'll share a link when it's ready.</p>
-    </div>
-  );
-}
-
-export function PlansNotice({ onClose }: { onClose: () => void }) {
-  useEffect(() => {
-    const k = (e: KeyboardEvent) => e.key === "Escape" && onClose();
-    window.addEventListener("keydown", k);
-    return () => window.removeEventListener("keydown", k);
-  }, [onClose]);
-  return (
-    <div role="dialog" aria-modal="true" aria-labelledby="plans-message-title" className="fixed inset-0 z-50 flex items-end justify-center bg-charcoal/60 p-4 backdrop-blur-sm animate-in fade-in sm:items-center" onClick={onClose}>
-      <div className="w-full max-w-md bg-background p-8 text-center md:p-12" onClick={(e) => e.stopPropagation()}>
-        <PlansMessage />
-        <Button autoFocus onClick={onClose} className="btn-label mt-8 h-auto w-full rounded-none bg-forest py-4 text-ivory shadow-none hover:bg-rust">Sounds good</Button>
-      </div>
-    </div>
-  );
-}

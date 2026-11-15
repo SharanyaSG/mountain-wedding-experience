@@ -7,7 +7,6 @@ import { PicturesOfUs } from "@/components/site/PicturesOfUs";
 import { TravelGuide } from "@/components/site/TravelGuide";
 import { FaqSection } from "@/components/site/FaqSection";
 import { MessageFromUs } from "@/components/site/MessageFromUs";
-import { PlansMessage } from "@/components/site/SiteNavigation";
 import { agenda, stories } from "@/components/site/wedding-content";
 
 export const Route = createFileRoute("/")({
@@ -38,7 +37,6 @@ function Index() {
         <Gallery />
         <FaqSection />
         <MessageFromUs />
-        <Plans />
       </main>
       <Footer />
     </>
@@ -187,19 +185,10 @@ function Gallery() {
   return <PicturesOfUs />;
 }
 
-/* ---------------- TELL US YOUR PLANS ---------------- */
-function Plans() {
-  return (
-    <section id="tell-us-your-plans" aria-labelledby="plans-message-title" className="scroll-mt-24 border-t border-border bg-card px-5 py-24 md:scroll-mt-28 md:px-10 md:py-36">
-      <PlansMessage />
-    </section>
-  );
-}
-
 /* ---------------- FOOTER ---------------- */
 function Footer() {
   return (
-    <footer className="border-t border-border bg-background text-foreground">
+    <footer id="tell-us-your-plans" className="border-t border-border bg-background text-foreground">
       <div className="mx-auto max-w-[1400px] px-5 pb-10 pt-24 md:px-10">
         <p className="display text-[11vw] leading-none md:text-[6.5rem]">
           Gowda <span className="text-gold">×</span> Malhotra
