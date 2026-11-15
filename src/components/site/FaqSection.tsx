@@ -88,7 +88,7 @@ export function FaqSection() {
             </ol>
           </nav>
 
-          <div id={category.id} tabIndex={-1} aria-label={category.label} className="scroll-mt-24 md:col-span-8 md:scroll-mt-28">
+          <div id={category.id} tabIndex={-1} aria-label={category.label} className="scroll-mt-24 outline-none md:col-span-8 md:scroll-mt-28">
             <h3 className="mb-4 font-display text-sm font-bold uppercase tracking-[0.18em] text-itinerary-forest md:hidden">{category.label}</h3>
             <div key={category.id} className="animate-in fade-in duration-500">
               {category.items.map((f) => (
