@@ -204,7 +204,7 @@ export function PhotoCategoryCard({
               height={cover.height}
               loading="lazy"
               decoding="async"
-              className={cn("h-full w-full object-cover", collection.id === "we-said-yes" && "object-top")}
+              className={cn("h-full w-full object-cover", collection.id === "we-said-yes" && "object-[50%_10%]")}
             />
           ) : (
             <div className="placeholder-frame h-full w-full">
