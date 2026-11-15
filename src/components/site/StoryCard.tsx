@@ -97,7 +97,7 @@ export function StoryCard({ story }: { story: Story }) {
               {story.title}
             </h3>
             <Divider className="mt-3" />
-            <p className="mt-4 flex-1 overflow-hidden font-serif text-[0.95rem] leading-relaxed text-charcoal min-[768px]:mt-3 min-[768px]:text-[0.8rem] min-[1200px]:text-[0.74rem]">
+            <p className="story-body mt-4 min-h-0 flex-1 overflow-y-auto overscroll-y-contain font-serif text-[0.95rem] leading-relaxed text-charcoal min-[768px]:mt-3 min-[768px]:text-[0.8rem] min-[1200px]:text-[0.74rem]">
               {story.preview ??
                 (story.body ? storyPreview(story.body) : "We’re putting the final words in order — the complete story is coming soon.")}
             </p>
