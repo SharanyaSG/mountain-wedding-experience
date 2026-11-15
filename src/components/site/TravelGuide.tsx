@@ -40,13 +40,13 @@ export function TravelGuide() {
 
 function Introduction() {
   return (
-    <section id="plan-your-trip" className="mx-auto max-w-[1400px] scroll-mt-20 px-5 pb-24 pt-36 md:scroll-mt-24 md:px-10 md:pb-36 md:pt-48">
+    <section id="plan-your-trip" className="section-shell section-divider scroll-mt-20 md:scroll-mt-24">
       <Reveal className="mx-auto max-w-4xl text-center">
         <p className="eyebrow text-cinnamon lg:font-bold">Lincoln, New Hampshire · October 7–9, 2027</p>
         <h2 className="display mt-8 text-4xl uppercase leading-tight sm:text-5xl md:text-7xl">A Little Mountain Magic</h2>
         <p className="mt-5 font-script text-5xl leading-tight text-romantic-crimson md:text-6xl">Your New Hampshire adventure awaits.</p>
       </Reveal>
-      <Reveal delay={120} className="mx-auto mt-12 max-w-3xl space-y-6 text-center text-[15px] leading-8 text-muted-foreground md:text-base">
+      <Reveal delay={120} className="section-content mx-auto max-w-3xl space-y-6 text-center text-[15px] leading-8 text-muted-foreground md:text-base">
         <p>There’s something magical about New Hampshire in October. The mountains turn brilliant shades of red, orange, and gold, the air gets a little crisper, and every winding road seems to lead to another breathtaking view.</p>
         <p>We’re bringing our favorite people together in one of our favorite places, and we hope you’ll make an adventure of it!</p>
         <p>Whether you’re joining us from down the road, across the country, or halfway around the world, <span className="lg:font-bold lg:text-itinerary-forest">we’ve put together everything you need to plan your trip and make the most of your time in the White Mountains.</span></p>
@@ -57,12 +57,12 @@ function Introduction() {
 
 function Stay() {
   return (
-    <section id="stay" className="scroll-mt-20 border-t border-border">
-      <div className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-36">
+    <section id="stay" className="section-divider scroll-mt-20">
+      <div className="section-shell">
         <Reveal>
           <SectionHeading title="Our Recommended Mountain Stay" accent="Stay close to the celebrations." crimson />
         </Reveal>
-        <div className="mt-14 grid gap-12 md:grid-cols-12 md:gap-14">
+        <div className="section-content grid gap-12 md:grid-cols-12 md:gap-14">
           <Reveal className="md:col-span-7">
             <img
               src={riverwalkPhoto.url}
@@ -96,13 +96,13 @@ function Stay() {
 
 function GettingHere() {
   return (
-    <section id="getting-here" className="border-t border-border">
-      <div className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-36">
+    <section id="getting-here" className="section-divider">
+      <div className="section-shell">
         <Reveal>
           <SectionHeading title="The Journey to the Mountains" accent="Getting here is part of the adventure." crimson />
         </Reveal>
 
-        <Reveal className="mt-16 border-t border-foreground/20 pt-10 md:mt-20 md:pt-14">
+        <Reveal className="section-content">
           <div className="grid gap-12 md:grid-cols-2 md:gap-0">
             <div className="md:pr-8 lg:pr-14">
               <TravelerHeading>International Travelers</TravelerHeading>
@@ -125,11 +125,11 @@ function GettingHere() {
           </div>
         </Reveal>
 
-        <Reveal className="mt-16 md:mt-24">
+        <Reveal className="section-content">
           <p className="mx-auto max-w-3xl text-center font-serif text-[17px] font-bold leading-8 text-itinerary-forest md:text-lg">{travelGuide.rentalRecommendation}</p>
         </Reveal>
 
-        <Reveal className="mt-16 border-t border-foreground/20 pt-10 md:pt-14">
+        <Reveal className="section-content border-t border-border pt-8">
           <div id="driving-to-lincoln" className="mx-auto w-full max-w-[980px]">
             <h3 className="eyebrow font-bold text-rust">Driving to Lincoln</h3>
             <div className="mt-6">
@@ -166,15 +166,15 @@ function GettingHere() {
 function Adventure() {
   const guide = travelGuide.newHampshireGuide;
   return (
-    <section id="adventure" className="border-t border-border">
-      <div className="mx-auto max-w-[1400px] px-5 py-24 text-center md:px-10 md:py-32">
+    <section id="adventure" className="section-divider">
+      <div className="section-shell text-center">
         <Reveal>
           <SectionHeading title="Make an Adventure of It" accent="There’s more to explore." align="center" crimson />
         </Reveal>
-        <Reveal delay={100} className="mx-auto mt-10 max-w-[680px] font-serif text-[15px] leading-8 text-foreground md:text-base md:leading-9">
+        <Reveal delay={100} className="section-content mx-auto max-w-[680px] font-serif text-[15px] leading-8 text-foreground md:text-base md:leading-9">
           <p>{guide.intro}</p>
         </Reveal>
-        <Reveal delay={180} className="mt-12 flex justify-center">
+        <Reveal delay={180} className="section-content flex justify-center">
           {guide.url ? (
             <a
               href={guide.url}
@@ -204,8 +204,8 @@ function Adventure() {
 function GondolaGift() {
   const [offerBefore, offerAfter] = travelGuide.gondola.offer.split(travelGuide.gondola.highlight);
   return (
-    <section id="gondola" className="border-y border-border bg-card">
-      <div className="mx-auto grid max-w-[1400px] items-center gap-12 px-5 py-24 md:grid-cols-12 md:px-10 md:py-36">
+    <section id="gondola" className="section-divider bg-card">
+      <div className="section-shell grid items-center gap-12 md:grid-cols-12">
         <Reveal className="md:col-span-5">
           <img
             src={gondolaPhoto.url}

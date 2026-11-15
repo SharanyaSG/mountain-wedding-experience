@@ -36,14 +36,14 @@ export function FaqSection() {
   const category = faqCategories.find((c) => c.id === active) ?? faqCategories[0]!;
 
   return (
-    <section id="faqs" className="scroll-mt-24 border-t border-border md:scroll-mt-28">
-      <div className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-36">
+    <section id="faqs" className="section-divider scroll-mt-24 md:scroll-mt-28">
+      <div className="section-shell">
         <Reveal>
           <h2 className="display text-5xl md:text-6xl">A few <em className="text-romantic-crimson">early answers</em></h2>
           <p className="mt-6 max-w-2xl font-serif text-[15px] leading-relaxed text-foreground md:text-base">{faqIntro}</p>
         </Reveal>
 
-        <div className="mt-14 grid gap-10 md:mt-20 md:grid-cols-12 md:gap-12">
+        <div className="section-content grid gap-10 md:grid-cols-12 md:gap-12">
           {/* Mobile selector */}
           <div className="md:hidden">
             <label htmlFor="faq-category" className="font-display text-[11px] font-bold uppercase tracking-[0.2em] text-rust">Choose a topic</label>
