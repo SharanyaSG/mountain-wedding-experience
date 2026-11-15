@@ -207,6 +207,11 @@
 .content-page { padding-top: 64px; }
 @media (width >= 768px) { .content-page { padding-top: 80px; } }
 
+/* Keep the itinerary's desktop columns independent of utility ordering. */
+@media (width >= 1200px) {
+  #wedding-itinerary ol { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
 /* Bottom-anchored CSS crop keeps the couple and foreground intact. */
 .announcement-photo { aspect-ratio: 4 / 5; }
 .announcement-photo img {
