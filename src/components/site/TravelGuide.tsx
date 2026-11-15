@@ -229,23 +229,3 @@ function GondolaGift() {
   );
 }
 
-function Planning() {
-  return (
-    <section className="mx-auto max-w-[1000px] px-5 py-24 text-center md:px-10 md:py-36">
-      <Reveal>
-        <p className="eyebrow text-cinnamon">A little planning goes a long way</p>
-        <h2 className="display mt-7 text-4xl uppercase leading-tight md:text-6xl">Make the Most of Your Mountain Getaway</h2>
-      </Reveal>
-      <Reveal delay={120} className="mx-auto mt-12 max-w-3xl space-y-6 text-[15px] leading-8 text-muted-foreground md:text-base">
-        <p>Planning to arrive early or stay a little longer?</p>
-        <p>We love that you’re making a trip out of our wedding! The White Mountains have so much to offer, and we encourage you to explore at your own pace.</p>
-        <p>{travelGuide.independentArrangements}</p>
-        <p>Since October is an especially popular time to visit, we recommend making reservations well in advance.</p>
-      </Reveal>
-      <Reveal delay={200} className="mx-auto mt-12 max-w-3xl border-t border-border pt-10 text-sm leading-7 text-muted-foreground">
-        <p>Many popular attractions, restaurants, and experiences can be particularly busy during peak foliage season.</p>
-        <p className="mt-4">Guests planning additional activities should check availability and make reservations ahead of time where possible.</p>
-      </Reveal>
-    </section>
-  );
-}
