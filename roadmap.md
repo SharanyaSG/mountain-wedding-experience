@@ -24,3 +24,5 @@
 - [x] All eight story texts added verbatim as supplied (13 Nov 2026) — card back scrolls, "Read Full Story" shows the complete text; verified desktop + mobile.
 - [ ] Supply the eight story photographs — card fronts still show "Photograph to come" (blocked: no photographs uploaded yet).
 - [ ] Replace hero photo when authentic attachment is supplied (blocked: sunset upload still not received).
+- [ ] Rebuild Pictures of Us as four curated square category cards with responsive editorial grids, full-screen touch/keyboard viewers, neutral placeholders, and no changes to Our Stories.
+- [ ] Supply and curate the four Pictures of Us photograph collections and cover images (blocked: no gallery photographs uploaded yet).
