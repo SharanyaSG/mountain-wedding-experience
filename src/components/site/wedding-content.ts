@@ -164,6 +164,70 @@ Her parents listened, asked thoughtful questions, and most importantly, gave the
 Soon after, Sharanya also wrote a heartfelt letter to Sahil’s mom, asking for her son’s hand in a way that was thoughtful, intentional, and full of love.
 
 And with that, between laughter, a ring pop, and two very different but equally meaningful conversations, both families became part of the beginning of this next chapter.`, photo: null },
+  {
+    id: "the-proposal-that-became-two",
+    n: "09",
+    title: "The Proposal That Became Two",
+    subtitle: "They both knew they’d found their forever. Neither knew the other was planning to propose.",
+    preview:
+      "Sahil had planned an elaborate scavenger hunt through Boston, revisiting the places that had shaped their relationship. What he didn’t know was that Sharanya had been carrying a ring for him for over a month. They both had a proposal planned, and neither knew what the other was about to do.",
+    body: `Sahil had a plan. A rather elaborate one, actually.
+
+Fresh off moving into their new home, he had organized an entire scavenger hunt across Boston for Sharanya. Not just any scavenger hunt, either. Every stop came with two clues: one to figure out where they were going and another to figure out what they had to do once they got there.
+
+What Sharanya didn’t know was that every destination was a little piece of their story.
+
+Their adventure began at a grocery store that held some of their earliest memories, where Sahil surprised her with flowers. From there, they headed to a park near her old apartment, where they recreated their first kiss in the rain.
+
+Next came Silhouette, their beloved Allston bar, where cranberry shots had somehow become an anniversary tradition. Naturally, there were cranberry shots.
+
+Then came another familiar street, outside a place Sharanya had once lived. It was where Sahil had dropped her off after their very first date, and where they’d shared a memorable almost-kiss. Of course, they had to recreate that too.
+
+By this point, Sahil was essentially taking her on a guided tour of their relationship.
+
+Their next stop was Questrom, where Sahil knew Sharanya would be due for her usual coffee. A Starbucks break was practically mandatory.
+
+Then it was off to Newbury Street, where they recreated a funny photograph outside Serafina that Sahil had taken of Sharanya before one of their dates.
+
+And because no tour of their relationship would be complete without a little alcohol, they headed to the Bell in Hand in the North End, one of their favorite places to go dancing. This time, it was green tea shots.
+
+All along, Sharanya had her suspicions.
+
+She had a pretty good feeling that Sahil was going to propose. She just didn’t know when. With a couple of stops still supposedly left on the itinerary, she was convinced she had figured out where the big moment would happen.
+
+She hadn’t.
+
+Instead, Sahil led her to a beautiful spot overlooking Boston, near a place that held a special meaning for Sharanya. Years before she’d met him, she’d stood nearby, looked out at the city, fallen completely in love with it, and decided that one day she would make Boston her home.
+
+And now, in that very city, with the person who had become her home, Sahil got down on one knee.
+
+But he had a few more surprises waiting.
+
+His sister had helped set up the proposal, complete with decorations. And the photographer Sharanya had desperately wanted, the one Sahil had insisted was unavailable, suddenly appeared to capture the moment.
+
+There were tears, laughter, photographs, and one very happy newly engaged couple.
+
+Except the story wasn’t quite finished.
+
+You see, Sharanya had been keeping a secret of her own.
+
+For over a month, she’d been carrying a ring for Sahil everywhere she went. She’d known she wanted to propose to him too, and she wasn’t about to let him have all the fun.
+
+So, after Sahil’s grand scavenger hunt and beautiful proposal, Sharanya got down on one knee and asked him to marry her right back.
+
+Two proposals. Two rings. Two very happy people.
+
+And after an unforgettable photoshoot, they ended their adventure at Cornwall’s, another place woven into their story, to celebrate.
+
+What started as a scavenger hunt through the places they’d loved became a celebration of everything they’d built together.
+
+And perhaps the best part?
+
+Sahil had spent all that time planning the perfect way to ask Sharanya to marry him.
+
+He had absolutely no idea she was planning to ask him the very same question.`,
+    photo: null,
+  },
 ];
 
 export const plannedStories = [
