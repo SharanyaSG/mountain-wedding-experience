@@ -32,8 +32,8 @@ function Block({ block }: { block: FaqBlock }) {
 }
 
 export function FaqSection() {
-  const [active, setActive] = useState(faqCategories[0].id);
-  const category = faqCategories.find((c) => c.id === active) ?? faqCategories[0];
+  const [active, setActive] = useState(faqCategories[0]!.id);
+  const category = faqCategories.find((c) => c.id === active) ?? faqCategories[0]!;
 
   return (
     <section id="faqs" className="scroll-mt-24 border-t border-border md:scroll-mt-28">
