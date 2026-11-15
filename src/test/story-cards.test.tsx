@@ -61,10 +61,10 @@ describe("story cards", () => {
     expect(
       screen.getByText("Sahil and Sharanya hadn’t planned on buying a car quite so soon. But when Sahil’s aging van finally gave up, they found themselves making their first major purchase together. Two months of obsessive tracking later, Stormy arrived—and promptly embarked on a thousand-mile road trip through New England."),
     ).toBeVisible();
-    expect(screen.queryByText("Our first big purchase. Her first thousand miles.")).toBeNull();
     fireEvent.click(screen.getByRole("button", { name: "Read the Full Story" }));
     const dialog = screen.getByRole("dialog");
     expect(dialog).toHaveTextContent("Our first big purchase, a thousand-mile adventure, and a new member of the family.");
+    expect(dialog).not.toHaveTextContent("Our first big purchase. Her first thousand miles.");
     expect(dialog).toHaveTextContent("Inspired partly by Stormtroopers and partly by the fact that the car simply looked like a Stormy, the name stuck.");
     expect(dialog).toHaveTextContent("Welcome to the family, Stormy.");
     expect(dialog.querySelectorAll("p").length).toBeGreaterThanOrEqual(54);
