@@ -38,10 +38,7 @@ describe("Plan Your Trip travel facts", () => {
   });
 
   it("keeps the New Hampshire guide button ready for a real link", () => {
-    expect(travelGuide.newHampshireGuide.intro).toEqual([
-      "We hope you’ll make an adventure of your time in the White Mountains! From scenic drives and mountain trails to cozy cafés and local favorites, there’s so much to discover.",
-      "We’ve put together a little guide to help you explore, plan ahead, and make the most of your visit.",
-    ]);
+    expect(travelGuide.newHampshireGuide.intro).toBe("We hope you’ll make an adventure of your time in the White Mountains! From scenic drives and mountain trails to family-run eateries and some of our favorite local spots, there’s so much to discover. We’ve put together a little New Hampshire guide to help you explore and make the most of your visit.");
     expect(travelGuide.newHampshireGuide.label).toBe("Explore Our New Hampshire Guide");
     expect(travelGuide.newHampshireGuide.url).toBeNull();
   });
