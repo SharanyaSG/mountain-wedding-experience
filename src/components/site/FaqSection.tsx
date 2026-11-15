@@ -1,15 +1,7 @@
-import { useState, type MouseEvent, type ReactNode } from "react";
+import { useState, type ReactNode } from "react";
+import { Link } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/Reveal";
 import { faqCategories, faqIntro, type FaqBlock } from "@/components/site/faq-content";
-
-function scrollToSection(e: MouseEvent<HTMLAnchorElement>, id: string) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  e.preventDefault();
-  const header = document.querySelector("header");
-  const offset = (header?.getBoundingClientRect().height ?? 80) + 16;
-  window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - offset, behavior: "smooth" });
-}
 
 function renderInline(text: string): ReactNode[] {
   return text.split(/(\[\[[^\]]+\]\])/g).map((part, i) => {
@@ -17,10 +9,10 @@ function renderInline(text: string): ReactNode[] {
     if (!m) return part;
     const [, label, id] = m as unknown as [string, string, string];
     return (
-      <a key={i} href={`#${id}`} onClick={(e) => scrollToSection(e, id)}
+      <Link key={i} to="/plan-your-trip" hash={id === "plan-your-trip" ? "" : id}
         className="font-bold text-itinerary-forest underline decoration-romantic-crimson/50 underline-offset-4 transition-colors hover:text-romantic-crimson">
         {label}
-      </a>
+      </Link>
     );
   });
 }
