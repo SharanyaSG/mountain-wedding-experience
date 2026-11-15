@@ -2,6 +2,9 @@ import { describe, expect, it } from "vitest";
 import { faqCategoryFromHash } from "@/components/site/faq-navigation";
 
 describe("FAQ category deep links", () => {
+  it("opens the existing travel and weather category", () => {
+    expect(faqCategoryFromHash("#travel")?.label).toBe("Travel & Weather");
+  });
   it("opens the existing wedding and celebrations category", () => {
     expect(faqCategoryFromHash("celebrations")?.label).toBe("Our Wedding & Celebrations");
   });
