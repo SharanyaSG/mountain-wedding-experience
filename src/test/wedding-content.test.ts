@@ -41,8 +41,11 @@ describe("wedding content", () => {
     const bow = stories.find((s) => s.id === "the-bow");
     expect(bow?.photo).toMatchObject({ width: 1320, height: 1765 });
     expect(bow?.photo?.url).toMatch(/^\/__l5e\/assets-v1\/[\w-]+\/the-bow\.png$/);
+    const shravya = stories.find((s) => s.id === "shravya");
+    expect(shravya?.photo).toMatchObject({ width: 1440, height: 1920 });
+    expect(shravya?.photo?.url).toMatch(/^\/__l5e\/assets-v1\/[\w-]+\/shravya\.webp$/);
     expect(stories.filter((s) => s.photo === null).map((s) => s.n)).toEqual([
-      "03", "04", "05", "06", "07", "08", "09", "10", "11",
+      "04", "05", "06", "07", "08", "09", "10", "11",
     ]);
   });
 

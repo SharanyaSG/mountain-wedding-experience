@@ -1,5 +1,6 @@
 import bowPhoto from "@/assets/the-bow.png.asset.json";
 import halloweenPhoto from "@/assets/halloween-2023.png.asset.json";
+import shravyaPhoto from "@/assets/shravya.webp.asset.json";
 
 export const hotels = [
   {
@@ -120,7 +121,12 @@ And then it just … continued. For the next few months, his family happily refe
 
 A couple of months later, the moment finally arrived. Sharanya met his sister first, who immediately discovered the mix up. She was surprised, mildly exasperated, and also very entertained; it only reinforced what she already knew about her brother. A week later, when she met his mom, the truth came out again, followed by a lot of laughter, a bit of disbelief, and plenty of “Why would you even do this?” directed at Sahil.
 
-In the end, it turned into one of those stories everyone still laughs about, and every once in a while, his mom still accidentally calls her Shravya.`, photo: null },
+In the end, it turned into one of those stories everyone still laughs about, and every once in a while, his mom still accidentally calls her Shravya.`, photo: {
+    url: shravyaPhoto.url,
+    alt: "Sharanya looking straight at the camera with a playful pout",
+    width: 1440,
+    height: 1920,
+  } },
   { id: "new-york", n: "04", title: "New York", subtitle: "The First Big Trip", body: `A few months into their relationship, Sharanya and Sahil planned their first trip together. They wanted something affordable, cozy, and romantic, so Sahil found a charming Airbnb in the middle of nowhere in New York complete with a hot tub and a view of a stream waterfall. Sharanya needed some convincing, but reluctantly agreed.
 
 They set off early with no plan, stopped in Albany to explore the State Capitol, grabbed some questionable fish hot dogs, and continued on to the Airbnb, where chickens greeted them every time they stepped outside.
