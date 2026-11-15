@@ -9,7 +9,7 @@ describe("wedding content", () => {
   });
   it("plans nine stories", () => expect(plannedStories).toHaveLength(9));
 
-  it("gives the gallery nine stories in the supplied order, with exact titles and subtitles", () => {
+  it("gives the gallery ten stories in the supplied order, with exact titles and subtitles", () => {
     expect(stories.map((s) => [s.n, s.title, s.subtitle])).toEqual([
       ["01", "Halloween 2023", "The First Time We Met"],
       ["02", "The Bow", "Sharanya’s Favorite Sahil Story"],
@@ -20,7 +20,17 @@ describe("wedding content", () => {
       ["07", "The Puppy Proposal", "A Ring Pop, A Misunderstanding, & A Very Confused Mother"],
       ["08", "The One Where He Behaved!", "Blessings from The Gowdas & The Malhotras"],
       ["09", "The Proposal That Became Two", "They both knew they’d found their forever. Neither knew the other was planning to propose."],
+      ["10", "Stormy Gowda-Malhotra", "Our first big purchase. Her first thousand miles."],
     ]);
+  });
+
+  it("gives Stormy the short card subtitle and the longer reading-view line", () => {
+    const s = stories.find((x) => x.id === "stormy-gowda-malhotra");
+    expect(s?.subtitle).toBe("Our first big purchase. Her first thousand miles.");
+    expect(s?.readerSubtitle).toBe("Our first big purchase, a thousand-mile adventure, and a new member of the family.");
+    expect(s?.preview).toBe(
+      "Sahil and Sharanya hadn’t planned on buying a car quite so soon. But when Sahil’s aging van finally gave up, they found themselves making their first major purchase together. Two months of obsessive tracking later, Stormy arrived—and promptly embarked on a thousand-mile road trip through New England.",
+    );
   });
 
   it("shows the supplied proposal preview on the card back, word for word", () => {
@@ -63,7 +73,15 @@ describe("wedding content", () => {
     expect(byId("the-proposal-that-became-two").body).toContain("Two proposals. Two rings. Two very happy people.");
     expect(byId("the-proposal-that-became-two").body.trimEnd()).toMatch(/He had absolutely no idea she was planning to ask him the very same question\.$/);
 
-    expect(stories.map(paras)).toEqual([5, 6, 6, 6, 5, 6, 8, 6, 28]);
+    expect(byId("stormy-gowda-malhotra").body.split(/\n{2,}/)[0]).toBe("Every family has that one car that’s been around a little too long.");
+    expect(byId("stormy-gowda-malhotra").body).toContain("For Sahil, it was an enormous, aging van that Sharanya affectionately referred to as his “soccer mom car.”");
+    expect(byId("stormy-gowda-malhotra").body).toContain("For nearly two months, Sharanya and Sahil tracked their car’s progress with the dedication of people monitoring a spacecraft launch.");
+    expect(byId("stormy-gowda-malhotra").body).toContain("Inspired partly by Stormtroopers and partly by the fact that the car simply looked like a Stormy, the name stuck.");
+    expect(byId("stormy-gowda-malhotra").body).toContain("At one point, they ventured so far north that their phones picked up Canadian cell service and cheerfully welcomed them to Canada.");
+    expect(byId("stormy-gowda-malhotra").body).toContain("By the time the weekend was over, Stormy had traveled more than 1,000 miles.");
+    expect(byId("stormy-gowda-malhotra").body.trimEnd()).toMatch(/Welcome to the family, Stormy\.$/);
+
+    expect(stories.map(paras)).toEqual([5, 6, 6, 6, 5, 6, 8, 6, 28, 54]);
     expect(byId("the-puppy-proposal").body).toContain("You’re so close.”\nEventually, after many circles");
   });
 });
