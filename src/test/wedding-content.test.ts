@@ -34,12 +34,15 @@ describe("wedding content", () => {
     );
   });
 
-  it("shows the supplied Halloween photograph and leaves every other card front a placeholder", () => {
+  it("shows the supplied Halloween and bow photographs and leaves every other card front a placeholder", () => {
     const halloween = stories.find((s) => s.id === "halloween-2023");
     expect(halloween?.photo).toMatchObject({ width: 1600, height: 1200 });
     expect(halloween?.photo?.url).toMatch(/^\/__l5e\/assets-v1\/[\w-]+\/halloween-2023\.png$/);
+    const bow = stories.find((s) => s.id === "the-bow");
+    expect(bow?.photo).toMatchObject({ width: 1320, height: 1765 });
+    expect(bow?.photo?.url).toMatch(/^\/__l5e\/assets-v1\/[\w-]+\/the-bow\.png$/);
     expect(stories.filter((s) => s.photo === null).map((s) => s.n)).toEqual([
-      "02", "03", "04", "05", "06", "07", "08", "09", "10", "11",
+      "03", "04", "05", "06", "07", "08", "09", "10", "11",
     ]);
   });
 
