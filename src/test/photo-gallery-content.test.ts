@@ -64,8 +64,7 @@ describe("Pictures of Us collections", () => {
     ]);
   });
 
-  it("keeps Before Forever's cover unfinalized and leaves Life Lately empty", () => {
-    expect(photoCollections[3]?.photos).toEqual([]);
+  it("keeps Before Forever's cover unfinalized", () => {
     const collection = photoCollections[0];
     if (!collection) throw new Error("Before Forever is missing");
     expect(collection.coverPhotoId).toBeNull();
@@ -140,6 +139,26 @@ describe("Pictures of Us collections", () => {
     expect(new Set(collection.photos.map(({ src }) => src)).size).toBe(17);
     expect(collection.coverPhotoId).toBeNull();
     expect(collectionCover(collection)?.id).toBe("we-said-yes-001");
+  });
+
+  it("adds ten Life Lately originals in upload order with original proportions and no finalized cover", () => {
+    const collection = photoCollections[3];
+    if (!collection) throw new Error("Life Lately is missing");
+    expect(collection.photos).toHaveLength(10);
+    expect(collection.photos.map(({ id, width, height }) => [id, width, height])).toEqual([
+      ["life-lately-001", 1920, 1440],
+      ["life-lately-002", 1920, 1440],
+      ["life-lately-003", 1080, 1920],
+      ["life-lately-004", 1920, 1440],
+      ["life-lately-005", 1920, 1440],
+      ["life-lately-006", 1440, 1920],
+      ["life-lately-007", 1440, 1920],
+      ["life-lately-008", 1920, 1440],
+      ["life-lately-009", 1920, 1440],
+      ["life-lately-010", 1440, 1920],
+    ]);
+    expect(new Set(collection.photos.map(({ src }) => src)).size).toBe(10);
+    expect(collection.coverPhotoId).toBeNull();
   });
 
   it("uses an independently selected cover without reordering the collection", () => {
