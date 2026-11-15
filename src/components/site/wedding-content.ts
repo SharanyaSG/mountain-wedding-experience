@@ -347,6 +347,138 @@ And to think, it all started because an old soccer mom car finally decided it ha
 Welcome to the family, Stormy.`,
     photo: null,
   },
+  {
+    id: "the-great-board-game-merger",
+    n: "11",
+    title: "The Great Board Game Merger",
+    subtitle: "Two board game nerds. One shared collection. A marriage built on love, strategy, and a little too much competition.",
+    preview:
+      "When Sharanya and Sahil got married, they didn’t just combine their lives. They merged their board game collections. What followed was an obsession with 7 Wonders Duel, an ongoing Everdell rivalry, and a new definition of date night. And somewhere along the way, Sahil seems to have forgotten how to win.",
+    body: `When Sharanya and Sahil got married, they combined a lot of things.
+
+Their lives. Their homes. Their futures.
+
+And, perhaps most importantly, their board game collections.
+
+You see, Sharanya and Sahil are both unapologetic board game nerds. So when two people with a shared obsession for board games get married, something rather extraordinary happens.
+
+A merger.
+
+Not a small one, either.
+
+Between the two of them, they now have a collection of games that could probably keep them entertained for years. And yet, somehow, they still find themselves wanting more.
+
+It all really began when they started living together.
+
+They had a board game table, a growing collection, and an apparently endless appetite for competition.
+
+Their first great obsession was 7 Wonders Duel.
+
+What started as a casual game between two people quickly became an almost daily ritual.
+
+One game turned into two. Two turned into an evening. And before they knew it, they were playing Duel practically every single day.
+
+They played it so much that they eventually reached the inevitable conclusion.
+
+They were sick of it.
+
+So, naturally, they moved on to other games.
+
+And that’s when Everdell entered the picture.
+
+Now, Everdell holds a particularly special place in the Gowda-Malhotra household.
+
+It’s beautiful. It’s strategic. It’s endlessly entertaining.
+
+And, apparently, it’s also where Sahil’s winning streak went to die.
+
+In the beginning, Sahil won.
+
+A few times, actually.
+
+He was doing rather well.
+
+And then something changed.
+
+Sharanya started winning.
+
+And winning.
+
+And winning.
+
+At this point, Sahil has tried just about everything to reclaim his former glory.
+
+Different strategies. Different approaches. Probably a fair amount of wishful thinking.
+
+Nothing seems to work.
+
+The losing streak continues.
+
+Now, there’s something important to understand about these two.
+
+They are both exceedingly competitive.
+
+Sharanya, however, has never seen the point in pretending otherwise. When she wins, she celebrates. Loudly. Enthusiastically. And with absolutely no regard for the feelings of the person who just lost.
+
+Sahil, on the other hand, occasionally likes to insist that board games should be about collaboration, enjoying the experience, and having fun together.
+
+A lovely sentiment.
+
+One that tends to surface particularly often when he’s losing.
+
+At one point, Sahil became so exasperated by Sharanya’s increasingly elaborate victory celebrations that he suggested they should perhaps be a little more collaborative.
+
+Sharanya agreed.
+
+Or at least, she appeared to.
+
+From then on, whenever she won, she would calmly acknowledge the result, offer a perfectly respectable display of sportsmanship, and quietly excuse herself.
+
+Then she’d walk into another room.
+
+And absolutely lose her mind.
+
+Jumping. Dancing. Screaming. Celebrating like she’d just won an Olympic gold medal.
+
+All while Sahil sat in the other room, able to hear every single second of it.
+
+Which, naturally, annoyed him even more.
+
+Sharanya considered this an excellent compromise.
+
+Sahil had his peaceful, collaborative gaming experience.
+
+And she still got her victory dance.
+
+But somewhere between the endless rounds of Duel, the Everdell rivalries, and the ever-expanding collection of games, something else happened.
+
+Their idea of a perfect date night changed.
+
+These days, going out isn’t always the first choice.
+
+Why make dinner reservations, get dressed up, and head into the city when there’s a perfectly good board game table waiting at home?
+
+An evening together might mean picking a game, settling in for a few hours, debating strategies, celebrating victories, and occasionally questioning the fairness of the entire situation.
+
+And honestly, they wouldn’t have it any other way.
+
+Because for Sharanya and Sahil, board games have become more than just a hobby.
+
+They’re a little tradition of their own.
+
+A way to unwind, laugh, compete, and spend time together without needing to go anywhere at all.
+
+And while their collection will undoubtedly keep growing, one thing is certain.
+
+The games may change. The competition never will.
+
+And Sahil?
+
+Well, there’s always the next round of Everdell.
+
+And possibly another victory dance happening in the next room.`,
+    photo: null,
+  },
 ];
 
 export const plannedStories = [
