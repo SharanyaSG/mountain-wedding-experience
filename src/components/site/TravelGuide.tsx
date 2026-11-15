@@ -2,7 +2,7 @@ import gondolaPhoto from "@/assets/loon-mountain-gondola.jpg.asset.json";
 import riverwalkPhoto from "@/assets/hotel-riverwalk.jpg.asset.json";
 import { Reveal } from "@/components/site/Reveal";
 import { hotels, travelGuide } from "@/components/site/wedding-content";
-import { Link } from "@tanstack/react-router";
+import { FaqCallout } from "./FaqCallout";
 
 const riverwalk = hotels[0];
 
@@ -23,7 +23,7 @@ function TravelerHeading({ children }: { children: string }) {
 
 function DriveTime({ children }: { children: string }) {
   return (
-    <p className="mt-3 font-display text-sm font-normal uppercase tracking-[0.08em] text-forest md:text-base lg:text-lg">{children}</p>
+    <p className="mt-3 font-serif text-sm font-bold tracking-normal text-forest md:text-base lg:text-lg">{children}</p>
   );
 }
 
@@ -87,13 +87,7 @@ function Stay() {
               <p className="mt-4 text-sm leading-7 text-foreground">{riverwalk.bookingNote}</p>
               <p className="mt-2 font-serif text-sm italic leading-7 text-muted-foreground">{riverwalk.bookingStatus}</p>
             </Reveal>
-            <Reveal delay={240} className="mt-6 border-l-2 border-info-forest bg-info-sage px-6 py-7 text-left">
-              <h4 className="eyebrow text-[14px] font-bold text-itinerary-forest">Have any additional questions?</h4>
-              <p className="mt-4 text-sm leading-7 text-foreground">
-                Visit our <Link to="/faqs" className="font-bold text-romantic-crimson underline-offset-4 hover:underline focus-visible:underline">FAQs</Link>, particularly {" "}
-                <Link to="/faqs" hash="accommodations" className="font-bold text-romantic-crimson underline-offset-4 hover:underline focus-visible:underline">Accommodations</Link>, for more information.
-              </p>
-            </Reveal>
+            <FaqCallout delay={240} className="mt-6" category="Accommodations" hash="accommodations" />
           </div>
         </div>
       </div>
@@ -132,9 +126,7 @@ function GettingHere() {
           </div>
         </Reveal>
 
-        <Reveal className="section-content">
-          <p className="mx-auto max-w-3xl text-center font-serif text-[17px] font-bold leading-8 text-itinerary-forest md:text-lg">{travelGuide.rentalRecommendation}</p>
-        </Reveal>
+        <FaqCallout className="section-content mx-auto w-full min-[1200px]:max-w-[90%]" category="Travel & Weather" hash="travel" />
 
         <Reveal className="section-content border-t border-border pt-8">
           <div id="driving-to-lincoln" className="mx-auto w-full max-w-[980px]">
