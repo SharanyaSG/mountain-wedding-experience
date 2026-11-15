@@ -89,7 +89,7 @@ function Stay() {
             </Reveal>
             <Reveal delay={240} className="mt-6 border-l-2 border-info-forest bg-info-sage px-6 py-7 text-left">
               <h4 className="eyebrow text-[14px] font-bold text-itinerary-forest">Have any additional questions?</h4>
-              <p className="mt-4 font-serif text-base font-normal leading-relaxed text-foreground">
+              <p className="mt-4 text-sm leading-7 text-foreground">
                 Visit our <Link to="/faqs" className="font-bold text-romantic-crimson underline-offset-4 hover:underline focus-visible:underline">FAQs</Link>, particularly {" "}
                 <Link to="/faqs" hash="accommodations" className="font-bold text-romantic-crimson underline-offset-4 hover:underline focus-visible:underline">Accommodations</Link>, for more information.
               </p>
