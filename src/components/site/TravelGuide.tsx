@@ -129,7 +129,7 @@ function GettingHere() {
         <FaqCallout className="section-content mx-auto w-full min-[1200px]:max-w-[90%]" category="Travel & Weather" hash="travel" />
 
         <Reveal className="section-content border-t border-border pt-8">
-          <div id="driving-to-lincoln" className="mx-auto w-full max-w-[980px]">
+          <div id="driving-to-lincoln" className="w-full">
             <h3 className="eyebrow font-bold text-rust">Driving to Lincoln</h3>
             <div className="mt-6">
               <SectionHeading title="Making your way to the mountains?" accent="Lincoln makes for a beautiful mountain road trip!" crimson />
@@ -145,15 +145,7 @@ function GettingHere() {
               <p className="mt-2 font-serif text-sm italic leading-7 text-foreground">{travelGuide.driving.groupRates.update}</p>
             </aside>
 
-            <h4 className="mt-9 font-display text-base font-bold uppercase tracking-[0.08em] text-foreground">Explore Rental Car Options</h4>
-            <nav aria-label="Official rental car websites" className="mt-5 grid border-t border-border sm:grid-cols-2 lg:grid-cols-3">
-              {travelGuide.rentalCompanies.map((company) => (
-                <a key={company.name} href={company.url} target="_blank" rel="noreferrer" className="flex items-center justify-between gap-4 border-b border-border py-4 pr-4 font-display text-sm font-medium uppercase tracking-[0.08em] text-foreground transition-colors hover:text-rust sm:mr-5">
-                  {company.name}<span aria-hidden="true" className="text-rust">↗</span>
-                </a>
-              ))}
-            </nav>
-            <p className="mt-7 text-sm leading-7 text-muted-foreground">Please confirm airport pickup availability, rental requirements, and operating hours directly with the rental provider.</p>
+            <FaqCallout className="mt-6 w-full" category="Travel & Weather" hash="travel" />
             <p className="mt-4 border-l border-cinnamon pl-5 text-sm leading-7 text-rust"><span className="font-bold">International travelers:</span> Check driver’s license and International Driving Permit requirements before traveling.</p>
           </div>
         </Reveal>

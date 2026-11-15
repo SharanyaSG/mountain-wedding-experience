@@ -1,4 +1,5 @@
 # Homepage refinements
+- [x] Widen Driving to Lincoln to the shared travel margins, remove rental-company options, and add an aligned Travel & Weather FAQ callout; verified nine widths, FAQ links/refresh/history, thirteen tests and successful build.
 - [x] Restyle all three airport durations and replace only the shared airport rental recommendation with the reusable Travel & Weather FAQ callout; verified seven widths, preserved other rental guidance, both FAQ links/refresh/history, thirteen tests and successful build.
 - [x] Refine RiverWalk heading font and supplied condensed introduction; add aligned sage FAQ callout with main FAQ and Accommodations links. Verified seven widths, exact copy and preserved availability notes, matching box edges, FAQ navigation/refresh/header clearance, sixteen tests and successful build.
 - [x] Reduce itinerary heading top spacing by 32px desktop, 28px tablet and 24px mobile; add the two-line FAQ message with main-page and existing-category deep links. Verified all links, direct entry, refresh, history, closed individual answers and sticky-header clearance at five widths, nine tests and successful build.
