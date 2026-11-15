@@ -4,6 +4,7 @@ import { Reveal, PhotoPlaceholder } from "@/components/site/Reveal";
 import { HeroIllustration } from "@/components/site/HeroIllustration";
 import { StoryCard } from "@/components/site/StoryCard";
 import { TravelGuide } from "@/components/site/TravelGuide";
+import { FaqSection } from "@/components/site/FaqSection";
 import { MessageFromUs } from "@/components/site/MessageFromUs";
 import { PlansMessage } from "@/components/site/SiteNavigation";
 import { agenda, stories } from "@/components/site/wedding-content";
@@ -34,7 +35,7 @@ function Index() {
         <TravelGuide />
         <Stories />
         <Gallery />
-        <Faq />
+        <FaqSection />
         <MessageFromUs />
         <Plans />
       </main>
@@ -209,39 +210,6 @@ function Gallery() {
           {tiles.map((c, i) => (
             <Reveal key={i} delay={(i % 4) * 90} className={`${c} ${i === 0 || i === 5 ? "col-span-2" : ""}`}>
               <PhotoPlaceholder label={`No. ${String(i + 1).padStart(2, "0")}`} className="h-full w-full transition-opacity duration-500 hover:opacity-80" />
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------- FAQ ---------------- */
-const faqs = [
-  { q: "When should we book accommodation?", a: "As early as you comfortably can. October is peak foliage season in the White Mountains, and rooms in the area fill quickly. Hotel details will be shared here as they're confirmed." },
-  { q: "Will we need warm clothing?", a: "We'd recommend it. Mountain weather in October can change quickly, and it's often cooler at elevation. We'll share more guidance closer to the date." },
-  { q: "Is this our final RSVP?", a: "No. We're simply gathering an early sense of plans. Invitations are personalized, and formal RSVP details will follow with yours." },
-  { q: "Can we bring additional guests?", a: "Invitations are personal and will specify who is invited. If you have questions, please reach out to us directly once your invitation arrives." },
-];
-function Faq() {
-  return (
-    <section id="faqs" className="scroll-mt-24 border-t border-border md:scroll-mt-28">
-      <div className="mx-auto grid max-w-[1400px] gap-12 px-5 py-24 md:grid-cols-12 md:px-10 md:py-36">
-        <div className="md:col-span-4">
-
-          <Reveal delay={100}><h2 className="display text-5xl md:text-6xl">A few <em className="text-forest">early answers</em></h2></Reveal>
-        </div>
-        <div className="md:col-span-7 md:col-start-6">
-          {faqs.map((f, i) => (
-            <Reveal key={f.q} delay={i * 80}>
-              <details className="group border-t border-foreground/20 last:border-b">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-7 [&::-webkit-details-marker]:hidden">
-                  <span className="font-serif text-2xl md:text-3xl">{f.q}</span>
-                  <span aria-hidden className="text-2xl text-rust transition-transform duration-500 group-open:rotate-45">+</span>
-                </summary>
-                <p className="max-w-xl pb-8 text-sm leading-relaxed text-muted-foreground md:text-base">{f.a}</p>
-              </details>
             </Reveal>
           ))}
         </div>
