@@ -32,6 +32,11 @@ describe("Plan Your Trip travel facts", () => {
     ]);
   });
 
+  it("states the rental-car recommendation once, beneath both airport columns", () => {
+    expect(travelGuide.rentalRecommendation).toBe("We recommend arranging a rental car in advance for your drive to Lincoln. More information can be found below.");
+    expect("recommendation" in travelGuide.international).toBe(false);
+  });
+
   it("keeps activities editable without inventing personal recommendations", () => {
     expect(travelGuide.scenicDrives.slice(0, 2)).toEqual(["Kancamagus Highway", "Franconia Notch"]);
     expect(travelGuide.outdoorAdventures).toEqual(["Hiking trails", "Scenic overlooks", "Waterfalls", "Gondola rides", "Other local attractions"]);
