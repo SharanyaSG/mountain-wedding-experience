@@ -247,7 +247,7 @@ export function PhotoCategoryCard({
             <p className="mt-4 flex-1 font-serif text-[0.95rem] leading-relaxed text-charcoal min-[540px]:max-[767px]:mt-3 min-[540px]:max-[767px]:text-[0.72rem] min-[540px]:max-[767px]:leading-snug min-[768px]:mt-3 min-[768px]:text-[0.78rem] min-[1200px]:text-[0.76rem]">
               {collection.description}
             </p>
-            <div className="mt-4 flex flex-col items-stretch gap-2 border-t border-foreground/10 pt-4 min-[540px]:max-[767px]:mt-3 min-[540px]:max-[767px]:pt-3 min-[768px]:mt-3 min-[768px]:pt-3 @[280px]:flex-row @[280px]:items-center @[280px]:justify-between">
+            <div className="mt-4 flex flex-col items-stretch gap-2 border-t border-foreground/10 pt-4 min-[540px]:max-[767px]:mt-3 min-[540px]:max-[767px]:pt-3 min-[768px]:mt-3 min-[768px]:pt-3 @[300px]:flex-row @[300px]:items-center @[300px]:justify-between">
               <button
                 ref={backRef}
                 type="button"
