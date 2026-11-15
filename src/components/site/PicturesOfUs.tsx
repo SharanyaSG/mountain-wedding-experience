@@ -124,8 +124,8 @@ export function PicturesOfUs() {
   };
 
   return (
-    <section id="gallery" aria-labelledby="pictures-of-us-title" className="scroll-mt-24 bg-card md:scroll-mt-28">
-      <div className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-36">
+    <section id="gallery" aria-labelledby="pictures-of-us-title" className="section-divider scroll-mt-24 bg-card md:scroll-mt-28">
+      <div className="section-shell">
         <Reveal delay={100}>
           <h2 id="pictures-of-us-title" className="display text-5xl md:text-7xl">
             Pictures of <em>Us</em>
@@ -136,7 +136,7 @@ export function PicturesOfUs() {
             Hover over a card to discover a collection. On a phone, tap the card to turn it over.
           </p>
         </Reveal>
-        <div className="mt-16 grid gap-6 min-[540px]:max-[767px]:grid-cols-2 min-[540px]:max-[767px]:gap-4 min-[768px]:max-[1200px]:grid-cols-2 min-[768px]:max-[1200px]:gap-8 min-[1200px]:grid-cols-4 min-[1200px]:gap-5">
+        <div className="section-content grid gap-6 min-[540px]:max-[767px]:grid-cols-2 min-[540px]:max-[767px]:gap-4 min-[768px]:max-[1200px]:grid-cols-2 min-[768px]:max-[1200px]:gap-8 min-[1200px]:grid-cols-4 min-[1200px]:gap-5">
           {photoCollections.map((item, index) => (
             <Reveal key={item.id} delay={(index % 4) * 120}>
               <PhotoCategoryCard collection={item} onOpen={openCollection} />

@@ -76,7 +76,7 @@ function Hero() {
 /* ---------------- SAVE THE DATE ---------------- */
 function SaveTheDate() {
   return (
-    <section className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-40">
+    <section className="section-shell section-divider">
       <div className="grid gap-12 md:grid-cols-12 md:gap-10">
         <Reveal className="md:col-span-7">
           <img
@@ -111,7 +111,7 @@ function SaveTheDate() {
 /* ---------------- WEEKEND ---------------- */
 function Weekend() {
   return (
-    <section id="wedding-itinerary" className="mx-auto max-w-[1400px] scroll-mt-24 px-5 py-24 md:scroll-mt-28 md:px-10 md:py-40">
+    <section id="wedding-itinerary" className="section-shell section-divider scroll-mt-24 md:scroll-mt-28">
       <span id="itinerary" aria-hidden="true" />
       <div className="grid gap-10 md:grid-cols-12">
         <div className="md:col-span-4">
@@ -158,7 +158,7 @@ function Weekend() {
 /* ---------------- STORIES ---------------- */
 function Stories() {
   return (
-    <section id="our-stories" className="mx-auto max-w-[1400px] scroll-mt-24 px-5 py-24 md:scroll-mt-28 md:px-10 md:py-40">
+    <section id="our-stories" className="section-shell section-divider scroll-mt-24 md:scroll-mt-28">
       <span id="stories" aria-hidden="true" />
 
       <Reveal delay={100}>
@@ -169,7 +169,7 @@ function Stories() {
           Hover over a card to read the story behind it. On a phone, tap the card to turn it over.
         </p>
       </Reveal>
-      <div className="mt-16 grid gap-6 min-[540px]:max-[767px]:grid-cols-2 min-[540px]:max-[767px]:gap-4 min-[768px]:max-[1200px]:grid-cols-2 min-[768px]:max-[1200px]:gap-8 min-[1200px]:grid-cols-4 min-[1200px]:gap-5">
+      <div className="section-content grid gap-6 min-[540px]:max-[767px]:grid-cols-2 min-[540px]:max-[767px]:gap-4 min-[768px]:max-[1200px]:grid-cols-2 min-[768px]:max-[1200px]:gap-8 min-[1200px]:grid-cols-4 min-[1200px]:gap-5">
         {stories.map((s, i) => (
           <Reveal key={s.id} delay={(i % 4) * 120}>
             <StoryCard story={s} />
@@ -188,8 +188,8 @@ function Gallery() {
 /* ---------------- FOOTER ---------------- */
 function Footer() {
   return (
-    <footer id="tell-us-your-plans" className="border-t border-border bg-background text-foreground">
-      <div className="mx-auto max-w-[1400px] px-5 pb-10 pt-24 md:px-10">
+    <footer id="tell-us-your-plans" className="section-divider bg-background text-foreground">
+      <div className="section-shell">
         <p className="display text-[11vw] leading-none md:text-[6.5rem]">
           Gowda <span className="text-gold">×</span> Malhotra
         </p>
