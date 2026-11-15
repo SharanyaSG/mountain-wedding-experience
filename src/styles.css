@@ -45,10 +45,12 @@
   --color-cinnamon: var(--cinnamon);
   --color-ivory: var(--ivory);
   --color-charcoal: var(--charcoal);
+  --color-footer-crimson: var(--footer-crimson);
 }
 
 :root {
   --radius: 2px;
+  --footer-crimson: #A8323E;
   --ivory: #FAF8F4;
   --charcoal: #352820; /* deep espresso */
   --sage: #789568;
@@ -202,6 +204,8 @@
   pointer-events: none;
 }
 .section-content { margin-top: var(--section-content-gap); }
+.content-page { padding-top: 64px; }
+@media (width >= 768px) { .content-page { padding-top: 80px; } }
 
 /* Bottom-anchored CSS crop keeps the couple and foreground intact. */
 .announcement-photo { aspect-ratio: 4 / 5; }

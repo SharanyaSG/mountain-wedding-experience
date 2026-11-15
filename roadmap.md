@@ -1,4 +1,5 @@
 # Homepage refinements
+- [ ] Reorganize into six content pages plus an empty future plans destination, reuse the shared footer, update responsive page navigation and active links, and verify all requested widths and interactions.
 - [x] Unify homepage section spacing and aligned subtle dividers, remove oversized message/travel gaps, preserve the hero and component interiors; verified 1440/1280/1024/768/430/390/375px plus landscape, all 53 tests, gallery navigation/zoom, FAQ accordion and actual video playback.
 - [x] Combine driving and rental-car information, remove the scenic-road placeholder, add the tentative group-rates notice, and verify desktop/tablet/mobile.
 - [x] Consolidate the whole site into one ordered scrolling page with anchor-only navigation, legacy-route redirects, and desktop/tablet/mobile verification.
