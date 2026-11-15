@@ -91,6 +91,14 @@ import life017 from "@/assets/life-lately-017.webp.asset.json";
 import life018 from "@/assets/life-lately-018.webp.asset.json";
 import life019 from "@/assets/life-lately-019.webp.asset.json";
 import life020 from "@/assets/life-lately-020.jpg.asset.json";
+import life021 from "@/assets/life-lately-021.webp.asset.json";
+import life022 from "@/assets/life-lately-022.webp.asset.json";
+import life023 from "@/assets/life-lately-023.webp.asset.json";
+import life024 from "@/assets/life-lately-024.webp.asset.json";
+import life025 from "@/assets/life-lately-025.webp.asset.json";
+import life026 from "@/assets/life-lately-026.webp.asset.json";
+import life027 from "@/assets/life-lately-027.webp.asset.json";
+import life028 from "@/assets/life-lately-028.webp.asset.json";
 
 export type GalleryPhoto = {
   id: string;
@@ -240,6 +248,14 @@ export const photoCollections: PhotoCollection[] = [
       { id: "life-lately-018", src: life018.url, width: 1440, height: 1920, alt: "Sharanya and Sahil smiling together for a selfie at home" },
       { id: "life-lately-019", src: life019.url, width: 1920, height: 1440, alt: "Sharanya and Sahil taking a selfie with a friend outside a restaurant" },
       { id: "life-lately-020", src: life020.url, width: 1320, height: 869, alt: "Sharanya and Sahil posing with friends and playful party signs" },
+      { id: "life-lately-021", src: life021.url, width: 1440, height: 1920, alt: "Sahil smiling at a restaurant table with food served on banana leaves" },
+      { id: "life-lately-022", src: life022.url, width: 1440, height: 1920, alt: "Sharanya and Sahil standing together on a sidewalk beside a parked car" },
+      { id: "life-lately-023", src: life023.url, width: 1920, height: 1440, alt: "Sharanya and Sahil sitting together at a restaurant table beside windows" },
+      { id: "life-lately-024", src: life024.url, width: 1440, height: 1920, alt: "Sharanya and Sahil in festive outfits in front of a gold backdrop" },
+      { id: "life-lately-025", src: life025.url, width: 1440, height: 1920, alt: "Sharanya and Sahil taking a close-up selfie in front of a gold backdrop" },
+      { id: "life-lately-026", src: life026.url, width: 1440, height: 1920, alt: "Sharanya and Sahil smiling together for a selfie in festive outfits" },
+      { id: "life-lately-027", src: life027.url, width: 1440, height: 1920, alt: "Sharanya and Sahil posing together for a selfie at a celebration" },
+      { id: "life-lately-028", src: life028.url, width: 1920, height: 1440, alt: "Sharanya and Sahil taking a group selfie with friends in stadium seats" },
     ],
   },
 ];
