@@ -31,7 +31,7 @@ export function StoryCard({ story }: { story: Story }) {
 
   return (
     <div
-      className="story-scene aspect-[4/5] min-[768px]:max-[1199px]:aspect-[3/2]"
+      className="story-scene aspect-[4/5] min-[768px]:max-[1200px]:aspect-[3/2]"
       onPointerEnter={(e) => onHover(e, true)}
       onPointerLeave={(e) => onHover(e, false)}
     >

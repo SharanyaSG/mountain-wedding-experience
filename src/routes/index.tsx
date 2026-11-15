@@ -170,7 +170,7 @@ function Stories() {
           Hover over a card to read the story behind it. On a phone, tap the card to turn it over.
         </p>
       </Reveal>
-      <div className="mt-16 grid gap-6 min-[768px]:max-[1199px]:grid-cols-2 min-[768px]:max-[1199px]:gap-8 min-[1200px]:grid-cols-4 min-[1200px]:gap-5">
+      <div className="mt-16 grid gap-6 min-[768px]:max-[1200px]:grid-cols-2 min-[768px]:max-[1200px]:gap-8 min-[1200px]:grid-cols-4 min-[1200px]:gap-5">
         {stories.map((s, i) => (
           <Reveal key={s.id} delay={(i % 4) * 120}>
             <StoryCard story={s} />
