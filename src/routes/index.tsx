@@ -77,7 +77,7 @@ function Hero() {
 function SaveTheDate() {
   return (
     <section className="section-shell section-divider">
-      <div className="announcement-layout grid gap-8 lg:grid-cols-2 lg:gap-10">
+      <div className="announcement-layout grid gap-8 min-[1200px]:grid-cols-2 min-[1200px]:gap-10">
         <Reveal className="announcement-photo min-w-0 overflow-hidden">
           <img
             src={overlook.url}

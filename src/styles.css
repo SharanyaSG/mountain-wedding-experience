@@ -209,10 +209,10 @@
   transform: scale(1.12);
   transform-origin: center bottom;
 }
-@media (width >= 768px) and (width < 1024px) {
+@media (width >= 768px) and (width < 1200px) {
   .announcement-photo { aspect-ratio: 1; }
 }
-@media (width >= 1024px) {
+@media (width >= 1200px) {
   .announcement-photo { aspect-ratio: 1; }
   .announcement-copy {
     justify-content: flex-end;
