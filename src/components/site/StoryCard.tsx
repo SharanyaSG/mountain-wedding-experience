@@ -52,8 +52,8 @@ export function StoryCard({ story }: { story: Story }) {
           <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-6 p-6 md:p-8 wide:gap-3 wide:p-4">
             <div className="min-w-0">
               <p className="eyebrow text-ivory/70 wide:text-[0.5rem]">{story.n}</p>
-              <h3 className="display mt-3 text-4xl text-ivory md:text-5xl wide:mt-2 wide:text-xl wide:leading-tight">{story.title}</h3>
-              <p className="mt-3 font-serif text-lg italic text-ivory/85 md:text-xl wide:mt-2 wide:text-[0.8rem] wide:leading-snug">{story.subtitle}</p>
+              <h3 className="display mt-3 text-4xl text-ivory md:text-3xl wide:mt-2 wide:text-xl wide:leading-tight">{story.title}</h3>
+              <p className="mt-3 font-serif text-lg italic text-ivory/85 wide:mt-2 wide:text-[0.8rem] wide:leading-snug">{story.subtitle}</p>
             </div>
             <span className="eyebrow hidden shrink-0 pb-2 text-ivory/60 md:block wide:hidden">Flip to Read</span>
           </div>
@@ -80,11 +80,11 @@ export function StoryCard({ story }: { story: Story }) {
             setFocusTo("front");
           }}
         >
-          <div className="flex h-full flex-col p-6 md:p-8 wide:p-4">
+          <div className="flex h-full flex-col p-6 md:p-6 wide:p-4">
             <p className="eyebrow text-muted-foreground wide:text-[0.5rem] wide:leading-snug">
               {story.n} · {story.subtitle}
             </p>
-            <h3 className="display mt-3 text-3xl text-forest md:text-4xl wide:mt-2 wide:text-lg wide:leading-tight">{story.title}</h3>
+            <h3 className="display mt-3 text-3xl text-forest md:text-2xl wide:mt-2 wide:text-lg wide:leading-tight">{story.title}</h3>
             <Divider className="wide:mt-3" />
             <div className="story-body mt-5 flex-1 overflow-y-auto pr-1 wide:mt-3">
               {story.body ? (
