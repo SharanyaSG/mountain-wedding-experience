@@ -71,6 +71,8 @@ export type Story = {
   body: string;
   /** Card-back wording supplied by the couple; otherwise derived from body. */
   preview?: string;
+  /** Longer line shown in the reading view; otherwise the card subtitle. */
+  readerSubtitle?: string;
   photo: { url: string; alt: string; width: number; height: number } | null;
 };
 
