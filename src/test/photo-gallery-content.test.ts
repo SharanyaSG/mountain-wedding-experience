@@ -163,8 +163,8 @@ describe("Pictures of Us collections", () => {
   it("appends the second ten Life Lately photos while preserving all earlier photos and the temporary cover", () => {
     const collection = photoCollections[3];
     if (!collection) throw new Error("Life Lately is missing");
-    expect(collection.photos).toHaveLength(20);
-    expect(collection.photos.slice(10).map(({ id, width, height }) => [id, width, height])).toEqual([
+    expect(collection.photos.slice(0, 20)).toHaveLength(20);
+    expect(collection.photos.slice(10, 20).map(({ id, width, height }) => [id, width, height])).toEqual([
       ["life-lately-011", 1920, 1440],
       ["life-lately-012", 1920, 1440],
       ["life-lately-013", 1920, 1440],
@@ -176,9 +176,32 @@ describe("Pictures of Us collections", () => {
       ["life-lately-019", 1920, 1440],
       ["life-lately-020", 1320, 869],
     ]);
-    expect(new Set(collection.photos.map(({ src }) => src)).size).toBe(20);
+    expect(new Set(collection.photos.slice(0, 20).map(({ src }) => src)).size).toBe(20);
     expect(collection.coverPhotoId).toBeNull();
     expect(collectionCover(collection)?.id).toBe("life-lately-001");
+  });
+
+  it("appends the third Life Lately batch in upload order with original dimensions and all earlier photographs intact", () => {
+    const collection = photoCollections[3];
+    if (!collection) throw new Error("Life Lately is missing");
+    expect(collection.photos).toHaveLength(28);
+    expect(collection.photos.slice(0, 20).map(({ id }) => id)).toEqual(
+      Array.from({ length: 20 }, (_, index) => `life-lately-${String(index + 1).padStart(3, "0")}`),
+    );
+    expect(collection.photos.slice(20).map(({ id, width, height }) => [id, width, height])).toEqual([
+      ["life-lately-021", 1440, 1920],
+      ["life-lately-022", 1440, 1920],
+      ["life-lately-023", 1920, 1440],
+      ["life-lately-024", 1440, 1920],
+      ["life-lately-025", 1440, 1920],
+      ["life-lately-026", 1440, 1920],
+      ["life-lately-027", 1440, 1920],
+      ["life-lately-028", 1920, 1440],
+    ]);
+    expect(new Set(collection.photos.map(({ src }) => src)).size).toBe(28);
+    expect(collection.coverPhotoId).toBeNull();
+    expect(collectionCover(collection)?.id).toBe("life-lately-001");
+    expect(photoCollections.slice(0, 3).map(({ photos }) => photos.length)).toEqual([31, 13, 17]);
   });
 
   it("uses an independently selected cover without reordering the collection", () => {
