@@ -129,36 +129,32 @@ function GettingHere() {
           <p className="mx-auto max-w-3xl text-center font-serif text-[17px] font-bold leading-8 text-itinerary-forest md:text-lg">{travelGuide.rentalRecommendation}</p>
         </Reveal>
 
-        <div className="mt-16 grid items-center gap-10 border-t border-foreground/20 pt-10 md:grid-cols-12 md:pt-14">
-          <Reveal className="md:col-span-5">
-            <h3 className="eyebrow text-cinnamon">Driving from New England</h3>
-            <p className="mt-6 font-serif text-2xl leading-snug">Joining us from Massachusetts or a neighboring state?</p>
-            <p className="mt-4 font-script text-4xl text-rust">Lincoln makes for a beautiful mountain road trip!</p>
-            <p className="mt-6 max-w-md text-sm leading-7 text-muted-foreground">We recommend allowing extra travel time during Columbus Day weekend, as the roads can get busy with fall foliage visitors.</p>
-          </Reveal>
-          <Reveal delay={120} className="md:col-span-7">
-            <PhotoPlaceholder label="A scenic New Hampshire autumn road" className="aspect-[4/3] w-full md:aspect-[16/10]" />
-          </Reveal>
-        </div>
-
         <Reveal className="mt-16 border-t border-foreground/20 pt-10 md:pt-14">
-          <div className="grid gap-8 md:grid-cols-12">
-            <div className="md:col-span-4">
-              <h3 className="eyebrow text-cinnamon">Rental Car Information</h3>
-            </div>
-            <div className="md:col-span-8">
-              <p className="max-w-2xl text-sm leading-7 text-muted-foreground">We recommend arranging a rental car in advance.</p>
-              <p className="mt-4 max-w-2xl text-sm leading-7 text-muted-foreground">Lincoln is a mountain destination, and having your own transportation makes it easier to explore the area.</p>
-              <nav aria-label="Official rental car websites" className="mt-8 grid border-t border-border sm:grid-cols-2 lg:grid-cols-3">
-                {travelGuide.rentalCompanies.map((company) => (
-                  <a key={company.name} href={company.url} target="_blank" rel="noreferrer" className="flex items-center justify-between gap-4 border-b border-border py-4 pr-4 font-display text-sm font-medium uppercase tracking-[0.08em] text-foreground transition-colors hover:text-rust sm:mr-5">
-                    {company.name}<span aria-hidden="true" className="text-rust">↗</span>
-                  </a>
-                ))}
-              </nav>
-              <p className="mt-7 max-w-2xl text-sm leading-7 text-muted-foreground">Please confirm airport pickup availability, rental requirements, and operating hours directly with the rental provider.</p>
-              <p className="mt-4 max-w-2xl border-l border-cinnamon pl-5 text-sm leading-7 text-foreground"><span className="font-bold">International travelers:</span> check driver’s license and International Driving Permit requirements before traveling.</p>
-            </div>
+          <div id="driving-to-lincoln" className="max-w-4xl">
+            <h3 className="eyebrow font-bold text-rust">Driving to Lincoln</h3>
+            <p className="mt-6 font-serif text-2xl leading-snug">Making your way to the mountains?</p>
+            <p className="mt-4 font-script text-4xl text-romantic-crimson">Lincoln makes for a beautiful mountain road trip!</p>
+            <p className="mt-6 font-serif text-sm leading-7 text-foreground">{travelGuide.driving.introduction}</p>
+
+            <p className="mt-8 font-serif text-base font-bold leading-8 text-itinerary-forest lg:text-lg">{travelGuide.driving.recommendation}</p>
+            <p className="mt-3 font-serif text-sm leading-7 text-foreground">{travelGuide.driving.transportation}</p>
+
+            <aside className="mt-8 border-l-2 border-rust bg-muted px-6 py-6" aria-labelledby="rental-group-rates">
+              <h4 id="rental-group-rates" className="eyebrow text-[13px] font-bold text-rust">Rental Car Group Rates</h4>
+              <p className="mt-4 font-serif text-sm leading-7 text-foreground">{travelGuide.driving.groupRates.notice}</p>
+              <p className="mt-2 font-serif text-sm italic leading-7 text-foreground">{travelGuide.driving.groupRates.update}</p>
+            </aside>
+
+            <h4 className="mt-9 font-display text-base font-bold uppercase tracking-[0.08em] text-foreground">Explore Rental Car Options</h4>
+            <nav aria-label="Official rental car websites" className="mt-5 grid border-t border-border sm:grid-cols-2 lg:grid-cols-3">
+              {travelGuide.rentalCompanies.map((company) => (
+                <a key={company.name} href={company.url} target="_blank" rel="noreferrer" className="flex items-center justify-between gap-4 border-b border-border py-4 pr-4 font-display text-sm font-medium uppercase tracking-[0.08em] text-foreground transition-colors hover:text-rust sm:mr-5">
+                  {company.name}<span aria-hidden="true" className="text-rust">↗</span>
+                </a>
+              ))}
+            </nav>
+            <p className="mt-7 max-w-2xl text-sm leading-7 text-muted-foreground">Please confirm airport pickup availability, rental requirements, and operating hours directly with the rental provider.</p>
+            <p className="mt-4 max-w-2xl border-l border-cinnamon pl-5 text-sm leading-7 text-foreground"><span className="font-bold">International travelers:</span> Check driver’s license and International Driving Permit requirements before traveling.</p>
           </div>
         </Reveal>
       </div>

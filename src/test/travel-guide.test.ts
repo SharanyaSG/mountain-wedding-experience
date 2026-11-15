@@ -43,6 +43,10 @@ describe("Plan Your Trip travel facts", () => {
     expect(travelGuide.eatAndExplore).toEqual(["Restaurants", "Breakfast & brunch spots", "Cafés", "Breweries", "Local attractions", "Hidden gems"]);
   });
 
+  it("keeps rental-car group rates tentative rather than secured", () => {
+    expect(travelGuide.driving.groupRates.status).toBe("exploring");
+  });
+
   it("limits the complimentary gift to wedding guests on October 8", () => {
     expect(travelGuide.gondola.date).toBe("October 8");
     expect(travelGuide.gondola.audience).toBe("our wedding guests");
