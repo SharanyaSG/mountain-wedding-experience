@@ -1,4 +1,5 @@
 # Homepage refinements
+- [ ] Unify homepage section spacing and aligned subtle dividers, remove oversized message/travel gaps, preserve the hero and component interiors, and verify all seven requested widths plus mobile landscape.
 - [x] Combine driving and rental-car information, remove the scenic-road placeholder, add the tentative group-rates notice, and verify desktop/tablet/mobile.
 - [x] Consolidate the whole site into one ordered scrolling page with anchor-only navigation, legacy-route redirects, and desktop/tablet/mobile verification.
 - [x] Build the complete Plan Your Trip destination guide, consolidate RiverWalk onto it, remove the homepage Travel & Stay and Explore sections and navigation entry, and verify desktop/tablet/mobile.
