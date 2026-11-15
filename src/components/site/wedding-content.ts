@@ -20,13 +20,14 @@ export const travelGuide = {
     code: "BOS",
     driveTime: "Approximately 2–2.5 hours by car to Lincoln, New Hampshire.",
     description: "Boston Logan is generally the most convenient major international gateway for guests traveling from overseas.",
-    recommendation: "We recommend arranging a rental car in advance for the drive to Lincoln.",
   },
   domestic: [
     { name: "Boston Logan International Airport", code: "BOS", driveTime: "Approximately 2–2.5 hours by car." },
     { name: "Manchester-Boston Regional Airport", code: "MHT", driveTime: "Approximately 1.25–1.5 hours by car." },
   ],
   airportComparison: "Manchester is closer to Lincoln, while Boston typically offers a wider range of flight options.",
+  /** Shared statement shown once beneath both airport columns. */
+  rentalRecommendation: "We recommend arranging a rental car in advance for your drive to Lincoln. More information can be found below.",
   rentalCompanies: [
     { name: "Enterprise Rent-A-Car", url: "https://www.enterprise.com/en/home.html" },
     { name: "Hertz", url: "https://www.hertz.com/us/en/home" },
