@@ -46,6 +46,7 @@ export function StoryCard({ story }: { story: Story }) {
               width={story.photo.width}
               height={story.photo.height}
               loading="lazy"
+              style={story.photo.objectPosition ? { objectPosition: story.photo.objectPosition } : undefined}
               className="h-full w-full object-cover"
             />
           ) : (

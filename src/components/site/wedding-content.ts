@@ -80,7 +80,7 @@ export type Story = {
   preview?: string;
   /** Longer line shown in the reading view; otherwise the card subtitle. */
   readerSubtitle?: string;
-  photo: { url: string; alt: string; width: number; height: number } | null;
+  photo: { url: string; alt: string; width: number; height: number; objectPosition?: string } | null;
 };
 
 export const stories: Story[] = [
