@@ -130,7 +130,7 @@ function GettingHere() {
         </Reveal>
 
         <Reveal className="mt-16 border-t border-foreground/20 pt-10 md:pt-14">
-          <div id="driving-to-lincoln" className="max-w-4xl">
+          <div id="driving-to-lincoln" className="mx-auto w-full max-w-[980px]">
             <h3 className="eyebrow font-bold text-rust">Driving to Lincoln</h3>
             <div className="mt-6">
               <SectionHeading title="Making your way to the mountains?" accent="Lincoln makes for a beautiful mountain road trip!" crimson />
@@ -154,8 +154,8 @@ function GettingHere() {
                 </a>
               ))}
             </nav>
-            <p className="mt-7 max-w-2xl text-sm leading-7 text-muted-foreground">Please confirm airport pickup availability, rental requirements, and operating hours directly with the rental provider.</p>
-            <p className="mt-4 max-w-2xl border-l border-cinnamon pl-5 text-sm leading-7 text-rust"><span className="font-bold">International travelers:</span> Check driver’s license and International Driving Permit requirements before traveling.</p>
+            <p className="mt-7 text-sm leading-7 text-muted-foreground">Please confirm airport pickup availability, rental requirements, and operating hours directly with the rental provider.</p>
+            <p className="mt-4 border-l border-cinnamon pl-5 text-sm leading-7 text-rust"><span className="font-bold">International travelers:</span> Check driver’s license and International Driving Permit requirements before traveling.</p>
           </div>
         </Reveal>
       </div>
