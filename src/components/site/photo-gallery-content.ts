@@ -40,6 +40,7 @@ import photo027 from "@/assets/before-forever-027.jpg.asset.json";
 import photo028 from "@/assets/before-forever-028.jpg.asset.json";
 import photo029 from "@/assets/before-forever-029.jpg.asset.json";
 import photo030 from "@/assets/before-forever-030.jpg.asset.json";
+import photo031 from "@/assets/before-forever-031.jpg.asset.json";
 
 export type GalleryPhoto = {
   id: string;
@@ -108,6 +109,7 @@ export const photoCollections: PhotoCollection[] = [
       { id: "before-forever-028", src: photo028.url, width: 1440, height: 1920, alt: "Sharanya and Sahil in graduation caps and gowns holding their diplomas" },
       { id: "before-forever-029", src: photo029.url, width: 1440, height: 1920, alt: "Sharanya and Sahil taking a selfie together outdoors in the sunshine" },
       { id: "before-forever-030", src: photo030.url, width: 1440, height: 1920, alt: "Sharanya kissing Sahil on the cheek as he smiles for a selfie" },
+      { id: "before-forever-031", src: photo031.url, width: 1920, height: 1081, alt: "Sharanya and Sahil with friends and a dog on a rocky overlook under a blue sky" },
     ],
   },
   {

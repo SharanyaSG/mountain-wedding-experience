@@ -42,8 +42,7 @@ describe("Pictures of Us collections", () => {
   });
 
   it("appends the third ten uploads without losing earlier photographs or changing upload order", () => {
-    expect(photoCollections[0]?.photos).toHaveLength(30);
-    expect(photoCollections[0]?.photos.slice(20).map(({ id, width, height }) => [id, width, height])).toEqual([
+    expect(photoCollections[0]?.photos.slice(20, 30).map(({ id, width, height }) => [id, width, height])).toEqual([
       ["before-forever-021", 1440, 1920],
       ["before-forever-022", 1920, 1440],
       ["before-forever-023", 1440, 1920],
@@ -55,7 +54,14 @@ describe("Pictures of Us collections", () => {
       ["before-forever-029", 1440, 1920],
       ["before-forever-030", 1440, 1920],
     ]);
-    expect(new Set(photoCollections[0]?.photos.map(({ id }) => id)).size).toBe(30);
+    expect(new Set(photoCollections[0]?.photos.slice(0, 30).map(({ id }) => id)).size).toBe(30);
+  });
+
+  it("appends the single received fourth-batch photograph after all thirty earlier uploads", () => {
+    expect(photoCollections[0]?.photos).toHaveLength(31);
+    expect(photoCollections[0]?.photos.slice(30).map(({ id, width, height }) => [id, width, height])).toEqual([
+      ["before-forever-031", 1920, 1081],
+    ]);
   });
 
   it("leaves the other three galleries empty and the cover unfinalized", () => {
