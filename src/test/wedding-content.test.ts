@@ -34,12 +34,36 @@ describe("wedding content", () => {
     );
   });
 
-  it("shows the supplied Halloween photograph and leaves every other card front a placeholder", () => {
+  it("shows the supplied Halloween and bow photographs and leaves every other card front a placeholder", () => {
     const halloween = stories.find((s) => s.id === "halloween-2023");
     expect(halloween?.photo).toMatchObject({ width: 1600, height: 1200 });
     expect(halloween?.photo?.url).toMatch(/^\/__l5e\/assets-v1\/[\w-]+\/halloween-2023\.png$/);
+    const bow = stories.find((s) => s.id === "the-bow");
+    expect(bow?.photo).toMatchObject({ width: 1320, height: 1765 });
+    expect(bow?.photo?.url).toMatch(/^\/__l5e\/assets-v1\/[\w-]+\/the-bow\.png$/);
+    const shravya = stories.find((s) => s.id === "shravya");
+    expect(shravya?.photo).toMatchObject({ width: 1440, height: 1920 });
+    expect(shravya?.photo?.url).toMatch(/^\/__l5e\/assets-v1\/[\w-]+\/shravya\.webp$/);
+    const newYork = stories.find((s) => s.id === "new-york");
+    expect(newYork?.photo).toMatchObject({ width: 1440, height: 1920 });
+    expect(newYork?.photo?.url).toMatch(/^\/__l5e\/assets-v1\/[\w-]+\/new-york\.webp$/);
+    const freeMattress = stories.find((s) => s.id === "the-free-mattress");
+    expect(freeMattress?.photo).toMatchObject({ width: 1440, height: 1920 });
+    expect(freeMattress?.photo?.url).toMatch(/^\/__l5e\/assets-v1\/[\w-]+\/free-mattress\.webp$/);
+    const puppy = stories.find((s) => s.id === "the-puppy-proposal");
+    expect(puppy?.photo).toMatchObject({ width: 1080, height: 1920 });
+    expect(puppy?.photo?.url).toMatch(/^\/__l5e\/assets-v1\/[\w-]+\/the-puppy-proposal\.jpg$/);
+    const behaved = stories.find((s) => s.id === "the-one-where-he-behaved");
+    expect(behaved?.photo).toMatchObject({ width: 1080, height: 1920, objectPosition: "50% 35.7%" });
+    expect(behaved?.photo?.url).toMatch(/^\/__l5e\/assets-v1\/[\w-]+\/the-one-where-he-behaved\.jpg$/);
+    const proposalTwo = stories.find((s) => s.id === "the-proposal-that-became-two");
+    expect(proposalTwo?.photo).toMatchObject({ width: 1280, height: 1920 });
+    expect(proposalTwo?.photo?.url).toMatch(/^\/__l5e\/assets-v1\/[\w-]+\/proposal-that-became-two\.jpg$/);
+    const stormy = stories.find((s) => s.id === "stormy-gowda-malhotra");
+    expect(stormy?.photo).toMatchObject({ width: 1440, height: 1920 });
+    expect(stormy?.photo?.url).toMatch(/^\/__l5e\/assets-v1\/[\w-]+\/stormy-gowda-malhotra\.webp$/);
     expect(stories.filter((s) => s.photo === null).map((s) => s.n)).toEqual([
-      "02", "03", "04", "05", "06", "07", "08", "09", "10", "11",
+      "06", "11",
     ]);
   });
 

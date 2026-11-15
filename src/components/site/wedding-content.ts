@@ -1,4 +1,12 @@
+import bowPhoto from "@/assets/the-bow.png.asset.json";
+import freeMattressPhoto from "@/assets/free-mattress.webp.asset.json";
 import halloweenPhoto from "@/assets/halloween-2023.png.asset.json";
+import puppyProposalPhoto from "@/assets/the-puppy-proposal.jpg.asset.json";
+import behavedPhoto from "@/assets/the-one-where-he-behaved.jpg.asset.json";
+import proposalTwoPhoto from "@/assets/proposal-that-became-two.jpg.asset.json";
+import stormyPhoto from "@/assets/stormy-gowda-malhotra.webp.asset.json";
+import newYorkPhoto from "@/assets/new-york.webp.asset.json";
+import shravyaPhoto from "@/assets/shravya.webp.asset.json";
 
 export const hotels = [
   {
@@ -75,7 +83,7 @@ export type Story = {
   preview?: string;
   /** Longer line shown in the reading view; otherwise the card subtitle. */
   readerSubtitle?: string;
-  photo: { url: string; alt: string; width: number; height: number } | null;
+  photo: { url: string; alt: string; width: number; height: number; objectPosition?: string } | null;
 };
 
 export const stories: Story[] = [
@@ -103,7 +111,12 @@ Before she could properly process what was happening, he was halfway up the tree
 
 He climbed down, handed it to her like it was a priceless gift, and said, “I’ll always give you what you want.”
 
-And in that very ridiculous, very sweet moment, Sharanya realized that this was someone who would go to any length just to make her smile and keep her happy!`, photo: null },
+And in that very ridiculous, very sweet moment, Sharanya realized that this was someone who would go to any length just to make her smile and keep her happy!`, photo: {
+    url: bowPhoto.url,
+    alt: "A hand holding the red ribbon bow Sahil climbed a tree to bring down",
+    width: 1320,
+    height: 1765,
+  } },
   { id: "shravya", n: "03", title: "Shravya", subtitle: "Sahil’s Favorite Sharanya Story", body: `Shortly after they started dating, Sahil took a trip to India, and they were texting enough for his family to get curious. On the flight back, his mom asked who he had been talking to so much, and he casually said he was dating this girl that she had met sometime back. His mom nodded and said, “Oh yes, that girl… Shravya, right?”
 
 Sahil paused… and said, “YES!! That girl.”
@@ -114,7 +127,12 @@ And then it just … continued. For the next few months, his family happily refe
 
 A couple of months later, the moment finally arrived. Sharanya met his sister first, who immediately discovered the mix up. She was surprised, mildly exasperated, and also very entertained; it only reinforced what she already knew about her brother. A week later, when she met his mom, the truth came out again, followed by a lot of laughter, a bit of disbelief, and plenty of “Why would you even do this?” directed at Sahil.
 
-In the end, it turned into one of those stories everyone still laughs about, and every once in a while, his mom still accidentally calls her Shravya.`, photo: null },
+In the end, it turned into one of those stories everyone still laughs about, and every once in a while, his mom still accidentally calls her Shravya.`, photo: {
+    url: shravyaPhoto.url,
+    alt: "Sharanya looking straight at the camera with a playful pout",
+    width: 1440,
+    height: 1920,
+  } },
   { id: "new-york", n: "04", title: "New York", subtitle: "The First Big Trip", body: `A few months into their relationship, Sharanya and Sahil planned their first trip together. They wanted something affordable, cozy, and romantic, so Sahil found a charming Airbnb in the middle of nowhere in New York complete with a hot tub and a view of a stream waterfall. Sharanya needed some convincing, but reluctantly agreed.
 
 They set off early with no plan, stopped in Albany to explore the State Capitol, grabbed some questionable fish hot dogs, and continued on to the Airbnb, where chickens greeted them every time they stepped outside.
@@ -125,7 +143,12 @@ One highlight was a short hike for a sunset view over the farmland. They made it
 
 What followed was a chaotic walk back using only their phone flashlights. Sharanya was convinced there were bears in the woods and was very mad. Sahil was determined to get them back to the car safely.
 
-It was their first trip together, and it turned out to be full of unexpected adventures, small mishaps, and a lot of laughter. They thought it would be a quiet weekend, but instead they spent it exploring, trying new things, and making memories they still talk about.`, photo: null },
+It was their first trip together, and it turned out to be full of unexpected adventures, small mishaps, and a lot of laughter. They thought it would be a quiet weekend, but instead they spent it exploring, trying new things, and making memories they still talk about.`, photo: {
+    url: newYorkPhoto.url,
+    alt: "Sharanya and Sahil standing together at a vineyard, the striped umbrella and hills behind them",
+    width: 1440,
+    height: 1920,
+  } },
   { id: "the-free-mattress", n: "05", title: "The Free Mattress", subtitle: "He Meant Well….", body: `After moving out of her on campus apartment, Sharanya was sleeping on an air mattress. Sahil decided this simply would not do. Determined to fix it in the most budget friendly way possible, he found a “free” mattress that came with an adjustable bed frame.
 
 The mattress fit into the van easily. The bed frame did not. The seller was very clear that it was a package deal so he had to take both. So, Sahil went across the street, rented a truck, and came back for it.
@@ -134,7 +157,12 @@ What followed was a heroic but deeply misguided attempt to get the frame into th
 
 As predicted, the frame got completely stuck between the staircase and the wall and nearly took out the fire alarm. After a long series of “this is not going to work,” Sahil finally accepted defeat. But by then it was halfway in, so they had to wrestle it all the way back out and carry it around the block to the dumpster.
 
-In the end, the “free” bed frame was not so free, the adjustable dream did not survive, and Sharanya was understandably not thrilled. Sahil, however, meant well. And to this day, they still use that very mattress, just on a normal bed frame.`, photo: null },
+In the end, the “free” bed frame was not so free, the adjustable dream did not survive, and Sharanya was understandably not thrilled. Sahil, however, meant well. And to this day, they still use that very mattress, just on a normal bed frame.`, photo: {
+    url: freeMattressPhoto.url,
+    alt: "Sahil grinning and flashing a peace sign from the driver's seat of the new van",
+    width: 1440,
+    height: 1920,
+  } },
   { id: "our-homes-away-from-home", n: "06", title: "Our Homes Away From Home", subtitle: "Cornwalls & Silhouette", body: `Some of our favorite memories don’t come from big, dramatic moments, but from ordinary evenings at two very special places.
 
 Cornwall’s is our MBA bar, the place where so much of “us” quietly began. It’s where we went after long days of class, talking through life, laughing about projects, and showing up for each other as friends before anything else. It’s where we learned how to be each other’s safe place, one conversation at a time, and where small moments turned into something that means everything now.
@@ -161,7 +189,12 @@ Sahil then ran downstairs, grabbed a ring pop, flowers, and a heart-shaped box o
 
 And to no one’s surprise Sharanya said, “WOOF!”
 
-…which led to the next step - asking for blessings the slightly more formal way.`, photo: null },
+…which led to the next step - asking for blessings the slightly more formal way.`, photo: {
+    url: puppyProposalPhoto.url,
+    alt: "A hand wearing the oversized red ring pop used for the puppy proposal",
+    width: 1080,
+    height: 1920,
+  } },
   { id: "the-one-where-he-behaved", n: "08", title: "The One Where He Behaved!", subtitle: "Blessings from The Gowdas & The Malhotras", body: `Right after the puppy proposal, Sahil and Sharanya called her parents.
 
 This time, Sahil behaved.
@@ -172,7 +205,13 @@ Her parents listened, asked thoughtful questions, and most importantly, gave the
 
 Soon after, Sharanya also wrote a heartfelt letter to Sahil’s mom, asking for her son’s hand in a way that was thoughtful, intentional, and full of love.
 
-And with that, between laughter, a ring pop, and two very different but equally meaningful conversations, both families became part of the beginning of this next chapter.`, photo: null },
+And with that, between laughter, a ring pop, and two very different but equally meaningful conversations, both families became part of the beginning of this next chapter.`, photo: {
+    url: behavedPhoto.url,
+    alt: "Sahil smiling across a bar table with two cocktails in front of him at Emmets",
+    width: 1080,
+    height: 1920,
+    objectPosition: "50% 35.7%",
+  } },
   {
     id: "the-proposal-that-became-two",
     n: "09",
@@ -235,7 +274,12 @@ And perhaps the best part?
 Sahil had spent all that time planning the perfect way to ask Sharanya to marry him.
 
 He had absolutely no idea she was planning to ask him the very same question.`,
-    photo: null,
+    photo: {
+      url: proposalTwoPhoto.url,
+      alt: "Sharanya laughing with her eyes shut as Sahil holds her from behind, their joined hands showing her ring",
+      width: 1280,
+      height: 1920,
+    },
   },
   {
     id: "stormy-gowda-malhotra",
@@ -352,7 +396,12 @@ Since then, Stormy has been part of countless memories, adventures, and road tri
 And to think, it all started because an old soccer mom car finally decided it had had enough.
 
 Welcome to the family, Stormy.`,
-    photo: null,
+    photo: {
+      url: stormyPhoto.url,
+      alt: "Sharanya and Sahil standing arm in arm in front of Stormy, their new RAV4, outside the Toyota dealership at sunset",
+      width: 1440,
+      height: 1920,
+    },
   },
   {
     id: "the-great-board-game-merger",
