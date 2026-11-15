@@ -45,9 +45,15 @@ export const travelGuide = {
     { name: "Budget", url: "https://www.budget.com/en/home" },
     { name: "National Car Rental", url: "https://www.nationalcar.com/en/home" },
   ],
-  scenicDrives: ["Kancamagus Highway", "Franconia Notch", "Additional scenic recommendations"],
-  outdoorAdventures: ["Hiking trails", "Scenic overlooks", "Waterfalls", "Gondola rides", "Other local attractions"],
-  eatAndExplore: ["Restaurants", "Breakfast & brunch spots", "Cafés", "Breweries", "Local attractions", "Hidden gems"],
+  newHampshireGuide: {
+    intro: [
+      "We hope you’ll make an adventure of your time in the White Mountains! From scenic drives and mountain trails to cozy cafés and local favorites, there’s so much to discover.",
+      "We’ve put together a little guide to help you explore, plan ahead, and make the most of your visit.",
+    ],
+    label: "Explore Our New Hampshire Guide",
+    /** Set to the Canva PDF URL once it exists; the button then opens it in a new tab. */
+    url: null as string | null,
+  },
   gondola: {
     date: "October 8",
     audience: "our wedding guests",
