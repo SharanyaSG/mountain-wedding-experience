@@ -13,6 +13,18 @@ function SectionHeading({ title, accent, align = "left", crimson = false }: { ti
   );
 }
 
+function TravelerHeading({ children }: { children: string }) {
+  return (
+    <h3 className="font-display text-[17px] font-bold uppercase tracking-[0.16em] text-rust md:text-[19px] lg:text-[21px]">{children}</h3>
+  );
+}
+
+function DriveTime({ children }: { children: string }) {
+  return (
+    <p className="mt-3 font-display text-sm font-bold uppercase tracking-[0.08em] text-forest md:text-base lg:text-lg">{children}</p>
+  );
+}
+
 export function TravelGuide() {
   return (
     <div className="bg-card text-foreground">
@@ -87,36 +99,36 @@ function GettingHere() {
     <section id="getting-here" className="border-t border-border">
       <div className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-36">
         <Reveal>
-          <SectionHeading title="The Journey to the Mountains" accent="Getting here is part of the adventure." />
+          <SectionHeading title="The Journey to the Mountains" accent="Getting here is part of the adventure." crimson />
         </Reveal>
 
-        <Reveal className="mt-16 grid gap-7 border-t border-foreground/20 py-10 md:grid-cols-12 md:py-14">
-          <h3 className="eyebrow text-cinnamon md:col-span-4">International Travelers</h3>
-          <div className="md:col-span-8">
-            <p className="font-serif text-2xl leading-snug">{travelGuide.international.name} <span className="text-rust">({travelGuide.international.code})</span></p>
-            <p className="mt-3 font-display text-lg uppercase tracking-[0.08em] text-forest">{travelGuide.international.driveTime}</p>
-            <p className="mt-5 max-w-2xl text-sm leading-7 text-muted-foreground">{travelGuide.international.description}</p>
-            <p className="mt-3 max-w-2xl text-sm leading-7 text-muted-foreground">{travelGuide.international.recommendation}</p>
+        <Reveal className="mt-16 border-t border-foreground/20 pt-10 md:mt-20 md:pt-14">
+          <div className="grid gap-12 md:grid-cols-2 md:gap-0">
+            <div className="md:pr-8 lg:pr-14">
+              <TravelerHeading>International Travelers</TravelerHeading>
+              <p className="mt-7 font-serif text-xl leading-snug md:text-2xl">{travelGuide.international.name} <span className="text-rust">({travelGuide.international.code})</span></p>
+              <DriveTime>{travelGuide.international.driveTime}</DriveTime>
+              <p className="mt-5 text-sm leading-7 text-muted-foreground">{travelGuide.international.description}</p>
+            </div>
+            <div className="border-t border-border pt-10 md:border-t-0 md:border-l md:pl-8 md:pt-0 lg:pl-14">
+              <TravelerHeading>Domestic Travelers</TravelerHeading>
+              <ul className="mt-7">
+                {travelGuide.domestic.map((airport, index) => (
+                  <li key={airport.code} className={index === 0 ? "" : "mt-7 border-t border-border pt-7"}>
+                    <p className="font-display text-lg font-bold uppercase tracking-[0.12em] text-rust">{airport.code}</p>
+                    <h4 className="mt-3 font-serif text-xl leading-snug md:text-2xl">{airport.name}</h4>
+                    <DriveTime>{airport.driveTime}</DriveTime>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-7 font-serif text-sm italic leading-7 text-muted-foreground">{travelGuide.airportComparison}</p>
+            </div>
           </div>
         </Reveal>
 
-        <div className="border-t border-foreground/20 pt-10 md:pt-14">
-          <Reveal>
-            <h3 className="eyebrow text-cinnamon">Domestic Travelers</h3>
-          </Reveal>
-          <div className="mt-8 grid gap-10 md:grid-cols-2 md:gap-0">
-            {travelGuide.domestic.map((airport, index) => (
-              <Reveal key={airport.code} delay={index * 100} className={index === 0 ? "md:border-r md:border-border md:pr-12" : "md:pl-12"}>
-                <p className="display text-7xl text-rust md:text-8xl">{airport.code}</p>
-                <h4 className="mt-5 max-w-sm font-serif text-2xl leading-snug">{airport.name}</h4>
-                <p className="mt-3 font-display text-base uppercase tracking-[0.08em] text-forest">{airport.driveTime}</p>
-              </Reveal>
-            ))}
-          </div>
-          <Reveal className="mt-10 max-w-2xl text-sm leading-7 text-muted-foreground">
-            <p>{travelGuide.airportComparison}</p>
-          </Reveal>
-        </div>
+        <Reveal className="mt-16 md:mt-24">
+          <p className="mx-auto max-w-3xl text-center font-serif text-[17px] font-bold leading-8 text-itinerary-forest md:text-lg">{travelGuide.rentalRecommendation}</p>
+        </Reveal>
 
         <div className="mt-16 grid items-center gap-10 border-t border-foreground/20 pt-10 md:grid-cols-12 md:pt-14">
           <Reveal className="md:col-span-5">
