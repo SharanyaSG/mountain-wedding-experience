@@ -2,7 +2,7 @@ export const hotels = [
   {
     id: "riverwalk",
     name: "RiverWalk Resort at Loon Mountain",
-    introduction: "We’ve reserved a special wedding room block at RiverWalk Resort, where our Thursday celebrations will take place and where you’ll be close to family, friends, and the wedding-day shuttle.",
+    introduction: "We’ve reserved a special wedding room block at RiverWalk Resort, where our Thursday celebrations will take place. With the wedding-day shuttle nearby and October’s peak foliage coinciding with Columbus Day weekend, we encourage guests to book early.",
     season: "October is peak foliage season and Columbus Day weekend, making this one of the busiest times of the year in the White Mountains.",
     availability: "Our room block is available on a first-come, first-served basis. Once the reserved rooms are filled, additional rooms and group rates cannot be guaranteed.",
     encouragement: "We strongly encourage booking as soon as reservations open.",
