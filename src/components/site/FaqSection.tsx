@@ -9,7 +9,6 @@ function scrollToSection(e: MouseEvent<HTMLAnchorElement>, id: string) {
   const header = document.querySelector("header");
   const offset = (header?.getBoundingClientRect().height ?? 80) + 16;
   window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - offset, behavior: "smooth" });
-  history.replaceState(null, "", `#${id}`);
 }
 
 function renderInline(text: string): ReactNode[] {
