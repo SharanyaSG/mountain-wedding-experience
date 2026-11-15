@@ -1,5 +1,6 @@
+import gondolaPhoto from "@/assets/loon-mountain-gondola.jpg.asset.json";
 import riverwalkPhoto from "@/assets/hotel-riverwalk.jpg.asset.json";
-import { PhotoPlaceholder, Reveal } from "@/components/site/Reveal";
+import { Reveal } from "@/components/site/Reveal";
 import { hotels, travelGuide } from "@/components/site/wedding-content";
 
 const riverwalk = hotels[0];
@@ -202,18 +203,27 @@ function Adventure() {
 }
 
 function GondolaGift() {
+  const [offerBefore, offerAfter] = travelGuide.gondola.offer.split(travelGuide.gondola.highlight);
   return (
     <section id="gondola" className="border-y border-border bg-card">
       <div className="mx-auto grid max-w-[1400px] items-center gap-12 px-5 py-24 md:grid-cols-12 md:px-10 md:py-36">
         <Reveal className="md:col-span-7">
-          <PhotoPlaceholder label="Loon Mountain gondolas in autumn" className="aspect-[4/3] w-full md:aspect-[16/11]" />
+          <img
+            src={gondolaPhoto.url}
+            alt="A guest standing between two Loon Mountain scenic gondola cabins at the base station"
+            width={1440}
+            height={1920}
+            loading="lazy"
+            className="aspect-[4/3] h-full w-full object-cover object-[50%_42%] md:aspect-[16/11]"
+          />
         </Reveal>
         <Reveal delay={120} className="md:col-span-5">
-          <p className="font-script text-5xl leading-tight text-romantic-crimson">A little something from us</p>
+          <p className="font-script text-5xl leading-tight text-romantic-crimson">A gift from us to you.</p>
           <h2 className="display mt-6 text-4xl uppercase leading-tight md:text-5xl">The Mountain Views Are on Us!</h2>
-          <p className="mt-8 text-[15px] leading-8 text-muted-foreground">{travelGuide.gondola.offer}</p>
-          <p className="mt-5 text-[15px] leading-8 text-muted-foreground">Enjoy the journey to the summit, take in the spectacular autumn views, and celebrate with us above the mountains.</p>
-          <p className="mt-7 border-l border-rust pl-5 font-serif text-sm italic leading-7 text-foreground">{travelGuide.gondola.accessDetails}</p>
+          <p className="mt-8 text-[15px] leading-8 text-muted-foreground">{travelGuide.gondola.intro}</p>
+          <p className="mt-5 text-[15px] leading-8 text-muted-foreground">{travelGuide.gondola.climb}</p>
+          <p className="mt-5 text-[15px] leading-8 text-muted-foreground">{offerBefore}<span className="font-bold text-itinerary-forest">{travelGuide.gondola.highlight}</span>{offerAfter}</p>
+          <p className="mt-7 border-l border-rust pl-5 font-serif text-sm italic leading-7 text-romantic-crimson">{travelGuide.gondola.accessDetails}</p>
         </Reveal>
       </div>
     </section>
