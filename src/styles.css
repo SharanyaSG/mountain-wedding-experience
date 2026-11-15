@@ -203,6 +203,27 @@
 }
 .section-content { margin-top: var(--section-content-gap); }
 
+/* Bottom-anchored CSS crop keeps the couple and foreground intact. */
+.announcement-photo { aspect-ratio: 4 / 5; }
+.announcement-photo img {
+  transform: scale(1.12);
+  transform-origin: center bottom;
+}
+@media (width >= 768px) and (width < 1200px) {
+  .announcement-photo {
+    aspect-ratio: 1;
+    width: min(100%, 640px);
+    justify-self: center;
+  }
+}
+@media (width >= 1200px) {
+  .announcement-photo { aspect-ratio: 1; }
+  .announcement-copy {
+    justify-content: flex-end;
+    padding-block: 24px 48px;
+  }
+}
+
 .story-scene {
   perspective: 1600px;
 }
