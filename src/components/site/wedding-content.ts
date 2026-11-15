@@ -28,6 +28,16 @@ export const travelGuide = {
   airportComparison: "Manchester is closer to Lincoln, while Boston typically offers a wider range of flight options.",
   /** Shared statement shown once beneath both airport columns. */
   rentalRecommendation: "We recommend arranging a rental car in advance for your drive to Lincoln. More information can be found below.",
+  driving: {
+    introduction: "Whether you’re driving from nearby or picking up a rental car after your flight, the journey to Lincoln is a beautiful one. We recommend allowing extra travel time during Columbus Day weekend, as the roads can get busy with visitors enjoying New Hampshire’s spectacular fall foliage.",
+    recommendation: "We recommend arranging a rental car in advance.",
+    transportation: "Having your own transportation makes it easier to explore Lincoln and the surrounding White Mountains at your own pace.",
+    groupRates: {
+      status: "exploring",
+      notice: "We’re exploring special rental-car rates for our wedding guests and hope to make the journey a little easier on everyone!",
+      update: "We’ll share more information here if group rates become available. Stay tuned!",
+    },
+  },
   rentalCompanies: [
     { name: "Enterprise Rent-A-Car", url: "https://www.enterprise.com/en/home.html" },
     { name: "Hertz", url: "https://www.hertz.com/us/en/home" },
