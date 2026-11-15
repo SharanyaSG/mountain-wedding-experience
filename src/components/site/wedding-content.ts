@@ -3,6 +3,7 @@ import freeMattressPhoto from "@/assets/free-mattress.webp.asset.json";
 import halloweenPhoto from "@/assets/halloween-2023.png.asset.json";
 import puppyProposalPhoto from "@/assets/the-puppy-proposal.jpg.asset.json";
 import behavedPhoto from "@/assets/the-one-where-he-behaved.jpg.asset.json";
+import proposalTwoPhoto from "@/assets/proposal-that-became-two.jpg.asset.json";
 import newYorkPhoto from "@/assets/new-york.webp.asset.json";
 import shravyaPhoto from "@/assets/shravya.webp.asset.json";
 
@@ -272,7 +273,12 @@ And perhaps the best part?
 Sahil had spent all that time planning the perfect way to ask Sharanya to marry him.
 
 He had absolutely no idea she was planning to ask him the very same question.`,
-    photo: null,
+    photo: {
+      url: proposalTwoPhoto.url,
+      alt: "Sharanya laughing with her eyes shut as Sahil holds her from behind, their joined hands showing her ring",
+      width: 1280,
+      height: 1920,
+    },
   },
   {
     id: "stormy-gowda-malhotra",
