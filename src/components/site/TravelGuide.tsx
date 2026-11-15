@@ -21,7 +21,7 @@ function TravelerHeading({ children }: { children: string }) {
 
 function DriveTime({ children }: { children: string }) {
   return (
-    <p className="mt-3 font-display text-sm font-bold uppercase tracking-[0.08em] text-forest md:text-base lg:text-lg">{children}</p>
+    <p className="mt-3 font-display text-sm font-normal uppercase tracking-[0.08em] text-forest md:text-base lg:text-lg">{children}</p>
   );
 }
 
@@ -115,8 +115,7 @@ function GettingHere() {
               <ul className="mt-7">
                 {travelGuide.domestic.map((airport, index) => (
                   <li key={airport.code} className={index === 0 ? "" : "mt-7 border-t border-border pt-7"}>
-                    <p className="font-display text-lg font-bold uppercase tracking-[0.12em] text-rust">{airport.code}</p>
-                    <h4 className="mt-3 font-serif text-xl leading-snug md:text-2xl">{airport.name}</h4>
+                    <p className="font-serif text-xl leading-snug md:text-2xl">{airport.name} <span className="text-rust">({airport.code})</span></p>
                     <DriveTime>{airport.driveTime}</DriveTime>
                   </li>
                 ))}
