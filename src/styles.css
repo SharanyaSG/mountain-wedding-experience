@@ -46,6 +46,8 @@
   --color-ivory: var(--ivory);
   --color-charcoal: var(--charcoal);
   --color-footer-crimson: var(--footer-crimson);
+  --color-info-sage: var(--info-sage);
+  --color-info-forest: var(--info-forest);
 }
 
 :root {
@@ -54,6 +56,8 @@
   --ivory: #FAF8F4;
   --charcoal: #352820; /* deep espresso */
   --sage: #789568;
+  --info-sage: #EDF1E9;
+  --info-forest: #587451;
   --cinnamon: #A45A3F;
   --forest: #56704A; /* deepened sage, legible on ivory */
   --forest-deep: #46603B;
