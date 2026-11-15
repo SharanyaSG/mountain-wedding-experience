@@ -155,7 +155,7 @@ function GettingHere() {
               ))}
             </nav>
             <p className="mt-7 max-w-2xl text-sm leading-7 text-muted-foreground">Please confirm airport pickup availability, rental requirements, and operating hours directly with the rental provider.</p>
-            <p className="mt-4 max-w-2xl border-l border-cinnamon pl-5 text-sm leading-7 text-foreground"><span className="font-bold">International travelers:</span> Check driver’s license and International Driving Permit requirements before traveling.</p>
+            <p className="mt-4 max-w-2xl border-l border-cinnamon pl-5 text-sm leading-7 text-rust"><span className="font-bold">International travelers:</span> Check driver’s license and International Driving Permit requirements before traveling.</p>
           </div>
         </Reveal>
       </div>
