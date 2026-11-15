@@ -53,6 +53,24 @@ describe("story cards", () => {
     expect(screen.queryByRole("dialog")).toBeNull();
   });
 
+  it("shows the board game preview and opens its complete story", () => {
+    const boardGames = stories.find((s) => s.id === "the-great-board-game-merger");
+    if (!boardGames) throw new Error("The Great Board Game Merger is missing from the story collection");
+    render(<StoryCard story={boardGames} />);
+    fireEvent.click(screen.getByRole("button", { name: "Read the story: The Great Board Game Merger" }));
+    expect(
+      screen.getByText("When Sharanya and Sahil got married, they didn’t just combine their lives. They merged their board game collections. What followed was an obsession with 7 Wonders Duel, an ongoing Everdell rivalry, and a new definition of date night. And somewhere along the way, Sahil seems to have forgotten how to win."),
+    ).toBeVisible();
+    fireEvent.click(screen.getByRole("button", { name: "Read the Full Story" }));
+    const dialog = screen.getByRole("dialog");
+    expect(dialog).toHaveTextContent("Two board game nerds. One shared collection. A marriage built on love, strategy, and a little too much competition.");
+    expect(dialog).toHaveTextContent("A merger.");
+    expect(dialog).toHaveTextContent("And possibly another victory dance happening in the next room.");
+    expect(dialog.querySelectorAll("p").length).toBeGreaterThanOrEqual(62);
+    fireEvent.keyDown(document, { key: "Escape" });
+    expect(screen.queryByRole("dialog")).toBeNull();
+  });
+
   it("shows Stormy's preview and opens the full story with its longer reading line", () => {
     const stormy = stories.find((s) => s.id === "stormy-gowda-malhotra");
     if (!stormy) throw new Error("Stormy Gowda-Malhotra is missing from the story collection");
