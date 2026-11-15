@@ -81,6 +81,16 @@ import life007 from "@/assets/life-lately-007.webp.asset.json";
 import life008 from "@/assets/life-lately-008.webp.asset.json";
 import life009 from "@/assets/life-lately-009.webp.asset.json";
 import life010 from "@/assets/life-lately-010.webp.asset.json";
+import life011 from "@/assets/life-lately-011.webp.asset.json";
+import life012 from "@/assets/life-lately-012.webp.asset.json";
+import life013 from "@/assets/life-lately-013.webp.asset.json";
+import life014 from "@/assets/life-lately-014.webp.asset.json";
+import life015 from "@/assets/life-lately-015.webp.asset.json";
+import life016 from "@/assets/life-lately-016.webp.asset.json";
+import life017 from "@/assets/life-lately-017.webp.asset.json";
+import life018 from "@/assets/life-lately-018.webp.asset.json";
+import life019 from "@/assets/life-lately-019.webp.asset.json";
+import life020 from "@/assets/life-lately-020.jpg.asset.json";
 
 export type GalleryPhoto = {
   id: string;
@@ -220,6 +230,16 @@ export const photoCollections: PhotoCollection[] = [
       { id: "life-lately-008", src: life008.url, width: 1920, height: 1440, alt: "Sharanya and Sahil taking a group selfie with friends indoors" },
       { id: "life-lately-009", src: life009.url, width: 1920, height: 1440, alt: "Sharanya and Sahil smiling together under warm red lighting" },
       { id: "life-lately-010", src: life010.url, width: 1440, height: 1920, alt: "Sharanya and Sahil taking a close-up selfie outdoors" },
+      { id: "life-lately-011", src: life011.url, width: 1920, height: 1440, alt: "Sharanya and Sahil taking a selfie beside a lake" },
+      { id: "life-lately-012", src: life012.url, width: 1920, height: 1440, alt: "Sharanya and Sahil standing beside a large rock overlooking the water" },
+      { id: "life-lately-013", src: life013.url, width: 1920, height: 1440, alt: "Sharanya and Sahil taking a selfie on a brick walkway" },
+      { id: "life-lately-014", src: life014.url, width: 1920, height: 1440, alt: "Sharanya and Sahil enjoying a boat ride on the water" },
+      { id: "life-lately-015", src: life015.url, width: 1440, height: 1920, alt: "Sharanya and Sahil smiling together on a lawn near the water" },
+      { id: "life-lately-016", src: life016.url, width: 1920, height: 1440, alt: "Sharanya and Sahil posing with friends outdoors surrounded by trees" },
+      { id: "life-lately-017", src: life017.url, width: 1440, height: 1920, alt: "Sharanya and Sahil taking a selfie inside a restaurant" },
+      { id: "life-lately-018", src: life018.url, width: 1440, height: 1920, alt: "Sharanya and Sahil smiling together for a selfie at home" },
+      { id: "life-lately-019", src: life019.url, width: 1920, height: 1440, alt: "Sharanya and Sahil taking a selfie with a friend outside a restaurant" },
+      { id: "life-lately-020", src: life020.url, width: 1320, height: 869, alt: "Sharanya and Sahil posing with friends and playful party signs" },
     ],
   },
 ];

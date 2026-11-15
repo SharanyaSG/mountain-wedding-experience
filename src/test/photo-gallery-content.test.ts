@@ -144,8 +144,7 @@ describe("Pictures of Us collections", () => {
   it("adds ten Life Lately originals in upload order with original proportions and no finalized cover", () => {
     const collection = photoCollections[3];
     if (!collection) throw new Error("Life Lately is missing");
-    expect(collection.photos).toHaveLength(10);
-    expect(collection.photos.map(({ id, width, height }) => [id, width, height])).toEqual([
+    expect(collection.photos.slice(0, 10).map(({ id, width, height }) => [id, width, height])).toEqual([
       ["life-lately-001", 1920, 1440],
       ["life-lately-002", 1920, 1440],
       ["life-lately-003", 1080, 1920],
@@ -157,8 +156,29 @@ describe("Pictures of Us collections", () => {
       ["life-lately-009", 1920, 1440],
       ["life-lately-010", 1440, 1920],
     ]);
-    expect(new Set(collection.photos.map(({ src }) => src)).size).toBe(10);
+    expect(new Set(collection.photos.slice(0, 10).map(({ src }) => src)).size).toBe(10);
     expect(collection.coverPhotoId).toBeNull();
+  });
+
+  it("appends the second ten Life Lately photos while preserving all earlier photos and the temporary cover", () => {
+    const collection = photoCollections[3];
+    if (!collection) throw new Error("Life Lately is missing");
+    expect(collection.photos).toHaveLength(20);
+    expect(collection.photos.slice(10).map(({ id, width, height }) => [id, width, height])).toEqual([
+      ["life-lately-011", 1920, 1440],
+      ["life-lately-012", 1920, 1440],
+      ["life-lately-013", 1920, 1440],
+      ["life-lately-014", 1920, 1440],
+      ["life-lately-015", 1440, 1920],
+      ["life-lately-016", 1920, 1440],
+      ["life-lately-017", 1440, 1920],
+      ["life-lately-018", 1440, 1920],
+      ["life-lately-019", 1920, 1440],
+      ["life-lately-020", 1320, 869],
+    ]);
+    expect(new Set(collection.photos.map(({ src }) => src)).size).toBe(20);
+    expect(collection.coverPhotoId).toBeNull();
+    expect(collectionCover(collection)?.id).toBe("life-lately-001");
   });
 
   it("uses an independently selected cover without reordering the collection", () => {
