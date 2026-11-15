@@ -47,8 +47,11 @@ describe("wedding content", () => {
     const newYork = stories.find((s) => s.id === "new-york");
     expect(newYork?.photo).toMatchObject({ width: 1440, height: 1920 });
     expect(newYork?.photo?.url).toMatch(/^\/__l5e\/assets-v1\/[\w-]+\/new-york\.webp$/);
+    const freeMattress = stories.find((s) => s.id === "the-free-mattress");
+    expect(freeMattress?.photo).toMatchObject({ width: 1440, height: 1920 });
+    expect(freeMattress?.photo?.url).toMatch(/^\/__l5e\/assets-v1\/[\w-]+\/free-mattress\.webp$/);
     expect(stories.filter((s) => s.photo === null).map((s) => s.n)).toEqual([
-      "05", "06", "07", "08", "09", "10", "11",
+      "06", "07", "08", "09", "10", "11",
     ]);
   });
 

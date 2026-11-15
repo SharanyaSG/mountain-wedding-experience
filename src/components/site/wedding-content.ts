@@ -1,4 +1,5 @@
 import bowPhoto from "@/assets/the-bow.png.asset.json";
+import freeMattressPhoto from "@/assets/free-mattress.webp.asset.json";
 import halloweenPhoto from "@/assets/halloween-2023.png.asset.json";
 import newYorkPhoto from "@/assets/new-york.webp.asset.json";
 import shravyaPhoto from "@/assets/shravya.webp.asset.json";
@@ -152,7 +153,12 @@ What followed was a heroic but deeply misguided attempt to get the frame into th
 
 As predicted, the frame got completely stuck between the staircase and the wall and nearly took out the fire alarm. After a long series of “this is not going to work,” Sahil finally accepted defeat. But by then it was halfway in, so they had to wrestle it all the way back out and carry it around the block to the dumpster.
 
-In the end, the “free” bed frame was not so free, the adjustable dream did not survive, and Sharanya was understandably not thrilled. Sahil, however, meant well. And to this day, they still use that very mattress, just on a normal bed frame.`, photo: null },
+In the end, the “free” bed frame was not so free, the adjustable dream did not survive, and Sharanya was understandably not thrilled. Sahil, however, meant well. And to this day, they still use that very mattress, just on a normal bed frame.`, photo: {
+    url: freeMattressPhoto.url,
+    alt: "Sahil grinning and flashing a peace sign from the driver's seat of the new van",
+    width: 1440,
+    height: 1920,
+  } },
   { id: "our-homes-away-from-home", n: "06", title: "Our Homes Away From Home", subtitle: "Cornwalls & Silhouette", body: `Some of our favorite memories don’t come from big, dramatic moments, but from ordinary evenings at two very special places.
 
 Cornwall’s is our MBA bar, the place where so much of “us” quietly began. It’s where we went after long days of class, talking through life, laughing about projects, and showing up for each other as friends before anything else. It’s where we learned how to be each other’s safe place, one conversation at a time, and where small moments turned into something that means everything now.
