@@ -666,7 +666,7 @@ const PhotoViewer = function PhotoViewer({
                 "max-h-full max-w-full object-contain transition-opacity duration-300",
                 loadedPhoto === photo.id ? "opacity-100" : "opacity-0",
               )}
-              style={{ transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom)` }}
+              style={{ transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})` }}
             />
           )}
         </div>
