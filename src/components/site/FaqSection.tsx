@@ -15,10 +15,11 @@ function renderInline(text: string): ReactNode[] {
   return text.split(/(\[\[[^\]]+\]\])/g).map((part, i) => {
     const m = part.match(/^\[\[(.+)\|(.+)\]\]$/);
     if (!m) return part;
+    const [, label, id] = m as unknown as [string, string, string];
     return (
-      <a key={i} href={`#${m[2]}`} onClick={(e) => scrollToSection(e, m[2])}
+      <a key={i} href={`#${id}`} onClick={(e) => scrollToSection(e, id)}
         className="font-bold text-itinerary-forest underline decoration-romantic-crimson/50 underline-offset-4 transition-colors hover:text-romantic-crimson">
-        {m[1]}
+        {label}
       </a>
     );
   });
