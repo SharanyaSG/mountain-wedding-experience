@@ -83,13 +83,13 @@ function Stay() {
               </div>
             </Reveal>
             <Reveal delay={200} className="mt-9 border-l-2 border-rust bg-muted px-6 py-7">
-              <h4 className="eyebrow text-[13px] font-bold text-rust">{riverwalk.bookingHeading}</h4>
+              <h4 className="eyebrow text-[14px] font-bold text-rust">{riverwalk.bookingHeading}</h4>
               <p className="mt-4 text-sm leading-7 text-foreground">{riverwalk.bookingNote}</p>
               <p className="mt-2 font-serif text-sm italic leading-7 text-muted-foreground">{riverwalk.bookingStatus}</p>
             </Reveal>
             <Reveal delay={240} className="mt-6 border-l-2 border-info-forest bg-info-sage px-6 py-7 text-left">
-              <p className="font-serif text-base font-bold leading-relaxed text-foreground">Have any additional questions?</p>
-              <p className="mt-3 font-serif text-base font-normal leading-relaxed text-foreground">
+              <h4 className="eyebrow text-[14px] font-bold text-itinerary-forest">Have any additional questions?</h4>
+              <p className="mt-4 font-serif text-base font-normal leading-relaxed text-foreground">
                 Visit our <Link to="/faqs" className="font-bold text-romantic-crimson underline-offset-4 hover:underline focus-visible:underline">FAQs</Link>, particularly {" "}
                 <Link to="/faqs" hash="accommodations" className="font-bold text-romantic-crimson underline-offset-4 hover:underline focus-visible:underline">Accommodations</Link>, for more information.
               </p>
