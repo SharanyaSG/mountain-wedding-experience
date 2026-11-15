@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } f
 import { X } from "lucide-react";
 import { createPortal } from "react-dom";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import type { Story } from "./wedding-content";
 
 /**
@@ -102,8 +103,9 @@ export function StoryCard({ story }: { story: Story }) {
               {story.preview ??
                 (story.body ? storyPreview(story.body) : "We’re putting the final words in order — the complete story is coming soon.")}
             </p>
-            <div className="mt-4 flex flex-wrap items-center justify-start gap-2 border-t border-foreground/10 pt-4 min-[768px]:-mx-4 min-[768px]:mt-3 min-[768px]:flex-nowrap min-[768px]:gap-px min-[768px]:pt-3">
-              <button
+            <div className="story-actions mt-4 border-t border-foreground/10 pt-4 min-[768px]:mt-3 min-[768px]:pt-3">
+              <Button
+                variant="ghost"
                 ref={backRef}
                 type="button"
                 tabIndex={flipped ? 0 : -1}
@@ -111,11 +113,12 @@ export function StoryCard({ story }: { story: Story }) {
                   e.stopPropagation();
                   setReading(true);
                 }}
-                className="btn-label shrink-0 whitespace-nowrap bg-forest px-2 py-3 font-bold text-ivory transition-colors hover:bg-rust min-[768px]:px-0 min-[768px]:py-2 min-[768px]:text-[0.55rem]"
+                className="story-action story-action-read bg-forest font-bold text-ivory hover:bg-rust"
               >
                 Read the Full Story
-              </button>
-              <button
+              </Button>
+              <Button
+                variant="ghost"
                 type="button"
                 tabIndex={flipped ? 0 : -1}
                 onClick={(e) => {
@@ -123,10 +126,10 @@ export function StoryCard({ story }: { story: Story }) {
                   setFlipped(false);
                   setFocusTo("front");
                 }}
-                className="eyebrow shrink-0 whitespace-nowrap text-muted-foreground underline-offset-4 transition-colors hover:text-forest hover:underline min-[768px]:text-[0.5rem]"
+                className="story-action story-action-back text-muted-foreground underline-offset-4 hover:text-forest hover:underline"
               >
                 Back to photograph
-              </button>
+              </Button>
             </div>
           </div>
         </div>
