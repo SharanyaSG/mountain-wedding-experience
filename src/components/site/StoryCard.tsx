@@ -27,7 +27,7 @@ export function StoryCard({ story }: { story: Story }) {
 
   return (
     <div
-      className="story-scene aspect-[4/5] md:aspect-[3/2] min-[1200px]:aspect-[4/5]"
+      className="story-scene aspect-[4/5] md:aspect-[3/2] wide:aspect-[4/5]"
       onPointerEnter={(e) => onHover(e, true)}
       onPointerLeave={(e) => onHover(e, false)}
     >
@@ -45,17 +45,17 @@ export function StoryCard({ story }: { story: Story }) {
             />
           ) : (
             <div className="placeholder-frame h-full w-full">
-              <span className="eyebrow absolute left-5 top-5 text-muted-foreground min-[1200px]:left-3 min-[1200px]:top-3 min-[1200px]:text-[0.5rem]">Photograph to come</span>
+              <span className="eyebrow absolute left-5 top-5 text-muted-foreground wide:left-3 wide:top-3 wide:text-[0.5rem]">Photograph to come</span>
             </div>
           )}
           <div className="bg-image-veil pointer-events-none absolute inset-0" />
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-6 p-6 md:p-8 min-[1200px]:gap-3 min-[1200px]:p-4">
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-6 p-6 md:p-8 wide:gap-3 wide:p-4">
             <div className="min-w-0">
-              <p className="eyebrow text-ivory/70 min-[1200px]:text-[0.5rem]">{story.n}</p>
-              <h3 className="display mt-3 text-4xl text-ivory md:text-5xl min-[1200px]:mt-2 min-[1200px]:text-xl min-[1200px]:leading-tight">{story.title}</h3>
-              <p className="mt-3 font-serif text-lg italic text-ivory/85 md:text-xl min-[1200px]:mt-2 min-[1200px]:text-[0.8rem] min-[1200px]:leading-snug">{story.subtitle}</p>
+              <p className="eyebrow text-ivory/70 wide:text-[0.5rem]">{story.n}</p>
+              <h3 className="display mt-3 text-4xl text-ivory md:text-5xl wide:mt-2 wide:text-xl wide:leading-tight">{story.title}</h3>
+              <p className="mt-3 font-serif text-lg italic text-ivory/85 md:text-xl wide:mt-2 wide:text-[0.8rem] wide:leading-snug">{story.subtitle}</p>
             </div>
-            <span className="eyebrow hidden shrink-0 pb-2 text-ivory/60 md:block min-[1200px]:hidden">Flip to Read</span>
+            <span className="eyebrow hidden shrink-0 pb-2 text-ivory/60 md:block wide:hidden">Flip to Read</span>
           </div>
           <button
             ref={frontRef}
@@ -80,15 +80,15 @@ export function StoryCard({ story }: { story: Story }) {
             setFocusTo("front");
           }}
         >
-          <div className="flex h-full flex-col p-6 md:p-8 min-[1200px]:p-4">
-            <p className="eyebrow text-muted-foreground min-[1200px]:text-[0.5rem] min-[1200px]:leading-snug">
+          <div className="flex h-full flex-col p-6 md:p-8 wide:p-4">
+            <p className="eyebrow text-muted-foreground wide:text-[0.5rem] wide:leading-snug">
               {story.n} · {story.subtitle}
             </p>
-            <h3 className="display mt-3 text-3xl text-forest md:text-4xl min-[1200px]:mt-2 min-[1200px]:text-lg min-[1200px]:leading-tight">{story.title}</h3>
-            <Divider className="min-[1200px]:mt-3" />
-            <div className="story-body mt-5 flex-1 overflow-y-auto pr-1 min-[1200px]:mt-3">
+            <h3 className="display mt-3 text-3xl text-forest md:text-4xl wide:mt-2 wide:text-lg wide:leading-tight">{story.title}</h3>
+            <Divider className="wide:mt-3" />
+            <div className="story-body mt-5 flex-1 overflow-y-auto pr-1 wide:mt-3">
               {story.body ? (
-                <div className="space-y-4 text-[0.95rem] leading-relaxed text-charcoal md:text-base min-[1200px]:space-y-2 min-[1200px]:text-[0.7rem]">
+                <div className="space-y-4 text-[0.95rem] leading-relaxed text-charcoal md:text-base wide:space-y-2 wide:text-[0.7rem]">
                   {story.body
                     .split(/\n{2,}/)
                     .map((p) => p.trim())
@@ -106,7 +106,7 @@ export function StoryCard({ story }: { story: Story }) {
                 </div>
               )}
             </div>
-            <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-foreground/10 pt-5 min-[1200px]:mt-3 min-[1200px]:gap-2 min-[1200px]:pt-3">
+            <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-foreground/10 pt-5 wide:mt-3 wide:gap-2 wide:pt-3">
               <button
                 ref={backRef}
                 type="button"
@@ -115,7 +115,7 @@ export function StoryCard({ story }: { story: Story }) {
                   e.stopPropagation();
                   setReading(true);
                 }}
-                className="btn-label bg-forest px-6 py-3 text-ivory transition-colors hover:bg-rust min-[1200px]:px-3 min-[1200px]:py-2 min-[1200px]:text-[0.55rem]"
+                className="btn-label bg-forest px-6 py-3 text-ivory transition-colors hover:bg-rust wide:px-3 wide:py-2 wide:text-[0.55rem]"
               >
                 Read Full Story
               </button>
@@ -127,7 +127,7 @@ export function StoryCard({ story }: { story: Story }) {
                   setFlipped(false);
                   setFocusTo("front");
                 }}
-                className="eyebrow text-muted-foreground underline-offset-4 transition-colors hover:text-forest hover:underline min-[1200px]:text-[0.5rem]"
+                className="eyebrow text-muted-foreground underline-offset-4 transition-colors hover:text-forest hover:underline wide:text-[0.5rem]"
               >
                 Back to photograph
               </button>

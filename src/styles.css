@@ -5,6 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  /* Stories grid: 4 cards per row from this width up. */
+  --breakpoint-wide: 1200px;
   --font-serif: "Libre Baskerville", Georgia, serif;
   --font-display: "Cinzel", "Times New Roman", serif;
   --font-sans: "Libre Baskerville", Georgia, serif;
