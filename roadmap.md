@@ -25,4 +25,5 @@
 - [ ] Supply the eight story photographs — card fronts still show "Photograph to come" (blocked: no photographs uploaded yet).
 - [ ] Replace hero photo when authentic attachment is supplied (blocked: sunset upload still not received).
 - [x] Rebuild Pictures of Us as four curated square category cards with responsive editorial grids, full-screen touch/keyboard viewers, neutral placeholders, and no changes to Our Stories; verified desktop/tablet/mobile, empty and populated collections, keyboard/swipe/zoom, browser Back, and all 42 tests.
-- [ ] Supply and curate the four Pictures of Us photograph collections and cover images (blocked: no gallery photographs uploaded yet).
+- [x] Add the first ten original Before Forever photographs in upload order, retain original quality and proportions, use an unfinalized first-photo cover, and verify gallery navigation.
+- [ ] Supply remaining Pictures of Us photographs, preferred ordering, and final covers (waiting for the couple's next uploads and selections; Before Forever currently contains ten photographs).

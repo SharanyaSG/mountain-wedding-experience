@@ -11,8 +11,27 @@ describe("Pictures of Us collections", () => {
     ]);
   });
 
-  it("starts with neutral empty states rather than invented photographs", () => {
-    expect(photoCollections.every((collection) => collection.photos.length === 0)).toBe(true);
+  it("keeps the first ten Before Forever uploads in their supplied order and original dimensions", () => {
+    expect(photoCollections[0]?.photos.map(({ id, width, height }) => [id, width, height])).toEqual([
+      ["before-forever-001", 1080, 1920],
+      ["before-forever-002", 2000, 1500],
+      ["before-forever-003", 1440, 1920],
+      ["before-forever-004", 1920, 1440],
+      ["before-forever-005", 1440, 1920],
+      ["before-forever-006", 1440, 1920],
+      ["before-forever-007", 1500, 2000],
+      ["before-forever-008", 1440, 1920],
+      ["before-forever-009", 1440, 1920],
+      ["before-forever-010", 1440, 1920],
+    ]);
+  });
+
+  it("leaves the other three galleries empty and the cover unfinalized", () => {
+    expect(photoCollections.slice(1).map(({ photos }) => photos)).toEqual([[], [], []]);
+    const collection = photoCollections[0];
+    if (!collection) throw new Error("Before Forever is missing");
+    expect(collection.coverPhotoId).toBeNull();
+    expect(collectionCover(collection)?.id).toBe("before-forever-001");
   });
 
   it("uses an independently selected cover without reordering the collection", () => {
