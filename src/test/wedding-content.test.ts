@@ -53,8 +53,11 @@ describe("wedding content", () => {
     const puppy = stories.find((s) => s.id === "the-puppy-proposal");
     expect(puppy?.photo).toMatchObject({ width: 1080, height: 1920 });
     expect(puppy?.photo?.url).toMatch(/^\/__l5e\/assets-v1\/[\w-]+\/the-puppy-proposal\.jpg$/);
+    const behaved = stories.find((s) => s.id === "the-one-where-he-behaved");
+    expect(behaved?.photo).toMatchObject({ width: 1080, height: 1920, objectPosition: "50% 35.7%" });
+    expect(behaved?.photo?.url).toMatch(/^\/__l5e\/assets-v1\/[\w-]+\/the-one-where-he-behaved\.jpg$/);
     expect(stories.filter((s) => s.photo === null).map((s) => s.n)).toEqual([
-      "06", "08", "09", "10", "11",
+      "06", "09", "10", "11",
     ]);
   });
 

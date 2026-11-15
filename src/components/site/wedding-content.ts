@@ -2,6 +2,7 @@ import bowPhoto from "@/assets/the-bow.png.asset.json";
 import freeMattressPhoto from "@/assets/free-mattress.webp.asset.json";
 import halloweenPhoto from "@/assets/halloween-2023.png.asset.json";
 import puppyProposalPhoto from "@/assets/the-puppy-proposal.jpg.asset.json";
+import behavedPhoto from "@/assets/the-one-where-he-behaved.jpg.asset.json";
 import newYorkPhoto from "@/assets/new-york.webp.asset.json";
 import shravyaPhoto from "@/assets/shravya.webp.asset.json";
 
@@ -202,7 +203,13 @@ Her parents listened, asked thoughtful questions, and most importantly, gave the
 
 Soon after, Sharanya also wrote a heartfelt letter to Sahil’s mom, asking for her son’s hand in a way that was thoughtful, intentional, and full of love.
 
-And with that, between laughter, a ring pop, and two very different but equally meaningful conversations, both families became part of the beginning of this next chapter.`, photo: null },
+And with that, between laughter, a ring pop, and two very different but equally meaningful conversations, both families became part of the beginning of this next chapter.`, photo: {
+    url: behavedPhoto.url,
+    alt: "Sahil smiling across a bar table with two cocktails in front of him at Emmets",
+    width: 1080,
+    height: 1920,
+    objectPosition: "50% 35.7%",
+  } },
   {
     id: "the-proposal-that-became-two",
     n: "09",
