@@ -27,8 +27,7 @@ describe("Pictures of Us collections", () => {
   });
 
   it("appends the second ten uploads after the first batch with original dimensions", () => {
-    expect(photoCollections[0]?.photos).toHaveLength(20);
-    expect(photoCollections[0]?.photos.slice(10).map(({ id, width, height }) => [id, width, height])).toEqual([
+    expect(photoCollections[0]?.photos.slice(10, 20).map(({ id, width, height }) => [id, width, height])).toEqual([
       ["before-forever-011", 1440, 1920],
       ["before-forever-012", 1440, 1920],
       ["before-forever-013", 1440, 1920],
@@ -40,6 +39,23 @@ describe("Pictures of Us collections", () => {
       ["before-forever-019", 1284, 939],
       ["before-forever-020", 1545, 1024],
     ]);
+  });
+
+  it("appends the third ten uploads without losing earlier photographs or changing upload order", () => {
+    expect(photoCollections[0]?.photos).toHaveLength(30);
+    expect(photoCollections[0]?.photos.slice(20).map(({ id, width, height }) => [id, width, height])).toEqual([
+      ["before-forever-021", 1440, 1920],
+      ["before-forever-022", 1920, 1440],
+      ["before-forever-023", 1440, 1920],
+      ["before-forever-024", 1920, 1440],
+      ["before-forever-025", 1440, 1920],
+      ["before-forever-026", 1440, 1920],
+      ["before-forever-027", 1600, 1200],
+      ["before-forever-028", 1440, 1920],
+      ["before-forever-029", 1440, 1920],
+      ["before-forever-030", 1440, 1920],
+    ]);
+    expect(new Set(photoCollections[0]?.photos.map(({ id }) => id)).size).toBe(30);
   });
 
   it("leaves the other three galleries empty and the cover unfinalized", () => {
