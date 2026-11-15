@@ -211,6 +211,14 @@
 .content-page { padding-top: 64px; }
 @media (width >= 768px) { .content-page { padding-top: 80px; } }
 
+#message-from-us { padding-top: calc(var(--section-space) - 16px); }
+@media (width >= 768px) {
+  #message-from-us { padding-top: calc(var(--section-space) - 28px); }
+}
+@media (width >= 1200px) {
+  #message-from-us { padding-top: calc(var(--section-space) - 40px); }
+}
+
 /* Small itinerary-only hierarchy adjustments preserve the existing typefaces,
    letter spacing, line heights, colors and responsive column structure. */
 #wedding-itinerary { padding-top: calc(var(--section-space) - 24px); }
