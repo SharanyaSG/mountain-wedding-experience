@@ -16,6 +16,7 @@
 - [x] Verify desktop/mobile and existing interactions.
 - [x] Place the three authentic hotel photographs in Travel & Stay (CDN assets, verified desktop + mobile).
 - [x] Integrate the finished save-the-date film (GM_Wedding_SOD.mp4) with its minimalist invitation thumbnail as the poster: click-to-play with sound, native pause/volume controls, discreet replay; verified desktop + mobile.
+- [x] Place the uploaded personal video (IMG_6368.MP4) in A Message From Us: CDN asset, 9:16 portrait kept uncropped, click-to-play with native controls, poster still from the film itself, metadata-only preload; verified desktop/tablet/mobile. Section redesign still to be decided by the user.
 - [ ] Save-the-date film temporarily removed from the homepage at the user's request (13 Nov 2026): section deleted from src/routes/index.tsx, assets kept untouched in src/assets for later re-integration; how to present the film is still to be decided.
 - [x] Accommodations refined: RiverWalk is the recommended stay (reserved room block, booking area ready for the link/code), Hampton Inn a small alternative card, Holiday Inn Express removed from the page (photo asset kept stored).
 - [x] Our Stories made compact: instruction on one line at 1200px+, four cards per row from 1200px, two from 768px, one below; card typography stepped down from 768px, verified 390/768/1000/1198/1199/1200/1201/1280/1573 with no clipping and flip intact.
