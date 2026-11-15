@@ -75,8 +75,7 @@ describe("Pictures of Us collections", () => {
   it("adds the ten Proposals originals in upload order with their original proportions", () => {
     const collection = photoCollections[1];
     if (!collection) throw new Error("The Proposals is missing");
-    expect(collection.photos).toHaveLength(10);
-    expect(collection.photos.map(({ id, width, height }) => [id, width, height])).toEqual([
+    expect(collection.photos.slice(0, 10).map(({ id, width, height }) => [id, width, height])).toEqual([
       ["the-proposals-001", 1080, 1920],
       ["the-proposals-002", 1280, 1920],
       ["the-proposals-003", 1280, 1920],
@@ -88,8 +87,22 @@ describe("Pictures of Us collections", () => {
       ["the-proposals-009", 1280, 1920],
       ["the-proposals-010", 1280, 1920],
     ]);
-    expect(new Set(collection.photos.map(({ src }) => src)).size).toBe(10);
+    expect(new Set(collection.photos.slice(0, 10).map(({ src }) => src)).size).toBe(10);
     expect(collection.coverPhotoId).toBeNull();
+  });
+
+  it("appends the next three Proposals photos and preserves the temporary cover", () => {
+    const collection = photoCollections[1];
+    if (!collection) throw new Error("The Proposals is missing");
+    expect(collection.photos).toHaveLength(13);
+    expect(collection.photos.slice(10).map(({ id, width, height }) => [id, width, height])).toEqual([
+      ["the-proposals-011", 1440, 1920],
+      ["the-proposals-012", 1280, 1920],
+      ["the-proposals-013", 1920, 1280],
+    ]);
+    expect(new Set(collection.photos.map(({ src }) => src)).size).toBe(13);
+    expect(collection.coverPhotoId).toBeNull();
+    expect(collectionCover(collection)?.id).toBe("the-proposals-001");
   });
 
   it("uses an independently selected cover without reordering the collection", () => {

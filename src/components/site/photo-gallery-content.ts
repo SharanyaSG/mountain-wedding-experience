@@ -51,6 +51,9 @@ import proposal007 from "@/assets/the-proposals-007.jpg.asset.json";
 import proposal008 from "@/assets/the-proposals-008.jpg.asset.json";
 import proposal009 from "@/assets/the-proposals-009.jpg.asset.json";
 import proposal010 from "@/assets/the-proposals-010.jpg.asset.json";
+import proposal011 from "@/assets/the-proposals-011.webp.asset.json";
+import proposal012 from "@/assets/the-proposals-012.jpg.asset.json";
+import proposal013 from "@/assets/the-proposals-013.jpg.asset.json";
 
 export type GalleryPhoto = {
   id: string;
@@ -140,6 +143,9 @@ export const photoCollections: PhotoCollection[] = [
       { id: "the-proposals-008", src: proposal008.url, width: 1280, height: 1920, alt: "Close-up of Sharanya's ring as Sahil holds her hand" },
       { id: "the-proposals-009", src: proposal009.url, width: 1280, height: 1920, alt: "Sharanya and Sahil standing together in front of a yellow Ferris wheel" },
       { id: "the-proposals-010", src: proposal010.url, width: 1280, height: 1920, alt: "Sharanya smiling and showing her ring while holding a bouquet" },
+      { id: "the-proposals-011", src: proposal011.url, width: 1440, height: 1920, alt: "Sahil and Sharanya showing their rings with outstretched hands" },
+      { id: "the-proposals-012", src: proposal012.url, width: 1280, height: 1920, alt: "Sharanya and Sahil smiling with a friend and a bouquet beneath a wooden canopy" },
+      { id: "the-proposals-013", src: proposal013.url, width: 1920, height: 1280, alt: "Sharanya and Sahil with a friend holding a Will You Marry Me banner beside the snowy waterfront" },
     ],
   },
   {
