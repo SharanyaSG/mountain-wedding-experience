@@ -59,8 +59,11 @@ describe("wedding content", () => {
     const proposalTwo = stories.find((s) => s.id === "the-proposal-that-became-two");
     expect(proposalTwo?.photo).toMatchObject({ width: 1280, height: 1920 });
     expect(proposalTwo?.photo?.url).toMatch(/^\/__l5e\/assets-v1\/[\w-]+\/proposal-that-became-two\.jpg$/);
+    const stormy = stories.find((s) => s.id === "stormy-gowda-malhotra");
+    expect(stormy?.photo).toMatchObject({ width: 1440, height: 1920 });
+    expect(stormy?.photo?.url).toMatch(/^\/__l5e\/assets-v1\/[\w-]+\/stormy-gowda-malhotra\.webp$/);
     expect(stories.filter((s) => s.photo === null).map((s) => s.n)).toEqual([
-      "06", "10", "11",
+      "06", "11",
     ]);
   });
 

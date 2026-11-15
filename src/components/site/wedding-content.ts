@@ -4,6 +4,7 @@ import halloweenPhoto from "@/assets/halloween-2023.png.asset.json";
 import puppyProposalPhoto from "@/assets/the-puppy-proposal.jpg.asset.json";
 import behavedPhoto from "@/assets/the-one-where-he-behaved.jpg.asset.json";
 import proposalTwoPhoto from "@/assets/proposal-that-became-two.jpg.asset.json";
+import stormyPhoto from "@/assets/stormy-gowda-malhotra.webp.asset.json";
 import newYorkPhoto from "@/assets/new-york.webp.asset.json";
 import shravyaPhoto from "@/assets/shravya.webp.asset.json";
 
@@ -395,7 +396,12 @@ Since then, Stormy has been part of countless memories, adventures, and road tri
 And to think, it all started because an old soccer mom car finally decided it had had enough.
 
 Welcome to the family, Stormy.`,
-    photo: null,
+    photo: {
+      url: stormyPhoto.url,
+      alt: "Sharanya and Sahil standing arm in arm in front of Stormy, their new RAV4, outside the Toyota dealership at sunset",
+      width: 1440,
+      height: 1920,
+    },
   },
   {
     id: "the-great-board-game-merger",
