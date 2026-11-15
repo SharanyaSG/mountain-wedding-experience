@@ -76,7 +76,7 @@ function Stay() {
           </Reveal>
           <div className="md:col-span-5">
             <Reveal delay={120}>
-              <h3 className="text-3xl leading-tight text-foreground md:text-4xl"><span className="font-display font-bold uppercase text-itinerary-forest">RiverWalk Resort</span>{" "}<span className="font-display font-normal">at Loon Mountain</span></h3>
+              <h3 className="text-3xl leading-tight text-foreground md:text-4xl"><span className="font-display font-bold uppercase text-rust">RiverWalk Resort</span>{" "}<span className="font-display font-normal">at Loon Mountain</span></h3>
               <div className="mt-7 space-y-5 text-sm leading-7 text-muted-foreground">
                 <p>{riverwalk.introduction}</p>
                 <p className="text-foreground"><span className="font-bold">{riverwalk.bookingRecommendation}</span><br /><span className="font-normal italic">{riverwalk.availabilityNote}</span></p>
