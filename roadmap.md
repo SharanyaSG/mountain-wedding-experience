@@ -1,6 +1,6 @@
 # Homepage refinements
-- [x] Raise Sharanya's face in the "Shravya" card frame (photograph framing only, same photo and square card) so less empty wall sits above her head, keeping her crown, forehead and chin fully in view.
-- [x] Reframe "The One Where He Behaved!" so Sahil's whole head and hair are inside the square, keeping both cocktails and his face prominent.
+- [x] Raise Sharanya's face well up in the "Shravya" card frame (framing only, same photo and square card) so almost no empty wall sits above her head, with her forehead, eyes, nose and chin all fully in view.
+- [x] Reframe "The One Where He Behaved!" so Sahil's whole head and hair sit clearly inside the square with room above, his face prominent; the cocktails now fall mostly below the frame.
 - [x] Place the uploaded Stormy photograph (a web-encoded file supplied with a .HEIC name, stored as .webp so browsers render it) on the "Stormy Gowda-Malhotra" story card as a CDN asset, original 1440×1920 bytes with the card's normal centred cover crop so both faces and the whole front of the RAV4 stay visible, leaving everything else untouched.
 - [x] Place the uploaded Proposal That Became Two photograph on the "The Proposal That Became Two" story card as a CDN asset, original 1280×1920 JPEG bytes with the card's normal centred cover crop so both faces and their joined hands with the ring stay visible, leaving everything else untouched.
 - [x] Place the uploaded One Where He Behaved photograph on the "The One Where He Behaved!" story card as a CDN asset, original 1080×1920 JPEG bytes, with a card-specific crop anchor so his whole head and both cocktails stay in the square frame, leaving everything else untouched.
