@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import { createRef } from "react";
 import { describe, expect, it, vi } from "vitest";
 import { PhotoCategoryCard, PhotoGallery } from "@/components/site/PicturesOfUs";
@@ -48,9 +48,10 @@ describe("Pictures of Us interactions", () => {
 
   it("shows a full-screen viewer with counter, caption, and keyboard navigation", () => {
     const { props } = renderGallery(0);
-    expect(screen.getByRole("dialog", { name: "The Proposals photograph viewer" })).toBeVisible();
-    expect(screen.getByText("1 / 2")).toBeVisible();
-    expect(screen.getByText("First caption")).toBeVisible();
+    const viewer = screen.getByRole("dialog", { name: "The Proposals photograph viewer" });
+    expect(viewer).toBeVisible();
+    expect(within(viewer).getByText("1 / 2")).toBeVisible();
+    expect(within(viewer).getByText("First caption")).toBeVisible();
     fireEvent.keyDown(screen.getByRole("dialog", { name: "The Proposals photograph viewer" }), { key: "ArrowRight" });
     expect(props.onNavigatePhoto).toHaveBeenCalledWith(1);
     fireEvent.keyDown(screen.getByRole("dialog", { name: "The Proposals photograph viewer" }), { key: "Escape" });
@@ -59,7 +60,7 @@ describe("Pictures of Us interactions", () => {
 
   it("keeps the grid mounted and preserves its scroll position behind the viewer", () => {
     const { rerender, props } = renderGallery(0);
-    const grid = screen.getByRole("button", { name: "Open photograph 1 of 2: First caption" });
+    const grid = document.querySelector('[data-photo-index="0"]') as HTMLButtonElement;
     const scroller = grid.closest(".overflow-y-auto") as HTMLElement;
     scroller.scrollTop = 240;
     rerender(<PhotoGallery {...props} photoIndex={null} />);
