@@ -34,4 +34,22 @@ describe("story cards", () => {
     fireEvent.click(screen.getByRole("button", { name: "Close story" }));
     expect(screen.queryByRole("dialog")).toBeNull();
   });
+
+  it("shows the supplied preview and the complete proposal story", () => {
+    const proposal = stories.find((s) => s.id === "the-proposal-that-became-two");
+    if (!proposal) throw new Error("The Proposal That Became Two is missing from the story collection");
+    render(<StoryCard story={proposal} />);
+    fireEvent.click(screen.getByRole("button", { name: "Read the story: The Proposal That Became Two" }));
+    expect(
+      screen.getByText("Sahil had planned an elaborate scavenger hunt through Boston, revisiting the places that had shaped their relationship. What he didn’t know was that Sharanya had been carrying a ring for him for over a month. They both had a proposal planned, and neither knew what the other was about to do."),
+    ).toBeVisible();
+    fireEvent.click(screen.getByRole("button", { name: "Read the Full Story" }));
+    const dialog = screen.getByRole("dialog");
+    expect(dialog).toHaveTextContent("They both knew they’d found their forever. Neither knew the other was planning to propose.");
+    expect(dialog).toHaveTextContent("Two proposals. Two rings. Two very happy people.");
+    expect(dialog).toHaveTextContent("He had absolutely no idea she was planning to ask him the very same question.");
+    expect(dialog.querySelectorAll("p").length).toBeGreaterThanOrEqual(28);
+    fireEvent.keyDown(document, { key: "Escape" });
+    expect(screen.queryByRole("dialog")).toBeNull();
+  });
 });
