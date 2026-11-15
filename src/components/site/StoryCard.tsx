@@ -136,7 +136,7 @@ export function StoryCard({ story }: { story: Story }) {
 }
 
 /** First two or three sentences of the story, capped so it fits the square card. */
-export function storyPreview(body: string, max = 200): string {
+export function storyPreview(body: string, max = 250): string {
   const first = body.split(/\n{2,}/)[0].replace(/\s+/g, " ").trim();
   const sentences = first.match(/[^.!?]+[.!?…]+["”’)]*\s*/g) ?? [first];
   let out = "";
