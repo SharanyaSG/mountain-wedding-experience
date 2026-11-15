@@ -97,8 +97,9 @@ export function StoryCard({ story }: { story: Story }) {
               {story.title}
             </h3>
             <Divider className="mt-3" />
-            <p className="mt-4 flex-1 overflow-hidden font-serif text-[0.95rem] leading-relaxed text-charcoal min-[768px]:mt-3 min-[768px]:text-[0.8rem] min-[1200px]:text-[0.74rem]">
-              {story.body ? storyPreview(story.body) : "We’re putting the final words in order — the complete story is coming soon."}
+            <p className="story-body mt-4 min-h-0 flex-1 overflow-y-auto overscroll-y-contain font-serif text-[0.95rem] leading-relaxed text-charcoal min-[768px]:mt-3 min-[768px]:text-[0.8rem] min-[1200px]:text-[0.74rem]">
+              {story.preview ??
+                (story.body ? storyPreview(story.body) : "We’re putting the final words in order — the complete story is coming soon.")}
             </p>
             <div className="mt-4 flex flex-wrap items-center justify-start gap-2 border-t border-foreground/10 pt-4 min-[768px]:-mx-4 min-[768px]:mt-3 min-[768px]:flex-nowrap min-[768px]:gap-px min-[768px]:pt-3">
               <button
@@ -196,13 +197,13 @@ function StoryReader({ story, onClose }: { story: Story; onClose: () => void }) 
       aria-modal="true"
       aria-labelledby={`story-${story.id}-title`}
       onClick={onClose}
-      className="fixed inset-0 z-50 overflow-y-auto bg-charcoal/60 p-3 backdrop-blur-sm animate-in fade-in sm:p-6"
+      className="fixed inset-0 z-50 flex items-center overflow-hidden bg-charcoal/60 p-3 backdrop-blur-sm animate-in fade-in sm:p-6"
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative mx-auto my-auto flex min-h-0 w-full max-w-[800px] flex-col bg-ivory p-7 shadow-2xl sm:my-[4vh] sm:p-10 md:p-14"
+        className="relative mx-auto flex max-h-full w-full max-w-[800px] flex-col bg-ivory p-7 shadow-2xl sm:p-10 md:p-14"
       >
-        <div className="flex items-start justify-between gap-6">
+        <div className="flex shrink-0 items-start justify-between gap-6">
           <div>
             <p className="eyebrow text-muted-foreground">
               {story.n} · {story.subtitle}
@@ -222,7 +223,7 @@ function StoryReader({ story, onClose }: { story: Story; onClose: () => void }) 
             <X className="h-6 w-6" />
           </button>
         </div>
-        <div className="mt-8">
+        <div className="mt-8 min-h-0 flex-1 overflow-y-auto overscroll-y-contain">
           {story.body ? (
             <div className="space-y-5 font-serif text-[1.05rem] leading-[1.8] text-charcoal md:text-lg">
               {story.body
@@ -245,7 +246,7 @@ function StoryReader({ story, onClose }: { story: Story; onClose: () => void }) 
         <button
           type="button"
           onClick={onClose}
-          className="btn-label mt-8 w-full bg-forest py-4 text-ivory transition-colors hover:bg-rust sm:mt-10 sm:w-auto sm:px-10"
+          className="btn-label mt-8 w-full shrink-0 bg-forest py-4 text-ivory transition-colors hover:bg-rust sm:mt-10 sm:w-auto sm:px-10"
         >
           Close
         </button>
