@@ -6,28 +6,29 @@ export function WeddingItinerary() {
   return (
     <section id="wedding-itinerary" className="section-shell section-divider scroll-mt-24 md:scroll-mt-28">
       <span id="itinerary" aria-hidden="true" />
-      <div className="grid gap-10 md:grid-cols-12">
-        <div className="md:col-span-4">
+      <div>
+        <div className="mx-auto text-center">
 
           <Reveal delay={100}>
             <h2 className="display text-5xl md:text-6xl">The Festivities</h2>
             <p className="display text-3xl text-itinerary-forest md:text-4xl">Three days, <em className="text-romantic-crimson">one mountain.</em></p>
           </Reveal>
           <Reveal delay={200}>
-            <p className="mt-6 max-w-xs text-sm font-bold leading-relaxed text-muted-foreground">Times and details will be shared with your invitation.</p>
-            <p className="mt-[18px] max-w-xs font-serif text-sm font-normal leading-relaxed text-foreground">
+            <p className="mt-6 text-sm font-bold leading-relaxed text-muted-foreground">Times and details will be shared with your invitation.</p>
+            <p className="mt-[18px] font-serif text-sm font-normal leading-relaxed text-foreground">
               Have any additional questions? {" "}
               <Link to="/faqs" className="text-romantic-crimson underline-offset-4 hover:underline focus-visible:underline">Visit our FAQs</Link>{" "}
               for more information.
             </p>
           </Reveal>
         </div>
-        <ol className="md:col-span-8">
+        <ol className="section-content grid grid-cols-1 items-start gap-y-10 md:grid-cols-2 min-[1200px]:grid-cols-3">
           {agenda.map((d, i) => (
-            <Reveal as="li" key={d.n} delay={i * 150} className="group grid grid-cols-[auto_1fr] gap-6 border-t border-foreground/20 py-10 md:gap-12 md:py-14">
-              <span className="display text-7xl text-gold transition-colors duration-700 group-hover:text-rust md:text-9xl">{d.n}</span>
-              <div>
-                <p className="eyebrow text-muted-foreground">{d.dow} · {d.date}</p>
+            <Reveal as="li" key={d.n} delay={i * 150} className={`group min-w-0 border-t border-foreground/20 pt-8 md:border-t-0 md:px-6 md:pt-0 min-[1200px]:px-8 ${i === 1 ? "md:border-l md:border-border" : ""} ${i === 2 ? "min-[1200px]:border-l min-[1200px]:border-border" : ""}`}>
+              <div className="min-w-0">
+                <p className="eyebrow text-muted-foreground">{d.dow}</p>
+                <span className="display mt-3 block text-7xl text-gold transition-colors duration-700 group-hover:text-rust md:text-9xl">{d.n}</span>
+                <p className="eyebrow mt-3 text-muted-foreground">{d.date}</p>
                 <ul className="mt-7">
                   {d.events.map((e, j) => (
                     <li key={e.title} className={j > 0 ? "mt-7 border-t border-border pt-7" : ""}>
