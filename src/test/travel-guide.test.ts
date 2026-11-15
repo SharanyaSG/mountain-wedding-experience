@@ -48,10 +48,14 @@ describe("Plan Your Trip travel facts", () => {
   });
 
   it("limits the complimentary gift to wedding guests on October 8", () => {
-    expect(travelGuide.gondola.date).toBe("October 8");
-    expect(travelGuide.gondola.audience).toBe("our wedding guests");
-    expect(travelGuide.gondola.offer).toBe("On October 8, we’re treating our wedding guests to complimentary gondola rides at Loon Mountain!");
-    expect(travelGuide.gondola.accessDetails).toBe("Exact gondola access details and operating hours will be shared closer to the wedding.");
+    expect(travelGuide.gondola.date).toBe("October 8, 2027");
+    expect(travelGuide.gondola.audience).toBe("all our wedding guests");
+    expect(travelGuide.gondola.intro).toBe("Did you know that Loon Mountain is home to New Hampshire’s longest scenic gondola ride?");
+    expect(travelGuide.gondola.climb).toBe("Climbing approximately 1,700 vertical feet to a summit 2,733 feet above sea level, the gondola offers breathtaking views of the White Mountains, especially when the landscape comes alive with brilliant autumn colors.");
+    expect(travelGuide.gondola.offer).toBe("As a little gift from us to you, we’re treating all our wedding guests to complimentary gondola rides on October 8, 2027! Enjoy the mountain views, take in the fall foliage, and make a little adventure of your wedding day.");
+    expect(travelGuide.gondola.offer).toContain(travelGuide.gondola.highlight);
+    expect(travelGuide.gondola.highlight).toBe("complimentary gondola rides on October 8, 2027");
+    expect(travelGuide.gondola.accessDetails).toBe("More details to follow!");
     expect(JSON.stringify(travelGuide.gondola)).not.toMatch(/24\/?7|24-hour|unlimited/i);
   });
 

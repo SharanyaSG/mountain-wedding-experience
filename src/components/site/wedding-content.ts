@@ -52,10 +52,13 @@ export const travelGuide = {
     url: null as string | null,
   },
   gondola: {
-    date: "October 8",
-    audience: "our wedding guests",
-    offer: "On October 8, we’re treating our wedding guests to complimentary gondola rides at Loon Mountain!",
-    accessDetails: "Exact gondola access details and operating hours will be shared closer to the wedding.",
+    date: "October 8, 2027",
+    audience: "all our wedding guests",
+    intro: "Did you know that Loon Mountain is home to New Hampshire’s longest scenic gondola ride?",
+    climb: "Climbing approximately 1,700 vertical feet to a summit 2,733 feet above sea level, the gondola offers breathtaking views of the White Mountains, especially when the landscape comes alive with brilliant autumn colors.",
+    offer: "As a little gift from us to you, we’re treating all our wedding guests to complimentary gondola rides on October 8, 2027! Enjoy the mountain views, take in the fall foliage, and make a little adventure of your wedding day.",
+    highlight: "complimentary gondola rides on October 8, 2027",
+    accessDetails: "More details to follow!",
   },
   independentArrangements: "Flights, accommodations, transportation, and any additional activities or excursions can be arranged independently.",
 } as const;
