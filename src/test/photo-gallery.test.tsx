@@ -73,7 +73,7 @@ describe("Pictures of Us interactions", () => {
   });
 
   it("offers an elegant empty state when no photographs have been supplied", () => {
-    render(<PhotoGallery {...{ ...renderGalleryProps(), collection: beforeForever }} />);
+    render(<PhotoGallery {...{ ...renderGalleryProps(), collection: { ...beforeForever, photos: [] } }} />);
     expect(screen.getByRole("status")).toHaveTextContent("Photographs to come");
     expect(screen.getByRole("status")).toHaveTextContent("No photographs have been added to this collection yet.");
   });
