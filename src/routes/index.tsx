@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import overlook from "@/assets/sharanya-sahil-overlook.jpg.asset.json";
+import overlook from "@/assets/sharanya-sahil-mountain-portrait.jpg.asset.json";
 import { Reveal } from "@/components/site/Reveal";
 import { HeroIllustration } from "@/components/site/HeroIllustration";
 import { StoryCard } from "@/components/site/StoryCard";
@@ -77,18 +77,18 @@ function Hero() {
 function SaveTheDate() {
   return (
     <section className="section-shell section-divider">
-      <div className="grid gap-12 md:grid-cols-12 md:gap-10">
-        <Reveal className="md:col-span-7">
+      <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-10">
+        <Reveal className="min-w-0 lg:col-span-7">
           <img
             src={overlook.url}
             alt="Sharanya and Sahil seated together on a rocky mountain overlook, seen from behind, looking out across a forested valley"
-            width={1080}
-            height={1920}
+            width={1028}
+            height={1413}
             loading="lazy"
-            className="aspect-[4/5] w-full object-cover object-bottom md:aspect-[5/6]"
+            className="block h-auto w-full"
           />
         </Reveal>
-        <div className="flex flex-col justify-end md:col-span-5 md:pb-10">
+        <div className="flex min-w-0 flex-col lg:col-span-5">
 
           <Reveal delay={120}>
             <blockquote className="display text-4xl md:text-5xl lg:text-6xl">

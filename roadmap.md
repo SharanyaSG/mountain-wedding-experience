@@ -24,7 +24,7 @@
 - [x] Our Stories rebuilt as the eight-card flip gallery (hover on desktop, tap on phone, full-story reader); verified desktop + mobile.
 - [x] All eight story texts added verbatim as supplied (13 Nov 2026) — card back scrolls, "Read Full Story" shows the complete text; verified desktop + mobile.
 - [ ] Supply the eight story photographs — card fronts still show "Photograph to come" (blocked: no photographs uploaded yet).
-- [ ] Replace hero photo when authentic attachment is supplied (blocked: sunset upload still not received).
+- [x] Replace the homepage mountain photograph with Website_pic.jpeg, preserving its original bytes and 1028×1413 proportions; adapt the uncropped photo/text layout and verify desktop, tablet and mobile without changing other sections.
 - [x] Rebuild Pictures of Us as four curated square category cards with responsive editorial grids, full-screen touch/keyboard viewers, neutral placeholders, and no changes to Our Stories; verified desktop/tablet/mobile, empty and populated collections, keyboard/swipe/zoom, browser Back, and all 42 tests.
 - [x] Add the first ten original Before Forever photographs in upload order, retain original quality and proportions, use an unfinalized first-photo cover, and verify gallery navigation.
 - [x] Append the second ten original Before Forever photographs after the first batch, preserving earlier photographs and the temporary cover; verify all twenty photographs and navigation.
