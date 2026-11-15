@@ -100,7 +100,7 @@ export function StoryCard({ story }: { story: Story }) {
             <p className="mt-4 flex-1 overflow-hidden font-serif text-[0.95rem] leading-relaxed text-charcoal min-[768px]:mt-3 min-[768px]:text-[0.8rem] min-[1200px]:text-[0.74rem]">
               {story.body ? storyPreview(story.body) : "We’re putting the final words in order — the complete story is coming soon."}
             </p>
-            <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-foreground/10 pt-4 min-[768px]:mt-3 min-[768px]:gap-2 min-[768px]:pt-3">
+            <div className="mt-4 flex flex-wrap items-center justify-start gap-2 border-t border-foreground/10 pt-4 min-[768px]:-mx-4 min-[768px]:mt-3 min-[768px]:flex-nowrap min-[768px]:gap-px min-[768px]:pt-3">
               <button
                 ref={backRef}
                 type="button"
@@ -109,7 +109,7 @@ export function StoryCard({ story }: { story: Story }) {
                   e.stopPropagation();
                   setReading(true);
                 }}
-                className="btn-label bg-forest px-6 py-3 text-ivory transition-colors hover:bg-rust min-[768px]:px-3 min-[768px]:py-2 min-[768px]:text-[0.55rem]"
+                className="btn-label shrink-0 whitespace-nowrap bg-forest px-2 py-3 font-bold text-ivory transition-colors hover:bg-rust min-[768px]:px-0 min-[768px]:py-2 min-[768px]:text-[0.55rem]"
               >
                 Read the Full Story
               </button>
@@ -121,7 +121,7 @@ export function StoryCard({ story }: { story: Story }) {
                   setFlipped(false);
                   setFocusTo("front");
                 }}
-                className="eyebrow text-muted-foreground underline-offset-4 transition-colors hover:text-forest hover:underline min-[768px]:text-[0.5rem]"
+                className="eyebrow shrink-0 whitespace-nowrap text-muted-foreground underline-offset-4 transition-colors hover:text-forest hover:underline min-[768px]:text-[0.5rem]"
               >
                 Back to photograph
               </button>
