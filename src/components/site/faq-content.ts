@@ -81,7 +81,7 @@ export const faqCategories: FaqCategory[] = [
       { q: "Is “Tell Us Your Plans” our final RSVP?", a: [
         "No!",
         "We’re simply gathering an early sense of everyone’s plans to help us prepare.",
-        "Your response at this stage of [[Tell Us Your Plans|tell-us-your-plans]] is not your final RSVP.",
+        "Your response at this stage is not your final RSVP.",
         "Formal invitations and RSVP instructions will follow.",
       ]},
       { q: "When do we need to confirm our attendance?", a: [
