@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
 import { X } from "lucide-react";
+import { createPortal } from "react-dom";
 import { cn } from "@/lib/utils";
 import type { Story } from "./wedding-content";
 
@@ -31,7 +32,7 @@ export function StoryCard({ story }: { story: Story }) {
 
   return (
     <div
-      className="story-scene aspect-[4/5] min-[768px]:max-[1200px]:aspect-[3/2]"
+      className="story-scene aspect-square"
       onPointerEnter={(e) => onHover(e, true)}
       onPointerLeave={(e) => onHover(e, false)}
     >
@@ -91,34 +92,15 @@ export function StoryCard({ story }: { story: Story }) {
           }}
         >
           <div className="flex h-full flex-col p-6 min-[768px]:p-4">
-            <p className="eyebrow text-muted-foreground min-[768px]:text-[0.5rem] min-[768px]:leading-snug">
-              {story.n} · {story.subtitle}
-            </p>
-            <h3 className="display mt-3 text-3xl text-forest min-[768px]:mt-2 min-[768px]:text-lg min-[768px]:leading-tight">
+            <p className="eyebrow text-muted-foreground min-[768px]:text-[0.5rem]">{story.n}</p>
+            <h3 className="display mt-2 text-3xl text-forest min-[768px]:mt-2 min-[768px]:text-lg min-[768px]:leading-tight">
               {story.title}
             </h3>
-            <Divider className="min-[768px]:mt-3" />
-            <div className="story-body mt-5 flex-1 overflow-y-auto pr-1 min-[768px]:mt-3">
-              {story.body ? (
-                <div className="space-y-4 text-[0.95rem] leading-relaxed text-charcoal min-[768px]:space-y-2 min-[768px]:text-[0.7rem]">
-                  {story.body
-                    .split(/\n{2,}/)
-                    .map((p) => p.trim())
-                    .filter(Boolean)
-                    .map((p, i) => (
-                      <Paragraph key={i} text={p} />
-                    ))}
-                </div>
-              ) : (
-                <div className="space-y-3">
-                  <p className="eyebrow text-muted-foreground">Story text to come</p>
-                  <p className="font-serif text-lg italic text-muted-foreground">
-                    We’re putting the final words in order — the complete story will appear here.
-                  </p>
-                </div>
-              )}
-            </div>
-            <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-foreground/10 pt-5 min-[768px]:mt-3 min-[768px]:gap-2 min-[768px]:pt-3">
+            <Divider className="mt-3" />
+            <p className="mt-4 flex-1 overflow-hidden font-serif text-[0.95rem] leading-relaxed text-charcoal min-[768px]:mt-3 min-[768px]:text-[0.8rem] min-[1200px]:text-[0.74rem]">
+              {story.body ? storyPreview(story.body) : "We’re putting the final words in order — the complete story is coming soon."}
+            </p>
+            <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-foreground/10 pt-4 min-[768px]:mt-3 min-[768px]:gap-2 min-[768px]:pt-3">
               <button
                 ref={backRef}
                 type="button"
@@ -129,7 +111,7 @@ export function StoryCard({ story }: { story: Story }) {
                 }}
                 className="btn-label bg-forest px-6 py-3 text-ivory transition-colors hover:bg-rust min-[768px]:px-3 min-[768px]:py-2 min-[768px]:text-[0.55rem]"
               >
-                Read Full Story
+                Read the Full Story
               </button>
               <button
                 type="button"
@@ -148,9 +130,23 @@ export function StoryCard({ story }: { story: Story }) {
         </div>
       </div>
 
-      {reading && <StoryReader story={story} onClose={() => setReading(false)} />}
+      {reading && createPortal(<StoryReader story={story} onClose={() => setReading(false)} />, document.body)}
     </div>
   );
+}
+
+/** First two or three sentences of the story, capped so it fits the square card. */
+export function storyPreview(body: string, max = 200): string {
+  const first = body.split(/\n{2,}/)[0].replace(/\s+/g, " ").trim();
+  const sentences = first.match(/[^.!?]+[.!?…]+["”’)]*\s*/g) ?? [first];
+  let out = "";
+  for (const sentence of sentences.slice(0, 3)) {
+    if (out && (out + sentence).length > max) break;
+    out += sentence;
+  }
+  out = out.trim();
+  if (out.length > max) out = out.slice(0, out.lastIndexOf(" ", max)).replace(/[,;:]$/, "") + "…";
+  return out;
 }
 
 /** Renders one paragraph, keeping the author's own line breaks inside it. */
@@ -196,18 +192,18 @@ function StoryReader({ story, onClose }: { story: Story; onClose: () => void }) 
       aria-modal="true"
       aria-labelledby={`story-${story.id}-title`}
       onClick={onClose}
-      className="fixed inset-0 z-50 flex items-end justify-center bg-charcoal/60 backdrop-blur-sm animate-in fade-in sm:items-center sm:p-6"
+      className="fixed inset-0 z-50 overflow-y-auto bg-charcoal/60 p-3 backdrop-blur-sm animate-in fade-in sm:p-6"
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="flex max-h-[92vh] w-full max-w-2xl flex-col bg-ivory p-7 sm:p-10 md:p-12"
+        className="relative mx-auto my-auto flex min-h-0 w-full max-w-[800px] flex-col bg-ivory p-7 shadow-2xl sm:my-[4vh] sm:p-10 md:p-14"
       >
         <div className="flex items-start justify-between gap-6">
           <div>
             <p className="eyebrow text-muted-foreground">
               {story.n} · {story.subtitle}
             </p>
-            <h3 id={`story-${story.id}-title`} className="display mt-4 text-4xl text-forest md:text-5xl">
+            <h3 id={`story-${story.id}-title`} className="display mt-4 text-3xl text-forest md:text-4xl">
               {story.title}
             </h3>
             <Divider />
@@ -222,9 +218,9 @@ function StoryReader({ story, onClose }: { story: Story; onClose: () => void }) 
             <X className="h-6 w-6" />
           </button>
         </div>
-        <div className="story-body mt-6 flex-1 overflow-y-auto pr-2">
+        <div className="mt-8">
           {story.body ? (
-            <div className="space-y-5 font-serif text-lg leading-relaxed text-charcoal md:text-xl">
+            <div className="space-y-5 font-serif text-[1.05rem] leading-[1.8] text-charcoal md:text-lg">
               {story.body
                 .split(/\n{2,}/)
                 .map((p) => p.trim())
