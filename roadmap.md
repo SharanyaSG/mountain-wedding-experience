@@ -1,5 +1,5 @@
 # Homepage refinements
-- [ ] Verify the shared story-card actions fit side by side without clipping at actual desktop, tablet and mobile card widths, preserving all other content and interactions.
+- [x] Verify the shared story-card actions fit side by side without clipping at actual desktop, tablet and mobile card widths, preserving all other content and interactions.
 - [x] Raise Sharanya's face well up in the "Shravya" card frame (framing only, same photo and square card) so almost no empty wall sits above her head, with her forehead, eyes, nose and chin all fully in view.
 - [x] Reframe "The One Where He Behaved!" so Sahil's whole head and hair sit clearly inside the square with room above, his face prominent; the cocktails now fall mostly below the frame.
 - [x] Place the uploaded Stormy photograph (a web-encoded file supplied with a .HEIC name, stored as .webp so browsers render it) on the "Stormy Gowda-Malhotra" story card as a CDN asset, original 1440×1920 bytes with the card's normal centred cover crop so both faces and the whole front of the RAV4 stay visible, leaving everything else untouched.
