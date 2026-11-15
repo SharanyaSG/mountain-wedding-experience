@@ -132,8 +132,9 @@ function GettingHere() {
         <Reveal className="mt-16 border-t border-foreground/20 pt-10 md:pt-14">
           <div id="driving-to-lincoln" className="max-w-4xl">
             <h3 className="eyebrow font-bold text-rust">Driving to Lincoln</h3>
-            <p className="mt-6 font-serif text-2xl leading-snug">Making your way to the mountains?</p>
-            <p className="mt-4 font-script text-4xl text-romantic-crimson">Lincoln makes for a beautiful mountain road trip!</p>
+            <div className="mt-6">
+              <SectionHeading title="Making your way to the mountains?" accent="Lincoln makes for a beautiful mountain road trip!" crimson />
+            </div>
             <p className="mt-6 font-serif text-sm leading-7 text-foreground">{travelGuide.driving.introduction}</p>
 
             <p className="mt-8 font-serif text-base font-bold leading-8 text-itinerary-forest lg:text-lg">{travelGuide.driving.recommendation}</p>
