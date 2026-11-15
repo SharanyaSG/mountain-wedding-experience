@@ -108,8 +108,7 @@ describe("Pictures of Us collections", () => {
   it("adds ten We Said Yes originals in upload order with original proportions and no finalized cover", () => {
     const collection = photoCollections[2];
     if (!collection) throw new Error("We Said Yes is missing");
-    expect(collection.photos).toHaveLength(10);
-    expect(collection.photos.map(({ id, width, height }) => [id, width, height])).toEqual([
+    expect(collection.photos.slice(0, 10).map(({ id, width, height }) => [id, width, height])).toEqual([
       ["we-said-yes-001", 1280, 1920],
       ["we-said-yes-002", 1920, 1280],
       ["we-said-yes-003", 1920, 1280],
@@ -121,8 +120,26 @@ describe("Pictures of Us collections", () => {
       ["we-said-yes-009", 1280, 1920],
       ["we-said-yes-010", 1920, 1280],
     ]);
-    expect(new Set(collection.photos.map(({ src }) => src)).size).toBe(10);
+    expect(new Set(collection.photos.slice(0, 10).map(({ src }) => src)).size).toBe(10);
     expect(collection.coverPhotoId).toBeNull();
+  });
+
+  it("appends seven We Said Yes photographs after the original ten without changing the temporary cover", () => {
+    const collection = photoCollections[2];
+    if (!collection) throw new Error("We Said Yes is missing");
+    expect(collection.photos).toHaveLength(17);
+    expect(collection.photos.slice(10).map(({ id, width, height }) => [id, width, height])).toEqual([
+      ["we-said-yes-011", 1440, 1920],
+      ["we-said-yes-012", 1920, 1280],
+      ["we-said-yes-013", 1086, 1920],
+      ["we-said-yes-014", 1099, 1920],
+      ["we-said-yes-015", 1105, 1920],
+      ["we-said-yes-016", 1112, 1920],
+      ["we-said-yes-017", 1920, 1280],
+    ]);
+    expect(new Set(collection.photos.map(({ src }) => src)).size).toBe(17);
+    expect(collection.coverPhotoId).toBeNull();
+    expect(collectionCover(collection)?.id).toBe("we-said-yes-001");
   });
 
   it("uses an independently selected cover without reordering the collection", () => {

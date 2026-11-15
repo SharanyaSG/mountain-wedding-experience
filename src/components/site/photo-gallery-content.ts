@@ -64,6 +64,13 @@ import wedding007 from "@/assets/we-said-yes-007.jpg.asset.json";
 import wedding008 from "@/assets/we-said-yes-008.jpg.asset.json";
 import wedding009 from "@/assets/we-said-yes-009.jpg.asset.json";
 import wedding010 from "@/assets/we-said-yes-010.jpg.asset.json";
+import wedding011 from "@/assets/we-said-yes-011.jpg.asset.json";
+import wedding012 from "@/assets/we-said-yes-012.jpg.asset.json";
+import wedding013 from "@/assets/we-said-yes-013.jpg.asset.json";
+import wedding014 from "@/assets/we-said-yes-014.jpg.asset.json";
+import wedding015 from "@/assets/we-said-yes-015.jpg.asset.json";
+import wedding016 from "@/assets/we-said-yes-016.jpg.asset.json";
+import wedding017 from "@/assets/we-said-yes-017.jpg.asset.json";
 
 export type GalleryPhoto = {
   id: string;
@@ -176,6 +183,13 @@ export const photoCollections: PhotoCollection[] = [
       { id: "we-said-yes-008", src: wedding008.url, width: 1280, height: 1920, alt: "A wedding celebration welcome sign for Sahil and Sharanya" },
       { id: "we-said-yes-009", src: wedding009.url, width: 1280, height: 1920, alt: "Black-and-white photograph of Sharanya and Sahil raising glasses at their celebration" },
       { id: "we-said-yes-010", src: wedding010.url, width: 1920, height: 1280, alt: "Sharanya and Sahil with friends and family for a group photograph at their celebration" },
+      { id: "we-said-yes-011", src: wedding011.url, width: 1440, height: 1920, alt: "Sharanya and Sahil standing together at home in red and ivory outfits" },
+      { id: "we-said-yes-012", src: wedding012.url, width: 1920, height: 1280, alt: "Sharanya and Sahil posing with family at the courthouse" },
+      { id: "we-said-yes-013", src: wedding013.url, width: 1086, height: 1920, alt: "Sharanya smiling with a family member during a celebration at home" },
+      { id: "we-said-yes-014", src: wedding014.url, width: 1099, height: 1920, alt: "Sahil with family during a celebration at home" },
+      { id: "we-said-yes-015", src: wedding015.url, width: 1105, height: 1920, alt: "Sharanya placing a handprint on a sheet beside a family member" },
+      { id: "we-said-yes-016", src: wedding016.url, width: 1112, height: 1920, alt: "Sahil placing a handprint beside Sharanya's during a celebration at home" },
+      { id: "we-said-yes-017", src: wedding017.url, width: 1920, height: 1280, alt: "Sharanya and Sahil smiling with friends at their wedding celebration" },
     ],
   },
   {

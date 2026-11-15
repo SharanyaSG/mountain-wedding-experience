@@ -33,3 +33,4 @@
 - [x] Append the next three Proposals photographs after the first ten; the HEIC-named upload was already WebP, so all thirteen originals were preserved byte-for-byte without conversion; verify desktop/mobile viewing, navigation, no exact duplicates and unchanged temporary cover.
 - [ ] Supply remaining Pictures of Us photographs, preferred ordering, and final covers (waiting for the couple's next uploads and selections; Before Forever contains thirty-one photographs, The Proposals thirteen, and We Said Yes ten; uploads remain ongoing).
 - [x] Add and verify the first ten We Said Yes original photographs in upload order, checking duplicates and preserving all other galleries, covers and website design; all ten opened on desktop/tablet/phone, navigation verified and stored originals match uploaded bytes.
+- [ ] Append and verify seven more original We Said Yes photos after the first ten, checking duplicates and preserving the temporary cover and other collections.
