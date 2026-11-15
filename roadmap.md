@@ -1,4 +1,5 @@
 # Homepage refinements
+- [x] Lift the message-page heading group by 40px desktop, 28px tablet and 16px mobile; color only the cursive names crimson, verified unchanged typography, internal spacing and media across six screen sizes.
 - [x] Slightly lift only the We Said Yes gallery cover photograph, preserving the complete Married in Boston lettering and revealing more of the couple; verified desktop, tablet and mobile.
 - [x] Verify the shared story-card actions fit side by side without clipping at actual desktop, tablet and mobile card widths, preserving all other content and interactions.
 - [x] Raise Sharanya's face well up in the "Shravya" card frame (framing only, same photo and square card) so almost no empty wall sits above her head, with her forehead, eyes, nose and chin all fully in view.
