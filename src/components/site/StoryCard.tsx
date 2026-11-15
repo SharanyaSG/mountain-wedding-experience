@@ -6,6 +6,10 @@ import type { Story } from "./wedding-content";
 /**
  * A single storybook card: photograph side and story side, joined by a slow
  * horizontal flip. Hover flips it on a mouse; a tap flips it on a touch screen.
+ *
+ * Layout: one card per row below 768px, two from 768px, four from 1200px.
+ * From 768px up the card typography steps down so the smaller cards stay legible
+ * without clipping; the full story always opens in the comfortable reader.
  */
 export function StoryCard({ story }: { story: Story }) {
   const [flipped, setFlipped] = useState(false);
@@ -27,7 +31,7 @@ export function StoryCard({ story }: { story: Story }) {
 
   return (
     <div
-      className="story-scene aspect-[4/5] md:aspect-[3/2]"
+      className="story-scene aspect-[4/5] min-[768px]:max-[1200px]:aspect-[3/2]"
       onPointerEnter={(e) => onHover(e, true)}
       onPointerLeave={(e) => onHover(e, false)}
     >
@@ -45,17 +49,23 @@ export function StoryCard({ story }: { story: Story }) {
             />
           ) : (
             <div className="placeholder-frame h-full w-full">
-              <span className="eyebrow absolute left-5 top-5 text-muted-foreground">Photograph to come</span>
+              <span className="eyebrow absolute left-5 top-5 text-muted-foreground min-[768px]:left-3 min-[768px]:top-3 min-[768px]:text-[0.5rem]">
+                Photograph to come
+              </span>
             </div>
           )}
           <div className="bg-image-veil pointer-events-none absolute inset-0" />
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-6 p-6 md:p-8">
-            <div>
-              <p className="eyebrow text-ivory/70">{story.n}</p>
-              <h3 className="display mt-3 text-4xl text-ivory md:text-5xl">{story.title}</h3>
-              <p className="mt-3 font-serif text-lg italic text-ivory/85 md:text-xl">{story.subtitle}</p>
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-6 p-6 min-[768px]:gap-3 min-[768px]:p-4">
+            <div className="min-w-0">
+              <p className="eyebrow text-ivory/70 min-[768px]:text-[0.5rem]">{story.n}</p>
+              <h3 className="display mt-3 text-4xl text-ivory min-[768px]:mt-2 min-[768px]:text-xl min-[768px]:leading-tight">
+                {story.title}
+              </h3>
+              <p className="mt-3 font-serif text-lg italic text-ivory/85 min-[768px]:mt-2 min-[768px]:text-[0.8rem] min-[768px]:leading-snug">
+                {story.subtitle}
+              </p>
             </div>
-            <span className="eyebrow hidden shrink-0 pb-2 text-ivory/60 md:block">Flip to Read</span>
+            <span className="eyebrow hidden shrink-0 pb-2 text-ivory/60 md:block min-[1200px]:hidden">Flip to Read</span>
           </div>
           <button
             ref={frontRef}
@@ -80,15 +90,17 @@ export function StoryCard({ story }: { story: Story }) {
             setFocusTo("front");
           }}
         >
-          <div className="flex h-full flex-col p-6 md:p-8">
-            <p className="eyebrow text-muted-foreground">
+          <div className="flex h-full flex-col p-6 min-[768px]:p-4">
+            <p className="eyebrow text-muted-foreground min-[768px]:text-[0.5rem] min-[768px]:leading-snug">
               {story.n} · {story.subtitle}
             </p>
-            <h3 className="display mt-3 text-3xl text-forest md:text-4xl">{story.title}</h3>
-            <Divider />
-            <div className="story-body mt-5 flex-1 overflow-y-auto pr-1">
+            <h3 className="display mt-3 text-3xl text-forest min-[768px]:mt-2 min-[768px]:text-lg min-[768px]:leading-tight">
+              {story.title}
+            </h3>
+            <Divider className="min-[768px]:mt-3" />
+            <div className="story-body mt-5 flex-1 overflow-y-auto pr-1 min-[768px]:mt-3">
               {story.body ? (
-                <div className="space-y-4 text-[0.95rem] leading-relaxed text-charcoal md:text-base">
+                <div className="space-y-4 text-[0.95rem] leading-relaxed text-charcoal min-[768px]:space-y-2 min-[768px]:text-[0.7rem]">
                   {story.body
                     .split(/\n{2,}/)
                     .map((p) => p.trim())
@@ -106,7 +118,7 @@ export function StoryCard({ story }: { story: Story }) {
                 </div>
               )}
             </div>
-            <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-foreground/10 pt-5">
+            <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-foreground/10 pt-5 min-[768px]:mt-3 min-[768px]:gap-2 min-[768px]:pt-3">
               <button
                 ref={backRef}
                 type="button"
@@ -115,7 +127,7 @@ export function StoryCard({ story }: { story: Story }) {
                   e.stopPropagation();
                   setReading(true);
                 }}
-                className="btn-label bg-forest px-6 py-3 text-ivory transition-colors hover:bg-rust"
+                className="btn-label bg-forest px-6 py-3 text-ivory transition-colors hover:bg-rust min-[768px]:px-3 min-[768px]:py-2 min-[768px]:text-[0.55rem]"
               >
                 Read Full Story
               </button>
@@ -127,7 +139,7 @@ export function StoryCard({ story }: { story: Story }) {
                   setFlipped(false);
                   setFocusTo("front");
                 }}
-                className="eyebrow text-muted-foreground underline-offset-4 transition-colors hover:text-forest hover:underline"
+                className="eyebrow text-muted-foreground underline-offset-4 transition-colors hover:text-forest hover:underline min-[768px]:text-[0.5rem]"
               >
                 Back to photograph
               </button>
@@ -155,9 +167,9 @@ function Paragraph({ text }: { text: string }) {
   );
 }
 
-function Divider() {
+function Divider({ className }: { className?: string }) {
   return (
-    <div aria-hidden className="mt-5 flex items-center gap-3">
+    <div aria-hidden className={cn("mt-5 flex items-center gap-3", className)}>
       <span className="h-px flex-1 bg-gold/50" />
       <span className="h-1 w-1 rotate-45 bg-gold" />
       <span className="h-px flex-1 bg-gold/50" />
