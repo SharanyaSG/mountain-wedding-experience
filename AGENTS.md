@@ -16,3 +16,4 @@
 - Keep guest content on its dedicated TanStack routes; root owns the shared navigation and footer, and Our Journey reuses the existing story and photograph sections without changing their content.
 - Use shared section-shell, section-divider and section-content CSS tokens for homepage spacing; exclude the hero and modal interiors so future content keeps a consistent rhythm without altering immersive experiences.
 - Keep itinerary layout changes in WeddingItinerary and itinerary-scoped CSS, with shared spacing tokens and the unchanged agenda source, so other pages and event facts remain unaffected.
+- FAQ deep links use existing category IDs as URL fragments; select and scroll the existing question panel without opening individual answers, so direct URLs and history share the same content.

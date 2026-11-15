@@ -1,0 +1,14 @@
+import { describe, expect, it } from "vitest";
+import { faqCategoryFromHash } from "@/components/site/faq-navigation";
+
+describe("FAQ category deep links", () => {
+  it("opens the existing wedding and celebrations category", () => {
+    expect(faqCategoryFromHash("celebrations")?.label).toBe("Our Wedding & Celebrations");
+  });
+  it("opens the existing invitations and RSVPs category", () => {
+    expect(faqCategoryFromHash("#invitations")?.label).toBe("Invitations & RSVPs");
+  });
+  it("does not select a category for the main FAQ URL", () => {
+    expect(faqCategoryFromHash("")).toBeUndefined();
+  });
+});

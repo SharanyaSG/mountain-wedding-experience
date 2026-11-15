@@ -37,10 +37,11 @@ export function WeddingItinerary() {
           ))}
         </ol>
         <Reveal delay={200} className="section-content text-center">
-          <p className="font-serif text-sm font-normal leading-relaxed text-foreground">
-            Have any additional questions? {" "}
-            <Link to="/faqs" className="text-romantic-crimson underline-offset-4 hover:underline focus-visible:underline">Visit our FAQs</Link>{" "}
-            for more information.
+          <p className="font-serif text-base font-bold leading-relaxed text-foreground">Have any additional questions?</p>
+          <p className="mt-3 font-serif text-base font-normal leading-relaxed text-foreground">
+            Visit our <Link to="/faqs" className="font-bold text-romantic-crimson underline-offset-4 hover:underline focus-visible:underline">FAQs</Link>, particularly {" "}
+            <Link to="/faqs" hash="celebrations" className="font-bold text-romantic-crimson underline-offset-4 hover:underline focus-visible:underline">Our Wedding &amp; Celebrations</Link> and {" "}
+            <Link to="/faqs" hash="invitations" className="font-bold text-romantic-crimson underline-offset-4 hover:underline focus-visible:underline">Invitations &amp; RSVPs</Link>, for more information.
           </p>
         </Reveal>
       </div>
