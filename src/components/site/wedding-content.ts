@@ -132,6 +132,7 @@ In the end, it turned into one of those stories everyone still laughs about, and
     alt: "Sharanya looking straight at the camera with a playful pout",
     width: 1440,
     height: 1920,
+    objectPosition: "50% 62.5%",
   } },
   { id: "new-york", n: "04", title: "New York", subtitle: "The First Big Trip", body: `A few months into their relationship, Sharanya and Sahil planned their first trip together. They wanted something affordable, cozy, and romantic, so Sahil found a charming Airbnb in the middle of nowhere in New York complete with a hot tub and a view of a stream waterfall. Sharanya needed some convincing, but reluctantly agreed.
 
@@ -210,7 +211,7 @@ And with that, between laughter, a ring pop, and two very different but equally 
     alt: "Sahil smiling across a bar table with two cocktails in front of him at Emmets",
     width: 1080,
     height: 1920,
-    objectPosition: "50% 35.7%",
+    objectPosition: "50% 28.6%",
   } },
   {
     id: "the-proposal-that-became-two",
