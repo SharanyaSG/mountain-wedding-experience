@@ -60,7 +60,6 @@ export const travelGuide = {
     highlight: "complimentary gondola rides on October 8, 2027",
     accessDetails: "More details to follow!",
   },
-  independentArrangements: "Flights, accommodations, transportation, and any additional activities or excursions can be arranged independently.",
 } as const;
 
 export type Story = {
