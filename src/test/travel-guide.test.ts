@@ -37,10 +37,13 @@ describe("Plan Your Trip travel facts", () => {
     expect("recommendation" in travelGuide.international).toBe(false);
   });
 
-  it("keeps activities editable without inventing personal recommendations", () => {
-    expect(travelGuide.scenicDrives.slice(0, 2)).toEqual(["Kancamagus Highway", "Franconia Notch"]);
-    expect(travelGuide.outdoorAdventures).toEqual(["Hiking trails", "Scenic overlooks", "Waterfalls", "Gondola rides", "Other local attractions"]);
-    expect(travelGuide.eatAndExplore).toEqual(["Restaurants", "Breakfast & brunch spots", "Cafés", "Breweries", "Local attractions", "Hidden gems"]);
+  it("keeps the New Hampshire guide button ready for a real link", () => {
+    expect(travelGuide.newHampshireGuide.intro).toEqual([
+      "We hope you’ll make an adventure of your time in the White Mountains! From scenic drives and mountain trails to cozy cafés and local favorites, there’s so much to discover.",
+      "We’ve put together a little guide to help you explore, plan ahead, and make the most of your visit.",
+    ]);
+    expect(travelGuide.newHampshireGuide.label).toBe("Explore Our New Hampshire Guide");
+    expect(travelGuide.newHampshireGuide.url).toBeNull();
   });
 
   it("keeps rental-car group rates tentative rather than secured", () => {

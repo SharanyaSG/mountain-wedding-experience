@@ -163,52 +163,39 @@ function GettingHere() {
   );
 }
 
-function AdventureList({ title, items }: { title: string; items: readonly string[] }) {
-  return (
-    <div>
-      <h3 className="eyebrow text-cinnamon">{title}</h3>
-      <ul className="mt-7 border-t border-foreground/20">
-        {items.map((item) => (
-          <li key={item} className="border-b border-border py-5">
-            <p className="font-serif text-xl leading-snug">{item}</p>
-            <p className="mt-2 font-serif text-sm italic text-muted-foreground">Recommendation details to come.</p>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
 function Adventure() {
+  const guide = travelGuide.newHampshireGuide;
   return (
     <section id="adventure" className="border-t border-border">
-      <div className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-36">
+      <div className="mx-auto max-w-[1400px] px-5 py-24 text-center md:px-10 md:py-32">
         <Reveal>
-          <SectionHeading title="Make an Adventure of It" accent="There’s more to explore." />
+          <SectionHeading title="Make an Adventure of It" accent="There’s more to explore." align="center" crimson />
         </Reveal>
-        <Reveal delay={100} className="mt-10 max-w-2xl space-y-5 text-sm leading-7 text-muted-foreground md:text-base md:leading-8">
-          <p>We’ve spent some of our favorite moments exploring the mountains, finding little places to eat, and taking the scenic route whenever possible.</p>
-          <p>Here are a few experiences we’d love for you to discover while you’re here.</p>
+        <Reveal delay={100} className="mx-auto mt-10 max-w-[680px] space-y-6 font-serif text-[15px] leading-8 text-foreground md:text-base md:leading-9">
+          {guide.intro.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
         </Reveal>
-        <div className="mt-16 grid gap-16 md:grid-cols-2 md:gap-14">
-          <Reveal><AdventureList title="Scenic Drives" items={travelGuide.scenicDrives} /></Reveal>
-          <Reveal delay={120}><AdventureList title="Outdoor Adventures" items={travelGuide.outdoorAdventures} /></Reveal>
-        </div>
-        <Reveal className="mt-20 border-t border-foreground/20 pt-10 md:pt-14">
-          <div className="grid gap-8 md:grid-cols-12">
-            <div className="md:col-span-4">
-              <h3 className="eyebrow text-cinnamon">Eat &amp; Explore</h3>
-              <p className="mt-5 max-w-xs font-script text-4xl leading-tight text-rust">A few of our favorites, coming soon.</p>
-            </div>
-            <ul className="grid border-t border-border sm:grid-cols-2 md:col-span-8">
-              {travelGuide.eatAndExplore.map((item) => (
-                <li key={item} className="border-b border-border py-5 sm:odd:pr-6 sm:even:pl-6">
-                  <p className="font-serif text-xl">{item}</p>
-                  <p className="mt-2 font-serif text-sm italic text-muted-foreground">Our personal recommendation will be added here.</p>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <Reveal delay={180} className="mt-12 flex justify-center">
+          {guide.url ? (
+            <a
+              href={guide.url}
+              target="_blank"
+              rel="noreferrer"
+              className="btn-label border border-forest bg-forest px-7 py-4 font-bold text-ivory shadow-none transition-colors hover:border-rust hover:bg-rust"
+            >
+              {guide.label}<span aria-hidden="true" className="ml-2">↗</span>
+            </a>
+          ) : (
+            <button
+              type="button"
+              disabled
+              title="Our New Hampshire guide is coming soon."
+              className="btn-label cursor-not-allowed border border-forest bg-forest px-7 py-4 font-bold text-ivory opacity-70 shadow-none"
+            >
+              {guide.label}<span aria-hidden="true" className="ml-2">↗</span>
+            </button>
+          )}
         </Reveal>
       </div>
     </section>
