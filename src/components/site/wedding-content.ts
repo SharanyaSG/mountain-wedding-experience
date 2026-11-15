@@ -1,5 +1,6 @@
 import bowPhoto from "@/assets/the-bow.png.asset.json";
 import halloweenPhoto from "@/assets/halloween-2023.png.asset.json";
+import newYorkPhoto from "@/assets/new-york.webp.asset.json";
 import shravyaPhoto from "@/assets/shravya.webp.asset.json";
 
 export const hotels = [
@@ -137,7 +138,12 @@ One highlight was a short hike for a sunset view over the farmland. They made it
 
 What followed was a chaotic walk back using only their phone flashlights. Sharanya was convinced there were bears in the woods and was very mad. Sahil was determined to get them back to the car safely.
 
-It was their first trip together, and it turned out to be full of unexpected adventures, small mishaps, and a lot of laughter. They thought it would be a quiet weekend, but instead they spent it exploring, trying new things, and making memories they still talk about.`, photo: null },
+It was their first trip together, and it turned out to be full of unexpected adventures, small mishaps, and a lot of laughter. They thought it would be a quiet weekend, but instead they spent it exploring, trying new things, and making memories they still talk about.`, photo: {
+    url: newYorkPhoto.url,
+    alt: "Sharanya and Sahil standing together at a vineyard, the striped umbrella and hills behind them",
+    width: 1440,
+    height: 1920,
+  } },
   { id: "the-free-mattress", n: "05", title: "The Free Mattress", subtitle: "He Meant Well….", body: `After moving out of her on campus apartment, Sharanya was sleeping on an air mattress. Sahil decided this simply would not do. Determined to fix it in the most budget friendly way possible, he found a “free” mattress that came with an adjustable bed frame.
 
 The mattress fit into the van easily. The bed frame did not. The seller was very clear that it was a package deal so he had to take both. So, Sahil went across the street, rented a truck, and came back for it.

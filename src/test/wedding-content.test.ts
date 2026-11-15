@@ -44,8 +44,11 @@ describe("wedding content", () => {
     const shravya = stories.find((s) => s.id === "shravya");
     expect(shravya?.photo).toMatchObject({ width: 1440, height: 1920 });
     expect(shravya?.photo?.url).toMatch(/^\/__l5e\/assets-v1\/[\w-]+\/shravya\.webp$/);
+    const newYork = stories.find((s) => s.id === "new-york");
+    expect(newYork?.photo).toMatchObject({ width: 1440, height: 1920 });
+    expect(newYork?.photo?.url).toMatch(/^\/__l5e\/assets-v1\/[\w-]+\/new-york\.webp$/);
     expect(stories.filter((s) => s.photo === null).map((s) => s.n)).toEqual([
-      "04", "05", "06", "07", "08", "09", "10", "11",
+      "05", "06", "07", "08", "09", "10", "11",
     ]);
   });
 
