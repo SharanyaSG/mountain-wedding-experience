@@ -5,6 +5,7 @@ import {
   type CSSProperties,
   type KeyboardEvent,
   type PointerEvent as ReactPointerEvent,
+  type RefObject,
 } from "react";
 import { createPortal } from "react-dom";
 import { ChevronLeft, ChevronRight, Images, X, ZoomIn, ZoomOut } from "lucide-react";
@@ -162,7 +163,7 @@ export function PicturesOfUs() {
   );
 }
 
-function PhotoCategoryCard({
+export function PhotoCategoryCard({
   collection,
   onOpen,
 }: {
@@ -278,7 +279,7 @@ function PhotoCategoryCard({
   );
 }
 
-function PhotoGallery({
+export function PhotoGallery({
   collection,
   photoIndex,
   closing,
@@ -291,7 +292,7 @@ function PhotoGallery({
   collection: PhotoCollection;
   photoIndex: number | null;
   closing: boolean;
-  returnFocus: React.RefObject<HTMLButtonElement | null>;
+  returnFocus: RefObject<HTMLButtonElement | null>;
   onOpenPhoto: (index: number) => void;
   onNavigatePhoto: (index: number) => void;
   onClosePhoto: () => void;
@@ -494,7 +495,7 @@ function GalleryGridPhoto({
 type PhotoViewerProps = {
   collection: PhotoCollection;
   photoIndex: number | null;
-  closeRef: React.RefObject<HTMLButtonElement | null>;
+  closeRef: RefObject<HTMLButtonElement | null>;
   onClose: () => void;
   onNavigate: (direction: -1 | 1) => void;
 };
@@ -506,7 +507,7 @@ const PhotoViewer = function PhotoViewer({
   photoIndex,
   onClose,
   onNavigate,
-}: PhotoViewerProps & { ref: React.RefObject<HTMLDivElement | null> }) {
+}: PhotoViewerProps & { ref: RefObject<HTMLDivElement | null> }) {
   const [zoom, setZoom] = useState(1);
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const [loadedPhoto, setLoadedPhoto] = useState<string | null>(null);

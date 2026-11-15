@@ -1,8 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import overlook from "@/assets/sharanya-sahil-overlook.jpg.asset.json";
-import { Reveal, PhotoPlaceholder } from "@/components/site/Reveal";
+import { Reveal } from "@/components/site/Reveal";
 import { HeroIllustration } from "@/components/site/HeroIllustration";
 import { StoryCard } from "@/components/site/StoryCard";
+import { PicturesOfUs } from "@/components/site/PicturesOfUs";
 import { TravelGuide } from "@/components/site/TravelGuide";
 import { FaqSection } from "@/components/site/FaqSection";
 import { MessageFromUs } from "@/components/site/MessageFromUs";
@@ -182,40 +183,8 @@ function Stories() {
 }
 
 /* ---------------- GALLERY ---------------- */
-const tiles = [
-  "md:col-span-5 md:row-span-2 aspect-[4/5] md:aspect-auto",
-  "md:col-span-4 aspect-[4/3] md:aspect-auto",
-  "md:col-span-3 aspect-square md:aspect-auto",
-  "md:col-span-3 aspect-[3/4] md:aspect-auto",
-  "md:col-span-4 aspect-[4/3] md:aspect-auto",
-  "md:col-span-7 aspect-[16/9] md:aspect-auto",
-  "md:col-span-5 aspect-[4/3] md:aspect-auto",
-];
 function Gallery() {
-  return (
-    <section id="gallery" className="scroll-mt-24 bg-card md:scroll-mt-28">
-      <div className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-36">
-        <div className="grid gap-6 md:grid-cols-2 md:items-end">
-          <div>
-
-            <Reveal delay={100}><h2 className="display text-5xl md:text-7xl">Us, through <em>the years</em></h2></Reveal>
-          </div>
-          <Reveal delay={200}>
-            <p className="font-serif text-2xl italic text-muted-foreground md:text-right">
-              From friends to forever. With a few questionable decisions along the way.
-            </p>
-          </Reveal>
-        </div>
-        <div className="mt-14 grid grid-cols-2 gap-3 md:auto-rows-[220px] md:grid-cols-12 md:gap-4">
-          {tiles.map((c, i) => (
-            <Reveal key={i} delay={(i % 4) * 90} className={`${c} ${i === 0 || i === 5 ? "col-span-2" : ""}`}>
-              <PhotoPlaceholder label={`No. ${String(i + 1).padStart(2, "0")}`} className="h-full w-full transition-opacity duration-500 hover:opacity-80" />
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+  return <PicturesOfUs />;
 }
 
 /* ---------------- TELL US YOUR PLANS ---------------- */
