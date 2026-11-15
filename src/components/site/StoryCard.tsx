@@ -179,10 +179,14 @@ function StoryReader({ story, onClose }: { story: Story; onClose: () => void }) 
     const k = (e: KeyboardEvent) => e.key === "Escape" && onClose();
     document.addEventListener("keydown", k);
     const previous = document.body.style.overflow;
+    const prevPad = document.body.style.paddingRight;
+    const gutter = window.innerWidth - document.documentElement.clientWidth;
     document.body.style.overflow = "hidden";
+    if (gutter > 0) document.body.style.paddingRight = `${gutter}px`;
     return () => {
       document.removeEventListener("keydown", k);
       document.body.style.overflow = previous;
+      document.body.style.paddingRight = prevPad;
     };
   }, [onClose]);
 
@@ -226,7 +230,7 @@ function StoryReader({ story, onClose }: { story: Story; onClose: () => void }) 
                 .map((p) => p.trim())
                 .filter(Boolean)
                 .map((p, i) => (
-                  <p key={i}>{p}</p>
+                  <Paragraph key={i} text={p} />
                 ))}
             </div>
           ) : (
