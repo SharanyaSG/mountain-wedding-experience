@@ -1,3 +1,4 @@
+import bowPhoto from "@/assets/the-bow.png.asset.json";
 import halloweenPhoto from "@/assets/halloween-2023.png.asset.json";
 
 export const hotels = [
@@ -103,7 +104,12 @@ Before she could properly process what was happening, he was halfway up the tree
 
 He climbed down, handed it to her like it was a priceless gift, and said, “I’ll always give you what you want.”
 
-And in that very ridiculous, very sweet moment, Sharanya realized that this was someone who would go to any length just to make her smile and keep her happy!`, photo: null },
+And in that very ridiculous, very sweet moment, Sharanya realized that this was someone who would go to any length just to make her smile and keep her happy!`, photo: {
+    url: bowPhoto.url,
+    alt: "A hand holding the red ribbon bow Sahil climbed a tree to bring down",
+    width: 1320,
+    height: 1765,
+  } },
   { id: "shravya", n: "03", title: "Shravya", subtitle: "Sahil’s Favorite Sharanya Story", body: `Shortly after they started dating, Sahil took a trip to India, and they were texting enough for his family to get curious. On the flight back, his mom asked who he had been talking to so much, and he casually said he was dating this girl that she had met sometime back. His mom nodded and said, “Oh yes, that girl… Shravya, right?”
 
 Sahil paused… and said, “YES!! That girl.”
