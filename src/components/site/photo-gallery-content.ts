@@ -54,6 +54,16 @@ import proposal010 from "@/assets/the-proposals-010.jpg.asset.json";
 import proposal011 from "@/assets/the-proposals-011.webp.asset.json";
 import proposal012 from "@/assets/the-proposals-012.jpg.asset.json";
 import proposal013 from "@/assets/the-proposals-013.jpg.asset.json";
+import wedding001 from "@/assets/we-said-yes-001.jpg.asset.json";
+import wedding002 from "@/assets/we-said-yes-002.jpg.asset.json";
+import wedding003 from "@/assets/we-said-yes-003.jpg.asset.json";
+import wedding004 from "@/assets/we-said-yes-004.jpg.asset.json";
+import wedding005 from "@/assets/we-said-yes-005.jpg.asset.json";
+import wedding006 from "@/assets/we-said-yes-006.jpg.asset.json";
+import wedding007 from "@/assets/we-said-yes-007.jpg.asset.json";
+import wedding008 from "@/assets/we-said-yes-008.jpg.asset.json";
+import wedding009 from "@/assets/we-said-yes-009.jpg.asset.json";
+import wedding010 from "@/assets/we-said-yes-010.jpg.asset.json";
 
 export type GalleryPhoto = {
   id: string;
@@ -154,7 +164,19 @@ export const photoCollections: PhotoCollection[] = [
     title: "We Said Yes",
     description: "Our courthouse wedding and the day we officially got married.",
     coverPhotoId: null,
-    photos: [],
+    // Append subsequent batches in upload order; the first photo is a temporary fallback only.
+    photos: [
+      { id: "we-said-yes-001", src: wedding001.url, width: 1280, height: 1920, alt: "Sharanya and Sahil kissing in front of a Married in Boston backdrop" },
+      { id: "we-said-yes-002", src: wedding002.url, width: 1920, height: 1280, alt: "Sharanya and Sahil seated with friends and family at the courthouse" },
+      { id: "we-said-yes-003", src: wedding003.url, width: 1920, height: 1280, alt: "Sharanya and Sahil sitting together with guests at the courthouse" },
+      { id: "we-said-yes-004", src: wedding004.url, width: 1920, height: 1280, alt: "Close-up of Sharanya and Sahil holding hands while seated" },
+      { id: "we-said-yes-005", src: wedding005.url, width: 1280, height: 1920, alt: "Black-and-white photograph of Sharanya and Sahil celebrating outdoors with a bouquet" },
+      { id: "we-said-yes-006", src: wedding006.url, width: 1280, height: 1920, alt: "Black-and-white photograph of Sharanya and Sahil smiling at each other outdoors" },
+      { id: "we-said-yes-007", src: wedding007.url, width: 1280, height: 1920, alt: "Black-and-white photograph of Sahil kissing Sharanya's cheek outdoors" },
+      { id: "we-said-yes-008", src: wedding008.url, width: 1280, height: 1920, alt: "A wedding celebration welcome sign for Sahil and Sharanya" },
+      { id: "we-said-yes-009", src: wedding009.url, width: 1280, height: 1920, alt: "Black-and-white photograph of Sharanya and Sahil raising glasses at their celebration" },
+      { id: "we-said-yes-010", src: wedding010.url, width: 1920, height: 1280, alt: "Sharanya and Sahil with friends and family for a group photograph at their celebration" },
+    ],
   },
   {
     id: "life-lately",
