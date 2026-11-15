@@ -8,7 +8,7 @@ export function Stories() {
       <span id="stories" aria-hidden="true" />
 
       <Reveal delay={100}>
-        <h2 className="display max-w-3xl text-5xl md:text-7xl">The stories that <em className="text-crimson">got us here</em></h2>
+        <h2 className="display text-5xl md:text-7xl min-[1200px]:whitespace-nowrap">The stories that <em className="whitespace-nowrap text-crimson">got us here</em></h2>
       </Reveal>
       <Reveal delay={200}>
         <p className="mt-6 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base min-[1200px]:max-w-none min-[1200px]:whitespace-nowrap">

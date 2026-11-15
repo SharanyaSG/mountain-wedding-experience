@@ -128,7 +128,7 @@ export function PicturesOfUs() {
       <div className="section-shell">
         <Reveal delay={100}>
           <h2 id="pictures-of-us-title" className="display text-5xl md:text-7xl">
-            Pictures of <em>Us</em>
+            Pictures of <em className="text-crimson">Us</em>
           </h2>
         </Reveal>
         <Reveal delay={200}>
@@ -204,7 +204,7 @@ export function PhotoCategoryCard({
               height={cover.height}
               loading="lazy"
               decoding="async"
-              className="h-full w-full object-cover"
+              className={cn("h-full w-full object-cover", collection.id === "we-said-yes" && "object-top")}
             />
           ) : (
             <div className="placeholder-frame h-full w-full">
