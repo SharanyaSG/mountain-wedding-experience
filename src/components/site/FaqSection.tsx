@@ -57,7 +57,7 @@ export function FaqSection() {
       <div className="section-shell">
         <Reveal>
           <h2 className="display text-5xl md:text-6xl">A few <em className="text-romantic-crimson">early answers</em></h2>
-          <p className="mt-6 max-w-2xl font-serif text-[15px] leading-relaxed text-foreground md:text-base">{faqIntro}</p>
+          <p className="mt-6 w-full text-left font-serif text-[15px] leading-relaxed text-foreground md:text-base">{faqIntro}</p>
         </Reveal>
 
         <div className="section-content grid gap-10 md:grid-cols-12 md:gap-12">
