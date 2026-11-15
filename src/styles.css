@@ -207,6 +207,20 @@
 .content-page { padding-top: 64px; }
 @media (width >= 768px) { .content-page { padding-top: 80px; } }
 
+/* Small itinerary-only hierarchy adjustments preserve the existing typefaces,
+   letter spacing, line heights, colors and responsive column structure. */
+#wedding-itinerary .itinerary-heading { font-size: 50px; }
+#wedding-itinerary .itinerary-subtitle { font-size: 32px; }
+#wedding-itinerary .itinerary-day-number { font-size: 69px; }
+#wedding-itinerary .itinerary-date-label { font-weight: 600; }
+#wedding-itinerary .itinerary-event-name { font-size: 28px; }
+#wedding-itinerary .itinerary-location { font-size: 18px; }
+@media (width >= 768px) {
+  #wedding-itinerary .itinerary-heading { font-size: 62px; }
+  #wedding-itinerary .itinerary-subtitle { font-size: 38px; }
+  #wedding-itinerary .itinerary-day-number { font-size: 125px; }
+  #wedding-itinerary .itinerary-event-name { font-size: 34px; }
+}
 /* Keep the itinerary's desktop columns independent of utility ordering. */
 @media (width >= 1200px) {
   #wedding-itinerary ol { grid-template-columns: repeat(3, minmax(0, 1fr)); }
