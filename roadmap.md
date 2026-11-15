@@ -1,4 +1,5 @@
 # Homepage refinements
+- [x] Center the Wedding Itinerary heading and reorganize days into three desktop columns, two tablet columns and stacked mobile days; verified 11 widths from 375–1572px, unchanged text and desktop/tablet typography, equal columns, no overflow, functional FAQ link, six agenda tests and successful build.
 - [x] Reorganize into six content pages plus an empty future plans destination, reuse the shared footer and crimson closing line, update responsive page navigation and active links; all seven requested widths passed direct-link, history, refresh, MENU, gallery, FAQ, video and overflow checks, and all 53 tests passed. Future plans integration remains intentionally unbuilt.
 - [x] Unify homepage section spacing and aligned subtle dividers, remove oversized message/travel gaps, preserve the hero and component interiors; verified 1440/1280/1024/768/430/390/375px plus landscape, all 53 tests, gallery navigation/zoom, FAQ accordion and actual video playback.
 - [x] Combine driving and rental-car information, remove the scenic-road placeholder, add the tentative group-rates notice, and verify desktop/tablet/mobile.
