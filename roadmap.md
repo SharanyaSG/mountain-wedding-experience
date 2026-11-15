@@ -2,7 +2,8 @@
 - [x] Combine driving and rental-car information, remove the scenic-road placeholder, add the tentative group-rates notice, and verify desktop/tablet/mobile.
 - [x] Consolidate the whole site into one ordered scrolling page with anchor-only navigation, legacy-route redirects, and desktop/tablet/mobile verification.
 - [x] Build the complete Plan Your Trip destination guide, consolidate RiverWalk onto it, remove the homepage Travel & Stay and Explore sections and navigation entry, and verify desktop/tablet/mobile.
-- [ ] Supply an authentic Loon Mountain gondola photograph (blocked: no authentic photograph supplied yet); introduction and scenic-road placeholders were removed by request.
+- [x] Supply an authentic Loon Mountain gondola photograph (uploaded 15 Nov 2026, placed in the gondola gift section as a full portrait); introduction and scenic-road placeholders were removed by request.
+- [x] Remove the closing "Make the Most of Your Mountain Getaway" planning section in full (label, heading, paragraphs, divider notes) with no replacement, verified the gondola section flows straight into Our Stories.
 - [x] Refine itinerary text colors and invitation qualifier, remove the two event explanations, add one FAQ footer link, and verify desktop/tablet/mobile.
 - [x] Reorder navigation, link existing sections, add empty Plan Your Trip and A Message From Us pages, and verify desktop/mobile navigation and plans CTA at 375/834/1127/1535/1536/1573px.
 - [x] Restore earlier mobile hero proportions, preserve tablet styling, enlarge desktop details/spacing, and verify device boundaries independently (375/640/767px mobile, 768/834/1023px tablet, 1024/1440px desktop).
