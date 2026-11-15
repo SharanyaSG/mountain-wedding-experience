@@ -21,6 +21,7 @@ describe("wedding content", () => {
       ["08", "The One Where He Behaved!", "Blessings from The Gowdas & The Malhotras"],
       ["09", "The Proposal That Became Two", "They both knew they’d found their forever. Neither knew the other was planning to propose."],
       ["10", "Stormy Gowda-Malhotra", "Our first big purchase. Her first thousand miles."],
+      ["11", "The Great Board Game Merger", "Two board game nerds. One shared collection. A marriage built on love, strategy, and a little too much competition."],
     ]);
   });
 
@@ -30,6 +31,22 @@ describe("wedding content", () => {
     expect(s?.readerSubtitle).toBe("Our first big purchase, a thousand-mile adventure, and a new member of the family.");
     expect(s?.preview).toBe(
       "Sahil and Sharanya hadn’t planned on buying a car quite so soon. But when Sahil’s aging van finally gave up, they found themselves making their first major purchase together. Two months of obsessive tracking later, Stormy arrived—and promptly embarked on a thousand-mile road trip through New England.",
+    );
+  });
+
+  it("shows the supplied Halloween photograph and leaves every other card front a placeholder", () => {
+    const halloween = stories.find((s) => s.id === "halloween-2023");
+    expect(halloween?.photo).toMatchObject({ width: 1600, height: 1200 });
+    expect(halloween?.photo?.url).toMatch(/^\/__l5e\/assets-v1\/[\w-]+\/halloween-2023\.png$/);
+    expect(stories.filter((s) => s.photo === null).map((s) => s.n)).toEqual([
+      "02", "03", "04", "05", "06", "07", "08", "09", "10", "11",
+    ]);
+  });
+
+  it("shows the supplied board game preview on the card back, word for word", () => {
+    const s = stories.find((x) => x.id === "the-great-board-game-merger");
+    expect(s?.preview).toBe(
+      "When Sharanya and Sahil got married, they didn’t just combine their lives. They merged their board game collections. What followed was an obsession with 7 Wonders Duel, an ongoing Everdell rivalry, and a new definition of date night. And somewhere along the way, Sahil seems to have forgotten how to win.",
     );
   });
 
@@ -81,7 +98,14 @@ describe("wedding content", () => {
     expect(byId("stormy-gowda-malhotra").body).toContain("By the time the weekend was over, Stormy had traveled more than 1,000 miles.");
     expect(byId("stormy-gowda-malhotra").body.trimEnd()).toMatch(/Welcome to the family, Stormy\.$/);
 
-    expect(stories.map(paras)).toEqual([5, 6, 6, 6, 5, 6, 8, 6, 28, 54]);
+    expect(byId("the-great-board-game-merger").body.split(/\n{2,}/)[0]).toBe("When Sharanya and Sahil got married, they combined a lot of things.");
+    expect(byId("the-great-board-game-merger").body).toContain("Their first great obsession was 7 Wonders Duel.");
+    expect(byId("the-great-board-game-merger").body).toContain("And, apparently, it’s also where Sahil’s winning streak went to die.");
+    expect(byId("the-great-board-game-merger").body).toContain("Jumping. Dancing. Screaming. Celebrating like she’d just won an Olympic gold medal.");
+    expect(byId("the-great-board-game-merger").body).toContain("The games may change. The competition never will.");
+    expect(byId("the-great-board-game-merger").body.trimEnd()).toMatch(/And possibly another victory dance happening in the next room\.$/);
+
+    expect(stories.map(paras)).toEqual([5, 6, 6, 6, 5, 6, 8, 6, 28, 54, 62]);
     expect(byId("the-puppy-proposal").body).toContain("You’re so close.”\nEventually, after many circles");
   });
 });
