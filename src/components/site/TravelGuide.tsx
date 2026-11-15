@@ -2,6 +2,7 @@ import gondolaPhoto from "@/assets/loon-mountain-gondola.jpg.asset.json";
 import riverwalkPhoto from "@/assets/hotel-riverwalk.jpg.asset.json";
 import { Reveal } from "@/components/site/Reveal";
 import { hotels, travelGuide } from "@/components/site/wedding-content";
+import { Link } from "@tanstack/react-router";
 
 const riverwalk = hotels[0];
 
@@ -75,10 +76,9 @@ function Stay() {
           </Reveal>
           <div className="md:col-span-5">
             <Reveal delay={120}>
-              <h3 className="text-3xl leading-tight text-foreground md:text-4xl"><span className="font-display font-bold uppercase">RiverWalk Resort</span>{" "}<span className="font-script font-normal">at Loon Mountain</span></h3>
+              <h3 className="text-3xl leading-tight text-foreground md:text-4xl"><span className="font-display font-bold uppercase">RiverWalk Resort</span>{" "}<span className="font-display font-normal">at Loon Mountain</span></h3>
               <div className="mt-7 space-y-5 text-sm leading-7 text-muted-foreground">
                 <p>{riverwalk.introduction}</p>
-                <p>{riverwalk.season}</p>
                 <p className="text-foreground"><span className="font-bold">{riverwalk.bookingRecommendation}</span><br /><span className="font-normal italic">{riverwalk.availabilityNote}</span></p>
               </div>
             </Reveal>
@@ -86,6 +86,13 @@ function Stay() {
               <h4 className="eyebrow text-[13px] font-bold text-rust">{riverwalk.bookingHeading}</h4>
               <p className="mt-4 text-sm leading-7 text-foreground">{riverwalk.bookingNote}</p>
               <p className="mt-2 font-serif text-sm italic leading-7 text-muted-foreground">{riverwalk.bookingStatus}</p>
+            </Reveal>
+            <Reveal delay={240} className="mt-6 border-l-2 border-info-forest bg-info-sage px-6 py-7 text-left">
+              <p className="font-serif text-base font-bold leading-relaxed text-foreground">Have any additional questions?</p>
+              <p className="mt-3 font-serif text-base font-normal leading-relaxed text-foreground">
+                Visit our <Link to="/faqs" className="font-bold text-romantic-crimson underline-offset-4 hover:underline focus-visible:underline">FAQs</Link>, particularly {" "}
+                <Link to="/faqs" hash="accommodations" className="font-bold text-romantic-crimson underline-offset-4 hover:underline focus-visible:underline">Accommodations</Link>, for more information.
+              </p>
             </Reveal>
           </div>
         </div>

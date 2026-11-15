@@ -11,4 +11,7 @@ describe("FAQ category deep links", () => {
   it("does not select a category for the main FAQ URL", () => {
     expect(faqCategoryFromHash("")).toBeUndefined();
   });
+  it("opens the existing accommodations category", () => {
+    expect(faqCategoryFromHash("#accommodations")?.label).toBe("Accommodations");
+  });
 });
