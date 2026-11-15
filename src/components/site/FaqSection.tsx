@@ -9,7 +9,7 @@ function renderInline(text: string): ReactNode[] {
     if (!m) return part;
     const [, label, id] = m as unknown as [string, string, string];
     return (
-      <Link key={i} to="/plan-your-trip" hash={id === "plan-your-trip" ? undefined : id}
+      <Link key={i} to="/plan-your-trip" hash={id === "plan-your-trip" ? "" : id}
         className="font-bold text-itinerary-forest underline decoration-romantic-crimson/50 underline-offset-4 transition-colors hover:text-romantic-crimson">
         {label}
       </Link>
