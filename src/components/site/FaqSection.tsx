@@ -1,7 +1,8 @@
-import { useState, type ReactNode } from "react";
-import { Link } from "@tanstack/react-router";
+import { useEffect, useState, type ReactNode } from "react";
+import { Link, useLocation } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/Reveal";
 import { faqCategories, faqIntro, type FaqBlock } from "@/components/site/faq-content";
+import { faqCategoryFromHash } from "./faq-navigation";
 
 function renderInline(text: string): ReactNode[] {
   return text.split(/(\[\[[^\]]+\]\])/g).map((part, i) => {
@@ -24,8 +25,32 @@ function Block({ block }: { block: FaqBlock }) {
 }
 
 export function FaqSection() {
-  const [active, setActive] = useState(faqCategories[0]!.id);
-  const category = faqCategories.find((c) => c.id === active) ?? faqCategories[0]!;
+  const hash = useLocation({ select: (location) => location.hash });
+  const [active, setActive] = useState(faqCategories[0]?.id ?? "");
+  const linkedCategory = faqCategoryFromHash(hash);
+  const category = faqCategories.find((c) => c.id === active) ?? faqCategories[0];
+
+  useEffect(() => {
+    setActive(linkedCategory?.id ?? faqCategories[0]?.id ?? "");
+  }, [hash, linkedCategory?.id]);
+
+  useEffect(() => {
+    if (!linkedCategory || active !== linkedCategory.id) return;
+    let secondFrame = 0;
+    const firstFrame = requestAnimationFrame(() => {
+      secondFrame = requestAnimationFrame(() => {
+        const target = document.getElementById(linkedCategory.id);
+        target?.scrollIntoView({ block: "start", behavior: "instant" });
+        target?.focus({ preventScroll: true });
+      });
+    });
+    return () => {
+      cancelAnimationFrame(firstFrame);
+      cancelAnimationFrame(secondFrame);
+    };
+  }, [active, linkedCategory?.id]);
+
+  if (!category) return null;
 
   return (
     <section id="faqs" className="section-divider scroll-mt-24 md:scroll-mt-28">
@@ -63,7 +88,7 @@ export function FaqSection() {
             </ol>
           </nav>
 
-          <div className="md:col-span-8">
+          <div id={category.id} tabIndex={-1} aria-label={category.label} className="scroll-mt-24 outline-none md:col-span-8 md:scroll-mt-28">
             <h3 className="mb-4 font-display text-sm font-bold uppercase tracking-[0.18em] text-itinerary-forest md:hidden">{category.label}</h3>
             <div key={category.id} className="animate-in fade-in duration-500">
               {category.items.map((f) => (
