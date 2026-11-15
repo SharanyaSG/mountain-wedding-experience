@@ -77,18 +77,18 @@ function Hero() {
 function SaveTheDate() {
   return (
     <section className="section-shell section-divider">
-      <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-10">
-        <Reveal className="min-w-0 lg:col-span-7">
+      <div className="announcement-layout grid gap-8 lg:grid-cols-2 lg:gap-10">
+        <Reveal className="announcement-photo min-w-0 overflow-hidden">
           <img
             src={overlook.url}
             alt="Sharanya and Sahil seated together on a rocky mountain overlook, seen from behind, looking out across a forested valley"
             width={1028}
             height={1413}
             loading="lazy"
-            className="block h-auto w-full"
+            className="block h-full w-full object-cover object-bottom"
           />
         </Reveal>
-        <div className="flex min-w-0 flex-col lg:col-span-5">
+        <div className="announcement-copy flex min-w-0 flex-col">
 
           <Reveal delay={120}>
             <blockquote className="display text-4xl md:text-5xl lg:text-6xl">
