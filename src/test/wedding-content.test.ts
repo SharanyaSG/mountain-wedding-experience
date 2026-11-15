@@ -56,7 +56,7 @@ describe("wedding content", () => {
     expect(byId("the-puppy-proposal").body.trimEnd()).toMatch(/…which led to the next step - asking for blessings the slightly more formal way\.$/);
     expect(byId("the-one-where-he-behaved").body).toContain("gave their blessing with warmth and happiness.");
 
-    expect(byId("the-proposal-that-became-two").body).toMatch(/^Sahil had a plan\. A rather elaborate one, actually\.$/);
+    expect(byId("the-proposal-that-became-two").body.split(/\n{2,}/)[0]).toBe("Sahil had a plan. A rather elaborate one, actually.");
     expect(byId("the-proposal-that-became-two").body).toContain("Every stop came with two clues: one to figure out where they were going and another to figure out what they had to do once they got there.");
     expect(byId("the-proposal-that-became-two").body).toContain("This time, it was green tea shots.");
     expect(byId("the-proposal-that-became-two").body).toContain("She hadn’t.");
