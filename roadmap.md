@@ -1,5 +1,5 @@
 # Homepage refinements
-- [ ] Reorder Our Journey sections, color only “Us” crimson, top-frame the We Said Yes cover, and keep the Stories heading together on desktop; verify devices and existing interactions.
+- [x] Reorder Our Journey sections, color only “Us” crimson, top-frame the We Said Yes cover, and keep the Stories heading together on desktop; verified nine widths, complete backdrop lettering and faces, gallery/viewer/story-reader flows, twenty-three tests and successful build.
 - [x] Expand and left-align Exploring Lincoln, preserve the guide button, and add the shared FAQ callout with experience/explore links; verified eight widths, all three links with refresh/history/header clearance, fifteen tests and successful build.
 - [x] Widen Driving to Lincoln to the shared travel margins, remove rental-company options, and add an aligned Travel & Weather FAQ callout; verified nine widths, FAQ links/refresh/history, thirteen tests and successful build.
 - [x] Restyle all three airport durations and replace only the shared airport rental recommendation with the reusable Travel & Weather FAQ callout; verified seven widths, preserved other rental guidance, both FAQ links/refresh/history, thirteen tests and successful build.
