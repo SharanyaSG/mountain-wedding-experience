@@ -69,6 +69,8 @@ export type Story = {
   subtitle: string;
   /** Complete story text, exactly as supplied by the couple. */
   body: string;
+  /** Card-back wording supplied by the couple; otherwise derived from body. */
+  preview?: string;
   photo: { url: string; alt: string; width: number; height: number } | null;
 };
 
