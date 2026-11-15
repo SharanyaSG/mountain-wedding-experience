@@ -36,7 +36,7 @@ export function WeddingItinerary() {
             </Reveal>
           ))}
         </ol>
-        <Reveal delay={200} className="section-content text-center">
+        <Reveal delay={200} className="section-content mx-auto w-full max-w-[700px] border-l-2 border-info-forest bg-info-sage px-5 py-6 text-left md:px-6 md:py-7">
           <p className="font-serif text-base font-bold leading-relaxed text-foreground">Have any additional questions?</p>
           <p className="mt-3 font-serif text-base font-normal leading-relaxed text-foreground">
             Visit our <Link to="/faqs" className="font-bold text-romantic-crimson underline-offset-4 hover:underline focus-visible:underline">FAQs</Link>, particularly {" "}
