@@ -171,10 +171,8 @@ function Adventure() {
         <Reveal>
           <SectionHeading title="Make an Adventure of It" accent="There’s more to explore." align="center" crimson />
         </Reveal>
-        <Reveal delay={100} className="mx-auto mt-10 max-w-[680px] space-y-6 font-serif text-[15px] leading-8 text-foreground md:text-base md:leading-9">
-          {guide.intro.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
+        <Reveal delay={100} className="mx-auto mt-10 max-w-[680px] font-serif text-[15px] leading-8 text-foreground md:text-base md:leading-9">
+          <p>{guide.intro}</p>
         </Reveal>
         <Reveal delay={180} className="mt-12 flex justify-center">
           {guide.url ? (
@@ -189,9 +187,10 @@ function Adventure() {
           ) : (
             <button
               type="button"
-              disabled
+              aria-disabled="true"
+              tabIndex={-1}
               title="Our New Hampshire guide is coming soon."
-              className="btn-label cursor-not-allowed border border-forest bg-forest px-7 py-4 font-bold text-ivory opacity-70 shadow-none"
+              className="btn-label cursor-not-allowed border border-forest bg-forest px-7 py-4 font-bold text-ivory shadow-none transition-colors hover:border-rust hover:bg-rust"
             >
               {guide.label}<span aria-hidden="true" className="ml-2">↗</span>
             </button>
