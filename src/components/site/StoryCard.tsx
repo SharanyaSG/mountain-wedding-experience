@@ -206,7 +206,7 @@ function StoryReader({ story, onClose }: { story: Story; onClose: () => void }) 
         <div className="flex shrink-0 items-start justify-between gap-6">
           <div>
             <p className="eyebrow text-muted-foreground">
-              {story.n} · {story.subtitle}
+              {story.n} · {story.readerSubtitle ?? story.subtitle}
             </p>
             <h3 id={`story-${story.id}-title`} className="display mt-4 text-3xl text-forest md:text-4xl">
               {story.title}
