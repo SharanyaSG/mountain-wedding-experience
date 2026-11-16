@@ -1,4 +1,4 @@
-// Copies every Lovable-hosted asset referenced by src/assets/*.asset.json into the
+// Copies every Lovable-hosted asset referenced by src/assets/**/*.asset.json into the
 // static build so GitHub Pages can serve the images itself.
 //
 // Lovable keeps uploaded images in its own storage and serves them from
@@ -23,7 +23,10 @@ if (!origin) {
 }
 
 const assetDir = "src/assets";
-const manifests = (await readdir(assetDir)).filter((name) => name.endsWith(".asset.json"));
+// Recursive: some layers live in subfolders (e.g. src/assets/hero-art for the animated hero).
+const manifests = (await readdir(assetDir, { recursive: true })).filter((name) =>
+  name.endsWith(".asset.json"),
+);
 const failures = [];
 
 await Promise.all(
