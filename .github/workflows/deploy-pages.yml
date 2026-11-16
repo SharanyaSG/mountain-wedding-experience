@@ -42,9 +42,10 @@ jobs:
         env:
           # "/<repo>/" for a project site, "/" when a custom domain is configured.
           PAGES_BASE_PATH: ${{ steps.pages.outputs.base_path }}/
-          # The Lovable site that serves this project's uploaded images, e.g.
-          # https://your-site.lovable.app (set under Settings → Secrets and variables → Actions → Variables).
-          LOVABLE_ASSET_ORIGIN: ${{ vars.LOVABLE_ASSET_ORIGIN }}
+          # The Lovable site that serves this project's uploaded images. Defaults to the
+          # project's public Lovable preview; override with a LOVABLE_ASSET_ORIGIN repository
+          # variable (Settings → Secrets and variables → Actions → Variables) if it changes.
+          LOVABLE_ASSET_ORIGIN: ${{ vars.LOVABLE_ASSET_ORIGIN || 'https://id-preview--0c3c6e06-85d4-4361-a04f-dfcd42d2f470.lovable.app' }}
           # Only needed if the Lovable site is private/preview-gated.
           LOVABLE_PREVIEW_TOKEN: ${{ secrets.LOVABLE_PREVIEW_TOKEN }}
 
