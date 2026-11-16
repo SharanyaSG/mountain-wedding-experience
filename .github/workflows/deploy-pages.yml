@@ -1,8 +1,10 @@
 name: Deploy to GitHub Pages
 
+# Deploys from the gh-pages branch so main (which Lovable syncs to) is never published
+# automatically. Merge main into gh-pages when you want the live site updated.
 on:
   push:
-    branches: [main]
+    branches: [gh-pages]
   workflow_dispatch:
 
 permissions:
