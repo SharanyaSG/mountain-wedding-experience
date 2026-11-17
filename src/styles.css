@@ -342,50 +342,43 @@
 
 /* ---------------- HERO WATERCOLOR MOTION ---------------- */
 .art-static { display: none; }
-.art-sway, .art-sway-b, .art-hair {
+/*
+ * One shared wind. Every moving piece runs the same 8 s gust (calm, build, peak, a second push, a small
+ * recoil) and leans the same way, with the wind blowing left to right. --a is each piece's strength in
+ * degrees at the peak, and the component delays each piece by its x position, so a gust reaches the left
+ * of the scene first and rolls across.
+ */
+.art-gust, .art-hair {
   transform-box: fill-box;
+  animation-duration: 8s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
   will-change: transform;
 }
-.art-sway { transform-origin: 50% 100%; animation-name: art-sway; }
-.art-sway-b { transform-origin: 45% 100%; animation-name: art-sway-b; }
+.art-gust { transform-origin: 50% 100%; animation-name: art-gust; }
 .art-hair { transform-origin: 50% 0%; animation-name: art-hair; }
-@keyframes art-sway {
-  0%, 100% { transform: rotate(-1.4deg); }
-  50% { transform: rotate(1.6deg) skewX(0.8deg); }
+@keyframes art-gust {
+  0%, 100% { transform: rotate(calc(var(--a) * 0.12deg)); }
+  15% { transform: rotate(calc(var(--a) * 0.28deg)); }
+  30% { transform: rotate(calc(var(--a) * 0.72deg)) skewX(calc(var(--a) * 0.2deg)); }
+  40% { transform: rotate(calc(var(--a) * 1deg)) skewX(calc(var(--a) * 0.4deg)); }
+  48% { transform: rotate(calc(var(--a) * 0.5deg)) skewX(calc(var(--a) * 0.15deg)); }
+  56% { transform: rotate(calc(var(--a) * 0.82deg)) skewX(calc(var(--a) * 0.3deg)); }
+  66% { transform: rotate(calc(var(--a) * 0.3deg)); }
+  78% { transform: rotate(calc(var(--a) * -0.12deg)); }
+  90% { transform: rotate(calc(var(--a) * 0.16deg)); }
 }
-@keyframes art-sway-b {
-  0%, 100% { transform: rotate(1.2deg); }
-  40% { transform: rotate(-1.5deg) skewX(-0.6deg); }
-  70% { transform: rotate(0.4deg); }
-}
-/* breeze gusts: mostly calm, then a soft flutter */
+/* Hair follows the same gust from the roots, so the tips stream out furthest with the wind. */
 @keyframes art-hair {
-  0%, 55%, 100% { transform: skewX(0deg); }
-  65% { transform: skewX(4deg) scaleX(1.02); }
-  75% { transform: skewX(1.5deg); }
-  85% { transform: skewX(3deg) scaleX(1.015); }
-}
-.art-leaf { opacity: 0; transform-box: fill-box; }
-.art-leaf-a { fill: var(--rust); animation: art-fall-a 16s ease-in-out infinite 2s; }
-.art-leaf-b { fill: var(--crimson); animation: art-fall-b 19s ease-in-out infinite 7s; }
-.art-leaf-c { fill: #D98A3D; animation: art-fall-a 21s ease-in-out infinite 12s; }
-@keyframes art-fall-a {
-  0% { opacity: 0; translate: 0 0; rotate: 0deg; }
-  5% { opacity: 0.85; }
-  18% { translate: 30px 60px; rotate: 80deg; }
-  30% { translate: 10px 120px; rotate: 160deg; opacity: 0.8; }
-  40% { opacity: 0; translate: 40px 170px; rotate: 230deg; }
-  100% { opacity: 0; translate: 40px 170px; }
-}
-@keyframes art-fall-b {
-  0% { opacity: 0; translate: 0 0; rotate: 0deg; }
-  5% { opacity: 0.85; }
-  20% { translate: -35px 55px; rotate: -70deg; }
-  32% { translate: -10px 110px; rotate: -150deg; opacity: 0.8; }
-  42% { opacity: 0; translate: -45px 150px; rotate: -220deg; }
-  100% { opacity: 0; translate: -45px 150px; }
+  0%, 100% { transform: skewX(calc(var(--a) * 0.12deg)); }
+  15% { transform: skewX(calc(var(--a) * 0.28deg)); }
+  30% { transform: skewX(calc(var(--a) * 0.72deg)) rotate(calc(var(--a) * 0.1deg)); }
+  40% { transform: skewX(calc(var(--a) * 1deg)) rotate(calc(var(--a) * 0.15deg)) scaleY(0.985); }
+  48% { transform: skewX(calc(var(--a) * 0.5deg)) rotate(calc(var(--a) * 0.06deg)); }
+  56% { transform: skewX(calc(var(--a) * 0.82deg)) rotate(calc(var(--a) * 0.12deg)); }
+  66% { transform: skewX(calc(var(--a) * 0.3deg)); }
+  78% { transform: skewX(calc(var(--a) * -0.12deg)); }
+  90% { transform: skewX(calc(var(--a) * 0.16deg)); }
 }
 @media (prefers-reduced-motion: reduce) {
   .art-live { display: none; }

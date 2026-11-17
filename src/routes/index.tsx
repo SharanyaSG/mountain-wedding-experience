@@ -48,7 +48,7 @@ function Hero() {
           Meet us in the mountains.
         </p>
       </div>
-      <div className="hero-rise relative z-0 mx-auto -mt-6 max-w-[1700px] md:-mt-[8vw]" style={{ animationDelay: "900ms" }}>
+      <div className="hero-rise relative z-0 mx-auto mt-4 max-w-[1700px] md:mt-6" style={{ animationDelay: "900ms" }}>
         <HeroIllustration />
       </div>
       <div className="hero-rise flex flex-col items-center justify-center gap-3 px-5 pb-16 sm:flex-row md:pb-20" style={{ animationDelay: "1100ms" }}>
