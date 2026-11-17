@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 # Lovable syncs to main; pushes to main deploy automatically.
 on:
   push:
-    branches: [production]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
