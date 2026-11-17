@@ -30,3 +30,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Unused 169 MB film (src/assets/wedding-film.mp4): over GitHub's 100 MB file limit, so it stays local.
+# Compress it below 100 MB before using it on the site and committing it.
+src/assets/wedding-film.mp4

@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import overlook from "@/assets/sharanya-sahil-mountain-portrait.jpg.asset.json";
+import overlook from "@/assets/sharanya-sahil-mountain-portrait.jpg";
 import { Reveal } from "@/components/site/Reveal";
 import { HeroIllustration } from "@/components/site/HeroIllustration";
 
@@ -66,7 +66,7 @@ function SaveTheDate() {
       <div className="announcement-layout grid gap-8 min-[1200px]:grid-cols-2 min-[1200px]:gap-10">
         <Reveal className="announcement-photo min-w-0 overflow-hidden">
           <img
-            src={overlook.url}
+            src={overlook}
             alt="Sharanya and Sahil seated together on a rocky mountain overlook, seen from behind, looking out across a forested valley"
             width={1028}
             height={1413}

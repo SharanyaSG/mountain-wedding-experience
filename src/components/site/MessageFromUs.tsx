@@ -1,5 +1,5 @@
-import messageVideo from "@/assets/message-from-us.mp4.asset.json";
-import messagePoster from "@/assets/message-from-us-poster.jpg.asset.json";
+import messageVideo from "@/assets/message-from-us.mp4";
+import messagePoster from "@/assets/message-from-us-poster.jpg";
 
 export function MessageFromUs() {
   return (
@@ -9,8 +9,8 @@ export function MessageFromUs() {
       <div className="section-content mx-auto h-px w-16 bg-border" />
       <div className="section-content mx-auto w-full max-w-[320px] sm:max-w-[360px] md:max-w-[400px]">
         <video
-          src={messageVideo.url}
-          poster={messagePoster.url}
+          src={messageVideo}
+          poster={messagePoster}
           controls
           playsInline
           preload="metadata"
