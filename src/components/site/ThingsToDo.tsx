@@ -49,19 +49,8 @@ function Adventure() {
           </Reveal>
         ) : (
           <Reveal delay={180} className="section-content">
-            <aside
-              className="border-l-2 border-gold bg-muted px-6 py-6"
-              aria-labelledby="guide-coming-soon"
-            >
-              <h3 id="guide-coming-soon" className="eyebrow text-[14px] font-bold text-rust">
-                {guide.comingSoon.heading}
-              </h3>
-              <p className="mt-4 font-serif text-sm leading-7 text-foreground">
-                {guide.comingSoon.body}
-              </p>
-            </aside>
             {/* Greyed out and not a link until the guide exists. */}
-            <p className="mt-6 flex flex-wrap items-center gap-3">
+            <p className="flex flex-wrap items-center gap-3">
               <span
                 role="link"
                 aria-disabled="true"
