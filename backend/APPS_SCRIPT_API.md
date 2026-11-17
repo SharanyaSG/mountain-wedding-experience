@@ -171,9 +171,9 @@ Multiple matches are possible (e.g. a common last name). Show the `party` labels
                 "response_options": [
                   { "value": "ATTENDING", "label": "Joyfully accepts", "hint": "I'll be there", "status_label": "Joyfully accepted" },
                   { "value": "MAYBE_YES", "label": "Hopes to attend", "hint": "Likely, but not yet confirmed", "status_label": "Hoping to attend",
-                    "asks_reason": true, "requires_reason": false, "reason_prompt": "Is there anything it depends on? (travel, visas, time off…)" },
+                    "asks_reason": true, "requires_reason": false, "reason_prompt": "Is there anything your decision depends on? (visas, travel, time off, etc.)" },
                   { "value": "MAYBE_NO", "label": "Unlikely to attend", "hint": "Probably not, but not yet certain", "status_label": "Unlikely to attend",
-                    "asks_reason": true, "requires_reason": false, "reason_prompt": "Is there anything that might change it? (travel, visas, time off…)" },
+                    "asks_reason": true, "requires_reason": false, "reason_prompt": "Is there anything your decision depends on? (visas, travel, time off, etc.)" },
                   { "value": "DECLINED", "label": "Regretfully declines", "hint": "I won't be able to make it", "status_label": "Regretfully declined" } ],
                 "questions": [ { "id": 2048763, "text": "Unsure if you can come? Mark attending for now and tell us why…",
                                  "contact_field": null, "maybe_reason": true } ] } ],

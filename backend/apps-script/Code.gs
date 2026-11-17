@@ -42,9 +42,9 @@ const CONFIG = {
   RESPONSE_OPTIONS: [
     { value: "ATTENDING", label: "Joyfully accepts", hint: "I'll be there", status_label: "Joyfully accepted" },
     { value: "MAYBE_YES", label: "Hopes to attend", hint: "Likely, but not yet confirmed", status_label: "Hoping to attend",
-      asks_reason: true, requires_reason: false, reason_prompt: "Is there anything it depends on? (travel, visas, time off…)" },
+      asks_reason: true, requires_reason: false, reason_prompt: "Is there anything your decision depends on? (visas, travel, time off, etc.)" },
     { value: "MAYBE_NO", label: "Unlikely to attend", hint: "Probably not, but not yet certain", status_label: "Unlikely to attend",
-      asks_reason: true, requires_reason: false, reason_prompt: "Is there anything that might change it? (travel, visas, time off…)" },
+      asks_reason: true, requires_reason: false, reason_prompt: "Is there anything your decision depends on? (visas, travel, time off, etc.)" },
     { value: "DECLINED", label: "Regretfully declines", hint: "I won't be able to make it", status_label: "Regretfully declined" },
   ],
   NO_RESPONSE_LABEL: "Awaiting reply",
@@ -912,10 +912,13 @@ function setupSummary_(ss) {
   sh.clear();
   sh.getRange(1, 1, 1, 8).setValues([["Event", "Invited", "Responded", "Yes", "Maybe yes", "Maybe no", "No", "Awaiting reply"]])
     .setFontWeight("bold");
-  sh.getRange(2, 1, 1, 8).setFormulas([[
-    "All events", `=COUNTIF(${id}, "?*")`, "=SUM(D2:G2)",
+  // The label is a plain value: setFormulas would store it as the formula "=All events" (#ERROR!).
+  sh.getRange(2, 1).setValue("All events");
+  sh.getRange(2, 2, 1, 7).setFormulas([[
+    `=COUNTIF(${id}, "?*")`, "=SUM(D2:G2)",
     ...statuses.map((s) => `=COUNTIF(${st}, "${s}")`), "=B2-C2",
-  ]]).setFontWeight("bold");
+  ]]);
+  sh.getRange(2, 1, 1, 8).setFontWeight("bold");
   sh.getRange(3, 1, 1, 8).setFormulas([[
     `=IFERROR(SORT(UNIQUE(FILTER(${ev}, ${ev}<>""))), "")`,
     `=MAP(A3:A, LAMBDA(e, IF(e="",, COUNTIF(${ev}, e))))`,
@@ -1037,7 +1040,7 @@ function normalizePhone_(p) {
   if (!s) return "";
   const digits = s.replace(/[^\d]/g, "");
   if (s.charAt(0) === "+") return "+" + digits;
-  if (digits.length === 10) return last_source"+1" + digits;
+  if (digits.length === 10) return "+1" + digits;
   if (digits.length === 11 && digits.charAt(0) === "1") return "+" + digits;
   return s;
 }
