@@ -125,7 +125,7 @@ export function PicturesOfUs() {
 
   return (
     <section id="gallery" aria-labelledby="pictures-of-us-title" className="section-divider scroll-mt-24 bg-card md:scroll-mt-28">
-      <div className="section-shell">
+      <div className="page-lead section-shell">
         <Reveal delay={100}>
           <h2 id="pictures-of-us-title" className="display text-5xl md:text-7xl">
             Pictures of <em className="text-crimson">Us</em>

@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { FaqCallout } from "./FaqCallout";
 import { Reveal } from "./Reveal";
 import { agenda } from "./wedding-content";
 
@@ -36,14 +36,7 @@ export function WeddingItinerary() {
             </Reveal>
           ))}
         </ol>
-        <Reveal delay={200} className="section-content mx-auto w-full min-[1200px]:max-w-[95%] border-l-2 border-info-forest bg-info-sage px-5 py-6 text-left md:px-6 md:py-7">
-          <p className="font-serif text-base font-bold leading-relaxed text-foreground">Have any additional questions?</p>
-          <p className="mt-3 font-serif text-base font-normal leading-relaxed text-foreground">
-            Visit our <Link to="/faqs" className="font-bold text-romantic-crimson underline-offset-4 hover:underline focus-visible:underline">FAQs</Link>, particularly {" "}
-            <Link to="/faqs" hash="celebrations" className="font-bold text-romantic-crimson underline-offset-4 hover:underline focus-visible:underline">Our Wedding &amp; Celebrations</Link> and {" "}
-            <Link to="/faqs" hash="invitations" className="font-bold text-romantic-crimson underline-offset-4 hover:underline focus-visible:underline">Invitations &amp; RSVPs</Link>, for more information.
-          </p>
-        </Reveal>
+        <FaqCallout delay={200} className="section-content mx-auto w-full min-[1200px]:max-w-[95%]" category="Our Wedding & Celebrations" hash="celebrations" additionalCategory={{ label: "Invitations & RSVPs", hash: "invitations" }} />
       </div>
     </section>
   );

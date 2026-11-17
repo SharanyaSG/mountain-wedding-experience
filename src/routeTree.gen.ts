@@ -15,6 +15,7 @@ import { Route as FaqsRouteImport } from './routes/faqs'
 import { Route as OurJourneyRouteImport } from './routes/our-journey'
 import { Route as PlanYourTripRouteImport } from './routes/plan-your-trip'
 import { Route as TellUsYourPlansRouteImport } from './routes/tell-us-your-plans'
+import { Route as ThingsToDoRouteImport } from './routes/things-to-do'
 import { Route as WeddingItineraryRouteImport } from './routes/wedding-itinerary'
 
 const IndexRoute = IndexRouteImport.update({
@@ -47,6 +48,11 @@ const TellUsYourPlansRoute = TellUsYourPlansRouteImport.update({
   path: '/tell-us-your-plans',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ThingsToDoRoute = ThingsToDoRouteImport.update({
+  id: '/things-to-do',
+  path: '/things-to-do',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WeddingItineraryRoute = WeddingItineraryRouteImport.update({
   id: '/wedding-itinerary',
   path: '/wedding-itinerary',
@@ -60,6 +66,7 @@ export interface FileRoutesByFullPath {
   '/our-journey': typeof OurJourneyRoute
   '/plan-your-trip': typeof PlanYourTripRoute
   '/tell-us-your-plans': typeof TellUsYourPlansRoute
+  '/things-to-do': typeof ThingsToDoRoute
   '/wedding-itinerary': typeof WeddingItineraryRoute
 }
 export interface FileRoutesByTo {
@@ -69,6 +76,7 @@ export interface FileRoutesByTo {
   '/our-journey': typeof OurJourneyRoute
   '/plan-your-trip': typeof PlanYourTripRoute
   '/tell-us-your-plans': typeof TellUsYourPlansRoute
+  '/things-to-do': typeof ThingsToDoRoute
   '/wedding-itinerary': typeof WeddingItineraryRoute
 }
 export interface FileRoutesById {
@@ -79,6 +87,7 @@ export interface FileRoutesById {
   '/our-journey': typeof OurJourneyRoute
   '/plan-your-trip': typeof PlanYourTripRoute
   '/tell-us-your-plans': typeof TellUsYourPlansRoute
+  '/things-to-do': typeof ThingsToDoRoute
   '/wedding-itinerary': typeof WeddingItineraryRoute
 }
 export interface FileRouteTypes {
@@ -90,6 +99,7 @@ export interface FileRouteTypes {
     | '/our-journey'
     | '/plan-your-trip'
     | '/tell-us-your-plans'
+    | '/things-to-do'
     | '/wedding-itinerary'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -99,6 +109,7 @@ export interface FileRouteTypes {
     | '/our-journey'
     | '/plan-your-trip'
     | '/tell-us-your-plans'
+    | '/things-to-do'
     | '/wedding-itinerary'
   id:
     | '__root__'
@@ -108,6 +119,7 @@ export interface FileRouteTypes {
     | '/our-journey'
     | '/plan-your-trip'
     | '/tell-us-your-plans'
+    | '/things-to-do'
     | '/wedding-itinerary'
   fileRoutesById: FileRoutesById
 }
@@ -118,6 +130,7 @@ export interface RootRouteChildren {
   OurJourneyRoute: typeof OurJourneyRoute
   PlanYourTripRoute: typeof PlanYourTripRoute
   TellUsYourPlansRoute: typeof TellUsYourPlansRoute
+  ThingsToDoRoute: typeof ThingsToDoRoute
   WeddingItineraryRoute: typeof WeddingItineraryRoute
 }
 
@@ -165,6 +178,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TellUsYourPlansRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/things-to-do': {
+      id: '/things-to-do'
+      path: '/things-to-do'
+      fullPath: '/things-to-do'
+      preLoaderRoute: typeof ThingsToDoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/wedding-itinerary': {
       id: '/wedding-itinerary'
       path: '/wedding-itinerary'
@@ -182,6 +202,7 @@ const rootRouteChildren: RootRouteChildren = {
   OurJourneyRoute: OurJourneyRoute,
   PlanYourTripRoute: PlanYourTripRoute,
   TellUsYourPlansRoute: TellUsYourPlansRoute,
+  ThingsToDoRoute: ThingsToDoRoute,
   WeddingItineraryRoute: WeddingItineraryRoute,
 }
 export const routeTree = rootRouteImport
