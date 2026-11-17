@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wedding RSVP API Console</title>
+<style>
+  :root {
+    --bg: #f6f5f2; --panel: #ffffff; --ink: #1d1d1b; --muted: #6b6a66; --line: #e3e1db;
+    --accent: #3e6b61; --get: #2f6fb3; --post: #b36b2f; --ok: #2e7d4f; --err: #b3392f; --code: #f1efe9;
+    --k: #8a3fb3; --s: #2e7d4f; --n: #b36b2f; --b: #2f6fb3;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #161615; --panel: #1f1f1d; --ink: #ecebe6; --muted: #a09e97; --line: #34332f; --code: #272724;
+            --accent: #7fb3a6; --get: #7fb0e6; --post: #e6a77f; --ok: #7fcf9c; --err: #f08a80; --k: #d1a3f0; --s: #9fd8a8; --n: #f0b98a; --b: #9cc4f0; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  header { position: sticky; top: 0; z-index: 5; background: var(--panel); border-bottom: 1px solid var(--line); padding: 12px 16px; }
+  header h1 { font-size: 17px; margin: 0 0 8px; }
+  .config { display: grid; grid-template-columns: 2fr 1fr auto auto; gap: 8px; align-items: end; }
+  @media (max-width: 760px) { .config { grid-template-columns: 1fr; } header { position: static; } }
+  label { display: block; font-size: 12px; color: var(--muted); }
+  input, textarea, select { width: 100%; font: 13px ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--ink);
+    background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 7px 9px; }
+  textarea { min-height: 110px; resize: vertical; }
+  button { font: inherit; font-size: 14px; border: 1px solid var(--line); background: var(--panel); color: var(--ink);
+    border-radius: 6px; padding: 7px 12px; cursor: pointer; white-space: nowrap; }
+  button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  button:disabled { opacity: .5; cursor: default; }
+  main { max-width: 1100px; margin: 0 auto; padding: 16px; display: grid; gap: 14px; }
+  .group { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 10px 0 -4px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px; min-width: 0; }
+  .card-head { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .method { font: 700 12px ui-monospace, Menlo, monospace; padding: 2px 7px; border-radius: 4px; color: #fff; }
+  .GET { background: var(--get); } .POST { background: var(--post); }
+  .path { font: 14px ui-monospace, Menlo, monospace; flex: 1; min-width: 200px; }
+  .about { color: var(--muted); font-size: 13px; margin: 6px 0 10px; }
+  .vars { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+  .vars > div { flex: 1; min-width: 220px; }
+  .warn { font-size: 13px; color: var(--err); display: flex; gap: 6px; align-items: center; margin: 6px 0; }
+  .warn input { width: auto; }
+  .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 8px; }
+  .pill { font-size: 12px; padding: 2px 8px; border-radius: 99px; border: 1px solid var(--line); color: var(--muted); }
+  .pill.ok { color: var(--ok); border-color: var(--ok); } .pill.err { color: var(--err); border-color: var(--err); }
+  .snippet { font: 12px ui-monospace, Menlo, monospace; color: var(--muted); background: var(--code); border-radius: 6px; padding: 6px 8px; margin-top: 8px; overflow-x: auto; white-space: pre; }
+  .tabs { display: flex; gap: 4px; margin-top: 10px; border-bottom: 1px solid var(--line); }
+  .tabs button { border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: none; color: var(--muted); padding: 6px 10px; }
+  .tabs button.active { color: var(--ink); border-bottom-color: var(--accent); }
+  .pane { display: none; padding-top: 10px; min-width: 0; } .pane.active { display: block; }
+  pre.json { margin: 0; max-height: 460px; overflow: auto; background: var(--code); border-radius: 6px; padding: 10px; font: 12px/1.45 ui-monospace, Menlo, monospace; }
+  .k { color: var(--k); } .s { color: var(--s); } .n { color: var(--n); } .b { color: var(--b); }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; }
+  th, td { text-align: left; border-bottom: 1px solid var(--line); padding: 5px 6px; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  .scroll { overflow-x: auto; }
+  .muted { color: var(--muted); } h4 { margin: 12px 0 6px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Wedding RSVP API Console: Apps Script ⇄ Zola</h1>
+  <div class="config">
+    <div><label for="base">API base URL (Apps Script web app, ends in /exec)</label>
+      <input id="base" spellcheck="false" placeholder="https://script.google.com/macros/s/AKfy…/exec"></div>
+    <div><label for="adminKey">Admin key (for /admin endpoints)</label><input id="adminKey" type="password" placeholder="from setup() log"></div>
+    <button id="runReads">Run all read-only calls</button>
+    <button id="clearAll">Clear responses</button>
+  </div>
+</header>
+<main id="cards"></main>
+
+<script src="config.local.js" onerror="void 0"></script>
+<script>
+// ---------- API client: the same pattern the Lovable app uses (see APPS_SCRIPT_API.md) ----------
+// No custom headers: a plain POST body keeps the request "simple", so the browser doesn't send a preflight Apps Script can't answer.
+// The endpoint goes in ?path=…: Apps Script sends anonymous visitors to Google sign-in for /exec/<path> URLs.
+const DEFAULT_BASE = "https://script.google.com/macros/s/AKfycbxV4tAZtrQy0fiOy6VOdRRcZoPSWzEqmffyMirAL_62V7ieRwKs3t5wSrabEaWNj2u5/exec";
+async function api(method, path, body, query) {
+  const base = ($("#base").value.trim() || DEFAULT_BASE).replace(/\/+$/, "");
+  const qs = new URLSearchParams(Object.assign({ path }, query || {}));
+  const res = await fetch(`${base}?${qs}`, method === "GET" ? {} : { method: "POST", body: JSON.stringify(body ?? {}) });
+  return res.json();
+}
+
+// ---------- shared state between cards ----------
+const state = { groupUuid: "", party: null };
+const $ = (s, el = document) => el.querySelector(s);
+const esc = (v) => String(v ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+const store = { get: (k) => { try { return localStorage.getItem(k) || ""; } catch { return ""; } },
+                set: (k, v) => { try { localStorage.setItem(k, v); } catch {} } };
+
+function highlight(obj) {
+  return esc(JSON.stringify(obj, null, 2)).replace(
+    /(&quot;(?:\\.|[^\\&]|&(?!quot;))*?&quot;)(\s*:)?|\b(true|false|null)\b|(-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?)/g,
+    (m, str, colon, bool, num) => str ? `<span class="${colon ? "k" : "s"}">${str}</span>${colon || ""}` : bool ? `<span class="b">${bool}</span>` : `<span class="n">${num}</span>`);
+}
+const json = (obj) => `<pre class="json">${highlight(obj)}</pre>`;
+const table = (rows, cols) => rows.length
+  ? `<div class="scroll"><table><tr>${cols.map((c) => `<th>${esc(c[0])}</th>`).join("")}</tr>${rows.map((r) => `<tr>${cols.map((c) => `<td>${c[1](r)}</td>`).join("")}</tr>`).join("")}</table></div>`
+  : `<p class="muted">None</p>`;
+const fmtDate = (s, tz) => { if (!s) return ""; try { return new Date(s).toLocaleString([], { timeZone: tz || undefined, dateStyle: "medium", timeStyle: "short" }); } catch { return s; } };
+
+// ---------- renderers for the "Extracted view" tab ----------
+const R = {
+  health: (x, d) => `<p>Zola reachable: <b>${esc(d.zola)}</b></p>`,
+  search: (x) => x.length ? table(x, [
+      ["Party", (g) => `<b>${esc(g.party)}</b>`], ["Guests", (g) => g.guests.map((n) => esc(n.name)).join(", ")],
+      ["group_uuid", (g) => `<code>${esc(g.group_uuid)}</code>`],
+      ["", (g) => `<button data-use-party="${esc(g.group_uuid)}">Use this party</button>`]])
+    : `<p class="muted">No matching invitation.</p>`,
+  party: (x) => `
+    <p><b>${esc(x.party)}</b> <code>${esc(x.group_uuid)}</code> <button data-build-rsvp="test">Fill RSVP with test data ↓</button> <button data-build-rsvp="current">Fill RSVP with current answers ↓</button></p>
+    <h4>Events</h4>${table(x.events, [["id", (e) => e.id], ["Event", (e) => esc(e.name)], ["When", (e) => esc(fmtDate(e.start_at, e.timezone))],
+      ["Venue", (e) => esc([e.venue, e.address].filter(Boolean).join(" · "))], ["RSVPs?", (e) => e.collect_rsvps ? "yes" : "no"],
+      ["Options", (e) => e.response_options.map((o) => esc(o.label) + (o.asks_reason ? " (+ reason)" : "")).join(" / ")],
+      ["Meals", (e) => e.meal_options.map((m) => `${esc(m.name)} (${m.id})`).join(", ") || "—"],
+      ["Questions", (e) => e.questions.map((q) => `${esc(q.text || "(no text)")} (${q.id})${q.contact_field ? ` <span class="pill">auto: ${esc(q.contact_field)}</span>` : ""}${q.maybe_reason ? ` <span class="pill">auto: maybe reason</span>` : ""}`).join("<br>") || "—"]])}
+    <h4>RSVPs</h4>${table(x.guests, [["Guest", (g) => esc(g.name)]].concat(x.events.map((e) => [e.name, (g) => {
+      const i = g.invitations.find((v) => v.event_id === e.id);
+      if (!i) return `<span class="muted">not invited</span>`;
+      const zolaNote = i.status !== i.rsvp ? `<br><span class="muted">Zola: ${esc(i.rsvp)}</span>` : "";
+      return `<b>${esc(i.status)}</b>${i.status_label ? ` <span class="muted">(${esc(i.status_label)})</span>` : ""}${i.maybe_reason ? `: ${esc(i.maybe_reason)}` : ""}${zolaNote}${i.meal ? `<br><span class="muted">${esc(i.meal)}</span>` : ""}`;
+    }])))}
+    ${x.answers.length ? `<h4>Answers</h4>${table(x.answers, [["question_id", (a) => a.question_id], ["Answer", (a) => esc(a.answer)]])}` : ""}
+    ${x.contact ? `<h4>Contact form (Zola contact collector, one per party)</h4>
+      <p>Linked to contact collector: <b>${x.contact.linked ? "yes" : "no"}</b> · required: ${x.contact.required.join(", ")}
+      · saved via our site before: ${x.contact.on_file ? `yes (${Object.entries(x.contact.on_file).filter(([k, v]) => v === true).map(([k]) => k).join(", ")})` : "no"}
+      · questions auto-answered from it: ${x.contact.autofilled_questions.length}</p>` : ""}`,
+  rsvp: (x, d) => `<p>RSVP → Zola: <b>${esc(d.zola)}</b> · Contact → Zola: <b>${esc(d.contact)}</b> · Saved to sheet: <b>${esc(d.saved)}</b>${d.message ? `<br>${esc(d.message)}` : ""}</p>${R.party(x)}`,
+  contact: (x, d) => `<p>Contact → Zola: <b>${esc(d.contact)}</b> · Saved to sheet: <b>${esc(d.saved)}</b>${x ? ` · ${esc(x.party)} · linked: ${x.linked ? "yes" : "no"}` : ""}${d.message ? `<br>${esc(d.message)}` : ""}</p>`,
+  confirmation: () => `<p>Zola is sending the confirmation email.</p>`,
+  adminSheet: (x, d) => `
+    <p>${d.parties} parties · ${d.guests} guests · households with contact: ${d.households_with_contact} · failed submissions: <b>${d.failed_submissions}</b>
+    · failed contact updates: <b>${d.failed_contact_updates}</b> · unresolved directory names: ${d.directory_unresolved}
+    · last sync: ${esc(d.last_sync || "never")} · <a href="${esc(d.sheet_url)}" target="_blank" rel="noopener">Open sheet</a></p>
+    ${table(Object.entries(d.by_event), [["Event", ([n]) => esc(n)], ["Attending", ([, e]) => e.ATTENDING || 0], ["Maybe yes", ([, e]) => e.MAYBE_YES || 0], ["Maybe no", ([, e]) => e.MAYBE_NO || 0],
+      ["Declined", ([, e]) => e.DECLINED || 0], ["No response", ([, e]) => e.NO_RESPONSE || 0],
+      ["Meals", ([, e]) => Object.entries(e.meals).map(([m, c]) => `${esc(m)}: ${c}`).join(", ") || "—"],
+      ["Maybe reasons", ([, e]) => (e.maybe_reasons || []).map(esc).join("<br>") || "—"]])}`,
+  adminSync: (x, d) => `<p>Parties synced: <b>${d.parties_synced}</b> · changes: <b>${d.changes}</b> · directory names resolved: ${d.directory_resolved}
+    · retried submissions: ${d.retried} · ${d.ms} ms${d.partial ? " · <b>partial (time limit)</b>" : ""}</p>${d.errors.length ? json(d.errors) : ""}`,
+};
+
+// ---------- endpoint catalogue ----------
+const TEST_MAYBE_REASON = "TEST: waiting on visa appointment";
+const CONTACT_EXAMPLE = { email: "sahil.zolatest@example.com", phone: "(617) 555-0100", messaging: "WhatsApp",
+  address1: "123 Test Street", address2: "", city: "Boston", state: "MA", postalCode: "02101", country: "US" };
+
+const ENDPOINTS = [
+  { group: "Status" },
+  { id: "health", method: "GET", path: "health", about: "Can the Apps Script reach Zola?", render: "health" },
+  { group: "RSVP" },
+  { id: "search", method: "POST", path: "search", about: "Find a guest's party by name (≥3 characters).", body: () => ({ name: "Sahil Malhotra" }), render: "search" },
+  { id: "party", method: "GET", path: "party/{groupUuid}", about: "A party's events, guests, current RSVPs and contact form (looked up in both Zola's RSVP and contact collector). Also refreshes this party in the sheet.", vars: ["groupUuid"], render: "party" },
+  { id: "rsvp", method: "POST", path: "rsvp", write: "Writes RSVPs and contact details to Zola and the sheet. Use the Test Guest party or re-send current answers.",
+    about: "Submit a party's RSVP and (optional) contact details in one call: RSVPs go to Zola's RSVP API, contact goes to Zola's contact collector. response is ATTENDING, MAYBE_YES (sent to Zola as ATTENDING), MAYBE_NO (sent as DECLINED) or DECLINED; maybes take an optional reason. Filled automatically when a party loads, with real IDs and test data: 1st guest Yes, 2nd Maybe yes + reason, 3rd Maybe no + reason, others No, a test address. Use the party card's buttons to switch to current answers.",
+    body: () => ({ groupUuid: state.groupUuid || "<group_uuid>", guests: [{ uuid: "<guest_uuid>", events: [{ eventId: 0, response: "MAYBE_YES", reason: "Waiting on visa appointment" }] }],
+      answers: [], note: "", contact: CONTACT_EXAMPLE }), render: "rsvp" },
+  { id: "contact", method: "POST", path: "contact", write: "Overwrites the party's email, phone (and address, if given) in Zola's guest list.",
+    about: "Update only a party's contact details (Zola's contact collector), without touching RSVPs. Email and phone are required by Zola.",
+    body: () => ({ groupUuid: state.groupUuid || "<group_uuid>", contact: CONTACT_EXAMPLE }), render: "contact" },
+  { id: "confirmation", method: "POST", path: "confirmation", write: "Zola sends a real email to this address.",
+    about: "Ask Zola to email a copy of the party's RSVP.", body: () => ({ groupUuid: state.groupUuid || "<group_uuid>", email: "you@example.com" }), render: "confirmation" },
+  { group: "Admin (needs admin key)" },
+  { id: "adminSheet", method: "GET", path: "admin/sheet", query: () => ({ key: $("#adminKey").value }), about: "Sheet summary: counts per event, meals, failed submissions, last sync.", render: "adminSheet" },
+  { id: "adminSync", method: "POST", path: "admin/sync", about: "Re-read every known party from Zola now (also runs hourly). Can take a minute.",
+    body: () => ({ key: $("#adminKey").value ? "(admin key from header)" : "" }), render: "adminSync" },
+];
+
+// ---------- card UI ----------
+function resolvePath(ep, card) {
+  return ep.path.replace(/\{(\w+)\}/g, (m, v) => encodeURIComponent($(`[data-var="${v}"]`, card).value.trim() || m));
+}
+
+function snippet(ep, card) {
+  const p = resolvePath(ep, card);
+  if (ep.method === "GET") return `api("GET", "${p}"${ep.query ? `, null, { key: ADMIN_KEY }` : ""})  // fetch(\`\${BASE}?path=${p}${ep.query ? "&key=…" : ""}\`)`;
+  return `api("POST", "${p}", body)  // fetch(\`\${BASE}?path=${p}\`, { method: "POST", body: JSON.stringify(body) })`;
+}
+
+function buildCard(ep) {
+  const card = document.createElement("section");
+  card.className = "card"; card.id = `card-${ep.id}`;
+  card.innerHTML = `
+    <div class="card-head"><span class="method ${ep.method}">${ep.method}</span><span class="path">/${esc(ep.path)}</span></div>
+    <div class="about">${esc(ep.about)}</div>
+    ${ep.vars ? `<div class="vars">${ep.vars.map((v) => `<div><label>${v}</label><input data-var="${v}" value="${esc(state[v] || "")}"></div>`).join("")}</div>` : ""}
+    ${ep.method === "POST" ? `<label>Request body (JSON)</label><textarea data-body spellcheck="false"></textarea>
+      <div class="row"><button data-reset>Reset to default</button></div>` : `<div class="muted" style="font-size:13px">GET: no request body</div>`}
+    ${ep.write ? `<label class="warn"><input type="checkbox" data-confirm> ${esc(ep.write)}</label>` : ""}
+    <div class="snippet" data-snippet></div>
+    <div class="row"><button class="primary" data-send>Send</button><span class="pill" data-status>not sent</span></div>
+    <div class="tabs" hidden>
+      ${ep.render ? `<button data-tab="view" class="active">Extracted view</button><button data-tab="extracted">Extracted JSON</button>` : ""}
+      <button data-tab="raw" ${ep.render ? "" : `class="active"`}>Raw response</button><button data-tab="request">Request</button>
+    </div>
+    ${ep.render ? `<div class="pane active" data-pane="view"></div><div class="pane" data-pane="extracted"></div>` : ""}
+    <div class="pane ${ep.render ? "" : "active"}" data-pane="raw"></div><div class="pane" data-pane="request"></div>`;
+
+  const bodyEl = $("[data-body]", card);
+  const reset = () => { if (bodyEl) bodyEl.value = JSON.stringify(ep.body ? ep.body() : {}, null, 2); };
+  reset();
+  const refreshSnippet = () => { $("[data-snippet]", card).textContent = snippet(ep, card); };
+  refreshSnippet();
+  card.addEventListener("input", refreshSnippet);
+  $("[data-reset]", card)?.addEventListener("click", reset);
+  card.querySelectorAll("[data-tab]").forEach((b) => b.addEventListener("click", () => {
+    card.querySelectorAll("[data-tab]").forEach((x) => x.classList.toggle("active", x === b));
+    card.querySelectorAll("[data-pane]").forEach((p) => p.classList.toggle("active", p.dataset.pane === b.dataset.tab));
+  }));
+  $("[data-send]", card).addEventListener("click", () => send(ep, card));
+  card.resetBody = reset;
+  return card;
+}
+
+async function send(ep, card) {
+  const status = $("[data-status]", card);
+  const confirmBox = $("[data-confirm]", card);
+  if (confirmBox && !confirmBox.checked) { status.className = "pill err"; status.textContent = "tick the checkbox to send a write"; return; }
+  const raw = $("[data-body]", card)?.value || "";
+  if (/<group_uuid>|<guest_uuid>|"eventId":\s*0\b/.test(raw)) {
+    status.className = "pill err"; status.textContent = "this is still the placeholder example: load a party first (Search → Use this party)"; return;
+  }
+  let body = null;
+  if (ep.method === "POST") {
+    try { body = JSON.parse($("[data-body]", card).value || "{}"); }
+    catch (e) { status.className = "pill err"; status.textContent = "body is not valid JSON"; return; }
+    if (ep.id === "adminSync") body.key = $("#adminKey").value;
+  }
+  const path = resolvePath(ep, card);
+  const query = ep.query ? ep.query() : null;
+  const btn = $("[data-send]", card);
+  btn.disabled = true; status.className = "pill"; status.textContent = "sending…";
+  const t = performance.now();
+  let res;
+  try { res = await api(ep.method, path, body, query); }
+  catch (e) { res = { ok: false, status: "network", error: String(e.message || e) }; }
+  const ms = Math.round(performance.now() - t);
+  btn.disabled = false;
+  status.className = `pill ${res.ok ? "ok" : "err"}`;
+  status.textContent = `${res.ok ? "ok" : "error"} · status ${res.status} · ${ms} ms round trip${res.meta?.cached ? " · cached" : ""}`;
+  $(".tabs", card).hidden = false;
+  const shownBody = body && body.key ? { ...body, key: "***" } : body;
+  $('[data-pane="request"]', card).innerHTML = json({ method: ep.method, path: "/" + path, query: query && query.key ? { key: "***" } : query, body: shownBody });
+  $('[data-pane="raw"]', card).innerHTML = json(res);
+  if (ep.render) {
+    $('[data-pane="extracted"]', card).innerHTML = json(res.extracted);
+    let view;
+    try { view = res.ok ? R[ep.render](res.extracted, res.data) : `<p style="color:var(--err)">${esc(res.error)}</p>`; }
+    catch (e) { view = `<p style="color:var(--err)">Could not render: ${esc(e.message)}</p>`; }
+    $('[data-pane="view"]', card).innerHTML = view;
+  }
+  // Whenever a party loads, fill the RSVP card with its real guest/event IDs and current answers.
+  // Chain the cards: each successful call fills the next card(s) with real IDs and test data.
+  if (ep.id === "search" && res.ok && res.extracted.length) fillGroup(res.extracted[0].group_uuid);
+  if (ep.id === "party" && res.ok) { state.party = res.extracted; buildRsvpBody(false, "test"); fillGroup(res.extracted.group_uuid); }
+  if (ep.id === "rsvp" && res.ok) state.party = res.extracted;
+  return res;
+}
+
+// Put a party's group ID into every card that needs it (party path, contact and confirmation bodies, RSVP body).
+function fillGroup(uuid) {
+  if (state.groupUuid === uuid && $('[data-var="groupUuid"]').value === uuid) return;
+  state.groupUuid = uuid;
+  document.querySelectorAll('[data-var="groupUuid"]').forEach((i) => { i.value = uuid; i.dispatchEvent(new Event("input", { bubbles: true })); });
+  ["confirmation", "contact"].forEach((id) => $(`#card-${id}`).resetBody());
+  const rsvp = $("#card-rsvp [data-body]");
+  try { const b = JSON.parse(rsvp.value); if (b.groupUuid !== uuid) { b.groupUuid = uuid; rsvp.value = JSON.stringify(b, null, 2); } } catch {}
+}
+
+// "Use this party" on a search result: fill the IDs and load the party (which then fills the RSVP card).
+function useParty(uuid) {
+  fillGroup(uuid);
+  $("#card-party").scrollIntoView({ behavior: "smooth", block: "start" });
+  $("#card-party [data-send]").click();
+}
+
+// Fill /rsvp from the loaded party. mode "test": dummy answers (1st guest Yes, 2nd Maybe yes, 3rd Maybe no, others No,
+// first meal option, test answers + contact). mode "current": the party's current answers, so a send changes nothing.
+function buildRsvpBody(scroll = true, mode = "test") {
+  const p = state.party; if (!p) return;
+  const rsvpEvents = p.events.filter((e) => e.collect_rsvps);
+  const autoFilled = new Set(p.events.flatMap((e) => e.questions.filter((q) => q.contact_field || q.maybe_reason).map((q) => q.id)));
+  const testResponse = (i) => ["ATTENDING", "MAYBE_YES", "MAYBE_NO"][i] || "DECLINED";
+  const guests = p.guests.map((g, gi) => ({
+    uuid: g.uuid, _name: g.name,
+    events: rsvpEvents.filter((e) => g.invitations.some((inv) => inv.event_id === e.id)).map((e) => {
+      const inv = g.invitations.find((x) => x.event_id === e.id);
+      const response = mode === "test" ? testResponse(gi) : inv.status;
+      const meal = mode === "test" ? (e.meal_options[0] ? e.meal_options[0].id : null) : inv.meal_option_id;
+      return Object.assign({ eventId: e.id, _event: e.name, response: response },
+        response.startsWith("MAYBE") ? { reason: mode === "test" ? TEST_MAYBE_REASON : inv.maybe_reason } : {},
+        (response === "ATTENDING" || response === "MAYBE_YES") && meal != null ? { mealOptionId: meal } : {});
+    }).filter((x) => x.response !== "NO_RESPONSE"), // "current" mode: unanswered events are left out
+  }));
+  const otherQuestions = p.events.flatMap((e) => e.questions).filter((q) => !autoFilled.has(q.id));
+  const body = {
+    groupUuid: p.group_uuid,
+    guests: guests,
+    // Questions answered automatically (contact details, the maybe reason) are left out.
+    answers: mode === "test"
+      ? otherQuestions.map((q) => ({ questionId: q.id, answer: "TEST answer" }))
+      : p.answers.filter((a) => !autoFilled.has(a.question_id)).map((a) => ({ questionId: a.question_id, answer: a.answer })),
+    note: mode === "test" ? "TEST note from the demo console" : "",
+    contact: CONTACT_EXAMPLE,
+  };
+  $("#card-rsvp [data-body]").value = JSON.stringify(body, null, 2);
+  if (scroll) $("#card-rsvp").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+document.addEventListener("click", (e) => {
+  const use = e.target.closest("[data-use-party]"); if (use) useParty(use.dataset.useParty);
+  const build = e.target.closest("[data-build-rsvp]"); if (build) buildRsvpBody(true, build.dataset.buildRsvp);
+});
+
+const main = $("#cards");
+ENDPOINTS.forEach((ep) => {
+  if (ep.group) { const h = document.createElement("div"); h.className = "group"; h.textContent = ep.group; main.appendChild(h); }
+  else main.appendChild(buildCard(ep));
+});
+
+["base", "adminKey"].forEach((id) => { $("#" + id).value = store.get(id); $("#" + id).addEventListener("change", (e) => store.set(id, e.target.value.trim())); });
+if (!$("#base").value) $("#base").value = DEFAULT_BASE;
+// Optional local defaults (git-ignored, never published): demo/config.local.js sets window.DEMO_CONFIG = { adminKey }.
+if (!$("#adminKey").value && window.DEMO_CONFIG && window.DEMO_CONFIG.adminKey) $("#adminKey").value = window.DEMO_CONFIG.adminKey;
+
+$("#runReads").addEventListener("click", async () => {
+  for (const ep of ENDPOINTS.filter((x) => x.method === "GET" && !x.group)) {
+    const card = $(`#card-${ep.id}`);
+    if (ep.vars && ep.vars.some((v) => !$(`[data-var="${v}"]`, card).value.trim())) continue;
+    if (ep.query && !$("#adminKey").value) continue;
+    await send(ep, card);
+  }
+});
+$("#clearAll").addEventListener("click", () => document.querySelectorAll(".card").forEach((c) => {
+  c.querySelectorAll("[data-pane]").forEach((p) => (p.innerHTML = "")); $(".tabs", c).hidden = true;
+  const s = $("[data-status]", c); s.className = "pill"; s.textContent = "not sent";
+}));
+</script>
+</body>
+</html>
