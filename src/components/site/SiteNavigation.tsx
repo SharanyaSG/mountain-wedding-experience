@@ -6,16 +6,10 @@ import { navigationItems, plansDestination } from "./navigation-content";
 export { navigationItems, plansDestination } from "./navigation-content";
 
 export function SiteNavigation() {
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const location = useLocation();
   const toggleRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLElement>(null);
-  useEffect(() => {
-    const update = () => setScrolled(window.scrollY > window.innerHeight * 0.7);
-    update(); window.addEventListener("scroll", update, { passive: true });
-    return () => window.removeEventListener("scroll", update);
-  }, []);
   useEffect(() => { setOpen(false); }, [location.href]);
   useEffect(() => {
     if (!open) return;
@@ -35,8 +29,9 @@ export function SiteNavigation() {
     return () => { document.body.style.overflow = previous; window.removeEventListener("keydown", onKey); window.removeEventListener("resize", resize); };
   }, [open]);
   const active = (to: string) => location.pathname === to;
+  // Same bordered, frosted bar on every page and at every scroll position, so content scrolls behind it.
   return (
-    <header className={`fixed inset-x-0 top-0 z-40 text-foreground transition-colors duration-500 ${open ? "bg-background" : scrolled || location.pathname !== "/" ? "border-b border-border bg-background/90 backdrop-blur-md" : ""}`}>
+    <header className={`fixed inset-x-0 top-0 z-40 border-b border-border text-foreground transition-colors duration-500 ${open ? "bg-background" : "bg-background/90 backdrop-blur-md"}`}>
       <div className="relative z-10 mx-auto grid h-16 max-w-[1680px] grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 md:h-20 min-[1200px]:flex min-[1200px]:justify-between min-[1200px]:gap-2">
         <Link to="/" onClick={() => setOpen(false)} className="shrink-0 font-serif text-lg tracking-[0.18em]">G <span className="text-gold">×</span> M</Link>
         <nav aria-label="Primary" className="hidden items-center gap-3 min-[1200px]:flex min-[1440px]:gap-4">
