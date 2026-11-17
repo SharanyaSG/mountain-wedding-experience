@@ -85,7 +85,7 @@ function SaveTheDate() {
           </Reveal>
           <Reveal delay={240} className="mt-12 space-y-2 border-l border-gold pl-6">
             <p className="font-script text-4xl">Sharanya &amp; Sahil</p>
-            <p className="eyebrow text-muted-foreground">October 8, 2027</p>
+            <p className="eyebrow text-muted-foreground">October 7 – 9, 2027</p>
             <p className="eyebrow text-muted-foreground">Loon Mountain, New Hampshire</p>
           </Reveal>
         </div>

@@ -208,6 +208,9 @@
   pointer-events: none;
 }
 .section-content { margin-top: var(--section-content-gap); }
+/* The footer closes the page: a lighter top and only a little room below its last line. */
+.site-footer .section-shell { padding-top: calc(var(--section-space) * 0.75); padding-bottom: 28px; }
+@media (width >= 768px) { .site-footer .section-shell { padding-bottom: 36px; } }
 .content-page { padding-top: 64px; }
 @media (width >= 768px) { .content-page { padding-top: 80px; } }
 
