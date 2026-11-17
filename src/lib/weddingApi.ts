@@ -38,8 +38,21 @@ async function extracted<T>(method: "GET" | "POST", path: string, body?: unknown
   return r.extracted;
 }
 
+type Lookup = { matches: SearchMatch[]; party: Party | null };
+
 export const weddingApi = {
-  search: (name: string) => extracted<SearchMatch[]>("POST", "search", { name }),
+  // Search plus, when exactly one party matches, that party: one round trip instead of two.
+  lookup: async (name: string): Promise<Lookup> => {
+    try {
+      return await extracted<Lookup>("POST", "lookup", { name });
+    } catch (err) {
+      // A backend deployed before /lookup existed: fall back to search, then party.
+      if (!(err instanceof WeddingApiError && err.status === 404)) throw err;
+      const matches = await extracted<SearchMatch[]>("POST", "search", { name });
+      const only = matches.length === 1 ? matches[0]! : null;
+      return { matches, party: only ? await weddingApi.party(only.group_uuid) : null };
+    }
+  },
   party: (groupUuid: string) => extracted<Party>("GET", `party/${groupUuid}`),
   // Returns the full envelope: ok:true with status 202 means "saved, Zola will be retried". Treat it as success.
   submitRsvp: (rsvp: RsvpSubmission) => call<Party>("POST", "rsvp", rsvp),

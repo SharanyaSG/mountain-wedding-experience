@@ -42,8 +42,8 @@ export function TellUsYourPlans() {
     setBusy("search");
     setError(null);
     try {
-      const matches = await weddingApi.search(query);
-      if (matches.length === 1) return await openParty(matches[0]!.group_uuid);
+      const { matches, party } = await weddingApi.lookup(query);
+      if (party) return showParty(party);
       if (matches.length === 0)
         setError("We couldn’t find you. Try your full name as it appears on your invitation.");
       else setStep({ name: "pick", matches });
@@ -54,13 +54,17 @@ export function TellUsYourPlans() {
     }
   }
 
+  function showParty(party: Party) {
+    setChoices(initialChoices(party));
+    setStep({ name: "form", party });
+  }
+
+  // Only when several invitations matched and the guest picked one.
   async function openParty(groupUuid: string) {
     setBusy("party");
     setError(null);
     try {
-      const party = await weddingApi.party(groupUuid);
-      setChoices(initialChoices(party));
-      setStep({ name: "form", party });
+      showParty(await weddingApi.party(groupUuid));
     } catch (err) {
       setError(`${errorText(err)} ${CONTACT_US}`);
     } finally {
@@ -124,12 +128,13 @@ export function TellUsYourPlans() {
                 className={`${primaryButton} w-full sm:w-auto`}
                 disabled={busy !== null}
               >
-                {busy === "search"
-                  ? "Searching…"
-                  : busy === "party"
-                    ? "Opening your invitation…"
-                    : "Find my invitation"}
+                {busy ? "Finding your invitation…" : "Find my invitation"}
               </button>
+              {busy && (
+                <p className="font-serif text-sm text-muted-foreground">
+                  This can take a few seconds.
+                </p>
+              )}
               {step.name === "pick" && (
                 <div className="space-y-3 pt-4">
                   <p className="font-serif text-base text-foreground">

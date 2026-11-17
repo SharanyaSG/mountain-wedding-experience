@@ -18,11 +18,16 @@ const CONFIG = {
   SPREADSHEET_ID: "",
   SLUG: "gowdamalhotra",
   WEDDING_UUID: "55835fd4-1f35-4fa8-a86e-49bf435e0437",
-  SESSION_CACHE_SECONDS: 600,   // Zola CSRF token + cookies reused for 10 min
+  SESSION_CACHE_SECONDS: 21600, // Zola CSRF token + cookies reused up to 6 h (the cache maximum); a 403 refreshes them
   LOG_CELL_LIMIT: 45000,        // Sheets cells hold 50k chars
   LOG_MAX_ROWS: 5000,
   SYNC_PAUSE_MS: 250,           // gap between Zola calls during a full sync
   SYNC_TIME_BUDGET_MS: 300000,  // Apps Script kills runs at 6 min
+  // Background queue (processQueue, every minute): guests never wait on the sheet.
+  QUEUE_TIME_BUDGET_MS: 50000,  // one run stops after ~50 s so runs don't overlap the next minute's
+  QUEUE_STALE_MS: 120000,       // a submission still "sending" after 2 min means its request died mid-send
+  QUEUE_MAX_ATTEMPTS: 5,        // sheet-write attempts per queued submission before giving up (it's in Zola regardless)
+  QUEUE_LOG_CHARS: 3000,        // request/response text kept per queued log row (Script Properties hold ~9 KB a value)
   // Zola RSVP custom questions that are auto-answered from the contact form (first match wins, so email
   // is tested before address). Guests' explicit answers always take precedence.
   CONTACT_QUESTIONS: [
@@ -80,8 +85,9 @@ function doPost(e) { return handle_("POST", e); }
 const ROUTES = [
   ["GET", /^$/, () => ok_(endpointList_())],
   ["GET", /^health$/, () => health_()],
-  ["GET", /^party\/([0-9a-f-]{36})$/, (m) => party_(m[1])],
+  ["GET", /^party\/([0-9a-f-]{36})$/, (m, body, params) => party_(m[1], params)],
   ["POST", /^search$/, (m, body) => search_(body)],
+  ["POST", /^lookup$/, (m, body) => lookup_(body)],
   ["POST", /^rsvp$/, (m, body) => rsvp_(body)],
   ["POST", /^contact$/, (m, body) => contact_(body)],
   ["POST", /^confirmation$/, (m, body) => confirmation_(body)],
@@ -104,7 +110,7 @@ function handle_(method, e) {
     result = fail_(err.status || 500, err.message || String(err));
   }
   result.meta = Object.assign({ method: method, path: "/" + path, ms: Date.now() - started }, result.meta || {});
-  if (path !== "health") log_(method, path, body, result);
+  if (path !== "health") queueLog_(method, path, body, result); // written to the Log tab by processQueue
   return ContentService.createTextOutput(JSON.stringify(result)).setMimeType(ContentService.MimeType.JSON);
 }
 
@@ -121,7 +127,8 @@ function endpointList_() {
   return [
     { method: "GET", path: "/health", about: "Can the API reach Zola?" },
     { method: "POST", path: "/search", body: { name: "Sahil Malhotra" }, about: "Find a guest's party" },
-    { method: "GET", path: "/party/{groupUuid}", about: "A party's invitation, current RSVPs and contact form (also syncs the sheet)" },
+    { method: "POST", path: "/lookup", body: { name: "Sahil Malhotra" }, about: "Search, plus the party itself when exactly one matches (one round trip)" },
+    { method: "GET", path: "/party/{groupUuid}", about: "A party's invitation and current RSVPs; add &include=contact for the contact form. Queues a sheet refresh" },
     { method: "POST", path: "/rsvp", about: "Submit or update a party's RSVP and, optionally, its contact details (writes to Zola + sheet)" },
     { method: "POST", path: "/contact", about: "Update only a party's contact details in Zola's guest list (+ sheet)" },
     { method: "POST", path: "/confirmation", body: { groupUuid: "…", email: "guest@example.com" }, about: "Zola emails the guest a copy" },
@@ -153,13 +160,28 @@ function search_(body) {
   return ok_(r.json, extracted, { matches: extracted.length });
 }
 
-function party_(groupUuid) {
+function party_(groupUuid, params) {
   const r = getParty_(groupUuid);
   if (r.code !== 200) return fail_(r.code === 404 ? 404 : 502, `Zola party lookup returned HTTP ${r.code}`, r.json || r.text);
-  const sheet = safeSync_(r.json, "lookup");
+  queueSync_(groupUuid); // the sheet refresh happens in the background (processQueue); the guest doesn't wait for it
   const extracted = extractParty_(r.json);
-  extracted.contact = contactForm_(r.json);
-  return ok_(r.json, extracted, { sheet: sheet });
+  // The contact form costs extra Zola calls and a sheet read, so only callers that show it ask for it.
+  if (params && params.include === "contact") extracted.contact = contactForm_(r.json);
+  return ok_(r.json, extracted, { sheet: "queued" });
+}
+
+/** Body: { name }. Search, plus the party itself when exactly one matches, so the guest makes one round trip, not two. */
+function lookup_(body) {
+  const found = search_(body);
+  if (!found.ok) return found;
+  const matches = found.extracted;
+  let party = null;
+  if (matches.length === 1) {
+    const p = party_(matches[0].group_uuid, {});
+    if (!p.ok) return p;
+    party = p.extracted;
+  }
+  return ok_(null, { matches: matches, party: party }, { matches: matches.length });
 }
 
 /**
@@ -177,39 +199,33 @@ function rsvp_(body) {
   validateRsvp_(party, body);
   const contact = body.contact ? normalizeContact_(body.contact) : null;
 
-  const backup = trySheet_(() => withLock_(() => {
-    saveContacts_(party, body);
-    if (contact) saveHousehold_(party, contact, "pending");
-    return appendRow_("Submissions", {
-      timestamp: new Date(), group_uuid: party.guest_group_uuid, party: partyName_(party.guests),
-      status: "submitting", contact_status: contact ? "submitting" : "none", attempts: 1, payload: JSON.stringify(body),
-    });
-  }));
+  // Record the submission before talking to Zola. It goes in the queue (Script Properties: durable, and no sheet
+  // lock), and processQueue writes it to the sheet within a minute. The guest never waits on the sheet.
+  const job = { kind: "rsvp", at: Date.now(), groupUuid: party.guest_group_uuid, body: body, state: "sending" };
+  const key = enqueueJob_(job);
 
-  const sent = sendRsvp_(party, body);
+  const payload = buildZolaPayload_(party, body);
+  const sent = sendRsvp_(payload);
   const contactSent = contact ? sendContact_(party, contact) : null;
   const errors = [sent.ok ? "" : sent.error, contactSent && !contactSent.ok ? contactSent.error : ""].filter(Boolean).join(" | ");
-  if (backup.ok) {
-    trySheet_(() => setSubmissionStatus_(backup.value, sent.ok ? "submitted" : "failed", errors, 1,
-                                         contact ? (contactSent.ok ? "submitted" : "failed") : "none"));
-    if (contact) trySheet_(() => withLock_(() => saveHousehold_(party, contact, contactSent.ok ? "submitted" : "failed")));
-  }
+  Object.assign(job, { state: "sent", zola: sent.ok ? "submitted" : "failed",
+                       contactStatus: contact ? (contactSent.ok ? "submitted" : "failed") : "none", error: errors });
+  const backup = finishJob_(key, job);
 
   const result = { zola: sent.ok ? "ok" : "error", contact: contact ? (contactSent.ok ? "ok" : "error") : "skipped", saved: backup.ok };
   const messages = [errors, backup.ok ? "" : `sheet: ${backup.error}`].filter(Boolean);
   if (messages.length) result.message = messages.join(" | ");
   if (!sent.ok) {
-    // Nothing reached Zola: only a success for the guest if the sheet has it (it's retried hourly from there).
+    // Nothing reached Zola: only a success for the guest if the backup has it (the hourly sync retries from there).
     return backup.ok
-      ? { ok: true, status: 202, data: result, extracted: extractParty_(party), meta: { note: "Saved to sheet; will retry on next sync" } }
+      ? { ok: true, status: 202, data: result, extracted: extractParty_(party), meta: { note: "Saved; will retry on next sync" } }
       : fail_(502, `Your RSVP couldn't be saved. ${result.message}`, result);
   }
-  const fresh = getParty_(party.guest_group_uuid);
-  const latest = fresh.code === 200 ? fresh.json : party;
-  const sheet = backup.ok ? safeSync_(latest, "site") : { error: backup.error };
+  // The party as just saved, without a second Zola read (the queue re-reads Zola for the sheet).
+  const saved = Object.assign({}, party, { guests: payload.guests, rsvp_answers: payload.rsvp_answers });
   const partial = (contact && !contactSent.ok) || !backup.ok;
   return { ok: true, status: partial ? 202 : 200, data: Object.assign(result, { zolaResponse: sent.json }),
-           extracted: extractParty_(latest), meta: { sheet: sheet } };
+           extracted: extractParty_(saved), meta: { sheet: backup.queued ? "queued" : backup.ok ? "written" : backup.error } };
 }
 
 /** Body: { groupUuid, contact: { email, phone, messaging?, address1?, … } }: contact details only, no RSVP change. */
@@ -219,19 +235,11 @@ function contact_(body) {
   const party = current.json;
   if (!body.contact) throw httpError_(400, "contact is required");
   const contact = normalizeContact_(body.contact);
-  const backup = trySheet_(() => withLock_(() => saveHousehold_(party, contact, "pending")));
+  const job = { kind: "contact", at: Date.now(), groupUuid: party.guest_group_uuid, body: body, state: "sending" };
+  const key = enqueueJob_(job);
   const sent = sendContact_(party, contact);
-  if (backup.ok) {
-    trySheet_(() => withLock_(() => {
-      saveHousehold_(party, contact, sent.ok ? "submitted" : "failed");
-      appendRow_("Submissions", {
-        timestamp: new Date(), group_uuid: party.guest_group_uuid, party: partyName_(party.guests), status: "none",
-        contact_status: sent.ok ? "submitted" : "failed", attempts: 1, last_error: sent.ok ? "" : sent.error,
-        payload: JSON.stringify(body),
-      });
-    }));
-    safeSync_(party, "site");
-  }
+  Object.assign(job, { state: "sent", zola: "none", contactStatus: sent.ok ? "submitted" : "failed", error: sent.ok ? "" : sent.error });
+  const backup = finishJob_(key, job);
   const data = { contact: sent.ok ? "ok" : "error", saved: backup.ok };
   const messages = [sent.ok ? "" : sent.error, backup.ok ? "" : `sheet: ${backup.error}`].filter(Boolean);
   if (messages.length) data.message = messages.join(" | ");
@@ -240,7 +248,7 @@ function contact_(body) {
              extracted: { party: partyName_(party.guests), linked: sent.linked }, meta: {} };
   }
   return backup.ok
-    ? { ok: true, status: 202, data: data, extracted: null, meta: { note: "Saved to sheet; will retry on next sync" } }
+    ? { ok: true, status: 202, data: data, extracted: null, meta: { note: "Saved; will retry on next sync" } }
     : fail_(502, `Your contact details couldn't be saved. ${data.message}`, data);
 }
 
@@ -417,9 +425,9 @@ function buildZolaPayload_(party, body) {
   return { wedding_account_uuid: CONFIG.WEDDING_UUID, guest_group_uuid: party.guest_group_uuid, guests: guests, rsvp_answers: rsvpAnswers };
 }
 
-function sendRsvp_(party, body) {
+function sendRsvp_(payload) {
   try {
-    const r = zolaPost_(`v2/publicwedding/rsvp/wedding-account/uuid/${CONFIG.WEDDING_UUID}`, buildZolaPayload_(party, body));
+    const r = zolaPost_(`v2/publicwedding/rsvp/wedding-account/uuid/${CONFIG.WEDDING_UUID}`, payload);
     if (r.code === 200) return { ok: true, json: r.json };
     return { ok: false, error: `Zola HTTP ${r.code}: ${JSON.stringify(r.json || r.text).slice(0, 300)}` };
   } catch (err) {
@@ -683,10 +691,6 @@ function syncParty_(party, source) {
   });
 }
 
-function safeSync_(party, source) {
-  try { return syncParty_(party, source); } catch (err) { return { error: String(err.message || err) }; }
-}
-
 function upsertEvents_(events, now) {
   const rows = indexBy_(readRows_("Events"), "event_id");
   events.forEach((e) => {
@@ -781,7 +785,7 @@ function syncAll() {
         const newer = r.json.guests.some((g) => g.event_invitations.some((inv) => inv.rsvp_at && new Date(inv.rsvp_at) > new Date(s.timestamp)));
         if (newer) status = "superseded";
         else {
-          const sent = sendRsvp_(r.json, body);
+          const sent = sendRsvp_(buildZolaPayload_(r.json, body));
           status = sent.ok ? "submitted (retry)" : "failed";
           if (!sent.ok) errors.push(sent.error);
         }
@@ -888,8 +892,10 @@ function setup() {
   if (blank && blank.getLastRow() === 0 && ss.getSheets().length > 1) ss.deleteSheet(blank);
   setupSummary_(ss);
 
-  ScriptApp.getProjectTriggers().filter((t) => t.getHandlerFunction() === "syncAll").forEach((t) => ScriptApp.deleteTrigger(t));
+  ScriptApp.getProjectTriggers().filter((t) => ["syncAll", "processQueue"].indexOf(t.getHandlerFunction()) !== -1)
+    .forEach((t) => ScriptApp.deleteTrigger(t));
   ScriptApp.newTrigger("syncAll").timeBased().everyHours(1).create();
+  ScriptApp.newTrigger("processQueue").timeBased().everyMinutes(1).create();
 
   Logger.log("Setup done. Writing to: " + ss.getName() + " " + ss.getUrl());
   Logger.log("ADMIN_KEY (keep private, used for /admin endpoints): " + props.getProperty("ADMIN_KEY"));
@@ -983,15 +989,138 @@ function withLock_(fn) {
   try { return fn(); } finally { lock.releaseLock(); }
 }
 
-function log_(method, path, body, result) {
+// ---------------------------------------------------------------------------
+// Background queue: guests never wait on the sheet
+// ---------------------------------------------------------------------------
+// Guest requests only talk to Zola, then leave the sheet work here. Script Properties are durable, fast and
+// independent of the sheet lock. processQueue() runs every minute (trigger installed by setup()) and does the
+// sheet writes under the lock. Keys sort oldest first:
+//   q_job_<time>_<id>  an RSVP or contact submission (written before Zola is called, updated after)
+//   q_sync_<party>     refresh one party's rows (repeated lookups of a party collapse into one)
+//   q_log_<time>_<id>  one Log tab row
+
+function queuePut_(key, value) {
   try {
-    const safeBody = Object.assign({}, body);
-    if (safeBody.key) safeBody.key = "***";
-    const sh = sheet_("Log");
-    sh.appendRow([new Date(), method, "/" + path, JSON.stringify(safeBody).slice(0, CONFIG.LOG_CELL_LIMIT), result.ok,
-                  result.status, result.meta && result.meta.ms, JSON.stringify(result).slice(0, CONFIG.LOG_CELL_LIMIT)]);
-    if (sh.getLastRow() > CONFIG.LOG_MAX_ROWS) sh.deleteRows(2, 1000);
-  } catch (err) { /* logging must never break a response */ }
+    const text = JSON.stringify(value);
+    if (text.length > 8500) return false; // Script Properties hold ~9 KB per value
+    PropertiesService.getScriptProperties().setProperty(key, text);
+    return true;
+  } catch (err) {
+    return false;
+  }
+}
+
+function queueId_() { return `${Date.now()}_${Utilities.getUuid().slice(0, 8)}`; }
+
+function enqueueJob_(job) {
+  const key = "q_job_" + queueId_();
+  return queuePut_(key, job) ? key : null;
+}
+
+function queueSync_(groupUuid) { queuePut_("q_sync_" + groupUuid, { at: Date.now() }); }
+
+/** Store the job's final state for processQueue. If the queue is unavailable, write the sheet now instead. */
+function finishJob_(key, job) {
+  if (key && queuePut_(key, job)) return { ok: true, queued: true };
+  if (key) trySheet_(() => PropertiesService.getScriptProperties().deleteProperty(key));
+  const written = trySheet_(() => processJob_(job));
+  return written.ok ? { ok: true, queued: false } : written;
+}
+
+function queueLog_(method, path, body, result) {
+  const safeBody = Object.assign({}, body);
+  if (safeBody.key) safeBody.key = "***";
+  const n = CONFIG.QUEUE_LOG_CHARS;
+  queuePut_("q_log_" + queueId_(), [new Date().toISOString(), method, "/" + path, JSON.stringify(safeBody).slice(0, n),
+    result.ok, result.status, result.meta && result.meta.ms, JSON.stringify(result).slice(0, n)]);
+}
+
+/** Write one submission to the sheet: Contacts / Households, a Submissions row, then the party's current state from Zola. */
+function processJob_(job) {
+  const r = getParty_(job.groupUuid);
+  if (r.code !== 200) throw new Error(`Zola party lookup returned HTTP ${r.code}`);
+  const party = r.json;
+  const body = job.body;
+  const contact = body.contact ? normalizeContact_(body.contact) : null;
+  // Still "sending" means the request ended before Zola answered: record it as failed so the hourly sync retries it
+  // (the retry is skipped as superseded if Zola did get it).
+  const died = job.state === "sending";
+  const status = job.kind === "contact" ? "none" : died ? "failed" : job.zola;
+  const contactStatus = !contact ? "none" : died ? "failed" : job.contactStatus;
+  withLock_(() => {
+    if (job.kind === "rsvp") saveContacts_(party, body);
+    if (contact) saveHousehold_(party, contact, contactStatus);
+    appendRow_("Submissions", {
+      timestamp: new Date(job.at), group_uuid: party.guest_group_uuid, party: partyName_(party.guests), status: status,
+      contact_status: contactStatus, attempts: 1, last_error: died ? "Request ended before Zola answered" : job.error || "",
+      payload: JSON.stringify(body),
+    });
+  });
+  syncParty_(party, "site");
+}
+
+/** Every minute (trigger): write queued submissions, party refreshes and log rows to the sheet. */
+function processQueue() {
+  const cache = CacheService.getScriptCache();
+  if (cache.get("queue_running")) return; // the previous run is still going
+  cache.put("queue_running", "1", 300);
+  const started = Date.now();
+  const outOfTime = () => Date.now() - started > CONFIG.QUEUE_TIME_BUDGET_MS;
+  const props = PropertiesService.getScriptProperties();
+  try {
+    const all = props.getProperties();
+    const keys = Object.keys(all).filter((k) => k.indexOf("q_") === 0).sort();
+    const done = {};
+
+    // 1. Submissions, oldest first.
+    keys.filter((k) => k.indexOf("q_job_") === 0).forEach((k) => {
+      if (outOfTime()) return;
+      let job;
+      try { job = JSON.parse(all[k]); } catch (err) { props.deleteProperty(k); return; }
+      if (job.state === "sending" && Date.now() - job.at < CONFIG.QUEUE_STALE_MS) return; // its request is still talking to Zola
+      try {
+        processJob_(job);
+        props.deleteProperty(k);
+        done["q_sync_" + job.groupUuid] = true; // just refreshed
+      } catch (err) {
+        job.attempts = (job.attempts || 0) + 1;
+        job.lastError = String(err.message || err);
+        if (job.attempts < CONFIG.QUEUE_MAX_ATTEMPTS) queuePut_(k, job);
+        else { console.error("Dropping queued submission after repeated sheet errors: " + JSON.stringify(job)); props.deleteProperty(k); }
+      }
+    });
+
+    // 2. Party refreshes queued by lookups.
+    keys.filter((k) => k.indexOf("q_sync_") === 0).forEach((k) => {
+      if (done[k]) { props.deleteProperty(k); return; }
+      if (outOfTime()) return;
+      try {
+        const r = getParty_(k.slice("q_sync_".length));
+        if (r.code === 200) syncParty_(r.json, "lookup");
+        props.deleteProperty(k);
+      } catch (err) {
+        console.error(`Party refresh ${k} failed, retrying next run: ${err.message || err}`);
+      }
+    });
+
+    // 3. Log rows, in one write. Logs are best effort: dropped if the Log tab can't be written.
+    const logKeys = keys.filter((k) => k.indexOf("q_log_") === 0);
+    if (logKeys.length) {
+      try {
+        const rows = logKeys.map((k) => { try { const r = JSON.parse(all[k]); r[0] = new Date(r[0]); return r; } catch (err) { return null; } })
+          .filter(Boolean);
+        const sh = sheet_("Log");
+        if (rows.length) sh.getRange(sh.getLastRow() + 1, 1, rows.length, TABS.Log.length).setValues(rows);
+        const extra = sh.getLastRow() - 1 - CONFIG.LOG_MAX_ROWS;
+        if (extra > 0) sh.deleteRows(2, extra);
+      } catch (err) {
+        console.error("Log write failed: " + (err.message || err));
+      }
+      logKeys.forEach((k) => props.deleteProperty(k));
+    }
+  } finally {
+    cache.remove("queue_running");
+  }
 }
 
 function requireAdmin_(key) {

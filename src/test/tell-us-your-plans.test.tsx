@@ -139,16 +139,18 @@ describe("tell us your plans page", () => {
   it("looks up a name, then shows the RSVP choices with a reason box for a decline", async () => {
     const fetchMock = vi.fn(async (url: string) => ({
       ok: true,
-      json: async () =>
-        url.includes("path=search")
+      json: async () => ({
+        ok: true,
+        status: 200,
+        extracted: url.includes("path=lookup")
           ? {
-              ok: true,
-              status: 200,
-              extracted: [
+              matches: [
                 { group_uuid: "party-1", party: "Asha & Ravi", suggested: false, guests: [] },
               ],
+              party,
             }
-          : { ok: true, status: 200, extracted: party },
+          : party,
+      }),
     }));
     vi.stubGlobal("fetch", fetchMock);
     render(<TellUsYourPlans />);
@@ -157,9 +159,9 @@ describe("tell us your plans page", () => {
     fireEvent.click(screen.getByRole("button", { name: /find my invitation/i }));
 
     await screen.findByText(/Welcome,/);
+    // One round trip: the lookup returns the party when exactly one matches.
     expect(fetchMock.mock.calls.map(([u]) => String(u))).toEqual([
-      expect.stringContaining("path=search"),
-      expect.stringContaining("path=party%2Fparty-1"),
+      expect.stringContaining("path=lookup"),
     ]);
     expect(screen.getByDisplayValue("Waiting on PTO")).toBeTruthy();
     expect(screen.queryByLabelText(/email|phone/i)).toBeNull();

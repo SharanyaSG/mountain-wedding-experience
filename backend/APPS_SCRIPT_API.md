@@ -161,6 +161,9 @@ export type RsvpSubmission = {
 ```
 Multiple matches are possible (e.g. a common last name). Show the `party` labels and let the guest pick. Ignore `searched_for`, because Zola returns `false` even on exact matches.
 
+### `POST /lookup` `{ "name": "Sahil Malhotra" }`
+`/search` and `/party` in one round trip: `{ "matches": [ …same as /search… ], "party": { …same as /party… } | null }`. `party` is filled only when exactly one party matches; otherwise show `matches` and call `/party` for the one the guest picks. The guest site uses this.
+
 ### `GET /party/{groupUuid}`
 ```json
 { "group_uuid": "d264a76a-…", "party": "Sharanya & Sahil",
@@ -200,7 +203,8 @@ Multiple matches are possible (e.g. a common last name). Show the `party` labels
   - One email, phone and address **per party**, which is Zola's limit. Email and phone are **required** by Zola. The address is optional.
   - **Zola never returns saved contact details publicly**, so the form can't be pre-filled. `on_file` only says whether this party already submitted details through our site (it's `null` otherwise), so you can say "We have your details. Update them?"
   - Questions with a `contact_field` (e.g. "What is your phone number?") are **answered automatically from the contact form**. Hide them in the UI so guests aren't asked twice. Which questions count is set by `CONFIG.CONTACT_QUESTIONS` in `Code.gs` (text containing email, WhatsApp/SMS, phone/mobile/cell, or address).
-- Calling this also refreshes the party's rows in the sheet (`meta.sheet`).
+- `contact` is only included when you ask for it: `?path=party/<uuid>&include=contact`. It costs extra Zola calls and a sheet read, so the guest site leaves it out.
+- Calling this queues a refresh of the party's rows in the sheet (`meta.sheet: "queued"`); see §6a. The response never waits for the sheet.
 
 ### `POST /rsvp` (writes to Zola + sheet)
 ```jsonc
@@ -217,7 +221,7 @@ Multiple matches are possible (e.g. a common last name). Show the `party` labels
                "address1": "123 Main St", "address2": "Apt 4", "city": "Boston", "state": "MA", "postalCode": "02101", "country": "US" }
 }
 ```
-**One submit, two destinations:** `guests[].events` and `answers` go to Zola's RSVP system, and `contact` goes to Zola's contact collector (the party's email, phone and address in the guest list). Both are saved to the sheet first.
+**One submit, two destinations:** `guests[].events` and `answers` go to Zola's RSVP system, and `contact` goes to Zola's contact collector (the party's email, phone and address in the guest list). The submission is recorded in the background queue before Zola is called and written to the sheet within a minute (§6a). The response waits for Zola only, never the sheet. `extracted` is the party as just saved.
 - Send only what the guest chose. The API merges it into Zola's current data, so unmentioned guests, events and answers stay as they are.
 - `response` is `ATTENDING`, `MAYBE_YES`, `MAYBE_NO` or `DECLINED` (the old `MAYBE` is still accepted and means `MAYBE_YES`). `mealOptionId` must be one of that event's `meal_options` (required in the UI for `ATTENDING` / `MAYBE_YES`, if options exist; it's dropped for the other two).
 - **Maybes:** Zola has no "maybe", so **`MAYBE_YES` is sent to Zola as ATTENDING and `MAYBE_NO` as DECLINED**. `reason` is optional (max 500 chars; blank is stored as "Not sure yet") and is written into the event's "unsure" question as `"Sahil: reason; Sharanya: reason"`. Zola stays the source of truth: attending + a reason in that answer reads back as `MAYBE_YES`, declined + a reason as `MAYBE_NO`, both in the API and in the sheet. Switching a guest to `ATTENDING` or `DECLINED` removes their reason. Other guests' reasons are kept. Sending a maybe for an event with no "unsure" question returns 400.
@@ -263,7 +267,7 @@ Never put the admin key in the Lovable app or the repo.
 
 | Tab | Contents | Updated when |
 |---|---|---|
-| **Responses** | Current state: one row per guest × invited event: `status` (ATTENDING / **MAYBE_YES** / **MAYBE_NO** / DECLINED / NO_RESPONSE), `maybe_reason`, `rsvp` (Zola's raw value), meal, rsvp_at, contact info (the guest's own, else the party's) and party answers | Every `/party` lookup, every `/rsvp`, and the hourly sync. The party's rows are **replaced** with Zola's latest data each time. |
+| **Responses** | Current state: one row per guest × invited event: `status` (ATTENDING / **MAYBE_YES** / **MAYBE_NO** / DECLINED / NO_RESPONSE), `maybe_reason`, `rsvp` (Zola's raw value), meal, rsvp_at, contact info (the guest's own, else the party's) and party answers | Within a minute of every `/party` lookup and `/rsvp` (via the queue), and the hourly sync. The party's rows are **replaced** with Zola's latest data each time. |
 | **Summary** | Live counters (formulas over Responses): invited, responded, yes, maybe yes, maybe no, no, awaiting reply. A row for all events, then one per event. Counts are guests × events. | Recalculates on its own; rebuilt by `setup()` |
 | **Events** | Event details, meal options, questions | Same |
 | **Contacts** | Optional per-guest email, phone, text opt-in and note (from our form only) | `/rsvp` |
@@ -283,6 +287,15 @@ So the sheet matches Zola for every party it knows about, including edits made o
 **Limit:** Zola's public API can't list the whole guest list. A party is "known" once someone looks it up through our site or its names are in **Directory**. For a complete mirror, paste the full guest list into Directory once (Zola dashboard → Guest List → export), and add new guests there when you add them in Zola.
 
 ---
+
+## 6a. Background queue: guests never wait on the sheet
+
+Guest requests (`/lookup`, `/party`, `/rsvp`, `/contact`) only talk to Zola. Everything for the sheet goes into a queue in **Script Properties** (fast, durable, and independent of the sheet lock): submissions, party refreshes and Log rows. `processQueue()` runs **every minute** (trigger installed by `setup()`) and writes them to the sheet under the lock, so the sheet trails Zola by about a minute.
+
+- A submission is queued *before* Zola is called and updated after. If the request dies mid-send, the queue records it as failed after 2 minutes, and the hourly sync retries it (skipped as superseded if Zola did get it).
+- If the queue can't be written (e.g. Script Properties full), the request writes the sheet itself, as before.
+- Repeated lookups of one party collapse into one refresh. Log rows are best effort.
+- Quota: the every-minute trigger counts toward Apps Script's daily trigger runtime (90 min/day on a personal account); an empty run takes well under a second.
 
 ## 7. Limits and reliability
 
