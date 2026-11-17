@@ -1,17 +1,17 @@
-import art from "@/assets/autumn-mountain-arbor-illustration.png.asset.json";
-import plate from "@/assets/hero-art/plate.png.asset.json";
-import gondola from "@/assets/hero-art/gondola.png.asset.json";
-import hair0 from "@/assets/hero-art/hair0.png.asset.json";
-import hair1 from "@/assets/hero-art/hair1.png.asset.json";
-import hair2 from "@/assets/hero-art/hair2.png.asset.json";
-import leaf0 from "@/assets/hero-art/leaf0.png.asset.json";
-import leaf1 from "@/assets/hero-art/leaf1.png.asset.json";
-import leaf2 from "@/assets/hero-art/leaf2.png.asset.json";
-import leaf3 from "@/assets/hero-art/leaf3.png.asset.json";
-import leaf4 from "@/assets/hero-art/leaf4.png.asset.json";
-import leaf5 from "@/assets/hero-art/leaf5.png.asset.json";
-import leaf6 from "@/assets/hero-art/leaf6.png.asset.json";
-import leaf7 from "@/assets/hero-art/leaf7.png.asset.json";
+import art from "@/assets/autumn-mountain-arbor-illustration.png";
+import plate from "@/assets/hero-art/plate.png";
+import gondola from "@/assets/hero-art/gondola.png";
+import hair0 from "@/assets/hero-art/hair0.png";
+import hair1 from "@/assets/hero-art/hair1.png";
+import hair2 from "@/assets/hero-art/hair2.png";
+import leaf0 from "@/assets/hero-art/leaf0.png";
+import leaf1 from "@/assets/hero-art/leaf1.png";
+import leaf2 from "@/assets/hero-art/leaf2.png";
+import leaf3 from "@/assets/hero-art/leaf3.png";
+import leaf4 from "@/assets/hero-art/leaf4.png";
+import leaf5 from "@/assets/hero-art/leaf5.png";
+import leaf6 from "@/assets/hero-art/leaf6.png";
+import leaf7 from "@/assets/hero-art/leaf7.png";
 
 /**
  * The couple's watercolor, brought to life with isolated layers cut from the
@@ -29,19 +29,19 @@ const H = 887;
 type Layer = { src: string; box: [number, number, number, number]; cls: string; dur: number; delay: number };
 
 const leaves: Layer[] = [
-  { src: leaf0.url, box: [35, 600, 140, 152], cls: "art-sway", dur: 6.2, delay: 0 },
-  { src: leaf1.url, box: [205, 535, 87, 105], cls: "art-sway", dur: 4.8, delay: -1.2 },
-  { src: leaf2.url, box: [378, 680, 74, 92], cls: "art-sway-b", dur: 5.4, delay: -2.5 },
-  { src: leaf3.url, box: [555, 690, 145, 102], cls: "art-sway", dur: 7, delay: -3.1 },
-  { src: leaf7.url, box: [880, 755, 125, 80], cls: "art-sway-b", dur: 6.6, delay: -0.7 },
-  { src: leaf6.url, box: [1250, 640, 135, 105], cls: "art-sway", dur: 5.8, delay: -4 },
-  { src: leaf4.url, box: [1410, 575, 112, 130], cls: "art-sway-b", dur: 5.1, delay: -1.9 },
-  { src: leaf5.url, box: [1558, 545, 174, 137], cls: "art-sway", dur: 6.9, delay: -2.2 },
+  { src: leaf0, box: [35, 600, 140, 152], cls: "art-sway", dur: 6.2, delay: 0 },
+  { src: leaf1, box: [205, 535, 87, 105], cls: "art-sway", dur: 4.8, delay: -1.2 },
+  { src: leaf2, box: [378, 680, 74, 92], cls: "art-sway-b", dur: 5.4, delay: -2.5 },
+  { src: leaf3, box: [555, 690, 145, 102], cls: "art-sway", dur: 7, delay: -3.1 },
+  { src: leaf7, box: [880, 755, 125, 80], cls: "art-sway-b", dur: 6.6, delay: -0.7 },
+  { src: leaf6, box: [1250, 640, 135, 105], cls: "art-sway", dur: 5.8, delay: -4 },
+  { src: leaf4, box: [1410, 575, 112, 130], cls: "art-sway-b", dur: 5.1, delay: -1.9 },
+  { src: leaf5, box: [1558, 545, 174, 137], cls: "art-sway", dur: 6.9, delay: -2.2 },
 ];
 const hair: Layer[] = [
-  { src: hair0.url, box: [434, 512, 28, 92], cls: "art-hair", dur: 5.2, delay: -0.4 },
-  { src: hair1.url, box: [462, 512, 26, 92], cls: "art-hair", dur: 6.1, delay: -2.1 },
-  { src: hair2.url, box: [488, 512, 26, 92], cls: "art-hair", dur: 4.7, delay: -3.3 },
+  { src: hair0, box: [434, 512, 28, 92], cls: "art-hair", dur: 5.2, delay: -0.4 },
+  { src: hair1, box: [462, 512, 26, 92], cls: "art-hair", dur: 6.1, delay: -2.1 },
+  { src: hair2, box: [488, 512, 26, 92], cls: "art-hair", dur: 4.7, delay: -3.3 },
 ];
 
 // Cable path through the cabin hanger points, lower station → summit station.
@@ -68,7 +68,7 @@ export function HeroIllustration() {
   return (
     <div className="relative w-full" style={{ aspectRatio: `${W} / ${H}` }}>
       <img
-        src={art.url}
+        src={art}
         alt="Watercolor illustration: Sharanya and Sahil, seen from behind, look out over autumn mountains as gondolas climb toward a flower-covered wedding arbor at the summit"
         width={W}
         height={H}
@@ -82,10 +82,10 @@ export function HeroIllustration() {
         aria-label="Watercolor illustration: Sharanya and Sahil, seen from behind, look out over autumn mountains as gondolas climb toward a flower-covered wedding arbor at the summit"
         data-testid="hero-art"
       >
-        <image href={plate.url} x={0} y={0} width={W} height={H} />
+        <image href={plate} x={0} y={0} width={W} height={H} />
         {Array.from({ length: CABINS }, (_, i) => (
           <g key={i} className="art-cabin">
-            <image href={gondola.url} x={-21} y={-1} width={37} height={47} />
+            <image href={gondola} x={-21} y={-1} width={37} height={47} />
             <animateMotion dur={`${TRIP}s`} begin={`${(-i * TRIP) / CABINS}s`} repeatCount="indefinite" path={CABLE} />
             <animate attributeName="opacity" dur={`${TRIP}s`} begin={`${(-i * TRIP) / CABINS}s`} repeatCount="indefinite" values="0;1;1;0" keyTimes="0;0.05;0.93;1" />
           </g>

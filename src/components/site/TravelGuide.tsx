@@ -1,5 +1,5 @@
-import gondolaPhoto from "@/assets/loon-mountain-gondola.jpg.asset.json";
-import riverwalkPhoto from "@/assets/hotel-riverwalk.jpg.asset.json";
+import gondolaPhoto from "@/assets/loon-mountain-gondola.jpg";
+import riverwalkPhoto from "@/assets/hotel-riverwalk.jpg";
 import { Reveal } from "@/components/site/Reveal";
 import { hotels, travelGuide } from "@/components/site/wedding-content";
 import { FaqCallout } from "./FaqCallout";
@@ -69,7 +69,7 @@ function Stay() {
         <div className="section-content grid gap-12 md:grid-cols-12 md:gap-14">
           <Reveal className="md:col-span-7">
             <img
-              src={riverwalkPhoto.url}
+              src={riverwalkPhoto}
               alt="RiverWalk Resort at Loon Mountain, a multi-wing resort with red roofs set beneath a forested mountain"
               width={1000}
               height={720}
@@ -200,7 +200,7 @@ function GondolaGift() {
       <div className="section-shell grid items-center gap-12 md:grid-cols-12">
         <Reveal className="md:col-span-5">
           <img
-            src={gondolaPhoto.url}
+            src={gondolaPhoto}
             alt="A guest standing between two Loon Mountain scenic gondola cabins at the base station"
             width={1440}
             height={1920}
