@@ -89,10 +89,9 @@ jobs:
       - name: Build static site
         run: bun run build:pages
         env:
-          # Custom domain serves the site from the root path.
+          # Custom domain serves the site from the root path. Images and videos are committed under
+          # src/assets and bundled by Vite, so nothing is downloaded during the build.
           PAGES_BASE_PATH: "/"
-          LOVABLE_ASSET_ORIGIN: ${{ vars.LOVABLE_ASSET_ORIGIN || 'https://id-preview--0c3c6e06-85d4-4361-a04f-dfcd42d2f470.lovable.app' }}
-          LOVABLE_PREVIEW_TOKEN: ${{ secrets.LOVABLE_PREVIEW_TOKEN }}
 
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -1,12 +1,12 @@
-import bowPhoto from "@/assets/the-bow.png.asset.json";
-import freeMattressPhoto from "@/assets/free-mattress.webp.asset.json";
-import halloweenPhoto from "@/assets/halloween-2023.png.asset.json";
-import puppyProposalPhoto from "@/assets/the-puppy-proposal.jpg.asset.json";
-import behavedPhoto from "@/assets/the-one-where-he-behaved.jpg.asset.json";
-import proposalTwoPhoto from "@/assets/proposal-that-became-two.jpg.asset.json";
-import stormyPhoto from "@/assets/stormy-gowda-malhotra.webp.asset.json";
-import newYorkPhoto from "@/assets/new-york.webp.asset.json";
-import shravyaPhoto from "@/assets/shravya.webp.asset.json";
+import bowPhoto from "@/assets/the-bow.png";
+import freeMattressPhoto from "@/assets/free-mattress.webp";
+import halloweenPhoto from "@/assets/halloween-2023.png";
+import puppyProposalPhoto from "@/assets/the-puppy-proposal.jpg";
+import behavedPhoto from "@/assets/the-one-where-he-behaved.jpg";
+import proposalTwoPhoto from "@/assets/proposal-that-became-two.jpg";
+import stormyPhoto from "@/assets/stormy-gowda-malhotra.webp";
+import newYorkPhoto from "@/assets/new-york.webp";
+import shravyaPhoto from "@/assets/shravya.webp";
 
 export const hotels = [
   {
@@ -96,7 +96,7 @@ In response they said - “You know how little boys pull girls’ pigtails in ki
 Sharanya’s reply was immediate and certain - “Never, ever, ever will I  date him. Not even if he were the last man on earth, and not even if procreation depended on it!”
 
 Three years later, here they are …`, photo: {
-      url: halloweenPhoto.url,
+      url: halloweenPhoto,
       alt: "Friends grouped in front of the Witches Woods haunted hayride sign on Halloween night",
       width: 1600,
       height: 1200,
@@ -112,7 +112,7 @@ Before she could properly process what was happening, he was halfway up the tree
 He climbed down, handed it to her like it was a priceless gift, and said, “I’ll always give you what you want.”
 
 And in that very ridiculous, very sweet moment, Sharanya realized that this was someone who would go to any length just to make her smile and keep her happy!`, photo: {
-    url: bowPhoto.url,
+    url: bowPhoto,
     alt: "A hand holding the red ribbon bow Sahil climbed a tree to bring down",
     width: 1320,
     height: 1765,
@@ -128,7 +128,7 @@ And then it just … continued. For the next few months, his family happily refe
 A couple of months later, the moment finally arrived. Sharanya met his sister first, who immediately discovered the mix up. She was surprised, mildly exasperated, and also very entertained; it only reinforced what she already knew about her brother. A week later, when she met his mom, the truth came out again, followed by a lot of laughter, a bit of disbelief, and plenty of “Why would you even do this?” directed at Sahil.
 
 In the end, it turned into one of those stories everyone still laughs about, and every once in a while, his mom still accidentally calls her Shravya.`, photo: {
-    url: shravyaPhoto.url,
+    url: shravyaPhoto,
     alt: "Sharanya looking straight at the camera with a playful pout",
     width: 1440,
     height: 1920,
@@ -145,7 +145,7 @@ One highlight was a short hike for a sunset view over the farmland. They made it
 What followed was a chaotic walk back using only their phone flashlights. Sharanya was convinced there were bears in the woods and was very mad. Sahil was determined to get them back to the car safely.
 
 It was their first trip together, and it turned out to be full of unexpected adventures, small mishaps, and a lot of laughter. They thought it would be a quiet weekend, but instead they spent it exploring, trying new things, and making memories they still talk about.`, photo: {
-    url: newYorkPhoto.url,
+    url: newYorkPhoto,
     alt: "Sharanya and Sahil standing together at a vineyard, the striped umbrella and hills behind them",
     width: 1440,
     height: 1920,
@@ -159,7 +159,7 @@ What followed was a heroic but deeply misguided attempt to get the frame into th
 As predicted, the frame got completely stuck between the staircase and the wall and nearly took out the fire alarm. After a long series of “this is not going to work,” Sahil finally accepted defeat. But by then it was halfway in, so they had to wrestle it all the way back out and carry it around the block to the dumpster.
 
 In the end, the “free” bed frame was not so free, the adjustable dream did not survive, and Sharanya was understandably not thrilled. Sahil, however, meant well. And to this day, they still use that very mattress, just on a normal bed frame.`, photo: {
-    url: freeMattressPhoto.url,
+    url: freeMattressPhoto,
     alt: "Sahil grinning and flashing a peace sign from the driver's seat of the new van",
     width: 1440,
     height: 1920,
@@ -191,7 +191,7 @@ Sahil then ran downstairs, grabbed a ring pop, flowers, and a heart-shaped box o
 And to no one’s surprise Sharanya said, “WOOF!”
 
 …which led to the next step - asking for blessings the slightly more formal way.`, photo: {
-    url: puppyProposalPhoto.url,
+    url: puppyProposalPhoto,
     alt: "A hand wearing the oversized red ring pop used for the puppy proposal",
     width: 1080,
     height: 1920,
@@ -207,7 +207,7 @@ Her parents listened, asked thoughtful questions, and most importantly, gave the
 Soon after, Sharanya also wrote a heartfelt letter to Sahil’s mom, asking for her son’s hand in a way that was thoughtful, intentional, and full of love.
 
 And with that, between laughter, a ring pop, and two very different but equally meaningful conversations, both families became part of the beginning of this next chapter.`, photo: {
-    url: behavedPhoto.url,
+    url: behavedPhoto,
     alt: "Sahil smiling across a bar table with two cocktails in front of him at Emmets",
     width: 1080,
     height: 1920,
@@ -276,7 +276,7 @@ Sahil had spent all that time planning the perfect way to ask Sharanya to marry 
 
 He had absolutely no idea she was planning to ask him the very same question.`,
     photo: {
-      url: proposalTwoPhoto.url,
+      url: proposalTwoPhoto,
       alt: "Sharanya laughing with her eyes shut as Sahil holds her from behind, their joined hands showing her ring",
       width: 1280,
       height: 1920,
@@ -398,7 +398,7 @@ And to think, it all started because an old soccer mom car finally decided it ha
 
 Welcome to the family, Stormy.`,
     photo: {
-      url: stormyPhoto.url,
+      url: stormyPhoto,
       alt: "Sharanya and Sahil standing arm in arm in front of Stormy, their new RAV4, outside the Toyota dealership at sunset",
       width: 1440,
       height: 1920,

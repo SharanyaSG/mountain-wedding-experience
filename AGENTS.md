@@ -21,3 +21,4 @@
 - Render travel section labels through SectionHeading using the existing driving eyebrow classes and gap, so labels stay consistent without changing heading alignment or typography.
 - Keep story-card wording in wedding-content: a story's optional preview field holds the couple's own card-back text, and the card back scrolls instead of clipping, so supplied previews appear verbatim without redesigning the cards.
 - Keep story-card actions in one shared, padded nowrap flex row with container-relative compact labels, so every card fits its actual width without overlap or changing the grid.
+- Keep every image, video and other media file committed under src/assets and import it directly (`import photo from "@/assets/photo.jpg"`), so builds never download assets. Never add Lovable-hosted `.asset.json` manifests or `/__l5e/` URLs; if an upload arrives as one, run `node scripts/localize-lovable-assets.mjs` to save it as a real file and rewrite its imports.

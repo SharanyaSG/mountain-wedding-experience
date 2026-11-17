@@ -23,6 +23,6 @@ describe("a message from us video", () => {
     render(<MessageFromUs />);
     const v = video();
     expect(v?.getAttribute("preload")).toBe("metadata");
-    expect(v?.getAttribute("poster")).toMatch(/^\/__l5e\/assets-v1\//);
+    expect(v?.getAttribute("poster")).toMatch(/message-from-us-poster\.jpg$/);
   });
 });
