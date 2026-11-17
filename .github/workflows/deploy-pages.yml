@@ -1,7 +1,6 @@
 name: Deploy to GitHub Pages
 
-# Deploys from the gh-pages branch so main (which Lovable syncs to) is never published
-# automatically. Merge main into gh-pages when you want the live site updated.
+# Lovable syncs to main; pushes to main deploy automatically.
 on:
   push:
     branches: [main]
@@ -12,7 +11,6 @@ permissions:
   pages: write
   id-token: write
 
-# Only one deployment at a time; let an in-progress deploy finish.
 concurrency:
   group: pages
   cancel-in-progress: false
@@ -42,13 +40,9 @@ jobs:
       - name: Build static site
         run: bun run build:pages
         env:
-          # "/<repo>/" for a project site, "/" when a custom domain is configured.
-          PAGES_BASE_PATH: ${{ steps.pages.outputs.base_path }}/
-          # The Lovable site that serves this project's uploaded images. Defaults to the
-          # project's public Lovable preview; override with a LOVABLE_ASSET_ORIGIN repository
-          # variable (Settings → Secrets and variables → Actions → Variables) if it changes.
+          # Custom domain serves the site from the root path.
+          PAGES_BASE_PATH: "/"
           LOVABLE_ASSET_ORIGIN: ${{ vars.LOVABLE_ASSET_ORIGIN || 'https://id-preview--0c3c6e06-85d4-4361-a04f-dfcd42d2f470.lovable.app' }}
-          # Only needed if the Lovable site is private/preview-gated.
           LOVABLE_PREVIEW_TOKEN: ${{ secrets.LOVABLE_PREVIEW_TOKEN }}
 
       - uses: actions/upload-pages-artifact@v3
