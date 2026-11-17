@@ -179,14 +179,14 @@
 }
 @media (width >= 768px) {
   :root {
-    --section-space: 56px;
+    --section-space: 48px;
     --section-content-gap: 32px;
     --section-gutter: 40px;
   }
 }
 @media (width >= 1200px) {
   :root {
-    --section-space: 72px;
+    --section-space: 60px;
     --section-content-gap: 40px;
   }
 }
@@ -214,22 +214,23 @@
 .content-page { padding-top: 64px; }
 @media (width >= 768px) { .content-page { padding-top: 80px; } }
 
-#message-from-us { padding-top: calc(var(--section-space) - 16px); }
+#message-from-us { padding-top: 24px; }
 @media (width >= 768px) {
-  #message-from-us { padding-top: calc(var(--section-space) - 28px); }
+  #message-from-us { padding-top: 28px; }
 }
 @media (width >= 1200px) {
-  #message-from-us { padding-top: calc(var(--section-space) - 40px); }
+  #message-from-us { padding-top: 32px; }
 }
 
 /* Small itinerary-only hierarchy adjustments preserve the existing typefaces,
    letter spacing, line heights, colors and responsive column structure. */
-#wedding-itinerary { padding-top: calc(var(--section-space) - 24px); }
+/* The first section under the header on content pages (.page-lead) sits as close to it as the itinerary does. */
+#wedding-itinerary, .page-lead { padding-top: 16px; }
 @media (width >= 768px) {
-  #wedding-itinerary { padding-top: calc(var(--section-space) - 28px); }
+  #wedding-itinerary, .page-lead { padding-top: 28px; }
 }
 @media (width >= 1200px) {
-  #wedding-itinerary { padding-top: calc(var(--section-space) - 32px); }
+  #wedding-itinerary, .page-lead { padding-top: 40px; }
 }
 #wedding-itinerary .itinerary-heading { font-size: 50px; }
 #wedding-itinerary .itinerary-subtitle { font-size: 32px; }

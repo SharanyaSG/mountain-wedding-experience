@@ -94,7 +94,7 @@ export function TellUsYourPlans() {
   return (
     <section
       id="tell-us-your-plans"
-      className="section-shell scroll-mt-20 bg-background md:scroll-mt-24"
+      className="page-lead section-shell scroll-mt-20 bg-background md:scroll-mt-24"
     >
       <div className="mx-auto max-w-2xl">
         <header className="text-center">

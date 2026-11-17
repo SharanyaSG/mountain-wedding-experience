@@ -9,8 +9,10 @@ function renderInline(text: string): ReactNode[] {
     const m = part.match(/^\[\[(.+)\|(.+)\]\]$/);
     if (!m) return part;
     const [, label, id] = m as unknown as [string, string, string];
+    // [[label|id]] links to a section by id; ids on the Things To Do page go there, the rest to Plan Your Trip.
+    const thingsToDo = id === "things-to-do" || id === "adventure" || id === "gondola";
     return (
-      <Link key={i} to="/plan-your-trip" hash={id === "plan-your-trip" ? "" : id}
+      <Link key={i} to={thingsToDo ? "/things-to-do" : "/plan-your-trip"} hash={id === "plan-your-trip" || id === "things-to-do" ? "" : id}
         className="font-bold text-itinerary-forest underline decoration-romantic-crimson/50 underline-offset-4 transition-colors hover:text-romantic-crimson">
         {label}
       </Link>
@@ -54,7 +56,7 @@ export function FaqSection() {
 
   return (
     <section id="faqs" className="section-divider scroll-mt-24 md:scroll-mt-28">
-      <div className="section-shell">
+      <div className="page-lead section-shell">
         <Reveal>
           <h2 className="display text-5xl md:text-6xl">A few <em className="text-romantic-crimson">early answers</em></h2>
           <p className="mt-6 w-full text-left font-serif text-[15px] leading-relaxed text-foreground md:text-base">{faqIntro}</p>

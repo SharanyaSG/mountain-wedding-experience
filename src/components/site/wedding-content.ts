@@ -60,6 +60,11 @@ export const travelGuide = {
     label: "Explore Our Lincoln, New Hampshire Guide",
     /** Set to the Canva PDF URL once it exists; the button then opens it in a new tab. */
     url: null as string | null,
+    /** Shown on Things To Do until the guide exists. */
+    comingSoon: {
+      heading: "Our guide is coming soon",
+      body: "We’re still putting the finishing touches on our illustrated guide to Lincoln and the White Mountains: our favorite trails, scenic drives, waterfalls and places to eat. Check back soon!",
+    },
   },
   gondola: {
     date: "October 8, 2027",
