@@ -246,7 +246,7 @@ export const faqCategories: FaqCategory[] = [
         "So much!",
         "From scenic drives and hiking trails to waterfalls, family-run eateries, and some of our favorite local spots, there’s plenty to explore.",
         "We’re putting together a personal guide to Lincoln and the surrounding White Mountains to help you make the most of your visit.",
-        "Look for the [[Explore Our Lincoln, New Hampshire Guide|adventure]] button in the [[Plan Your Trip|plan-your-trip]] section.",
+        "Look for the [[Explore Our Lincoln, New Hampshire Guide|adventure]] on our [[Things To Do|things-to-do]] page once it’s ready.",
       ]},
       { q: "Should we book activities and restaurants in advance?", a: [
         "We strongly recommend it!",

@@ -43,6 +43,7 @@ describe("Plan Your Trip travel facts", () => {
     expect(travelGuide.newHampshireGuide.url).toBeNull();
   });
 
+
   it("keeps rental-car group rates tentative rather than secured", () => {
     expect(travelGuide.driving.groupRates.status).toBe("exploring");
   });
