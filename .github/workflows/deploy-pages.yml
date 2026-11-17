@@ -4,7 +4,7 @@ name: Deploy to GitHub Pages
 # automatically. Merge main into gh-pages when you want the live site updated.
 on:
   push:
-    branches: [gh-pages]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
