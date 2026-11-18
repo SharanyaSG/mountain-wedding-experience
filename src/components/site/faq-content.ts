@@ -51,6 +51,12 @@ export const faqCategories: FaqCategory[] = [
         "Details about the farewell brunch will be confirmed closer to the wedding.",
         "When you look yourself up in Tell Us Your Plans, you’ll see the celebrations you’re invited to attend.",
       ]},
+      { q: "Can I bring a plus-one?", a: [
+        "We’d love to celebrate with everyone, but we’re keeping our guest list limited to those we’ve personally invited.",
+        "When you visit “Tell Us Your Plans” on our website and look up your name, you’ll see everyone included in your party. Those are the guests we’re planning to accommodate.",
+        "We’re generally unable to accommodate additional plus-ones beyond those already listed. However, if you have a special request, please reach out to Sharanya or Sahil directly, and we’ll see what we can do!",
+        "We appreciate your understanding as we work within our venue’s capacity and guest arrangements.",
+      ]},
       { q: "Will there be any Indian wedding ceremonies?", a: [
         "No, we won’t be having any traditional Indian wedding ceremonies.",
         "While we both come from Indian backgrounds and deeply appreciate our cultures and traditions, we’ve chosen to celebrate in a way that feels most authentic to us as a couple. Our mountain wedding reflects our personalities, our shared love for the outdoors, and the kind of celebration we’ve always envisioned.",
@@ -77,6 +83,12 @@ export const faqCategories: FaqCategory[] = [
         "By sharing the dates early, we hope to make it easier for everyone to arrange travel, accommodations, and time off.",
         "Most importantly, we’d love to have as many of our favorite people there as possible!",
       ]},
+      { q: "Will we receive a separate wedding invitation?", a: [
+        "No separate invitation is needed!",
+        "We’re keeping things simple and digital. The personal message and save-the-date video we’ve shared with you are our way of inviting you to celebrate with us!",
+        "This website will be your home for all the wedding details, including the schedule, accommodations, travel information, and eventually your final RSVP.",
+        "We’ll continue sharing updates as the wedding gets closer, so you won’t need to wait for a separate formal invitation.",
+      ]},
       { q: "Is “Tell Us Your Plans” our final RSVP?", a: [
         "No!",
         "We’re simply gathering an early sense of everyone’s plans to help us prepare.",
@@ -93,10 +105,15 @@ export const faqCategories: FaqCategory[] = [
         "Your early response is simply helping us with preliminary planning.",
         "We’ll let you know when it’s time to send your final RSVP.",
       ]},
+      { q: "What if I can’t find my name in “Tell Us Your Plans”?", a: [
+        "If you’re having trouble finding your name, don’t worry!",
+        "Try searching using your first or last name as it appears in our guest list.",
+        "If you’re still unable to find your details, please reach out to Sharanya or Sahil directly, and we’ll be happy to help you sort it out.",
+      ]},
       { q: "Can we bring additional guests?", a: [
-        "When you look yourself up in Tell Us Your Plans, you’ll see exactly who is included in your party.",
-        "We kindly ask that you keep to the guests listed there, as we’re planning our celebrations around a specific guest count.",
-        "If you have any questions, please reach out to us directly.",
+        "When you look yourself up in “Tell Us Your Plans”, you’ll see exactly who is included in your party.",
+        "Everyone listed in your party is invited to celebrate with us. We kindly ask that you keep to those guests when submitting your response.",
+        "If you have any questions or would like to request an additional guest, please reach out to Sharanya or Sahil directly. While we can’t guarantee additional spots, we’re happy to discuss your request.",
       ]},
       { q: "Who is organizing the wedding, and whom should we contact with questions?", a: [
         "We’re organizing and hosting our wedding celebrations ourselves!",
