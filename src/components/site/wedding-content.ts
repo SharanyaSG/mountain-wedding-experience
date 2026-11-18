@@ -69,7 +69,7 @@ export const travelGuide = {
     audience: "all our wedding guests",
     intro: "Did you know that Loon Mountain is home to New Hampshire’s longest scenic gondola ride?",
     climb: "Climbing approximately 1,700 vertical feet to a summit 2,733 feet above sea level, the gondola offers breathtaking views of the White Mountains, especially when the landscape comes alive with brilliant autumn colors.",
-    offer: "As a little gift from us to you, we’re treating all our wedding guests to complimentary gondola rides all day on October 8, 2027! They’re not just for the ceremony, so head up early, take in the fall foliage from the summit, and make a little adventure of your wedding day.",
+    offer: "As a little gift from us to you, we’re treating all our wedding guests to complimentary gondola rides all day on October 8, 2027! They’re not just for the ceremony, so head up early, take in the fall foliage from the summit, and make a little adventure of our wedding day.",
     highlight: "complimentary gondola rides all day on October 8, 2027",
     accessDetails: "More details to follow!",
   },
