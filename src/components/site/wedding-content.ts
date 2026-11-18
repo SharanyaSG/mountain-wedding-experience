@@ -7,6 +7,7 @@ import proposalTwoPhoto from "@/assets/proposal-that-became-two.jpg";
 import stormyPhoto from "@/assets/stormy-gowda-malhotra.webp";
 import newYorkPhoto from "@/assets/new-york.webp";
 import shravyaPhoto from "@/assets/shravya.webp";
+import boardGamesPhoto from "@/assets/the-great-board-game-merger.jpg";
 
 export const hotels = [
   {
@@ -534,7 +535,12 @@ And Sahil?
 Well, there’s always the next round of Everdell.
 
 And possibly another victory dance happening in the next room.`,
-    photo: null,
+    photo: {
+      url: boardGamesPhoto,
+      alt: "Three wooden shelves packed with Sharanya and Sahil’s board games, including 7 Wonders Duel, Everdell, Cascadia, Azul, Dune Imperium and Ticket to Ride Europe",
+      width: 1440,
+      height: 1276,
+    },
   },
 ];
 
