@@ -110,15 +110,6 @@ export const faqCategories: FaqCategory[] = [
         ]
       },
       {
-        "q": "Can I bring a plus-one?",
-        "a": [
-          "We'd love to celebrate with everyone, but we're keeping our guest list limited to those we've personally invited.",
-          "When you visit “Tell Us Your Plans” on our website and look up your name, you'll see everyone included in your party. Those are the guests we're planning to accommodate.",
-          "We're generally unable to accommodate additional plus-ones beyond those already listed. However, if you have a special request, please reach out to Sharanya or Sahil directly, and we'll see what we can do!",
-          "We appreciate your understanding as we work within our venue's capacity and guest arrangements."
-        ]
-      },
-      {
         "q": "Will the ceremony be indoors or outdoors?",
         "a": [
           "Our wedding ceremony will take place outdoors at the summit of Loon Mountain, weather permitting!",
