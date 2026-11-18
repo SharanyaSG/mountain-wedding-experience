@@ -33,7 +33,7 @@ describe("Plan Your Trip travel facts", () => {
   });
 
   it("states the rental-car recommendation once, beneath both airport columns", () => {
-    expect(travelGuide.rentalRecommendation).toBe("We recommend arranging a rental car in advance for your drive to Lincoln. More information can be found below.");
+    expect(travelGuide.rentalRecommendation).toBe("If you’re flying in, we recommend arranging a rental car in advance for your drive to Lincoln. More information can be found below.");
     expect("recommendation" in travelGuide.international).toBe(false);
   });
 
@@ -53,9 +53,9 @@ describe("Plan Your Trip travel facts", () => {
     expect(travelGuide.gondola.audience).toBe("all our wedding guests");
     expect(travelGuide.gondola.intro).toBe("Did you know that Loon Mountain is home to New Hampshire’s longest scenic gondola ride?");
     expect(travelGuide.gondola.climb).toBe("Climbing approximately 1,700 vertical feet to a summit 2,733 feet above sea level, the gondola offers breathtaking views of the White Mountains, especially when the landscape comes alive with brilliant autumn colors.");
-    expect(travelGuide.gondola.offer).toBe("As a little gift from us to you, we’re treating all our wedding guests to complimentary gondola rides on October 8, 2027! Enjoy the mountain views, take in the fall foliage, and make a little adventure of your wedding day.");
+    expect(travelGuide.gondola.offer).toBe("As a little gift from us to you, we’re treating all our wedding guests to complimentary gondola rides all day on October 8, 2027! They’re not just for the ceremony, so head up early, take in the fall foliage from the summit, and make a little adventure of our wedding day.");
     expect(travelGuide.gondola.offer).toContain(travelGuide.gondola.highlight);
-    expect(travelGuide.gondola.highlight).toBe("complimentary gondola rides on October 8, 2027");
+    expect(travelGuide.gondola.highlight).toBe("complimentary gondola rides all day on October 8, 2027");
     expect(travelGuide.gondola.accessDetails).toBe("More details to follow!");
     expect(JSON.stringify(travelGuide.gondola)).not.toMatch(/24\/?7|24-hour|unlimited/i);
   });

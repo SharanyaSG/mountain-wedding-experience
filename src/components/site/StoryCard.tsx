@@ -57,8 +57,8 @@ export function StoryCard({ story }: { story: Story }) {
               </span>
             </div>
           )}
-          <div className="bg-image-veil pointer-events-none absolute inset-0" />
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-6 p-6 min-[768px]:gap-3 min-[768px]:p-4">
+          <div className="story-veil pointer-events-none absolute inset-0" />
+          <div className="story-front-text pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-6 p-6 min-[768px]:gap-3 min-[768px]:p-4">
             <div className="min-w-0">
               <p className="eyebrow text-ivory/70 min-[768px]:text-[0.5rem]">{story.n}</p>
               <h3 className="display mt-3 text-4xl text-ivory min-[768px]:mt-2 min-[768px]:text-xl min-[768px]:leading-tight">

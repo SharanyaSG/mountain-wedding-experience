@@ -4,15 +4,19 @@ import { Reveal } from "@/components/site/Reveal";
 import { faqCategories, faqIntro, type FaqBlock } from "@/components/site/faq-content";
 import { faqCategoryFromHash } from "./faq-navigation";
 
-function renderInline(text: string): ReactNode[] {
-  return text.split(/(\[\[[^\]]+\]\])/g).map((part, i) => {
+function renderInline(text: string, linkPageMentions = false): ReactNode[] {
+  const linkedText = linkPageMentions
+    ? text.split(/(\[\[[^\]]+\]\])/g).map((part) => part.startsWith("[[") ? part : part.replace(/\b(Tell Us Your Plans|Plan Your Trip)\b/g, (label) => `[[${label}|${label === "Tell Us Your Plans" ? "tell-us-your-plans" : "plan-your-trip"}]]`)).join("")
+    : text;
+  return linkedText.split(/(\[\[[^\]]+\]\])/g).map((part, i) => {
     const m = part.match(/^\[\[(.+)\|(.+)\]\]$/);
     if (!m) return part;
     const [, label, id] = m as unknown as [string, string, string];
-    // [[label|id]] links to a section by id; ids on the Things To Do page go there, the rest to Plan Your Trip.
+    // Page IDs navigate directly; other IDs retain their existing section destinations.
     const thingsToDo = id === "things-to-do" || id === "adventure" || id === "gondola";
+    const plans = id === "tell-us-your-plans";
     return (
-      <Link key={i} to={thingsToDo ? "/things-to-do" : "/plan-your-trip"} hash={id === "plan-your-trip" || id === "things-to-do" ? "" : id}
+      <Link key={i} to={plans ? "/tell-us-your-plans" : thingsToDo ? "/things-to-do" : "/plan-your-trip"} hash={plans || id === "plan-your-trip" || id === "things-to-do" ? "" : id}
         className="font-bold text-itinerary-forest underline decoration-romantic-crimson/50 underline-offset-4 transition-colors hover:text-romantic-crimson">
         {label}
       </Link>
@@ -20,9 +24,10 @@ function renderInline(text: string): ReactNode[] {
   });
 }
 
-function Block({ block }: { block: FaqBlock }) {
-  if (typeof block === "string") return <p>{renderInline(block)}</p>;
+function Block({ block, linkPageMentions }: { block: FaqBlock; linkPageMentions: boolean }) {
+  if (typeof block === "string") return <p>{renderInline(block, linkPageMentions)}</p>;
   if ("heading" in block) return <h4 className="pt-4 font-display text-[13px] font-bold uppercase tracking-[0.18em] text-rust">{block.heading}</h4>;
+  if ("list" in block) return <ul className="list-disc space-y-1 pl-5">{block.list.map((text) => <li key={text}>{renderInline(text, linkPageMentions)}</li>)}</ul>;
   return <p className="font-bold text-itinerary-forest">{block.emphasis}</p>;
 }
 
@@ -53,6 +58,7 @@ export function FaqSection() {
   }, [active, linkedCategory?.id]);
 
   if (!category) return null;
+  const linkPageMentions = ["celebrations", "invitations", "accommodations"].includes(category.id);
 
   return (
     <section id="faqs" className="section-divider scroll-mt-24 md:scroll-mt-28">
@@ -100,7 +106,7 @@ export function FaqSection() {
                     <span aria-hidden className="mt-1 text-2xl leading-none text-rust transition-transform duration-500 group-open:rotate-45">+</span>
                   </summary>
                   <div className="max-w-2xl space-y-3 pb-8 font-serif text-[15px] leading-relaxed text-foreground md:text-base">
-                    {f.a.map((b, i) => <Block key={i} block={b} />)}
+                    {f.a.map((b, i) => <Block key={i} block={b} linkPageMentions={linkPageMentions} />)}
                   </div>
                 </details>
               ))}

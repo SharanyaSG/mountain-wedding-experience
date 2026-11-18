@@ -8,6 +8,7 @@ import stormyPhoto from "@/assets/stormy-gowda-malhotra.webp";
 import newYorkPhoto from "@/assets/new-york.webp";
 import shravyaPhoto from "@/assets/shravya.webp";
 import boardGamesPhoto from "@/assets/the-great-board-game-merger.jpg";
+import cornwallsPhoto from "@/assets/life-lately-006.jpg";
 
 export const hotels = [
   {
@@ -36,16 +37,18 @@ export const travelGuide = {
     { name: "Boston Logan International Airport", code: "BOS", driveTime: "Approximately 2–2.5 hours by car." },
     { name: "Manchester-Boston Regional Airport", code: "MHT", driveTime: "Approximately 1.25–1.5 hours by car." },
   ],
+  /** Shown under the flying heading: the airports are only for guests coming from out of town. */
+  flyingIntro: "Flying in from out of town? These are the closest airports to Lincoln.",
   airportComparison: "Manchester is closer to Lincoln, while Boston typically offers a wider range of flight options.",
   /** Shared statement shown once beneath both airport columns. */
-  rentalRecommendation: "We recommend arranging a rental car in advance for your drive to Lincoln. More information can be found below.",
+  rentalRecommendation: "If you’re flying in, we recommend arranging a rental car in advance for your drive to Lincoln. More information can be found below.",
   driving: {
     introduction: "Whether you’re driving from nearby or picking up a rental car after your flight, the journey to Lincoln is a beautiful one. We recommend allowing extra travel time during Columbus Day weekend, as the roads can get busy with visitors enjoying New Hampshire’s spectacular fall foliage.",
-    recommendation: "We recommend arranging a rental car in advance.",
+    recommendation: "If you’re flying in, we recommend arranging a rental car in advance.",
     transportation: "Having your own transportation makes it easier to explore Lincoln and the surrounding White Mountains at your own pace.",
     groupRates: {
       status: "exploring",
-      notice: "We’re exploring special rental-car rates for our wedding guests and hope to make the journey a little easier on everyone!",
+      notice: "We’re exploring special rental-car rates for guests who’ll need one, and hope to make the journey a little easier on everyone!",
       update: "We’ll share more information here if group rates become available. Stay tuned!",
     },
   },
@@ -67,8 +70,8 @@ export const travelGuide = {
     audience: "all our wedding guests",
     intro: "Did you know that Loon Mountain is home to New Hampshire’s longest scenic gondola ride?",
     climb: "Climbing approximately 1,700 vertical feet to a summit 2,733 feet above sea level, the gondola offers breathtaking views of the White Mountains, especially when the landscape comes alive with brilliant autumn colors.",
-    offer: "As a little gift from us to you, we’re treating all our wedding guests to complimentary gondola rides on October 8, 2027! Enjoy the mountain views, take in the fall foliage, and make a little adventure of your wedding day.",
-    highlight: "complimentary gondola rides on October 8, 2027",
+    offer: "As a little gift from us to you, we’re treating all our wedding guests to complimentary gondola rides all day on October 8, 2027! They’re not just for the ceremony, so head up early, take in the fall foliage from the summit, and make a little adventure of our wedding day.",
+    highlight: "complimentary gondola rides all day on October 8, 2027",
     accessDetails: "More details to follow!",
   },
 } as const;
@@ -175,7 +178,12 @@ At Cornwall’s, there’s Miz, who has seen us through countless evenings and k
 
 These places matter to us because of the people in them. So much so that even before we got engaged, we told Sarah and Miz that one day, whenever we got married, we wanted them behind the bar.
 
-They’re where we learned how to be together, how to be present for each other, and how to find joy in the in-between moments. And that is exactly the kind of life we hope to keep building.`, photo: null },
+They’re where we learned how to be together, how to be present for each other, and how to find joy in the in-between moments. And that is exactly the kind of life we hope to keep building.`, photo: {
+      url: cornwallsPhoto,
+      alt: "Sharanya and Sahil’s reflection in the glass doors at Cornwall’s, smiling up at the camera",
+      width: 1440,
+      height: 1920,
+    } },
   { id: "the-puppy-proposal", n: "07", title: "The Puppy Proposal", subtitle: "A Ring Pop, A Misunderstanding, & A Very Confused Mother", body: `The day after we decided we were getting married, Sahil came home from a ski trip, sat down with his mom, and decided, without any plan whatsoever, to tell her the news.
 
 Instead of saying it directly, he announced, very seriously, that he was “bringing someone new into the family.”
@@ -279,135 +287,13 @@ He had absolutely no idea she was planning to ask him the very same question.`,
     photo: {
       url: proposalTwoPhoto,
       alt: "Sharanya laughing with her eyes shut as Sahil holds her from behind, their joined hands showing her ring",
-      width: 1280,
-      height: 1920,
-    },
-  },
-  {
-    id: "stormy-gowda-malhotra",
-    n: "10",
-    title: "Stormy Gowda-Malhotra",
-    subtitle: "Our first big purchase. Her first thousand miles.",
-    preview:
-      "Sahil and Sharanya hadn’t planned on buying a car quite so soon. But when Sahil’s aging van finally gave up, they found themselves making their first major purchase together. Two months of obsessive tracking later, Stormy arrived—and promptly embarked on a thousand-mile road trip through New England.",
-    readerSubtitle: "Our first big purchase, a thousand-mile adventure, and a new member of the family.",
-    body: `Every family has that one car that’s been around a little too long.
-
-For Sahil, it was an enormous, aging van that Sharanya affectionately referred to as his “soccer mom car.” It had seen better days. Many, many better days.
-
-Sahil knew it was nearing retirement, but he had a plan. He wanted to hold on to it a little longer, wait for the right time, and eventually upgrade to something new.
-
-Unfortunately, the van had other plans.
-
-It started with a night out and a parking garage. While backing out, Sahil accidentally caught the van’s door against a pillar, leaving it jammed. After a considerable amount of trouble, they finally managed to get it fixed.
-
-And just when they thought the van had survived another adventure, Sahil’s mother was driving it when another car hit her.
-
-At that point, the universe seemed to be sending a rather clear message.
-
-It was time to say goodbye to the soccer mom car.
-
-The timing, however, couldn’t have been worse.
-
-As newlyweds, Sharanya and Sahil hadn’t planned on making such a significant purchase quite so soon. Buying a car was a big financial commitment, and the prospect was equal parts exciting and terrifying.
-
-But if they were going to do this, they were going to do it properly.
-
-Enter Sahil, a man who takes research very, very seriously.
-
-What followed was an extraordinarily thorough investigation into cars, features, specifications, pricing, and just about every detail imaginable. Sharanya had married a man who could turn buying a car into a full-scale research project, and he was determined to get it right.
-
-Eventually, they found their car: a Toyota RAV4.
-
-But naturally, they couldn’t just buy any RAV4.
-
-They had fallen in love with a very specific color combination, one that seemed to be available only on the West Coast. And once they’d made up their minds, there was no going back.
-
-Calls were made. Strings were pulled. Logistics were figured out.
-
-Somehow, they managed to arrange for their dream car to make its way across the country to Massachusetts.
-
-And then came the waiting.
-
-For nearly two months, Sharanya and Sahil tracked their car’s progress with the dedication of people monitoring a spacecraft launch.
-
-Every update mattered.
-
-A delivery date moved forward? Best day ever.
-
-A delay? Absolute devastation.
-
-Their moods rose and fell with the estimated arrival date of a vehicle they hadn’t even met yet.
-
-And somewhere along the way, their car had already become much more than a car.
-
-They’d even given her a name.
-
-Stormy Gowda-Malhotra.
-
-Inspired partly by Stormtroopers and partly by the fact that the car simply looked like a Stormy, the name stuck.
-
-By the time she finally arrived, Stormy was practically a member of the family.
-
-But Sharanya and Sahil had one more decision to make.
-
-How do you celebrate bringing home your first big purchase together?
-
-They didn’t want a traditional ceremony or a quiet drive home. They wanted something that felt like them.
-
-And as luck would have it, Stormy arrived during one of the most beautiful times of the year in New England.
-
-Fall.
-
-So instead of taking their brand-new car home and parking her safely in the driveway, they decided to take her on an adventure.
-
-A rather ambitious one.
-
-They were also in the middle of planning their wedding and had been searching for the perfect mountain venue. With Stormy’s arrival approaching, they’d put together an elaborate itinerary to visit potential venues across New England.
-
-And so, straight from the showroom, their brand-new RAV4 set off on her very first road trip.
-
-Over the course of a single weekend, Sharanya, Sahil, and Stormy traveled through Maine, Vermont, New Hampshire, and Massachusetts.
-
-They drove through winding mountain roads, past brilliant autumn foliage, and from one potential wedding venue to another.
-
-At one point, they ventured so far north that their phones picked up Canadian cell service and cheerfully welcomed them to Canada.
-
-They hadn’t actually crossed the border.
-
-But apparently, their phones thought they had.
-
-By the time the weekend was over, Stormy had traveled more than 1,000 miles.
-
-In her very first weekend.
-
-Most people spend their first few days with a new car carefully breaking it in.
-
-Sharanya and Sahil practically took theirs on a tour of New England.
-
-But somewhere between the mountains, the fall colors, the endless driving, and the wedding venues, that trip became something neither of them would forget.
-
-Stormy wasn’t just their first big purchase as a married couple.
-
-She was the first big decision they’d navigated together as newlyweds, from the initial uncertainty and financial commitment to the excitement of finally bringing her home.
-
-And her very first adventure became part of the journey toward another important milestone: finding the place where they would celebrate their wedding.
-
-Since then, Stormy has been part of countless memories, adventures, and road trips.
-
-And to think, it all started because an old soccer mom car finally decided it had had enough.
-
-Welcome to the family, Stormy.`,
-    photo: {
-      url: stormyPhoto,
-      alt: "Sharanya and Sahil standing arm in arm in front of Stormy, their new RAV4, outside the Toyota dealership at sunset",
-      width: 1440,
-      height: 1920,
+      width: 960,
+      height: 960,
     },
   },
   {
     id: "the-great-board-game-merger",
-    n: "11",
+    n: "10",
     title: "The Great Board Game Merger",
     subtitle: "Two board game nerds. One shared collection. A marriage built on love, strategy, and a little too much competition.",
     preview:
@@ -540,6 +426,128 @@ And possibly another victory dance happening in the next room.`,
       alt: "Three wooden shelves packed with Sharanya and Sahil’s board games, including 7 Wonders Duel, Everdell, Cascadia, Azul, Dune Imperium and Ticket to Ride Europe",
       width: 1440,
       height: 1276,
+    },
+  },
+  {
+    id: "stormy-gowda-malhotra",
+    n: "11",
+    title: "Stormy Gowda-Malhotra",
+    subtitle: "Our first big purchase. Her first thousand miles.",
+    preview:
+      "Sahil and Sharanya hadn’t planned on buying a car quite so soon. But when Sahil’s aging van finally gave up, they found themselves making their first major purchase together. Two months of obsessive tracking later, Stormy arrived—and promptly embarked on a thousand-mile road trip through New England.",
+    readerSubtitle: "Our first big purchase, a thousand-mile adventure, and a new member of the family.",
+    body: `Every family has that one car that’s been around a little too long.
+
+For Sahil, it was an enormous, aging van that Sharanya affectionately referred to as his “soccer mom car.” It had seen better days. Many, many better days.
+
+Sahil knew it was nearing retirement, but he had a plan. He wanted to hold on to it a little longer, wait for the right time, and eventually upgrade to something new.
+
+Unfortunately, the van had other plans.
+
+It started with a night out and a parking garage. While backing out, Sahil accidentally caught the van’s door against a pillar, leaving it jammed. After a considerable amount of trouble, they finally managed to get it fixed.
+
+And just when they thought the van had survived another adventure, Sahil’s mother was driving it when another car hit her.
+
+At that point, the universe seemed to be sending a rather clear message.
+
+It was time to say goodbye to the soccer mom car.
+
+The timing, however, couldn’t have been worse.
+
+As newlyweds, Sharanya and Sahil hadn’t planned on making such a significant purchase quite so soon. Buying a car was a big financial commitment, and the prospect was equal parts exciting and terrifying.
+
+But if they were going to do this, they were going to do it properly.
+
+Enter Sahil, a man who takes research very, very seriously.
+
+What followed was an extraordinarily thorough investigation into cars, features, specifications, pricing, and just about every detail imaginable. Sharanya had married a man who could turn buying a car into a full-scale research project, and he was determined to get it right.
+
+Eventually, they found their car: a Toyota RAV4.
+
+But naturally, they couldn’t just buy any RAV4.
+
+They had fallen in love with a very specific color combination, one that seemed to be available only on the West Coast. And once they’d made up their minds, there was no going back.
+
+Calls were made. Strings were pulled. Logistics were figured out.
+
+Somehow, they managed to arrange for their dream car to make its way across the country to Massachusetts.
+
+And then came the waiting.
+
+For nearly two months, Sharanya and Sahil tracked their car’s progress with the dedication of people monitoring a spacecraft launch.
+
+Every update mattered.
+
+A delivery date moved forward? Best day ever.
+
+A delay? Absolute devastation.
+
+Their moods rose and fell with the estimated arrival date of a vehicle they hadn’t even met yet.
+
+And somewhere along the way, their car had already become much more than a car.
+
+They’d even given her a name.
+
+Stormy Gowda-Malhotra.
+
+Inspired partly by Stormtroopers and partly by the fact that the car simply looked like a Stormy, the name stuck.
+
+By the time she finally arrived, Stormy was practically a member of the family.
+
+But Sharanya and Sahil had one more decision to make.
+
+How do you celebrate bringing home your first big purchase together?
+
+They didn’t want a traditional ceremony or a quiet drive home. They wanted something that felt like them.
+
+And as luck would have it, Stormy arrived during one of the most beautiful times of the year in New England.
+
+Fall.
+
+So instead of taking their brand-new car home and parking her safely in the driveway, they decided to take her on an adventure.
+
+A rather ambitious one.
+
+They were also in the middle of planning their wedding and had been searching for the perfect mountain venue. With Stormy’s arrival approaching, they’d put together an elaborate itinerary to visit potential venues across New England.
+
+And so, straight from the showroom, their brand-new RAV4 set off on her very first road trip.
+
+Over the course of a single weekend, Sharanya, Sahil, and Stormy traveled through Maine, Vermont, New Hampshire, and Massachusetts.
+
+They drove through winding mountain roads, past brilliant autumn foliage, and from one potential wedding venue to another.
+
+At one point, they ventured so far north that their phones picked up Canadian cell service and cheerfully welcomed them to Canada.
+
+They hadn’t actually crossed the border.
+
+But apparently, their phones thought they had.
+
+By the time the weekend was over, Stormy had traveled more than 1,000 miles.
+
+In her very first weekend.
+
+Most people spend their first few days with a new car carefully breaking it in.
+
+Sharanya and Sahil practically took theirs on a tour of New England.
+
+But somewhere between the mountains, the fall colors, the endless driving, and the wedding venues, that trip became something neither of them would forget.
+
+Stormy wasn’t just their first big purchase as a married couple.
+
+She was the first big decision they’d navigated together as newlyweds, from the initial uncertainty and financial commitment to the excitement of finally bringing her home.
+
+And her very first adventure became part of the journey toward another important milestone: finding the place where they would celebrate their wedding.
+
+Since then, Stormy has been part of countless memories, adventures, and road trips.
+
+And to think, it all started because an old soccer mom car finally decided it had had enough.
+
+Welcome to the family, Stormy.`,
+    photo: {
+      url: stormyPhoto,
+      alt: "Sharanya and Sahil standing arm in arm in front of Stormy, their new RAV4, outside the Toyota dealership at sunset",
+      width: 1440,
+      height: 1920,
     },
   },
 ];

@@ -17,6 +17,7 @@
 - Use shared section-shell, section-divider and section-content CSS tokens for homepage spacing; exclude the hero and modal interiors so future content keeps a consistent rhythm without altering immersive experiences.
 - Keep itinerary layout changes in WeddingItinerary and itinerary-scoped CSS, with shared spacing tokens and the unchanged agenda source, so other pages and event facts remain unaffected.
 - FAQ deep links use existing category IDs as URL fragments; select and scroll the existing question panel without opening individual answers, so direct URLs and history share the same content.
+- Keep supplied FAQ paragraphs, headings, emphasis and bullet lists as typed blocks in faq-content; the shared renderer inherits existing answer typography so rich answers do not require layout changes.
 - Reuse FaqCallout for travel-guide FAQ boxes so hotel and airport callouts share the same typography, padding and category-link behavior.
 - Render travel section labels through SectionHeading using the existing driving eyebrow classes and gap, so labels stay consistent without changing heading alignment or typography.
 - Keep story-card wording in wedding-content: a story's optional preview field holds the couple's own card-back text, and the card back scrolls instead of clipping, so supplied previews appear verbatim without redesigning the cards.
