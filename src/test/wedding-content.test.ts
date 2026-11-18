@@ -63,8 +63,11 @@ describe("wedding content", () => {
     const stormy = stories.find((s) => s.id === "stormy-gowda-malhotra");
     expect(stormy?.photo).toMatchObject({ width: 1440, height: 1920 });
     expect(stormy?.photo?.url).toMatch(/\/stormy-gowda-malhotra\.webp$/);
+    const boardGames = stories.find((s) => s.id === "the-great-board-game-merger");
+    expect(boardGames?.photo).toMatchObject({ width: 1440, height: 1276 });
+    expect(boardGames?.photo?.url).toMatch(/\/the-great-board-game-merger\.jpg$/);
     expect(stories.filter((s) => s.photo === null).map((s) => s.n)).toEqual([
-      "06", "11",
+      "06",
     ]);
   });
 
