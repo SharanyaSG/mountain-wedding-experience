@@ -105,7 +105,7 @@ export const faqCategories: FaqCategory[] = [
       {
         "q": "Are children welcome at the wedding?",
         "a": [
-          "We've decided to keep our wedding celebrations for guests aged 15 and older.",
+          "We've decided to keep our wedding celebrations for guests aged 13 and older.",
           "We hope this gives everyone an opportunity to enjoy a fun, relaxed weekend in the mountains, and we appreciate your understanding as you make your arrangements."
         ]
       },

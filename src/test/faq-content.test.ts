@@ -14,10 +14,10 @@ const item = (id: string, q: string) => {
 };
 
 describe("Confirmed FAQ wedding rules", () => {
-  it("limits wedding celebrations to ages 15 and older", () => {
+  it("limits wedding celebrations to ages 13 and older", () => {
     const answer = item("celebrations", "Are children welcome at the wedding?").a;
     const text = answer.filter((block) => typeof block === "string").join(" ");
-    expect(Number(text.match(/aged (\d+) and older/)?.[1])).toBe(15);
+    expect(Number(text.match(/aged (\d+) and older/)?.[1])).toBe(13);
   });
 
   const roomAnswer = item("accommodations", "How much will accommodation cost?").a;
