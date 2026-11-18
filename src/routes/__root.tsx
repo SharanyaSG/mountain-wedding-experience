@@ -15,7 +15,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteNavigation } from "@/components/site/SiteNavigation";
 import { SiteFooter } from "@/components/site/SiteFooter";
 
-const ICON_VERSION = 6;
+const ICON_VERSION = 7;
 
 function NotFoundComponent() {
   return (
