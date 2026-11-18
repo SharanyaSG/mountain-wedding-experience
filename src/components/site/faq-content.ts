@@ -203,7 +203,7 @@ export const faqCategories: FaqCategory[] = [
         "q": "What if I can't find my name in “Tell Us Your Plans”?",
         "a": [
           "If you're having trouble finding your name, don't worry!",
-          "Try searching using your first or last name as it appears in our guest list.",
+          "Try searching your first name and last name.",
           "If you're still unable to find your details, please reach out to Sharanya or Sahil directly, and we'll be happy to help you sort it out."
         ]
       },
