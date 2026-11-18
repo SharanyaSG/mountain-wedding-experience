@@ -58,7 +58,7 @@ describe("wedding content", () => {
     expect(behaved?.photo).toMatchObject({ width: 1080, height: 1920, objectPosition: "50% 11.9%" });
     expect(behaved?.photo?.url).toMatch(/\/the-one-where-he-behaved\.jpg$/);
     const proposalTwo = stories.find((s) => s.id === "the-proposal-that-became-two");
-    expect(proposalTwo?.photo).toMatchObject({ width: 1280, height: 1920 });
+    expect(proposalTwo?.photo).toMatchObject({ width: 960, height: 960 });
     expect(proposalTwo?.photo?.url).toMatch(/\/proposal-that-became-two\.jpg$/);
     const stormy = stories.find((s) => s.id === "stormy-gowda-malhotra");
     expect(stormy?.photo).toMatchObject({ width: 1440, height: 1920 });
@@ -66,9 +66,10 @@ describe("wedding content", () => {
     const boardGames = stories.find((s) => s.id === "the-great-board-game-merger");
     expect(boardGames?.photo).toMatchObject({ width: 1440, height: 1276 });
     expect(boardGames?.photo?.url).toMatch(/\/the-great-board-game-merger\.jpg$/);
-    expect(stories.filter((s) => s.photo === null).map((s) => s.n)).toEqual([
-      "06",
-    ]);
+    const cornwalls = stories.find((s) => s.id === "our-homes-away-from-home");
+    expect(cornwalls?.photo).toMatchObject({ width: 1440, height: 1920 });
+    expect(cornwalls?.photo?.url).toMatch(/\/life-lately-006\.jpg$/);
+    expect(stories.filter((s) => s.photo === null)).toEqual([]);
   });
 
   it("shows the supplied board game preview on the card back, word for word", () => {

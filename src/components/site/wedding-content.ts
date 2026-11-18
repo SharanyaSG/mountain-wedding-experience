@@ -8,6 +8,7 @@ import stormyPhoto from "@/assets/stormy-gowda-malhotra.webp";
 import newYorkPhoto from "@/assets/new-york.webp";
 import shravyaPhoto from "@/assets/shravya.webp";
 import boardGamesPhoto from "@/assets/the-great-board-game-merger.jpg";
+import cornwallsPhoto from "@/assets/life-lately-006.jpg";
 
 export const hotels = [
   {
@@ -177,7 +178,12 @@ At Cornwall’s, there’s Miz, who has seen us through countless evenings and k
 
 These places matter to us because of the people in them. So much so that even before we got engaged, we told Sarah and Miz that one day, whenever we got married, we wanted them behind the bar.
 
-They’re where we learned how to be together, how to be present for each other, and how to find joy in the in-between moments. And that is exactly the kind of life we hope to keep building.`, photo: null },
+They’re where we learned how to be together, how to be present for each other, and how to find joy in the in-between moments. And that is exactly the kind of life we hope to keep building.`, photo: {
+      url: cornwallsPhoto,
+      alt: "Sharanya and Sahil’s reflection in the glass doors at Cornwall’s, smiling up at the camera",
+      width: 1440,
+      height: 1920,
+    } },
   { id: "the-puppy-proposal", n: "07", title: "The Puppy Proposal", subtitle: "A Ring Pop, A Misunderstanding, & A Very Confused Mother", body: `The day after we decided we were getting married, Sahil came home from a ski trip, sat down with his mom, and decided, without any plan whatsoever, to tell her the news.
 
 Instead of saying it directly, he announced, very seriously, that he was “bringing someone new into the family.”
@@ -281,8 +287,8 @@ He had absolutely no idea she was planning to ask him the very same question.`,
     photo: {
       url: proposalTwoPhoto,
       alt: "Sharanya laughing with her eyes shut as Sahil holds her from behind, their joined hands showing her ring",
-      width: 1280,
-      height: 1920,
+      width: 960,
+      height: 960,
     },
   },
   {
