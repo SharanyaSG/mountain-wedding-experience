@@ -59,7 +59,7 @@ export function TellUsYourPlans() {
     setStep({ name: "form", party });
   }
 
-  // Only when several invitations matched and the guest picked one.
+  // Only when several parties matched and the guest picked one.
   async function openParty(groupUuid: string) {
     setBusy("party");
     setError(null);

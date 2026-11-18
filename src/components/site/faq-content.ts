@@ -65,11 +65,10 @@ export const faqCategories: FaqCategory[] = [
   },
   {
     id: "invitations",
-    label: "Invitations & RSVPs",
+    label: "Save the Date & RSVPs",
     items: [
-      { q: "Is this our wedding invitation?", a: [
-        "Yes!",
-        "This website is our invitation. We won’t be sending paper invitations.",
+      { q: "What is this website for?", a: [
+        "This website is the home for everything about our wedding, from the schedule to travel, stays, and things to do.",
         "Event timings, dress codes, and additional details will be added here as the wedding gets closer, and we’ll let you know when there’s an update.",
       ]},
       { q: "Why are you sending save-the-dates so far in advance?", a: [

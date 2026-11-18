@@ -36,7 +36,7 @@ export function WeddingItinerary() {
             </Reveal>
           ))}
         </ol>
-        <FaqCallout delay={200} className="section-content mx-auto w-full min-[1200px]:max-w-[95%]" category="Our Wedding & Celebrations" hash="celebrations" additionalCategory={{ label: "Invitations & RSVPs", hash: "invitations" }} />
+        <FaqCallout delay={200} className="section-content mx-auto w-full min-[1200px]:max-w-[95%]" category="Our Wedding & Celebrations" hash="celebrations" additionalCategory={{ label: "Save the Date & RSVPs", hash: "invitations" }} />
       </div>
     </section>
   );
