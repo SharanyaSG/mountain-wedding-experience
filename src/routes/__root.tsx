@@ -15,6 +15,8 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteNavigation } from "@/components/site/SiteNavigation";
 import { SiteFooter } from "@/components/site/SiteFooter";
 
+const ICON_VERSION = 2;
+
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -96,9 +98,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=Allison&family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap",
       },
       // Our mountain mark: SVG for modern browsers, .ico as the fallback, and a home-screen icon for phones.
-      { rel: "icon", href: `${import.meta.env.BASE_URL}favicon.svg`, type: "image/svg+xml" },
-      { rel: "icon", href: `${import.meta.env.BASE_URL}favicon.ico`, sizes: "48x48" },
-      { rel: "apple-touch-icon", href: `${import.meta.env.BASE_URL}apple-touch-icon.png` },
+      // Browsers cache icons hard, so bump ICON_VERSION whenever the icon files change.
+      { rel: "icon", href: `${import.meta.env.BASE_URL}favicon.svg?v=${ICON_VERSION}`, type: "image/svg+xml" },
+      { rel: "icon", href: `${import.meta.env.BASE_URL}favicon.ico?v=${ICON_VERSION}`, sizes: "48x48" },
+      { rel: "apple-touch-icon", href: `${import.meta.env.BASE_URL}apple-touch-icon.png?v=${ICON_VERSION}` },
     ],
   }),
   shellComponent: RootShell,
