@@ -123,7 +123,7 @@ export const faqCategories: FaqCategory[] = [
         "a": [
           "Our wedding ceremony will take place outdoors at the summit of Loon Mountain, weather permitting!",
           "October in New Hampshire can be chilly, especially at higher elevations, so we recommend bringing a warm layer.",
-          "Our cocktail hour and reception will take place indoors at the base of the mountain."
+          "Our cocktail hour will take place on the outdoor patio outside the reception hall, and our reception will take place indoors, both at the base of the mountain."
         ]
       },
       {

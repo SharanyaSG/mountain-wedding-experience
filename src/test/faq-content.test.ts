@@ -14,6 +14,16 @@ const item = (id: string, q: string) => {
 };
 
 describe("Confirmed FAQ wedding rules", () => {
+  it("places cocktail hour on the outdoor patio and reception indoors at the mountain base", () => {
+    const blocks = item("celebrations", "Will the ceremony be indoors or outdoors?").a;
+    const setting = blocks.find((block) => typeof block === "string" && block.startsWith("Our cocktail hour"));
+    if (typeof setting !== "string") throw new Error("Missing event settings");
+    const [cocktail, reception] = setting.split(", and our reception will take place ");
+    expect(cocktail).toContain("outdoor patio outside the reception hall");
+    expect(reception?.split(",")[0]).toBe("indoors");
+    expect(reception).toContain("both at the base of the mountain");
+  });
+
   it("limits wedding celebrations to ages 13 and older", () => {
     const answer = item("celebrations", "Are children welcome at the wedding?").a;
     const text = answer.filter((block) => typeof block === "string").join(" ");
