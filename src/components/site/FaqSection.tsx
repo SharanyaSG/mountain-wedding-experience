@@ -102,7 +102,7 @@ export function FaqSection() {
               {category.items.map((f) => (
                 <details key={f.q} className="group border-t border-foreground/20 last:border-b">
                   <summary className="flex cursor-pointer list-none items-start justify-between gap-6 py-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-rust [&::-webkit-details-marker]:hidden">
-                    <span className="font-serif text-xl leading-snug md:text-2xl">{renderInline(f.q, linkPageMentions)}</span>
+                    <span className="font-serif text-xl leading-snug md:text-2xl">{f.q}</span>
                     <span aria-hidden className="mt-1 text-2xl leading-none text-rust transition-transform duration-500 group-open:rotate-45">+</span>
                   </summary>
                   <div className="max-w-2xl space-y-3 pb-8 font-serif text-[15px] leading-relaxed text-foreground md:text-base">
