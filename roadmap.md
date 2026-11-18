@@ -1,4 +1,5 @@
 # Homepage refinements
+- [x] Replace only the first three FAQ sections with the finalized 11/9/9 questions; all 29 complete answers, room-option bullets, accordions and Plan Your Trip link verified on desktop/tablet/mobile; final three sections unchanged byte-for-byte, eighteen tests passed and latest build successful.
 - [x] Update the four requested FAQ answers about invitations and guest lists — the plus-one answer in Our Wedding & Celebrations, and the separate-invitation, missing-name and additional-guest answers in Save the Date & RSVPs — leaving every other question, the accordion behaviour and the guest lookup untouched; verified four opened answers plus four unchanged sections in the browser, seventy-nine tests and successful build.
 - [x] Lift the message-page heading group by 40px desktop, 28px tablet and 16px mobile; color only the cursive names crimson, verified unchanged typography, internal spacing and media across six screen sizes.
 - [x] Slightly lift only the We Said Yes gallery cover photograph, preserving the complete Married in Boston lettering and revealing more of the couple; verified desktop, tablet and mobile.

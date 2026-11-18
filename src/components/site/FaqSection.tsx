@@ -23,6 +23,7 @@ function renderInline(text: string): ReactNode[] {
 function Block({ block }: { block: FaqBlock }) {
   if (typeof block === "string") return <p>{renderInline(block)}</p>;
   if ("heading" in block) return <h4 className="pt-4 font-display text-[13px] font-bold uppercase tracking-[0.18em] text-rust">{block.heading}</h4>;
+  if ("list" in block) return <ul className="list-disc space-y-1 pl-5">{block.list.map((text) => <li key={text}>{renderInline(text)}</li>)}</ul>;
   return <p className="font-bold text-itinerary-forest">{block.emphasis}</p>;
 }
 
