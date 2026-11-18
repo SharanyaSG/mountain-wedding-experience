@@ -90,6 +90,7 @@ function GettingHere() {
       <div className="section-shell">
         <Reveal>
           <SectionHeading label="Flying to New England" title="The Journey to the Mountains" accent="Getting here is part of the adventure." crimson />
+          <p className="mt-6 font-serif text-sm leading-7 text-foreground">{travelGuide.flyingIntro}</p>
         </Reveal>
 
         <Reveal className="section-content">
@@ -119,11 +120,13 @@ function GettingHere() {
 
         <Reveal className="section-content border-t border-border pt-8">
           <div id="driving-to-lincoln" className="w-full">
-            <SectionHeading label="Driving to Lincoln, New Hampshire" title="Making your way to the mountains?" accent="Lincoln makes for a beautiful mountain road trip!" crimson />
+            <SectionHeading label="Driving to Lincoln, New Hampshire" title="Making your way to the mountains" accent="Lincoln makes for a beautiful mountain road trip!" crimson />
             <p className="mt-6 font-serif text-sm leading-7 text-foreground">{travelGuide.driving.introduction}</p>
 
             <p className="mt-8 font-serif text-base font-bold leading-8 text-itinerary-forest lg:text-lg">{travelGuide.driving.recommendation}</p>
             <p className="mt-3 font-serif text-sm leading-7 text-foreground">{travelGuide.driving.transportation}</p>
+
+            <p className="mt-6 border-l border-cinnamon pl-5 text-sm leading-7 text-rust"><span className="font-bold">International travelers:</span> If you plan to drive while you’re here, check driver’s license and International Driving Permit requirements before traveling.</p>
 
             <aside className="mt-8 border-l-2 border-rust bg-muted px-6 py-6" aria-labelledby="rental-group-rates">
               <h4 id="rental-group-rates" className="eyebrow text-[13px] font-bold text-rust">Rental Car Group Rates</h4>
@@ -132,7 +135,6 @@ function GettingHere() {
             </aside>
 
             <FaqCallout className="mt-6 w-full" category="Travel & Weather" hash="travel" />
-            <p className="mt-4 border-l border-cinnamon pl-5 text-sm leading-7 text-rust"><span className="font-bold">International travelers:</span> Check driver’s license and International Driving Permit requirements before traveling.</p>
           </div>
         </Reveal>
       </div>

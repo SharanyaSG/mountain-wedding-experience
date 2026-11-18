@@ -356,8 +356,8 @@ export const faqCategories: FaqCategory[] = [
         "Please visit our [[Plan Your Trip|plan-your-trip]] section for additional information.",
       ]},
       { q: "Will we need to rent a car?", a: [
-        "We strongly recommend having access to a car.",
-        "Lincoln is a mountain destination, and having your own transportation makes it easier to travel from the airport and explore the surrounding White Mountains.",
+        "If you’re flying in, we strongly recommend renting a car. If you’re driving from nearby, your own car is all you need.",
+        "Lincoln is a mountain destination, and having a car makes it easier to get to and from the airport and explore the surrounding White Mountains.",
         "We’re also exploring potential rental-car group rates for our wedding guests.",
         "More information will follow if discounted rates become available.",
       ]},
@@ -408,7 +408,7 @@ export const faqCategories: FaqCategory[] = [
       ]},
       { q: "Are the gondola rides included?", a: [
         "Yes! The mountain views are on us!",
-        "As a little gift from us to you, we’re treating our wedding guests to complimentary scenic gondola rides on October 8, 2027.",
+        "As a little gift from us to you, we’re treating our wedding guests to complimentary scenic gondola rides all day on October 8, 2027, not just for the ceremony, so feel free to head up early and explore.",
         "Loon Mountain is home to New Hampshire’s longest scenic gondola ride, ascending approximately 1,738 vertical feet to a summit 2,733 feet above sea level.",
         "It’s a beautiful way to experience the White Mountains and their spectacular autumn colors.",
         "More details about gondola access and operating hours will follow.",
