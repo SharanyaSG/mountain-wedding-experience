@@ -36,16 +36,18 @@ export const travelGuide = {
     { name: "Boston Logan International Airport", code: "BOS", driveTime: "Approximately 2–2.5 hours by car." },
     { name: "Manchester-Boston Regional Airport", code: "MHT", driveTime: "Approximately 1.25–1.5 hours by car." },
   ],
+  /** Shown under the flying heading: the airports are only for guests coming from out of town. */
+  flyingIntro: "Flying in from out of town? These are the closest airports to Lincoln.",
   airportComparison: "Manchester is closer to Lincoln, while Boston typically offers a wider range of flight options.",
   /** Shared statement shown once beneath both airport columns. */
-  rentalRecommendation: "We recommend arranging a rental car in advance for your drive to Lincoln. More information can be found below.",
+  rentalRecommendation: "If you’re flying in, we recommend arranging a rental car in advance for your drive to Lincoln. More information can be found below.",
   driving: {
     introduction: "Whether you’re driving from nearby or picking up a rental car after your flight, the journey to Lincoln is a beautiful one. We recommend allowing extra travel time during Columbus Day weekend, as the roads can get busy with visitors enjoying New Hampshire’s spectacular fall foliage.",
-    recommendation: "We recommend arranging a rental car in advance.",
+    recommendation: "If you’re flying in, we recommend arranging a rental car in advance.",
     transportation: "Having your own transportation makes it easier to explore Lincoln and the surrounding White Mountains at your own pace.",
     groupRates: {
       status: "exploring",
-      notice: "We’re exploring special rental-car rates for our wedding guests and hope to make the journey a little easier on everyone!",
+      notice: "We’re exploring special rental-car rates for guests who’ll need one, and hope to make the journey a little easier on everyone!",
       update: "We’ll share more information here if group rates become available. Stay tuned!",
     },
   },

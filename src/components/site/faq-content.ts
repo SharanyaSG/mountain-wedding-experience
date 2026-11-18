@@ -167,8 +167,8 @@ export const faqCategories: FaqCategory[] = [
         "Please visit our [[Plan Your Trip|plan-your-trip]] section for additional information.",
       ]},
       { q: "Will we need to rent a car?", a: [
-        "We strongly recommend having access to a car.",
-        "Lincoln is a mountain destination, and having your own transportation makes it easier to travel from the airport and explore the surrounding White Mountains.",
+        "If you’re flying in, we strongly recommend renting a car. If you’re driving from nearby, your own car is all you need.",
+        "Lincoln is a mountain destination, and having a car makes it easier to get to and from the airport and explore the surrounding White Mountains.",
         "We’re also exploring potential rental-car group rates for our wedding guests.",
         "More information will follow if discounted rates become available.",
       ]},

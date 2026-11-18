@@ -33,7 +33,7 @@ describe("Plan Your Trip travel facts", () => {
   });
 
   it("states the rental-car recommendation once, beneath both airport columns", () => {
-    expect(travelGuide.rentalRecommendation).toBe("We recommend arranging a rental car in advance for your drive to Lincoln. More information can be found below.");
+    expect(travelGuide.rentalRecommendation).toBe("If you’re flying in, we recommend arranging a rental car in advance for your drive to Lincoln. More information can be found below.");
     expect("recommendation" in travelGuide.international).toBe(false);
   });
 
