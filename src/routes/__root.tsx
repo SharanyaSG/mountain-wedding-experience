@@ -15,7 +15,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteNavigation } from "@/components/site/SiteNavigation";
 import { SiteFooter } from "@/components/site/SiteFooter";
 
-const ICON_VERSION = 4;
+const ICON_VERSION = 7;
 
 function NotFoundComponent() {
   return (
@@ -97,7 +97,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Allison&family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap",
       },
-      // Our bride and groom: a sharp 192 px icon, the .ico (16/32/48), and a home-screen icon for phones.
+      // Browser tabs: a heart with mountains (192 px PNG and the 16/32/48 .ico), which stays clear at tab size.
+      // Phone home screens: our bride and groom, where there's room to see them.
       // Browsers cache icons hard, so bump ICON_VERSION whenever the icon files change.
       { rel: "icon", href: `${import.meta.env.BASE_URL}favicon-192.png?v=${ICON_VERSION}`, type: "image/png", sizes: "192x192" },
       { rel: "icon", href: `${import.meta.env.BASE_URL}favicon.ico?v=${ICON_VERSION}`, sizes: "48x48" },
