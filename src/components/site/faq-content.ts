@@ -219,7 +219,7 @@ export const faqCategories: FaqCategory[] = [
       ]},
       { q: "Are the gondola rides included?", a: [
         "Yes! The mountain views are on us!",
-        "As a little gift from us to you, we’re treating our wedding guests to complimentary scenic gondola rides on October 8, 2027.",
+        "As a little gift from us to you, we’re treating our wedding guests to complimentary scenic gondola rides all day on October 8, 2027, not just for the ceremony, so feel free to head up early and explore.",
         "Loon Mountain is home to New Hampshire’s longest scenic gondola ride, ascending approximately 1,738 vertical feet to a summit 2,733 feet above sea level.",
         "It’s a beautiful way to experience the White Mountains and their spectacular autumn colors.",
         "More details about gondola access and operating hours will follow.",
